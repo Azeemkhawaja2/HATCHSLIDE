@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup rules for Android 11 and lower (API 26-30). -->
+<full-backup-content>
+    <include
+        domain="file"
+        path="datastore/" />
+</full-backup-content>

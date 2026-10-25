@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Themed-icon silhouette: hatchling and egg shell with eye cut-outs. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M35,46 a19,19 0 1,0 38,0 a19,19 0 1,0 -38,0 Z M41.3,44 a5.2,5.2 0 1,1 10.4,0 a5.2,5.2 0 1,1 -10.4,0 Z M56.3,44 a5.2,5.2 0 1,1 10.4,0 a5.2,5.2 0 1,1 -10.4,0 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M38,57 C30,55 25,59 26,64 C31,65 36,63 41,61 Z M70,57 C78,55 83,59 82,64 C77,65 72,63 67,61 Z M30,62 L36,57 L41,63 L47,57 L54,63 L61,57 L67,63 L72,57 L78,62 C78,76 67,84 54,84 C41,84 30,76 30,62 Z" />
+</vector>

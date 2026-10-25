@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Hatchslide" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/ocean_deep</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Hatchslide.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/sand_light</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_egg_crack</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="postSplashScreenTheme">@style/Theme.Hatchslide</item>
+    </style>
+</resources>

@@ -1,0 +1,30 @@
+# Gradle / Android
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing material is never committed
+keystore.properties
+*.jks
+*.keystore
+
+# Generated assets (rebuilt deterministically by tools/assetgen/build_all.py)
+hd_assets/src/main/assets/
+app/src/main/assets-gen/
+app/src/main/res/font/
+assets_src/cache/
+assets_src/intermediate/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store

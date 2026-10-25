@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash icon: the egg cracks along a zigzag and the top lifts to show the hatchling (about 0.75 s). -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="108dp"
+            android:height="108dp"
+            android:viewportWidth="108"
+            android:viewportHeight="108">
+            <path
+                android:fillColor="#FF7CC47F"
+                android:pathData="M41.5,52 a12.5,12.5 0 1,0 25.0,0 a12.5,12.5 0 1,0 -25.0,0 Z" />
+            <path
+                android:fillColor="#FFFFFFFF"
+                android:pathData="M46.2,50 a3.3,3.3 0 1,0 6.6,0 a3.3,3.3 0 1,0 -6.6,0 Z M55.2,50 a3.3,3.3 0 1,0 6.6,0 a3.3,3.3 0 1,0 -6.6,0 Z" />
+            <path
+                android:fillColor="#FF1E2A33"
+                android:pathData="M48,50.6 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0 Z M57,50.6 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0 Z" />
+            <path
+                android:fillColor="#FFFFF6E6"
+                android:pathData="M36.6,57 L41,53 L45,58 L49.5,53 L54,58 L58.5,53 L63,58 L67,53 L71.6,57 C72,58 72,59 72,60 C72,72 64,80 54,80 C44,80 36,72 36,60 C36,59 36.2,58 36.6,57 Z"
+                android:strokeWidth="1.2"
+                android:strokeColor="#FFE2C89E" />
+            <group
+                android:name="eggTop"
+                android:pivotX="71.6"
+                android:pivotY="57">
+                <path
+                    android:fillColor="#FFFFF6E6"
+                    android:pathData="M36.6,57 C37,47 44,33 54,33 C64,33 71,47 71.6,57 L67,53 L63,58 L58.5,53 L54,58 L49.5,53 L45,58 L41,53 Z"
+                    android:strokeWidth="1.2"
+                    android:strokeColor="#FFE2C89E" />
+            </group>
+            <path
+                android:name="crack"
+                android:pathData="M36.6,57 L41,53 L45,58 L49.5,53 L54,58 L58.5,53 L63,58 L67,53 L71.6,57"
+                android:strokeWidth="1.6"
+                android:strokeColor="#FFB48E5A"
+                android:strokeLineCap="round"
+                android:strokeLineJoin="round"
+                android:trimPathEnd="0" />
+        </vector>
+    </aapt:attr>
+    <target android:name="crack">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:propertyName="trimPathEnd"
+                android:startOffset="80"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="eggTop">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:duration="320"
+                    android:interpolator="@android:interpolator/overshoot"
+                    android:propertyName="rotation"
+                    android:startOffset="420"
+                    android:valueFrom="0"
+                    android:valueTo="30"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="320"
+                    android:interpolator="@android:interpolator/decelerate_quad"
+                    android:propertyName="translateY"
+                    android:startOffset="420"
+                    android:valueFrom="0"
+                    android:valueTo="-7"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
