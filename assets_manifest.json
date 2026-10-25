@@ -1,5 +1,5 @@
 {
- "totalBytes": 331999512,
+ "totalBytes": 366078288,
  "bytesByCategory": {
   "ambience": 3649009,
   "fonts": 436116,
@@ -8,7 +8,7 @@
   "music": 20056230,
   "sfx": 273648,
   "skies": 92789792,
-  "textures": 210661008
+  "textures": 244739784
  },
  "files": [
   {
@@ -1213,19 +1213,19 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/basalt_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/caustics_albedo.ktx",
-   "bytes": 174880,
+   "bytes": 699172,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/foam_albedo.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1249,7 +1249,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/limestone_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1267,7 +1267,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/props_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1285,7 +1285,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/rock_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1303,7 +1303,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_coarse_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1321,7 +1321,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_fine_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1357,7 +1357,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/sandstone_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1375,7 +1375,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/shells_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1429,19 +1429,19 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/slate_orm.ktx",
-   "bytes": 699172,
-   "category": "textures",
-   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
-  },
-  {
-   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_detail_normal.ktx",
    "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
   {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_detail_normal.ktx",
+   "bytes": 11184940,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_detail_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
@@ -1501,7 +1501,7 @@
   },
   {
    "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_skin_orm.ktx",
-   "bytes": 699172,
+   "bytes": 2796328,
    "category": "textures",
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
