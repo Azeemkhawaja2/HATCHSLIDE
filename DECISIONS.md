@@ -92,11 +92,26 @@ Gate result: `./gradlew check` green; render unit tests (framing, dolly, timelin
 
 Gate result: every primitive is replaced (the only procedural meshes left are the island, tiles, ocean, the hint arrow and sprite quads); unit tests cover KTX trimming, island geometry (no tile over water, wet mask, shoreline border, decor off the board, exact distance transform) and the asset manifest. Asset totals: 4.1 MB models, 12.6 MB IBL, about 85 MB of textures and skyboxes per compression format; about 112 MB per device before audio. Visual checks were done with the software preview renderer; on-device rendering remains under Device verification.
 
+## M5 UI
+
+- **Navigation.** One `NavHost` with type-safe routes: Title, Main menu, World map, Level select, Gameplay (with Pause, Complete and Failed overlays), Daily Tide, Turtle Journal, Achievements and stats, Settings (with Credits and licences and Privacy policy pages); the first-run tutorial is the hand overlay on world 1 levels 1 to 3. The title pops itself, so back on the main menu leaves the app; gameplay back opens Pause; everything else pops one screen (navigation-compose's predictive back).
+- **3D behind every screen.** The title, main menu and menu screens share `BeachStage`: the title glides in from the sea while a hatchling hatches; the menu holds a swaying view; the Journal moves in close on a hatchling wearing the selected species' skin, turned by drag or by the turn buttons. The map and level select share `ArchipelagoStage` (five island models, a dotted sea path of sprites, foam from its own shoreline texture). Panels report their bounds so cameras shift the subject into the free space.
+- **Persistence.** DataStore with two kotlinx-serialization JSON documents: `progress.json` (level records, tips seen, tutorial moves, skin, achievements with dates, stats, Daily Tide history, the in-progress run) and `settings.json`. Corrupt files reset to defaults instead of crashing. The splash screen stays until both are read. The run is saved after every counted move, so a closed app resumes the board (the saved-state handle still covers process death).
+- **Rules** live in `ProgressRules` (pure, unit-tested): levels open in order; levels 26 to 30 also need 45 stars in their world; world N+1 opens when level 30 of world N is beaten. Species: Green from the start, one per completed world, Flatback after 7 Daily Tides. The Daily Tide streak grows on consecutive local days and shows 0 once a day is missed. 24 achievements, each reachable (tested).
+- **Unlock cards** after the stars come from `recordWin`: newly opened island, newly met species, newly earned achievements.
+- **Daily Tide look.** Daily puzzles carry no world, so they use the look of the newest mechanic on the board (tide pools or gull shadows: Volcanic Isle; crabs or eggs: Crab Reef, and so on).
+- **Lose animation (spec section 2).** At three moves left a seagull circles the board. On a loss it swoops low, the hatchlings tuck head, flippers and tail into their shells and close their eyes, and the gull lands on the nearest rock (or beside the board) with its wings folded. The Failed panel waits 1.9 s for this (immediately with reduced motion).
+- **Settings applied now:** volumes and haptics are stored (audio arrives in M6), quality and frame rate go to the renderer, high contrast switches the UI palette, reduced motion and the left-handed HUD and arrow pad change gameplay. Auto quality uses Medium until the auto tier lands in M7, which also adds colour-blind tile symbols.
+- **Privacy policy and credits** are in the app, so they read offline; font licences open from the bundled OFL texts.
+- **Accessibility.** Every control has text or a content description; the map's island badges are real buttons, so keyboards, gamepads and TalkBack reach worlds without touching the 3D view; plurals cover every count.
+
+Gate result: `./gradlew check assembleDebug` green with no lint warnings; new unit tests cover unlocks, the star gate, world unlocks, best results, the Daily Tide streak, species and achievements. Screen-by-screen checks on devices (portrait, landscape, tablet, foldable) are listed under Device verification.
+
 ## Device verification (to run on hardware or an emulator with GPU)
 
 These gates need a device and are wired but not yet executed:
 
 - Rendering smoke test (title and one level, no GL errors, screenshots), including water, the terrain mask and model material rebinding.
-- Instrumented UI and lifecycle tests (navigation, rotation/fold/resize mid-animation, process death).
+- Instrumented UI and lifecycle tests (navigation through all 14 screens, rotation/fold/resize mid-animation, process death, resuming a saved run).
 - Macrobenchmark startup and frame timing, monkey run, PSS during world 5.
 - Hint latency on a mid-range phone (target under 200 ms; JVM worst case 56 ms).

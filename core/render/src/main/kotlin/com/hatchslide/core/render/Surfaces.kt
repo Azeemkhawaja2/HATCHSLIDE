@@ -151,6 +151,9 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
     val gullShadow: MaterialInstance by lazy { sprite("gull", floatArrayOf(0.04f, 0.05f, 0.1f), 0.5f) }
     val gullShadowNext: MaterialInstance by lazy { sprite("gull", floatArrayOf(0.04f, 0.05f, 0.1f), 0.2f) }
 
+    /** Dots of the sea path on the world map. */
+    val pathDot: MaterialInstance by lazy { sprite("glow", floatArrayOf(1f, 1f, 1f), 0.85f) }
+
     /** The ghost hint arrow. */
     val hint: MaterialInstance by lazy { materials.decal(1f, 1f, 1f, 0.55f) }
 
@@ -213,15 +216,21 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
         if (waterLazy.isInitialized()) themeWater(water)
     }
 
-    /** Board-specific mask textures; the board owns them and calls [clearBoardTextures] before releasing. */
+    /** Scenery mask textures; the owning stage calls [clearBoardTextures] before releasing them. */
     fun setBoardTextures(mask: Texture, maskTransform: FloatArray, shore: Texture, shoreTransform: FloatArray) {
+        boundMask = mask
         terrain.setParameter("mask", mask, textures.linearClamp)
         terrain.setParameter("maskTransform", maskTransform[0], maskTransform[1], maskTransform[2], maskTransform[3])
         water.setParameter("shore", shore, textures.linearClamp)
         water.setParameter("shoreTransform", shoreTransform[0], shoreTransform[1], shoreTransform[2], shoreTransform[3])
     }
 
-    fun clearBoardTextures() {
+    private var boundMask: Texture? = null
+
+    /** Unbinds [mask]'s scenery textures, if they are the ones bound, before they are destroyed. */
+    fun clearBoardTextures(mask: Texture) {
+        if (boundMask !== mask) return
+        boundMask = null
         if (terrainLazy.isInitialized()) terrain.setParameter("mask", blankMask, textures.linearClamp)
         if (waterLazy.isInitialized()) water.setParameter("shore", farShore, textures.linearClamp)
     }

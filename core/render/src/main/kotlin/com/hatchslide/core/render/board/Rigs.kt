@@ -53,6 +53,9 @@ class HatchlingRig(tm: TransformManager, model: ModelInstance, seed: Int) {
     private var untilBlink = nextBlink()
     private var blink = -1f
 
+    /** 0 out, 1 head, flippers and tail tucked into the shell (the gentle lose pose). */
+    var duck = 0f
+
     private fun nextRandom(): Float {
         random = random * 1103515245 + 12345
         return ((random ushr 8) and 0xFFFF) / 65535f
@@ -69,15 +72,16 @@ class HatchlingRig(tm: TransformManager, model: ModelInstance, seed: Int) {
         val stroke = paddle * TAU
         val amount = maxOf(effort, idle)
         val phase = if (effort > 0f) stroke else time * 1.7f
-        val sweep = sin(phase) * 0.55f * amount
-        val lift = cos(phase) * 0.35f * amount
-        flippers[0].pose(scratch, sweep, 0f, -lift)
-        flippers[1].pose(scratch, -sweep, 0f, lift)
-        flippers[2].pose(scratch, -sweep * 0.5f, 0f, lift * 0.5f)
-        flippers[3].pose(scratch, sweep * 0.5f, 0f, -lift * 0.5f)
-        val bob = if (reducedMotion) 0f else sin(time * 2.1f) * 0.04f
-        head.pose(scratch, headYaw, bob - 0.06f * effort, 0f)
-        tail.pose(scratch, sin(time * 3.2f) * (0.12f + 0.25f * effort), 0f, 0f)
+        val sweep = sin(phase) * 0.55f * amount * (1f - duck)
+        val lift = cos(phase) * 0.35f * amount * (1f - duck)
+        val tuck = 1f - 0.75f * duck
+        flippers[0].tucked(sweep, -lift, tuck)
+        flippers[1].tucked(-sweep, lift, tuck)
+        flippers[2].tucked(-sweep * 0.5f, lift * 0.5f, tuck)
+        flippers[3].tucked(sweep * 0.5f, -lift * 0.5f, tuck)
+        val bob = if (reducedMotion) 0f else sin(time * 2.1f) * 0.04f * (1f - duck)
+        head.pose(scratch, headYaw * (1f - duck), bob - 0.06f * effort, 0f, dy = -0.05f * duck, dz = -head.z * 0.55f * duck, scale = tuck)
+        tail.pose(scratch, sin(time * 3.2f) * (0.12f + 0.25f * effort) * (1f - duck), 0f, 0f, dz = -tail.z * 0.5f * duck, scale = tuck)
 
         // Blink: close and reopen over 0.16 s.
         if (blink < 0f) {
@@ -90,10 +94,14 @@ class HatchlingRig(tm: TransformManager, model: ModelInstance, seed: Int) {
                 untilBlink = nextBlink()
             }
         }
-        val closed = if (blink < 0f) 0f else sin(blink * PI.toFloat())
+        val closed = maxOf(duck, if (blink < 0f) 0f else sin(blink * PI.toFloat()))
         val angle = LID_OPEN + (LID_CLOSED - LID_OPEN) * closed
         for (lid in lids) lid.pose(scratch, 0f, angle, 0f)
     }
+
+    /** Poses a flipper pulled toward the body centre by [tuck] (1 = rest position). */
+    private fun Joint.tucked(yaw: Float, roll: Float, tuck: Float) =
+        pose(scratch, yaw, 0f, roll, dx = -x * (1f - tuck) * 0.6f, dz = -z * (1f - tuck) * 0.6f, scale = tuck)
 
     companion object {
         /** Eyelid hinge angles (tools/assetgen/models/library.py LID_OPEN and LID_CLOSED). */
@@ -122,7 +130,14 @@ class GullRig(tm: TransformManager, model: ModelInstance) {
     private val scratch = FloatArray(16)
     private val wings = arrayOf(Joint(tm, model.node("wing_l")), Joint(tm, model.node("wing_r")))
 
-    fun animate(time: Float) {
+    /** Flight cycle; [perched] folds the wings back along the body with an occasional ruffle. */
+    fun animate(time: Float, perched: Boolean = false) {
+        if (perched) {
+            val ruffle = if (time % 3.5f < 0.4f) sin(time % 3.5f / 0.4f * PI.toFloat()) * 0.5f else 0f
+            wings[0].pose(scratch, 1.3f - ruffle, 0f, -0.15f - ruffle)
+            wings[1].pose(scratch, -1.3f + ruffle, 0f, 0.15f + ruffle)
+            return
+        }
         val cycle = time % 4f
         val angle = if (cycle < 1.2f) {
             sin(cycle / 1.2f * 3f * TAU) * 0.7f * sin(cycle / 1.2f * PI.toFloat())

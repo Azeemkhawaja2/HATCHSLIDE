@@ -21,7 +21,9 @@ fun BindBoard(viewModel: GameViewModel, director: SceneDirector, theme: WorldThe
         val board = director.board
         board.reducedMotion = reducedMotion
         director.showBoard()
-        board.load(viewModel.ui.value.level, viewModel.boardState, theme, skin)
+        val level = viewModel.ui.value.level
+        // Coming back from Settings keeps the built board; a new level (or skin) rebuilds it.
+        if (board.isShowing(level, theme, skin)) board.snap(viewModel.boardState) else board.load(level, viewModel.boardState, theme, skin)
         viewModel.commands.collect { command ->
             when (command) {
                 is BoardCommand.Play -> board.play(command.outcome) { viewModel.animationFinished() }

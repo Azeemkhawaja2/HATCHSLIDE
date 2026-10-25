@@ -10,6 +10,7 @@ import com.hatchslide.core.game.Hint
 import com.hatchslide.core.game.Hints
 import com.hatchslide.core.game.Level
 import com.hatchslide.core.game.MoveOutcome
+import com.hatchslide.core.game.MoveResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -66,24 +67,29 @@ sealed interface BoardCommand {
 
 /** Callbacks into progress tracking; implemented by the app's data layer. */
 interface GameProgressSink {
-    fun onLevelWon(level: Level, movesUsed: Int, stars: Int, usedUndo: Boolean, savedHatchlings: Int)
+    fun onLevelWon(level: Level, movesUsed: Int, movesLeft: Int, stars: Int, usedUndo: Boolean, usedHint: Boolean)
 
     fun onLevelLost(level: Level)
 
-    fun onMove(level: Level, savedThisMove: Int)
+    /** A counted move (no-op swipes are not reported). */
+    fun onMove(level: Level, result: MoveResult)
+
+    fun onHint(level: Level)
+
+    /** The run changed; [snapshot] restores it after the app is closed. */
+    fun onRunSaved(level: Level, snapshot: String)
 }
 
 class GameViewModel(
     private val level: Level,
     private val savedState: SavedStateHandle,
     private val progress: GameProgressSink?,
+    /** A run saved in DataStore, used when the saved-state handle has none (the app was closed). */
+    storedRun: String? = null,
 ) : ViewModel() {
     private val controller = GameController(
         level,
-        savedState.get<String>(KEY_RUN)?.let(GameController::decode)?.takeIf {
-            it.levelId ==
-                level.id
-        },
+        (savedState.get<String>(KEY_RUN) ?: storedRun)?.let(GameController::decode)?.takeIf { it.levelId == level.id },
     )
     private val _ui = MutableStateFlow(
         GameUiState(
@@ -114,7 +120,7 @@ class GameViewModel(
         clearHint()
         if (!outcome.result.noOp) {
             persist()
-            progress?.onMove(level, outcome.result.savedThisMove)
+            progress?.onMove(level, outcome.result)
         }
         val summary = MoveSummary(
             outcome.result.direction,
@@ -139,7 +145,14 @@ class GameViewModel(
         if (!reported && state.status != GameStatus.PLAYING) {
             reported = true
             if (state.status == GameStatus.WON) {
-                progress?.onLevelWon(level, state.movesUsed, controller.stars(), controller.undosUsed > 0, state.savedCount)
+                progress?.onLevelWon(
+                    level,
+                    state.movesUsed,
+                    level.gullMoves - state.movesUsed,
+                    controller.stars(),
+                    controller.undosUsed > 0,
+                    controller.hintsUsed > 0,
+                )
                 _commands.tryEmit(BoardCommand.Celebrate)
             } else {
                 progress?.onLevelLost(level)
@@ -168,6 +181,7 @@ class GameViewModel(
     fun hint() {
         if (controller.state.status != GameStatus.PLAYING || hintJob?.isActive == true) return
         controller.noteHint()
+        progress?.onHint(level)
         val state = controller.state
         _ui.value = _ui.value.copy(hint = HintUi.Thinking)
         hintJob = viewModelScope.launch {
@@ -226,7 +240,9 @@ class GameViewModel(
     }
 
     private fun persist() {
-        savedState[KEY_RUN] = GameController.encode(controller.snapshot())
+        val snapshot = GameController.encode(controller.snapshot())
+        savedState[KEY_RUN] = snapshot
+        if (controller.state.status == GameStatus.PLAYING) progress?.onRunSaved(level, snapshot)
     }
 
     /** The serialized run, also written to DataStore by the screen so process death resumes the board. */

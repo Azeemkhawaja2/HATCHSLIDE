@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HATCHSLIDE</string>
+    <string name="unlock_species_title">New turtle: %1$s</string>
+    <string name="unlock_species_body">Meet it in the Turtle Journal and play as it.</string>
+    <string name="unlock_world_title">New island: %1$s</string>
+    <string name="unlock_world_body">Set sail from the island map.</string>
+    <string name="unlock_achievement_title">Achievement: %1$s</string>
 </resources>

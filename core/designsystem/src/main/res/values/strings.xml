@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Text shared by several screens: worlds, species, achievements and common controls. -->
+<resources>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="locked">Locked</string>
+    <plurals name="stars_count">
+        <item quantity="one">%d star</item>
+        <item quantity="other">%d stars</item>
+    </plurals>
+    <string name="stars_of">%1$d / %2$d</string>
+
+    <string name="world_1_name">Sunrise Cove</string>
+    <string name="world_2_name">Coral Coast</string>
+    <string name="world_3_name">Moonlit Bay</string>
+    <string name="world_4_name">Crab Reef</string>
+    <string name="world_5_name">Volcanic Isle</string>
+
+    <string name="species_green">Green</string>
+    <string name="species_loggerhead">Loggerhead</string>
+    <string name="species_hawksbill">Hawksbill</string>
+    <string name="species_leatherback">Leatherback</string>
+    <string name="species_kemps_ridley">Kemp’s ridley</string>
+    <string name="species_olive_ridley">Olive ridley</string>
+    <string name="species_flatback">Flatback</string>
+
+    <string name="species_green_fact_1">Grown-ups graze on seagrass and algae. That diet tints the fat under their shell green, which is how they got their name.</string>
+    <string name="species_green_fact_2">They can doze underwater for hours, slowing their heartbeat right down to save oxygen.</string>
+    <string name="species_green_fact_3">Years later, females swim back to the beach where they hatched to lay eggs of their own.</string>
+    <string name="species_loggerhead_fact_1">A big head and strong jaws let it crunch crabs, clams and conch shells.</string>
+    <string name="species_loggerhead_fact_2">Young loggerheads drift with ocean currents for years and can cross a whole ocean.</string>
+    <string name="species_loggerhead_fact_3">Their shells often carry hitchhikers such as barnacles and tufts of algae.</string>
+    <string name="species_hawksbill_fact_1">Its narrow, pointed beak looks like a bird’s and reaches into reef cracks for sponges.</string>
+    <string name="species_hawksbill_fact_2">The overlapping plates of its shell give the edge a saw-toothed look.</string>
+    <string name="species_hawksbill_fact_3">By nibbling sponges, hawksbills give corals room to grow and keep reefs healthy.</string>
+    <string name="species_leatherback_fact_1">The biggest turtle alive. Its shell is tough, leathery skin over tiny bones instead of hard plates.</string>
+    <string name="species_leatherback_fact_2">It can dive deeper than a kilometre to hunt jellyfish, its favourite food.</string>
+    <string name="species_leatherback_fact_3">Its size and an oily layer under the skin keep it warm in chilly seas.</string>
+    <string name="species_kemps_ridley_fact_1">The smallest sea turtle, with a round, grey-green shell.</string>
+    <string name="species_kemps_ridley_fact_2">Females come ashore to nest in daylight, often thousands on the same day.</string>
+    <string name="species_kemps_ridley_fact_3">Almost all of them nest along one stretch of coast on the Gulf of Mexico.</string>
+    <string name="species_olive_ridley_fact_1">Named for the olive colour of its rounded, heart-shaped shell.</string>
+    <string name="species_olive_ridley_fact_2">Huge groups nest together over a few nights. This mass arrival is called an arribada.</string>
+    <string name="species_olive_ridley_fact_3">It is the most common sea turtle, living in warm seas around the world.</string>
+    <string name="species_flatback_fact_1">Its shell is low and flat with turned-up edges, unlike its cousins’ domed shells.</string>
+    <string name="species_flatback_fact_2">It nests only in Australia and stays in shallow coastal waters instead of crossing oceans.</string>
+    <string name="species_flatback_fact_3">Flatback hatchlings are large for their age, which helps keep them safe.</string>
+
+    <string name="species_unlock_start">With you from the start</string>
+    <string name="species_unlock_world">Complete %1$s to meet this turtle</string>
+    <plurals name="species_unlock_daily">
+        <item quantity="one">Finish %d Daily Tide to meet this turtle</item>
+        <item quantity="other">Finish %d Daily Tides to meet this turtle</item>
+    </plurals>
+
+    <string name="achievement_first_save">First Splash</string>
+    <string name="achievement_first_save_body">Save your first hatchling.</string>
+    <string name="achievement_saves_100">Surf Squad</string>
+    <string name="achievement_saves_100_body">Save 100 hatchlings.</string>
+    <string name="achievement_saves_1000">Turtle Guardian</string>
+    <string name="achievement_saves_1000_body">Save 1,000 hatchlings.</string>
+    <string name="achievement_first_three_stars">Star Bright</string>
+    <string name="achievement_first_three_stars_body">Earn three stars on any level.</string>
+    <string name="achievement_stars_world_1">Golden Sunrise</string>
+    <string name="achievement_stars_world_1_body">Three stars on every level of Sunrise Cove.</string>
+    <string name="achievement_stars_world_2">Coral Crown</string>
+    <string name="achievement_stars_world_2_body">Three stars on every level of Coral Coast.</string>
+    <string name="achievement_stars_world_3">Moonbeam</string>
+    <string name="achievement_stars_world_3_body">Three stars on every level of Moonlit Bay.</string>
+    <string name="achievement_stars_world_4">Reef Royalty</string>
+    <string name="achievement_stars_world_4_body">Three stars on every level of Crab Reef.</string>
+    <string name="achievement_stars_world_5">Fire and Foam</string>
+    <string name="achievement_stars_world_5_body">Three stars on every level of Volcanic Isle.</string>
+    <string name="achievement_complete_world_1">Cove Explorer</string>
+    <string name="achievement_complete_world_1_body">Complete Sunrise Cove.</string>
+    <string name="achievement_complete_world_2">Coast Explorer</string>
+    <string name="achievement_complete_world_2_body">Complete Coral Coast.</string>
+    <string name="achievement_complete_world_3">Bay Explorer</string>
+    <string name="achievement_complete_world_3_body">Complete Moonlit Bay.</string>
+    <string name="achievement_complete_world_4">Reef Explorer</string>
+    <string name="achievement_complete_world_4_body">Complete Crab Reef.</string>
+    <string name="achievement_complete_world_5">Island Hero</string>
+    <string name="achievement_complete_world_5_body">Complete Volcanic Isle and every world before it.</string>
+    <string name="achievement_no_undo">Steady Flippers</string>
+    <string name="achievement_no_undo_body">Win a level with par 5 or more without using Undo.</string>
+    <string name="achievement_purist">Pure Tide</string>
+    <string name="achievement_purist_body">Win 10 levels without Undo or Hint.</string>
+    <string name="achievement_first_daily">Daily Dip</string>
+    <string name="achievement_first_daily_body">Complete a Daily Tide.</string>
+    <string name="achievement_streak_7">Tide Regular</string>
+    <string name="achievement_streak_7_body">Reach a 7-day Daily Tide streak.</string>
+    <string name="achievement_streak_30">Tide Keeper</string>
+    <string name="achievement_streak_30_body">Reach a 30-day Daily Tide streak.</string>
+    <string name="achievement_big_splash">Big Splash</string>
+    <string name="achievement_big_splash_body">Save 4 hatchlings with a single swipe.</string>
+    <string name="achievement_pit_filler">Coconut Bowler</string>
+    <string name="achievement_pit_filler_body">Fill 10 sand pits with coconuts.</string>
+    <string name="achievement_pool_hopper">Pool Hopper</string>
+    <string name="achievement_pool_hopper_body">Travel through tide pools 25 times.</string>
+    <string name="achievement_last_second">Close Call</string>
+    <string name="achievement_last_second_body">Win on the very last move before the seagull.</string>
+    <string name="achievement_collector">Journal Complete</string>
+    <string name="achievement_collector_body">Meet all 7 species of sea turtle.</string>
+</resources>

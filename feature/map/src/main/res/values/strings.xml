@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="map_title">Islands</string>
+    <plurals name="map_island">
+        <item quantity="one">%1$s, world %2$d. %3$d of %4$d star.</item>
+        <item quantity="other">%1$s, world %2$d. %3$d of %4$d stars.</item>
+    </plurals>
+    <string name="map_island_locked">%1$s, world %2$d. Locked: complete %3$s first.</string>
+    <string name="map_locked_message">Complete %1$s to sail here.</string>
+    <string name="map_hint">Swipe to explore, tap an island to visit</string>
+
+    <string name="levels_title">%1$s</string>
+    <plurals name="levels_stars">
+        <item quantity="one">%1$d / %2$d star</item>
+        <item quantity="other">%1$d / %2$d stars</item>
+    </plurals>
+    <string name="level_button">Level %1$d. %2$s</string>
+    <string name="level_locked_previous">Level %1$d. Locked: finish the level before it.</string>
+    <plurals name="level_locked_stars">
+        <item quantity="one">Level %1$d. Locked: earn %2$d star in this world.</item>
+        <item quantity="other">Level %1$d. Locked: earn %2$d stars in this world.</item>
+    </plurals>
+    <plurals name="level_best">
+        <item quantity="one">Best %1$d move</item>
+        <item quantity="other">Best %1$d moves</item>
+    </plurals>
+    <plurals name="levels_gate">
+        <item quantity="one">Earn %1$d star in this world to open the last five beaches (%2$d so far).</item>
+        <item quantity="other">Earn %1$d stars in this world to open the last five beaches (%2$d so far).</item>
+    </plurals>
+</resources>

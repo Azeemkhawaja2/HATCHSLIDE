@@ -69,6 +69,7 @@ import com.hatchslide.core.render.SceneDirector
 import com.hatchslide.core.render.WorldTheme
 import com.hatchslide.core.render.board.BoardEventListener
 import com.hatchslide.core.render.camera.FreeViewport
+import kotlinx.coroutines.delay
 
 /** Gameplay options from Settings and progress. */
 data class GameScreenConfig(
@@ -183,7 +184,7 @@ fun GameScreen(
             .semantics { contentDescription = boardDescription },
     ) {
         Announcer(ui)
-        val hud = HudContent(ui, viewModel, onPause = { paused = true })
+        val hud = hudContent(ui, viewModel, onPause = { paused = true })
         if (sideColumns) {
             Row(Modifier.fillMaxSize().safeDrawingPadding().padding(12.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                 val (first, second) = if (config.leftHanded) hud.controls to hud.status else hud.status to hud.controls
@@ -244,9 +245,19 @@ fun GameScreen(
             navigator.next()
         }, onReplay = viewModel::restart, onLevels = navigator::levels)
     } else if (ui.ended && ui.state.status.isLost) {
-        FailedOverlay(ui.state.status, ui.canUndo, onUndo = viewModel::undo, onRetry = viewModel::restart, onLevels = navigator::levels)
+        // Let the gull swoop and land (spec section 2) before the panel covers the board.
+        var showFailed by remember(ui.state.movesUsed) { mutableStateOf(prefs.reducedMotion) }
+        LaunchedEffect(ui.state.movesUsed) {
+            delay(FAILED_DELAY_MS)
+            showFailed = true
+        }
+        if (showFailed) {
+            FailedOverlay(ui.state.status, ui.canUndo, onUndo = viewModel::undo, onRetry = viewModel::restart, onLevels = navigator::levels)
+        }
     }
 }
+
+private const val FAILED_DELAY_MS = 1900L
 
 private class Hud(
     val top: @Composable (leftHanded: Boolean) -> Unit,
@@ -256,14 +267,14 @@ private class Hud(
 )
 
 @Composable
-private fun HudContent(ui: GameUiState, viewModel: GameViewModel, onPause: () -> Unit): Hud {
+private fun hudContent(ui: GameUiState, viewModel: GameViewModel, onPause: () -> Unit): Hud {
     val title = if (ui.level.world == 0) {
         stringResource(R.string.game_daily_title, ui.level.name)
     } else {
         stringResource(R.string.game_level_title, ui.level.world, ui.level.index)
     }
     val movesLeftText = pluralStringResource(R.plurals.game_moves_left, ui.movesLeft, ui.movesLeft)
-    val savedText = stringResource(R.string.game_saved_tally, ui.saved, ui.totalHatchlings)
+    val savedText = pluralStringResource(R.plurals.game_saved_tally, ui.totalHatchlings, ui.saved, ui.totalHatchlings)
     val pause: @Composable () -> Unit = {
         RoundButton(HatchIcons.Pause, stringResource(R.string.game_pause), onPause)
     }

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_logo">HATCHSLIDE</string>
+    <string name="title_tap">Tap to start</string>
+
+    <string name="menu_play">Play</string>
+    <string name="menu_daily">Daily Tide</string>
+    <string name="menu_journal">Turtle Journal</string>
+    <string name="menu_achievements">Achievements</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_daily_done">Done today</string>
+    <plurals name="menu_streak">
+        <item quantity="one">%d-day streak</item>
+        <item quantity="other">%d-day streak</item>
+    </plurals>
+    <plurals name="menu_stars">
+        <item quantity="one">%1$d / %2$d star</item>
+        <item quantity="other">%1$d / %2$d stars</item>
+    </plurals>
+
+    <string name="daily_title">Daily Tide</string>
+    <string name="daily_today">Today’s puzzle</string>
+    <plurals name="daily_par">
+        <item quantity="one">Par %1$d · Seagull in %2$d move</item>
+        <item quantity="other">Par %1$d · Seagull in %2$d moves</item>
+    </plurals>
+    <string name="daily_play">Play</string>
+    <string name="daily_play_again">Play again</string>
+    <string name="daily_done">Solved today. A new tide rolls in tomorrow.</string>
+    <string name="daily_streak">Current streak</string>
+    <string name="daily_best">Best streak</string>
+    <string name="daily_week">This week</string>
+    <string name="daily_day_done">%1$s, solved</string>
+    <string name="daily_day_missed">%1$s, not solved</string>
+
+    <string name="achievements_title">Achievements</string>
+    <string name="achievements_stats">Your beach so far</string>
+    <string name="stat_saved">Turtles saved</string>
+    <string name="stat_moves">Moves made</string>
+    <string name="stat_stars">Stars</string>
+    <string name="stat_playtime">Playtime</string>
+    <string name="stat_levels">Levels completed</string>
+    <string name="stat_dailies">Daily Tides</string>
+    <string name="playtime_format">%1$dh %2$02dm</string>
+    <string name="achievements_list">Achievements (%1$d of %2$d)</string>
+    <string name="achievement_unlocked_on">Earned %1$s</string>
+    <string name="achievement_locked">Not earned yet</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_audio">Sound</string>
+    <string name="settings_music">Music volume</string>
+    <string name="settings_effects">Effects volume</string>
+    <string name="settings_haptics">Haptics</string>
+    <string name="settings_haptics_body">Gentle taps when hatchlings stop and splash.</string>
+    <string name="settings_graphics">Graphics</string>
+    <string name="settings_quality">Graphics quality</string>
+    <string name="quality_auto">Auto</string>
+    <string name="quality_low">Low</string>
+    <string name="quality_medium">Medium</string>
+    <string name="quality_high">High</string>
+    <string name="settings_frame_rate">Frame rate</string>
+    <string name="frame_battery">Battery 30</string>
+    <string name="frame_standard">Standard 60</string>
+    <string name="frame_smooth">Smooth</string>
+    <string name="settings_accessibility">Accessibility</string>
+    <string name="settings_color_blind">Colour-blind tiles</string>
+    <string name="settings_color_blind_body">Adds symbols to tide pools and other coloured tiles.</string>
+    <string name="settings_high_contrast">High contrast</string>
+    <string name="settings_reduced_motion">Reduced motion</string>
+    <string name="settings_reduced_motion_body">No camera shake, calmer waves, far fewer particles.</string>
+    <string name="settings_arrow_pad">On-screen arrow pad</string>
+    <string name="settings_left_handed">Left-handed HUD</string>
+    <string name="settings_progress">Progress</string>
+    <string name="settings_reset">Reset progress</string>
+    <string name="settings_reset_title">Erase all progress?</string>
+    <string name="settings_reset_body">Stars, unlocked worlds, species, achievements, stats and your Daily Tide streak will be erased.</string>
+    <string name="settings_reset_continue">Continue</string>
+    <string name="settings_reset_final_title">Last chance</string>
+    <string name="settings_reset_final_body">This cannot be undone. Start over from the very first beach?</string>
+    <string name="settings_reset_confirm">Erase everything</string>
+    <string name="settings_reset_keep">Keep my progress</string>
+    <string name="settings_reset_done">Progress erased.</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings_about">About</string>
+    <string name="settings_privacy">Privacy policy</string>
+    <string name="settings_credits">Credits and licences</string>
+
+    <string name="privacy_title">Privacy policy</string>
+    <string name="privacy_body">HATCHSLIDE does not collect, store or share any personal information.\n\nThe game works completely offline. It has no ads, no analytics, no accounts, no in-app purchases and asks for no permissions.\n\nYour stars, unlocks, settings, statistics and Daily Tide streak are saved only on this device. If you turn on Android backup for your device, Android may include this game data in your own device backup; HATCHSLIDE itself never sends it anywhere.\n\nUninstalling the game, or using Reset progress in Settings, deletes this data.\n\nQuestions about this policy can be sent through the contact address on the game’s store page.</string>
+
+    <string name="credits_title">Credits and licences</string>
+    <string name="credits_game">HATCHSLIDE is an original game. Every model, texture, sky, piece of music and sound effect was generated by the project’s own build tools.</string>
+    <string name="credits_fonts">Fonts</string>
+    <string name="credits_view_licence">Read licence</string>
+    <string name="credits_libraries">Open-source software</string>
+    <string name="credits_library_line">%1$s · %2$s</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="journal_title">Turtle Journal</string>
+    <string name="journal_use_skin">Play as this turtle</string>
+    <string name="journal_in_use">Playing as this turtle</string>
+    <string name="journal_turn_left">Turn turtle left</string>
+    <string name="journal_turn_right">Turn turtle right</string>
+    <string name="journal_drag_hint">Drag to turn the hatchling</string>
+    <string name="journal_card">%1$s, %2$d of %3$d</string>
+    <string name="journal_locked_card">%1$s, locked</string>
+    <string name="journal_previous">Previous turtle</string>
+    <string name="journal_next">Next turtle</string>
+    <plurals name="journal_count">
+        <item quantity="one">%1$d of %2$d turtle met</item>
+        <item quantity="other">%1$d of %2$d turtles met</item>
+    </plurals>
+</resources>

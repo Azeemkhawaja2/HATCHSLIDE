@@ -19,6 +19,20 @@ import com.google.android.filament.gltfio.Gltfio
 import com.google.android.filament.utils.Utils
 import com.hatchslide.core.render.assets.ModelLibrary
 import com.hatchslide.core.render.assets.TextureStore
+import com.hatchslide.core.render.math.Vec3
+
+/** Points a camera from [eye] at [target] with world-up Y. */
+fun Camera.lookAt(eye: Vec3, target: Vec3) = lookAt(
+    eye.x.toDouble(),
+    eye.y.toDouble(),
+    eye.z.toDouble(),
+    target.x.toDouble(),
+    target.y.toDouble(),
+    target.z.toDouble(),
+    0.0,
+    1.0,
+    0.0,
+)
 
 /** Loads Filament's native libraries once per process. */
 object FilamentRuntime {

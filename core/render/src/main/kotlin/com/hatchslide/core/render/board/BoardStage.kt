@@ -1,16 +1,16 @@
 package com.hatchslide.core.render.board
 
 import com.google.android.filament.Camera
-import com.google.android.filament.Texture
 import com.hatchslide.core.game.Direction
 import com.hatchslide.core.game.GameState
+import com.hatchslide.core.game.GameStatus
 import com.hatchslide.core.game.Level
 import com.hatchslide.core.game.MoveEvent
 import com.hatchslide.core.game.MoveOutcome
 import com.hatchslide.core.game.PieceKind
 import com.hatchslide.core.game.TileType
-import com.hatchslide.core.render.GpuMesh
 import com.hatchslide.core.render.Ocean
+import com.hatchslide.core.render.QualityTier
 import com.hatchslide.core.render.RenderEngine
 import com.hatchslide.core.render.Stage
 import com.hatchslide.core.render.Surfaces
@@ -21,6 +21,7 @@ import com.hatchslide.core.render.camera.CameraRig
 import com.hatchslide.core.render.camera.FreeViewport
 import com.hatchslide.core.render.math.Transforms
 import com.hatchslide.core.render.math.easeOutBack
+import com.hatchslide.core.render.math.lerp
 import com.hatchslide.core.render.math.smoothstep
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -75,10 +76,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private var hint: Visual? = null
     private var hintDirection: Direction? = null
 
-    private var tilesMesh: GpuMesh? = null
-    private var chunkMesh: GpuMesh? = null
-    private var maskTexture: Texture? = null
-    private var shoreTexture: Texture? = null
+    private val scenery = Scenery(host)
 
     private var timeline: MoveTimeline? = null
     private var timelineTime = 0f
@@ -101,6 +99,13 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private var flareZ = 0f
     private var flareAge = 99f
 
+    /** The seagull that circles at three moves left and, on a loss, swoops and lands on a rock. */
+    private var alarmGull: Visual? = null
+    private var loseTime = -1f
+    private var duck = 0f
+    private val swoopFrom = FloatArray(3)
+    private val perch = FloatArray(3)
+
     /** Level-start intro: hatchlings break out of eggs 80 ms apart (spec section 6). */
     private val introEggs = ArrayList<Visual>()
     private var introPieces = IntArray(0)
@@ -121,6 +126,13 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         }
 
     override val isAnimating: Boolean get() = true
+
+    /** Quality tier for model detail (Low uses LOD1 everywhere); applies from the next level load. */
+    var tier: QualityTier
+        get() = art.tier
+        set(value) {
+            art.tier = value
+        }
 
     // ----- Public API -----
 
@@ -149,6 +161,10 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             startIntro(state)
         }
     }
+
+    /** True if [level] is already built with this look, so re-entering can just [snap]. */
+    fun isShowing(level: Level, theme: WorldTheme, skin: Int): Boolean =
+        this.level?.id == level.id && this.theme === theme && this.skin == skin
 
     /** Animates [outcome]; [finished] runs once the board shows [MoveOutcome.state]. */
     fun play(outcome: MoveOutcome, finished: () -> Unit) {
@@ -220,6 +236,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             if (v.shown) for (e in v.renderables) scene.addEntity(e)
         }
         ocean.show()
+        scenery.attach()
         host.environment.apply(theme)
     }
 
@@ -229,6 +246,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             if (v.shown) for (e in v.renderables) scene.remove(e)
         }
         ocean.hide()
+        scenery.detach()
         entered = false
     }
 
@@ -259,6 +277,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         updateIntro(dt)
         updateSwimmers(dt)
         updateHazardIdle()
+        updateAlarm(dt)
         updateHint()
         camera.update(dt)
         applyCamera(host.camera)
@@ -316,21 +335,8 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     private fun buildScenery(level: Level) {
         val island = IslandBuilder.build(level.board, level.seed)
-        val meshes = host.meshes
-        val tiles = meshes.upload(island.tiles).also { tilesMesh = it }
-        val chunk = meshes.upload(island.chunk).also { chunkMesh = it }
-        for (mesh in arrayOf(tiles, chunk)) {
-            val root = meshes.group()
-            val e = meshes.renderable(mesh, host.surfaces.terrain, castShadows = mesh === tiles, receiveShadows = true)
-            tm.setParent(tm.getInstance(e), tm.getInstance(root))
-            show(track(Visual(root, intArrayOf(e), ownsEntities = true)))
-        }
-        val mask = island.mask
-        val shore = island.shore
-        val textures = host.textures
-        maskTexture = textures.rgba(mask.width, mask.height, mask.pixels)
-        shoreTexture = textures.rgba(shore.width, shore.height, shore.pixels)
-        host.surfaces.setBoardTextures(maskTexture!!, mask.transform, shoreTexture!!, shore.transform)
+        scenery.build(island)
+        if (entered) scenery.attach()
         placeDecor(level, island)
         tileHeights = island.tileHeights
     }
@@ -710,6 +716,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             val x = (piece.cell % width) + (bump?.dx ?: 0) * nudge
             val y = (piece.cell / width) + (bump?.dy ?: 0) * nudge
             placePiece(piece.id, visual, x, y, 0f, 1f, 1f)
+            visual.hatchling?.duck = duck
             visual.hatchling?.animate(dt, 0f, 0f, headYaw, clock + piece.id, reducedMotion)
         }
     }
@@ -751,6 +758,100 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     }
 
     // ----- Level intro -----
+
+    // ----- Seagull alarm and the gentle lose animation (spec section 2) -----
+
+    private fun updateAlarm(dt: Float) {
+        val state = displayed ?: return
+        val lvl = level ?: return
+        val lost = state.status.isLost && timeline == null
+        val circling = !lost && state.status == GameStatus.PLAYING && lvl.gullMoves - state.movesUsed <= 3
+        if (!lost) {
+            loseTime = -1f
+            duck = (duck - dt * 3f).coerceAtLeast(0f)
+        }
+        if (!lost && !circling) {
+            alarmGull?.let { hide(it) }
+            return
+        }
+        val gull = alarmGull ?: track(art.seagull()).also { alarmGull = it }
+        val wasShown = gull.shown
+        show(gull)
+        if (circling) {
+            val angle = clock * 0.5f
+            val x = cos(angle) * ALARM_RADIUS
+            val z = sin(angle) * ALARM_RADIUS * 0.7f
+            tm.setTransform(
+                tm.getInstance(gull.root),
+                Transforms.trsEuler(scratch, x, ALARM_HEIGHT, z, atan2(sin(angle), -cos(angle) * 0.7f), 0f, -0.3f, 1f),
+            )
+            gull.gull?.animate(clock)
+            return
+        }
+        if (loseTime < 0f) startLose(gull, wasShown)
+        loseTime += dt
+        val t = if (reducedMotion) LOSE_SECONDS else loseTime
+        duck = smoothstep((t - 0.35f) / 0.3f)
+        val x: Float
+        val y: Float
+        val z: Float
+        var heading: Float
+        if (t < 1f) {
+            // Swoop: down from the sky to just above the board, then up toward the perch.
+            val s = smoothstep(t)
+            x = lerp(swoopFrom[0], 0f, s)
+            z = lerp(swoopFrom[2], 0.4f, s)
+            y = lerp(swoopFrom[1], 0.9f, s * (2f - s))
+            heading = atan2(-(0f - swoopFrom[0]), -(0.4f - swoopFrom[2]))
+        } else {
+            val s = smoothstep((t - 1f) / 0.7f)
+            x = lerp(0f, perch[0], s)
+            z = lerp(0.4f, perch[2], s)
+            y = lerp(0.9f, perch[1], s) + 0.35f * sin(s * PI.toFloat())
+            heading = atan2(-(perch[0] - 0f), -(perch[2] - 0.4f))
+        }
+        val perched = t >= 1.7f
+        if (perched) heading = atan2(perch[0], perch[2])
+        tm.setTransform(tm.getInstance(gull.root), Transforms.trsEuler(scratch, x, y, z, heading, 0f, 0f, 0.8f))
+        gull.gull?.animate(clock, perched)
+    }
+
+    private fun startLose(gull: Visual, circling: Boolean) {
+        loseTime = 0f
+        tm.getTransform(tm.getInstance(gull.root), scratch)
+        if (circling) {
+            swoopFrom[0] = scratch[12]
+            swoopFrom[1] = scratch[13]
+            swoopFrom[2] = scratch[14]
+        } else {
+            swoopFrom[0] = -width.toFloat()
+            swoopFrom[1] = 4.5f
+            swoopFrom[2] = -height / 2f - 2f
+        }
+        // Land on the rock nearest the centre, or on the island beside the board.
+        val board = level?.board
+        var best = -1
+        var bestDistance = Float.MAX_VALUE
+        if (board != null) {
+            for (cell in 0 until board.cellCount) {
+                if (board.tile(cell) != TileType.ROCK) continue
+                val d = worldX((cell % width).toFloat()).let { it * it } + worldZ((cell / width).toFloat()).let { it * it }
+                if (d < bestDistance) {
+                    bestDistance = d
+                    best = cell
+                }
+            }
+        }
+        if (best >= 0) {
+            perch[0] = worldX((best % width).toFloat())
+            perch[1] = tileHeights[best] + 0.42f
+            perch[2] = worldZ((best / width).toFloat())
+        } else {
+            perch[0] = width / 2f + 0.7f
+            perch[1] = Surfaces.ISLAND_TOP
+            perch[2] = 0f
+        }
+    }
 
     private fun startIntro(state: GameState) {
         val ids = state.pieces.filter { it.kind == PieceKind.HATCHLING }
@@ -894,15 +995,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             art.destroy(v)
         }
         visuals.retainAll { it === hint }
-        host.surfaces.clearBoardTextures()
-        tilesMesh?.let { host.meshes.release(it) }
-        chunkMesh?.let { host.meshes.release(it) }
-        maskTexture?.let { host.textures.release(it) }
-        shoreTexture?.let { host.textures.release(it) }
-        tilesMesh = null
-        chunkMesh = null
-        maskTexture = null
-        shoreTexture = null
+        scenery.release()
         shellByCell.clear()
         pitByCell.clear()
         pitFillByCell.clear()
@@ -912,6 +1005,9 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         shadows.clear()
         shadowNext.clear()
         gulls.clear()
+        alarmGull = null
+        loseTime = -1f
+        duck = 0f
         level = null
         displayed = null
         lastSaveCell = -1
@@ -927,5 +1023,8 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         private const val MAX_DECOR = 16
         private const val INTRO_START = 0.75f
         private const val INTRO_STAGGER = 0.08f
+        private const val ALARM_RADIUS = 2.8f
+        private const val ALARM_HEIGHT = 3.2f
+        private const val LOSE_SECONDS = 1.8f
     }
 }
