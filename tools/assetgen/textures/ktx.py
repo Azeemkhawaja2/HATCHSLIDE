@@ -36,8 +36,6 @@ class Encoding:
     astc_block: tuple[int, int] = (6, 6)
     alpha: bool = False
     mips: bool = True
-    #: ETC2 copies (for older GLES 3.0 devices without ASTC) skip the top mip when true.
-    etc2_half: bool = False
     #: Largest stored level; bigger top mips are dropped (0 = keep everything).
     max_size: int = 0
 
@@ -148,8 +146,6 @@ def write_ktx(path: Path, faces_levels: list[list[np.ndarray]], encoding: Encodi
     if encoding.max_size:
         while len(faces_levels[0]) > 1 and faces_levels[0][0].shape[1] > encoding.max_size:
             faces_levels = [levels[1:] for levels in faces_levels]
-    if fmt == "etc2" and encoding.etc2_half and len(faces_levels[0]) > 1:
-        faces_levels = [levels[1:] for levels in faces_levels]
     faces = len(faces_levels)
     levels = len(faces_levels[0])
     h, w = faces_levels[0][0].shape[:2]

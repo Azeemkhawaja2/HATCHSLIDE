@@ -16,9 +16,9 @@ from .ktx import Encoding, mip_chain, write_ktx
 
 COLOR = Encoding("color", (6, 6))
 NORMAL = Encoding("normal", (6, 6))
-ORM = Encoding("linear", (8, 8), etc2_half=True)
-MASK = Encoding("linear", (8, 8), etc2_half=True)
-HERO_NORMAL = Encoding("normal", (6, 6), etc2_half=True)
+ORM = Encoding("linear", (8, 8))
+MASK = Encoding("linear", (8, 8))
+HERO_NORMAL = Encoding("normal", (6, 6))
 SPRITES = Encoding("color", (4, 4), alpha=True)
 
 REF = "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
@@ -50,7 +50,7 @@ SPECS += [
 for i, species in enumerate(g.SPECIES):
     SPECS.append(TextureSpec(f"turtle_{species}", 2048, "turtle_carapace", {"species": species}, {"albedo": COLOR}, 150 + i))
 SPECS += [
-    TextureSpec("turtle_detail", 4096, "turtle_detail", {}, {"normal": HERO_NORMAL, "orm": Encoding("linear", (8, 8), etc2_half=True, max_size=2048)}, 160),
+    TextureSpec("turtle_detail", 4096, "turtle_detail", {}, {"normal": HERO_NORMAL, "orm": Encoding("linear", (8, 8), max_size=2048)}, 160),
     TextureSpec("turtle_skin", 2048, "turtle_skin", {}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 161),
     TextureSpec("water_a", 2048, "water_normal", {"fine": False}, {"normal": NORMAL}, 170),
     TextureSpec("water_b", 2048, "water_normal", {"fine": True}, {"normal": NORMAL}, 171),
