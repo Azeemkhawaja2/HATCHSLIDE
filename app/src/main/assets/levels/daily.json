@@ -1,0 +1,13808 @@
+{
+ "puzzles": [
+  {
+   "id": "daily_001",
+   "world": 0,
+   "index": 1,
+   "name": "Copper Burrow",
+   "grid": [
+    "~~~~~~",
+    "#e..T1",
+    "T..1.#",
+    "..T#..",
+    "....#.",
+    "v...S.",
+    ".T..#.",
+    ".....^"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      5,
+      1
+     ],
+     "b": [
+      3,
+      2
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231162857,
+   "mechanic": null
+  },
+  {
+   "id": "daily_002",
+   "world": 0,
+   "index": 2,
+   "name": "Sunlit Puddles",
+   "grid": [
+    "###~~~",
+    ".....o",
+    "......",
+    ".C...T",
+    "#.....",
+    "..T.T.",
+    "..Ce.O",
+    ".c.#.c",
+    "......"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       7
+      ],
+      [
+       4,
+       7
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       1,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      6
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231162958,
+   "mechanic": null
+  },
+  {
+   "id": "daily_003",
+   "world": 0,
+   "index": 3,
+   "name": "Bright Footprints",
+   "grid": [
+    "#~~#~~~",
+    "we...w.",
+    ".T.C...",
+    "...w...",
+    "...e..#",
+    ".T.w.#.",
+    "...^.Oo",
+    "...TS.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      4
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231163059,
+   "mechanic": null
+  },
+  {
+   "id": "daily_004",
+   "world": 0,
+   "index": 4,
+   "name": "Early Shore",
+   "grid": [
+    "~~##~#~",
+    "..v.#v.",
+    ".o#...#",
+    "..>T...",
+    "O.C.^..",
+    "...S..#",
+    ".#..^..",
+    "....T.<"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231163160,
+   "mechanic": null
+  },
+  {
+   "id": "daily_005",
+   "world": 0,
+   "index": 5,
+   "name": "Azure Splash",
+   "grid": [
+    "##~~~~~~",
+    "....#...",
+    "CT#.....",
+    "...#..#.",
+    "C..T#...",
+    "...C...C",
+    ".#..#CTC",
+    "..wT.C..",
+    "........"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231163261,
+   "mechanic": null
+  },
+  {
+   "id": "daily_006",
+   "world": 0,
+   "index": 6,
+   "name": "Amber Crevice",
+   "grid": [
+    "~~~~####",
+    ".C...#.C",
+    "Tw##....",
+    "......C.",
+    "#w.w.w..",
+    ".##.....",
+    "T.#.w...",
+    "SC..C...",
+    ".w...S..",
+    ".....#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231163362,
+   "mechanic": null
+  },
+  {
+   "id": "daily_007",
+   "world": 0,
+   "index": 7,
+   "name": "Gentle Shallows",
+   "grid": [
+    "####~~##",
+    "T.1.....",
+    "....S.v.",
+    ".....^w.",
+    ".....#.1",
+    "..c..##.",
+    ".T#..#..",
+    ".....T.T"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       2
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      1
+     ],
+     "b": [
+      7,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231163463,
+   "mechanic": null
+  },
+  {
+   "id": "daily_008",
+   "world": 0,
+   "index": 8,
+   "name": "Scuttle Crevice",
+   "grid": [
+    "~~##~#~",
+    ".......",
+    "..##.#.",
+    "...T#<#",
+    "S......",
+    ".......",
+    "....#T.",
+    ".#...w#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231163564,
+   "mechanic": null
+  },
+  {
+   "id": "daily_009",
+   "world": 0,
+   "index": 9,
+   "name": "Morning Drift",
+   "grid": [
+    "###~~~~#",
+    "........",
+    ".CC..#..",
+    "T.......",
+    "..CT.#..",
+    "...S....",
+    ".....c.w",
+    "...w...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       6
+      ],
+      [
+       4,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231163665,
+   "mechanic": null
+  },
+  {
+   "id": "daily_010",
+   "world": 0,
+   "index": 10,
+   "name": "Ember Run",
+   "grid": [
+    "###~#~",
+    ".^#..C",
+    ".#To..",
+    "..^...",
+    ".....v",
+    "...#S<",
+    "^.....",
+    "....<.",
+    "wS.T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231163766,
+   "mechanic": null
+  },
+  {
+   "id": "daily_011",
+   "world": 0,
+   "index": 11,
+   "name": "Pincer Crossing",
+   "grid": [
+    "~##~~##",
+    "~#..#..",
+    "~.w....",
+    "C......",
+    "#wT....",
+    "...C.w.",
+    "S...Cw.",
+    "..#w..#",
+    "...#..#",
+    "T#...C."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231163867,
+   "mechanic": null
+  },
+  {
+   "id": "daily_012",
+   "world": 0,
+   "index": 12,
+   "name": "Lantern Lullaby",
+   "grid": [
+    "~##~~#",
+    "......",
+    "..T..#",
+    "....w.",
+    "..#..#",
+    "...#S.",
+    "#.....",
+    "C#Sw..",
+    "#T.w..",
+    "#..C#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231163968,
+   "mechanic": null
+  },
+  {
+   "id": "daily_013",
+   "world": 0,
+   "index": 13,
+   "name": "Kelp Shelf",
+   "grid": [
+    "~~~~~~",
+    "...w..",
+    ".c1C..",
+    ".T..O>",
+    "......",
+    "S1#.O.",
+    ".T#T.2",
+    ".#....",
+    "e.T.w#",
+    "...C.2"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      1,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      5,
+      6
+     ],
+     "b": [
+      5,
+      9
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231164069,
+   "mechanic": null
+  },
+  {
+   "id": "daily_014",
+   "world": 0,
+   "index": 14,
+   "name": "Pearl Lagoon",
+   "grid": [
+    "#~~~####",
+    "~###....",
+    "~.w.....",
+    "....CT..",
+    ".....w..",
+    "##w..#C.",
+    ".w.#..T.",
+    "..#..C.#",
+    "...T...v",
+    "..S....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231164170,
+   "mechanic": null
+  },
+  {
+   "id": "daily_015",
+   "world": 0,
+   "index": 15,
+   "name": "Indigo Channel",
+   "grid": [
+    "~~~~##~",
+    ".#we.#.",
+    ".w..S..",
+    "^TS....",
+    "..T....",
+    ".^...#S",
+    "Ce.w...",
+    ".#T....",
+    ".....#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      6
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      3,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231164271,
+   "mechanic": null
+  },
+  {
+   "id": "daily_016",
+   "world": 0,
+   "index": 16,
+   "name": "Hazy Crossing",
+   "grid": [
+    "~~#~~#~~",
+    "#C...vo.",
+    "..#.....",
+    "T...T...",
+    "^..w#S..",
+    "#CO.OT..",
+    "<...C...",
+    ".Tw...O."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231164372,
+   "mechanic": null
+  },
+  {
+   "id": "daily_017",
+   "world": 0,
+   "index": 17,
+   "name": "Scuttle Maze",
+   "grid": [
+    "#~###~",
+    "#.T.S.",
+    ".w....",
+    "....T.",
+    "......",
+    ".T....",
+    "Sww.#.",
+    "..Sw.w",
+    "...T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231164473,
+   "mechanic": null
+  },
+  {
+   "id": "daily_018",
+   "world": 0,
+   "index": 18,
+   "name": "Dusky Crevice",
+   "grid": [
+    "~~~~~~~",
+    "..C#.Tw",
+    "w..T...",
+    "w..C..#",
+    ".....w.",
+    ".......",
+    "w..S.C.",
+    "..ST..T",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231164574,
+   "mechanic": null
+  },
+  {
+   "id": "daily_019",
+   "world": 0,
+   "index": 19,
+   "name": "Charcoal Ridge",
+   "grid": [
+    "~##~~#",
+    ".T..w#",
+    "...1..",
+    "....#T",
+    ".w....",
+    ".#....",
+    ".T....",
+    "OT..1e"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      7
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      4,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       0,
+       5
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231164675,
+   "mechanic": null
+  },
+  {
+   "id": "daily_020",
+   "world": 0,
+   "index": 20,
+   "name": "Firefly Drift",
+   "grid": [
+    "##~~#~#",
+    "w#.>##.",
+    "S.#.T.#",
+    ".......",
+    "....S..",
+    ".##..T.",
+    ".T....c",
+    "S...w..",
+    "......."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       6,
+       6
+      ],
+      [
+       6,
+       5
+      ],
+      [
+       6,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231164776,
+   "mechanic": null
+  },
+  {
+   "id": "daily_021",
+   "world": 0,
+   "index": 21,
+   "name": "Charcoal Cliffs",
+   "grid": [
+    "#~#~~##~",
+    ".#..e.e#",
+    "....TO.#",
+    ".....Sv.",
+    "..#.T...",
+    "<w..#S..",
+    "S.......",
+    "#....S..",
+    "...##..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      6,
+      1
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231164877,
+   "mechanic": null
+  },
+  {
+   "id": "daily_022",
+   "world": 0,
+   "index": 22,
+   "name": "Briny Walk",
+   "grid": [
+    "#~~~~~##",
+    ".....^.~",
+    ".w#OT.>~",
+    "..#w.^..",
+    ">..#...#",
+    "....T.o^",
+    "T...#...",
+    "O.#C...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231164978,
+   "mechanic": null
+  },
+  {
+   "id": "daily_023",
+   "world": 0,
+   "index": 23,
+   "name": "Star Channel",
+   "grid": [
+    "~~~~~#",
+    ".TS.T.",
+    ".C..S.",
+    "....#.",
+    "#.....",
+    "#.....",
+    "T.S..#",
+    "......",
+    "...CCC"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231165079,
+   "mechanic": null
+  },
+  {
+   "id": "daily_024",
+   "world": 0,
+   "index": 24,
+   "name": "Noon Bank",
+   "grid": [
+    "#####~",
+    "~wC...",
+    "...#..",
+    "..ww.T",
+    ".w....",
+    "C.C..#",
+    "......",
+    ".C..w.",
+    "...#.T",
+    ".....T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231165180,
+   "mechanic": null
+  },
+  {
+   "id": "daily_025",
+   "world": 0,
+   "index": 25,
+   "name": "Kelp Crevice",
+   "grid": [
+    "~~#~~~~",
+    "#1..e.2",
+    "C...#.w",
+    "S..c.##",
+    "..#....",
+    "....1..",
+    "T.T##2.",
+    "T....v."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       3
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      4,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      6,
+      1
+     ],
+     "b": [
+      5,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       0,
+       5
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       1,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231165281,
+   "mechanic": null
+  },
+  {
+   "id": "daily_026",
+   "world": 0,
+   "index": 26,
+   "name": "Midnight Pool",
+   "grid": [
+    "~~~##~#",
+    "....#..",
+    "w..w#..",
+    "...#..w",
+    ".Sew...",
+    "..e....",
+    "#.#.T>.",
+    "..C.T.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 5
+    },
+    {
+     "cell": [
+      2,
+      5
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231165382,
+   "mechanic": null
+  },
+  {
+   "id": "daily_027",
+   "world": 0,
+   "index": 27,
+   "name": "Dream Whirl",
+   "grid": [
+    "~~#~###~",
+    "....##T.",
+    ".#...v.S",
+    "w...#...",
+    "..o.....",
+    "..w..S..",
+    "w.....#T",
+    "#..#..e.",
+    "#^.##...",
+    "#..T...."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      6,
+      7
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231165483,
+   "mechanic": null
+  },
+  {
+   "id": "daily_028",
+   "world": 0,
+   "index": 28,
+   "name": "Sunlit Shelf",
+   "grid": [
+    "~##~##~",
+    "<.O.O..",
+    ">......",
+    ".O.....",
+    "....<#>",
+    "......S",
+    "...#o.S",
+    "..#.T>.",
+    "#TC...>",
+    "..S...<"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231165584,
+   "mechanic": null
+  },
+  {
+   "id": "daily_029",
+   "world": 0,
+   "index": 29,
+   "name": "Glassy Shelf",
+   "grid": [
+    "~#~~~#~",
+    ".T.#w..",
+    "S..C.#.",
+    ".C.....",
+    ".T..S..",
+    "..TC..#",
+    "#..#.#.",
+    "#S....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231165685,
+   "mechanic": null
+  },
+  {
+   "id": "daily_030",
+   "world": 0,
+   "index": 30,
+   "name": "Firefly Lullaby",
+   "grid": [
+    "#~#~~~#~",
+    "..www#..",
+    "...S....",
+    "##.#...S",
+    "..TS....",
+    "...Tw..w",
+    ".CS...w.",
+    "...S...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231165786,
+   "mechanic": null
+  },
+  {
+   "id": "daily_031",
+   "world": 0,
+   "index": 31,
+   "name": "Reef Fan",
+   "grid": [
+    "~###~~~",
+    ".#..1v.",
+    "w#...^.",
+    ".T^...#",
+    "1...>..",
+    ".#.#.2C",
+    "..w....",
+    "C....e.",
+    "TS...#.",
+    "2..T..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      7
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      0,
+      4
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      5,
+      5
+     ],
+     "b": [
+      0,
+      9
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231165887,
+   "mechanic": null
+  },
+  {
+   "id": "daily_032",
+   "world": 0,
+   "index": 32,
+   "name": "Soft Path",
+   "grid": [
+    "~~~~~#",
+    "..c...",
+    "#..##.",
+    "#....T",
+    "......",
+    "T.w.#.",
+    ".v...#",
+    "OST..."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       1
+      ],
+      [
+       1,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231165988,
+   "mechanic": null
+  },
+  {
+   "id": "daily_033",
+   "world": 0,
+   "index": 33,
+   "name": "Crystal Boardwalk",
+   "grid": [
+    "~#~~###~",
+    "....#.S.",
+    "..O..o..",
+    "wT...S.#",
+    "...#..#T",
+    "..eSc...",
+    ".c#S....",
+    "...##w.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       5
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       4,
+       5
+      ],
+      [
+       5,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231166089,
+   "mechanic": null
+  },
+  {
+   "id": "daily_034",
+   "world": 0,
+   "index": 34,
+   "name": "Velvet Drift",
+   "grid": [
+    "~##~##",
+    "....T~",
+    ".T.So~",
+    ".##T.O",
+    "#.^...",
+    "..o#.O",
+    ".T..#.",
+    "#..wv."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231166190,
+   "mechanic": null
+  },
+  {
+   "id": "daily_035",
+   "world": 0,
+   "index": 35,
+   "name": "Mossy Patrol",
+   "grid": [
+    "#~~###",
+    ".C.S..",
+    "S.....",
+    "..##.S",
+    "wS..w.",
+    "....w.",
+    "....#T",
+    "w.T..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231166291,
+   "mechanic": null
+  },
+  {
+   "id": "daily_036",
+   "world": 0,
+   "index": 36,
+   "name": "Sleepy Shallows",
+   "grid": [
+    "~#~~~~##",
+    "~.....TS",
+    ".w.#..#.",
+    ".w..S.#T",
+    "...##.#.",
+    ".w......",
+    ".S.....S",
+    "w......#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231166392,
+   "mechanic": null
+  },
+  {
+   "id": "daily_037",
+   "world": 0,
+   "index": 37,
+   "name": "Kelp Hideout",
+   "grid": [
+    "~~#~~~",
+    ".e.#O.",
+    "...1.T",
+    "......",
+    ".O.C#.",
+    "1#^.T.",
+    "...TT.",
+    ".w..w.",
+    "#...^."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      0,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       0,
+       3
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231166493,
+   "mechanic": null
+  },
+  {
+   "id": "daily_038",
+   "world": 0,
+   "index": 38,
+   "name": "Gentle Steps",
+   "grid": [
+    "~~~~~~",
+    "..TwC.",
+    "CS....",
+    "e.w#..",
+    ".c.ve<",
+    "#..T..",
+    "....c.",
+    "...C.o"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       4
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       4,
+       6
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       1,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      3
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      4,
+      4
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231166594,
+   "mechanic": null
+  },
+  {
+   "id": "daily_039",
+   "world": 0,
+   "index": 39,
+   "name": "Copper Crevice",
+   "grid": [
+    "~~~~#~",
+    "....#.",
+    "..e...",
+    ".#...#",
+    "<<....",
+    "..w.TT",
+    "....w.",
+    "....e."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      7
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      2,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231166695,
+   "mechanic": null
+  },
+  {
+   "id": "daily_040",
+   "world": 0,
+   "index": 40,
+   "name": "Soft Drift",
+   "grid": [
+    "~####~",
+    "..#..#",
+    "..T...",
+    "......",
+    "Tw..o.",
+    "SO....",
+    "......",
+    "S.....",
+    "T.CS..",
+    ".##..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231166796,
+   "mechanic": null
+  },
+  {
+   "id": "daily_041",
+   "world": 0,
+   "index": 41,
+   "name": "Molten Flats",
+   "grid": [
+    "###~#~#~",
+    "..#.T.Cw",
+    "...SS#..",
+    "....S#..",
+    ".TT.T.#.",
+    "...C....",
+    "S##.S.C.",
+    "...S..S.",
+    "...#...S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231166897,
+   "mechanic": null
+  },
+  {
+   "id": "daily_042",
+   "world": 0,
+   "index": 42,
+   "name": "Sunlit Spiral",
+   "grid": [
+    "##~#~##",
+    "C.....#",
+    "w#....#",
+    "..CS#..",
+    "...T...",
+    ".C..#..",
+    "....#.#",
+    ".w.....",
+    "Tw...#.",
+    ".w...w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231166998,
+   "mechanic": null
+  },
+  {
+   "id": "daily_043",
+   "world": 0,
+   "index": 43,
+   "name": "Scuttle Hideout",
+   "grid": [
+    "~##~#~~",
+    "...^T..",
+    "...#..#",
+    "##.1#..",
+    ".......",
+    ".T.#.w.",
+    "...1...",
+    "#...T.v"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      3
+     ],
+     "b": [
+      3,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231167099,
+   "mechanic": null
+  },
+  {
+   "id": "daily_044",
+   "world": 0,
+   "index": 44,
+   "name": "Peach Bend",
+   "grid": [
+    "~#~###",
+    ".T.S..",
+    "......",
+    "w.S..T",
+    "......",
+    ".T#...",
+    "......",
+    ".#..c#",
+    ".#...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       7
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231167200,
+   "mechanic": null
+  },
+  {
+   "id": "daily_045",
+   "world": 0,
+   "index": 45,
+   "name": "Seafoam Terrace",
+   "grid": [
+    "#~~###~",
+    "#..T.w.",
+    "w.#wS..",
+    "#...e..",
+    "SC.eC..",
+    "S....w.",
+    ".......",
+    "....C..",
+    "..S..T.",
+    "....SC."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      4
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231167301,
+   "mechanic": null
+  },
+  {
+   "id": "daily_046",
+   "world": 0,
+   "index": 46,
+   "name": "Rosy Trail",
+   "grid": [
+    "#~~~#~",
+    ".#T...",
+    ".....#",
+    "...T..",
+    "...#..",
+    "..<w..",
+    "o..T.o",
+    ".v...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231167402,
+   "mechanic": null
+  },
+  {
+   "id": "daily_047",
+   "world": 0,
+   "index": 47,
+   "name": "Shimmer Flats",
+   "grid": [
+    "~~~~##~",
+    "#...T.w",
+    "......S",
+    "S.S#.w.",
+    ".....S.",
+    "..#....",
+    ".....##",
+    "..CwCT."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231167503,
+   "mechanic": null
+  },
+  {
+   "id": "daily_048",
+   "world": 0,
+   "index": 48,
+   "name": "Mossy Crossing",
+   "grid": [
+    "#~#~#~",
+    "....ww",
+    "w..w..",
+    "...S#.",
+    "C#..#.",
+    "..T.T.",
+    "..####",
+    "w..T..",
+    "......",
+    "C.w..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231167604,
+   "mechanic": null
+  },
+  {
+   "id": "daily_049",
+   "world": 0,
+   "index": 49,
+   "name": "Barnacle Shuffle",
+   "grid": [
+    "~#~~#~~~",
+    "..T.#.##",
+    "..2..>..",
+    ".C....ST",
+    "#C......",
+    "....C.2.",
+    "....e...",
+    "1...1#.#",
+    ".Cv...##"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      6
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      7
+     ],
+     "b": [
+      4,
+      7
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      6,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231167705,
+   "mechanic": null
+  },
+  {
+   "id": "daily_050",
+   "world": 0,
+   "index": 50,
+   "name": "Glassy Terrace",
+   "grid": [
+    "#~#~~~",
+    ">><...",
+    "TwO...",
+    "Te..CO",
+    "....S.",
+    "......",
+    "......",
+    ".#.#v.",
+    "...w.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      3
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231167806,
+   "mechanic": null
+  },
+  {
+   "id": "daily_051",
+   "world": 0,
+   "index": 51,
+   "name": "Early Bend",
+   "grid": [
+    "~#~~~#~",
+    "~.<....",
+    "~.v.S.#",
+    ".....##",
+    "T.e..w.",
+    ".#...##",
+    "T..T#.v",
+    ".....S.",
+    "......#"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231167907,
+   "mechanic": null
+  },
+  {
+   "id": "daily_052",
+   "world": 0,
+   "index": 52,
+   "name": "Molten Shelf",
+   "grid": [
+    "##~~###",
+    ".......",
+    ".......",
+    "....#S.",
+    "...T..#",
+    "#..#.w^",
+    ">S.O<w.",
+    "....#S.",
+    "w.>o...",
+    "O....ST"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231168008,
+   "mechanic": null
+  },
+  {
+   "id": "daily_053",
+   "world": 0,
+   "index": 53,
+   "name": "Rosy Steps",
+   "grid": [
+    "~##~~~",
+    "w.T...",
+    "...SSw",
+    "...S.T",
+    "...#.#",
+    "...S.T",
+    ".S#...",
+    "...w..",
+    "w..w#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231168109,
+   "mechanic": null
+  },
+  {
+   "id": "daily_054",
+   "world": 0,
+   "index": 54,
+   "name": "Firefly Glade",
+   "grid": [
+    "~~~#~#",
+    "~#...#",
+    "w..#.w",
+    ".....C",
+    "..C.SS",
+    "..#.T.",
+    "#.wT.T",
+    ".w....",
+    "....w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231168210,
+   "mechanic": null
+  },
+  {
+   "id": "daily_055",
+   "world": 0,
+   "index": 55,
+   "name": "Russet Ledge",
+   "grid": [
+    "###~~~#~",
+    "T.ST2..S",
+    "....C#1.",
+    "#S..#..T",
+    "#.e..#2.",
+    "...>.S1#",
+    "..#.....",
+    "......T."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      6,
+      2
+     ],
+     "b": [
+      6,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      6,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231168311,
+   "mechanic": null
+  },
+  {
+   "id": "daily_056",
+   "world": 0,
+   "index": 56,
+   "name": "Dusk Vents",
+   "grid": [
+    "###~#~",
+    "......",
+    ".#ee##",
+    "..C..T",
+    "C..##.",
+    "...T.v",
+    "..#...",
+    ".#...."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      2
+     ],
+     "timer": 5
+    },
+    {
+     "cell": [
+      2,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231168412,
+   "mechanic": null
+  },
+  {
+   "id": "daily_057",
+   "world": 0,
+   "index": 57,
+   "name": "Amber Burrow",
+   "grid": [
+    "~~~##~~#",
+    ".C.T#...",
+    ".Tc..#..",
+    "....v.w.",
+    ".#..T...",
+    ".o#.S...",
+    ".w.T..>.",
+    "#..c...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       7
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       1,
+       7
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231168513,
+   "mechanic": null
+  },
+  {
+   "id": "daily_058",
+   "world": 0,
+   "index": 58,
+   "name": "Star Drift",
+   "grid": [
+    "~~~~###~",
+    "~#T...w.",
+    "#.....#.",
+    "#TC..S#o",
+    "o....##.",
+    "v....#..",
+    "........",
+    ".C..##..",
+    ".O..<C.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231168614,
+   "mechanic": null
+  },
+  {
+   "id": "daily_059",
+   "world": 0,
+   "index": 59,
+   "name": "Soft Bend",
+   "grid": [
+    "~~~~~~#~",
+    "S.C..Sw~",
+    "..T..#.~",
+    "..T....S",
+    "........",
+    "..#C...w",
+    ".#...T..",
+    "..S.S.#C",
+    "...S...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231168715,
+   "mechanic": null
+  },
+  {
+   "id": "daily_060",
+   "world": 0,
+   "index": 60,
+   "name": "Wishing Lullaby",
+   "grid": [
+    "##~~~~~",
+    ".....w#",
+    ".wwS..S",
+    "...SC..",
+    ".#.C...",
+    ".w.....",
+    ".w.T...",
+    ".w.T#..",
+    "C.....S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231168816,
+   "mechanic": null
+  },
+  {
+   "id": "daily_061",
+   "world": 0,
+   "index": 61,
+   "name": "Early Steps",
+   "grid": [
+    "~###~~~~",
+    "#CSw>T..",
+    "T.12#..#",
+    "........",
+    ".w......",
+    ".C...#.#",
+    "...#.eTS",
+    ".T.1.2..",
+    "..C...#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      3,
+      7
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      5,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231168917,
+   "mechanic": null
+  },
+  {
+   "id": "daily_062",
+   "world": 0,
+   "index": 62,
+   "name": "Gentle Ripple",
+   "grid": [
+    "~#~###~",
+    "..#.#w.",
+    ".T..w.#",
+    "..O.e..",
+    "#..#...",
+    "...#.c.",
+    "#..S.oC",
+    ".S...w.",
+    ".w..e..",
+    "....OT."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       5
+      ],
+      [
+       4,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      4,
+      8
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231169018,
+   "mechanic": null
+  },
+  {
+   "id": "daily_063",
+   "world": 0,
+   "index": 63,
+   "name": "Sunlit Splash",
+   "grid": [
+    "~~####",
+    "#.#...",
+    "...cS.",
+    "oCC..T",
+    "...#..",
+    "w.#...",
+    "....#T",
+    "..T^.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       2
+      ],
+      [
+       3,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231169119,
+   "mechanic": null
+  },
+  {
+   "id": "daily_064",
+   "world": 0,
+   "index": 64,
+   "name": "Indigo Pool",
+   "grid": [
+    "~~~~~#~",
+    "<#....v",
+    "T...#T.",
+    ">....T.",
+    "..T..O.",
+    "....w.#",
+    "o....S.",
+    ".wvw.<.",
+    "^..#..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231169220,
+   "mechanic": null
+  },
+  {
+   "id": "daily_065",
+   "world": 0,
+   "index": 65,
+   "name": "Dusk Bay",
+   "grid": [
+    "~~~~~~~#",
+    "C.....C.",
+    "..w.#w#.",
+    "....wST.",
+    "..##C...",
+    "...w.C..",
+    "......TT",
+    "#......#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231169321,
+   "mechanic": null
+  },
+  {
+   "id": "daily_066",
+   "world": 0,
+   "index": 66,
+   "name": "Clatter Walk",
+   "grid": [
+    "#~#~~#~",
+    "..S..C.",
+    "C.T.C..",
+    ".#.....",
+    "w..w...",
+    "T##...#",
+    "T..#...",
+    ".S.#w#.",
+    ".#...C.",
+    ".....w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231169422,
+   "mechanic": null
+  },
+  {
+   "id": "daily_067",
+   "world": 0,
+   "index": 67,
+   "name": "Dusk Run",
+   "grid": [
+    "~~#~###",
+    "...#...",
+    ".......",
+    "..<T...",
+    "......#",
+    "....1C.",
+    "#.1#...",
+    ".##TT..",
+    ".S#..#C",
+    ".....#w"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      5
+     ],
+     "b": [
+      2,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231169523,
+   "mechanic": null
+  },
+  {
+   "id": "daily_068",
+   "world": 0,
+   "index": 68,
+   "name": "Dusky Burrow",
+   "grid": [
+    "#~~~~~~",
+    "~.#S.w.",
+    "~C.....",
+    ".#..w.#",
+    ".w.Tc.e",
+    "w.....#",
+    "#eT....",
+    ".#.....",
+    "..w...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      6
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      6,
+      4
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231169624,
+   "mechanic": null
+  },
+  {
+   "id": "daily_069",
+   "world": 0,
+   "index": 69,
+   "name": "Peach Steps",
+   "grid": [
+    "~#~~####",
+    "..T....#",
+    "..S...#.",
+    ".#...w#.",
+    "#T#.#Tw.",
+    "....C...",
+    "#ST.S...",
+    "........"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231169725,
+   "mechanic": null
+  },
+  {
+   "id": "daily_070",
+   "world": 0,
+   "index": 70,
+   "name": "Honey Ripple",
+   "grid": [
+    "####~~#",
+    "...o.O.",
+    ".S.....",
+    ".O.#v..",
+    "v#.O...",
+    ".T#o.C.",
+    "....w.S",
+    "T.>O...",
+    "#..T.w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231169826,
+   "mechanic": null
+  },
+  {
+   "id": "daily_071",
+   "world": 0,
+   "index": 71,
+   "name": "Smoky Vents",
+   "grid": [
+    "##~#~#",
+    ".CT...",
+    ".#T.#.",
+    ".S...C",
+    ".C.#.T",
+    ".w....",
+    "w..#.#",
+    "..S..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231169927,
+   "mechanic": null
+  },
+  {
+   "id": "daily_072",
+   "world": 0,
+   "index": 72,
+   "name": "Smoky Rim",
+   "grid": [
+    "~~~~~~~#",
+    "w.C....#",
+    "....w..T",
+    "w...TCS.",
+    "......T.",
+    "CTC...CC",
+    "...C....",
+    "...C..#.",
+    ".....w.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231170028,
+   "mechanic": null
+  },
+  {
+   "id": "daily_073",
+   "world": 0,
+   "index": 73,
+   "name": "Hazy Shore",
+   "grid": [
+    "~~~~~~",
+    "......",
+    "......",
+    "##.>#.",
+    "S..2#.",
+    ".#..TT",
+    ".#..<1",
+    "T..#.S",
+    ".....2",
+    "1T...O"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      5,
+      6
+     ],
+     "b": [
+      0,
+      9
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      4
+     ],
+     "b": [
+      5,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       2,
+       6
+      ]
+     ]
+    }
+   ],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231170129,
+   "mechanic": null
+  },
+  {
+   "id": "daily_074",
+   "world": 0,
+   "index": 74,
+   "name": "Hush Ripple",
+   "grid": [
+    "~###~#",
+    "......",
+    ".TOT.#",
+    "..#S..",
+    "...Cc.",
+    "......",
+    "..#..#",
+    "...#.^",
+    ".T...T"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       4,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231170230,
+   "mechanic": null
+  },
+  {
+   "id": "daily_075",
+   "world": 0,
+   "index": 75,
+   "name": "Rumbling Terrace",
+   "grid": [
+    "~~#~~#",
+    "..#...",
+    ".....#",
+    "...w..",
+    "....TS",
+    ".....c",
+    "oO..c.",
+    "S..T.T",
+    ".S....",
+    "...Te."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       6
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       4,
+       8
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       5,
+       5
+      ],
+      [
+       5,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      9
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231170331,
+   "mechanic": null
+  },
+  {
+   "id": "daily_076",
+   "world": 0,
+   "index": 76,
+   "name": "Azure Puddles",
+   "grid": [
+    "~~####",
+    "~o#.T^",
+    "~..S..",
+    "...>..",
+    ".O.Sw<",
+    ".w..T.",
+    "S..T#.",
+    "T..#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231170432,
+   "mechanic": null
+  },
+  {
+   "id": "daily_077",
+   "world": 0,
+   "index": 77,
+   "name": "Warm Sands",
+   "grid": [
+    "###~~##",
+    "~STw...",
+    "~S##...",
+    "#.w....",
+    "..#.#..",
+    "...#T..",
+    "w.wT.S#",
+    "w......",
+    "T...w.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231170533,
+   "mechanic": null
+  },
+  {
+   "id": "daily_078",
+   "world": 0,
+   "index": 78,
+   "name": "Velvet Lullaby",
+   "grid": [
+    "~~~~#~~",
+    "...#..w",
+    "CS.T..S",
+    ".C.#.#C",
+    ".w.....",
+    ".......",
+    "...S..C",
+    ".CT#.T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231170634,
+   "mechanic": null
+  },
+  {
+   "id": "daily_079",
+   "world": 0,
+   "index": 79,
+   "name": "Indigo Tide",
+   "grid": [
+    "~~#~~#",
+    "......",
+    "...2..",
+    ".#T.C.",
+    ".1....",
+    ".<...w",
+    ".##.T#",
+    "....##",
+    ".2#...",
+    "e1S.Tw"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      9
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      4
+     ],
+     "b": [
+      1,
+      9
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      1,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       3,
+       8
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       7
+      ],
+      [
+       5,
+       8
+      ],
+      [
+       4,
+       8
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231170735,
+   "mechanic": null
+  },
+  {
+   "id": "daily_080",
+   "world": 0,
+   "index": 80,
+   "name": "Molten Run",
+   "grid": [
+    "~~~#~#~#",
+    "#.#S.S..",
+    "S.T...#.",
+    "......#.",
+    "....#...",
+    "..w.....",
+    "....C..C",
+    "..w...S.",
+    ".#oTT..#",
+    ".C...##."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231170836,
+   "mechanic": null
+  },
+  {
+   "id": "daily_081",
+   "world": 0,
+   "index": 81,
+   "name": "Hush Drift",
+   "grid": [
+    "#~#~#~~~",
+    "e......~",
+    "..e....~",
+    ".w......",
+    "S.#.....",
+    "w.wT....",
+    "....c...",
+    "#S.C..#T"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       6
+      ],
+      [
+       4,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      2
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      0,
+      1
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231170937,
+   "mechanic": null
+  },
+  {
+   "id": "daily_082",
+   "world": 0,
+   "index": 82,
+   "name": "Bright Path",
+   "grid": [
+    "~~##~#",
+    "#Ow..#",
+    ".O..wT",
+    "....#.",
+    "S.....",
+    "o.>T..",
+    ".#.O..",
+    "w.T.w#",
+    "......",
+    "...C.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231171038,
+   "mechanic": null
+  },
+  {
+   "id": "daily_083",
+   "world": 0,
+   "index": 83,
+   "name": "Pearl Fan",
+   "grid": [
+    "~~~####",
+    "#......",
+    ".....wT",
+    "..#...T",
+    "...#w..",
+    ".CC.#..",
+    ".#C.#S.",
+    "Sw.T.S.",
+    ".S....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231171139,
+   "mechanic": null
+  },
+  {
+   "id": "daily_084",
+   "world": 0,
+   "index": 84,
+   "name": "Briny Burrow",
+   "grid": [
+    "##~#~~~",
+    ".#.#w..",
+    ".w#...#",
+    "...w..#",
+    ".C...S.",
+    "....T.S",
+    "w.#.CT.",
+    "....T..",
+    "....#w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231171240,
+   "mechanic": null
+  },
+  {
+   "id": "daily_085",
+   "world": 0,
+   "index": 85,
+   "name": "Azure Spiral",
+   "grid": [
+    "##~~~#~~",
+    "w.T.#...",
+    "...#....",
+    "#.1#..T.",
+    "#.T.C...",
+    "1.....2.",
+    "...T#..S",
+    "........",
+    "2#v....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      3
+     ],
+     "b": [
+      0,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      6,
+      5
+     ],
+     "b": [
+      0,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231171341,
+   "mechanic": null
+  },
+  {
+   "id": "daily_086",
+   "world": 0,
+   "index": 86,
+   "name": "Firefly Eddy",
+   "grid": [
+    "##~~~~",
+    "......",
+    ".T.#C.",
+    "......",
+    "..T...",
+    "#..c.#",
+    "T>cS..",
+    "......",
+    ".#...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       3,
+       3
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231171442,
+   "mechanic": null
+  },
+  {
+   "id": "daily_087",
+   "world": 0,
+   "index": 87,
+   "name": "Rockpool Market",
+   "grid": [
+    "~#~~~~~~",
+    "....o.#.",
+    "...c...#",
+    ".#..Sw.T",
+    ".....<..",
+    "...e..#.",
+    "...T....",
+    "........",
+    "v...#.e.",
+    "...S...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       2
+      ],
+      [
+       3,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      5
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      6,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231171543,
+   "mechanic": null
+  },
+  {
+   "id": "daily_088",
+   "world": 0,
+   "index": 88,
+   "name": "Amber Steps",
+   "grid": [
+    "#~~##~~#",
+    "...><.C~",
+    ".CO.<...",
+    "<.......",
+    "<..TS...",
+    "C#.#C...",
+    "o#..O...",
+    ".>S.....",
+    "......To"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231171644,
+   "mechanic": null
+  },
+  {
+   "id": "daily_089",
+   "world": 0,
+   "index": 89,
+   "name": "Clatter Dance",
+   "grid": [
+    "#~####~",
+    "~.#...C",
+    "~.....#",
+    "..SS.C.",
+    ".C...#.",
+    ".w##T..",
+    "....#.S",
+    ".CTT..T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231171745,
+   "mechanic": null
+  },
+  {
+   "id": "daily_090",
+   "world": 0,
+   "index": 90,
+   "name": "Briny Patrol",
+   "grid": [
+    "#~~~~#",
+    "CS.Tw.",
+    "......",
+    "....w.",
+    ".S...C",
+    ".T#..#",
+    "T....#",
+    "..T#C.",
+    "#.SS.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231171846,
+   "mechanic": null
+  },
+  {
+   "id": "daily_091",
+   "world": 0,
+   "index": 91,
+   "name": "Hazy Dunes",
+   "grid": [
+    "~#~~#~",
+    "O.2#.S",
+    "......",
+    ".1..#.",
+    "C...#.",
+    "w2.T..",
+    "v..C#.",
+    "1..T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      3
+     ],
+     "b": [
+      0,
+      7
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      1
+     ],
+     "b": [
+      1,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231171947,
+   "mechanic": null
+  },
+  {
+   "id": "daily_092",
+   "world": 0,
+   "index": 92,
+   "name": "Kelp Corner",
+   "grid": [
+    "~~~#~~#",
+    "T.....o",
+    "^..T.w.",
+    "..#..w.",
+    "...#w..",
+    "#^.O..T",
+    "...#.#.",
+    ".#....T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231172048,
+   "mechanic": null
+  },
+  {
+   "id": "daily_093",
+   "world": 0,
+   "index": 93,
+   "name": "Glowing Gate",
+   "grid": [
+    "#~~~~~#~",
+    "#..e.TS.",
+    "........",
+    "..eC.S.O",
+    "<o...#.#",
+    ".#.....#",
+    "......#.",
+    "..##.O#.",
+    ".T..#..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      3
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      3,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231172149,
+   "mechanic": null
+  },
+  {
+   "id": "daily_094",
+   "world": 0,
+   "index": 94,
+   "name": "Glowing Bay",
+   "grid": [
+    "~~~###~",
+    "..#....",
+    "oT.T<..",
+    "...#...",
+    "....#.o",
+    ".....#.",
+    "..#T.S.",
+    ".CC.#.T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231172250,
+   "mechanic": null
+  },
+  {
+   "id": "daily_095",
+   "world": 0,
+   "index": 95,
+   "name": "Ember Cliffs",
+   "grid": [
+    "##~##~#~",
+    "......#.",
+    "....S.#w",
+    "C.C.....",
+    "S.TC.SS.",
+    "...T....",
+    "wT...#.w",
+    "#....#..",
+    "...wC#w.",
+    "....C.T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231172351,
+   "mechanic": null
+  },
+  {
+   "id": "daily_096",
+   "world": 0,
+   "index": 96,
+   "name": "Charcoal Hollow",
+   "grid": [
+    "~#~#####",
+    "#......w",
+    "....w..T",
+    "...S#..T",
+    "S#.w.C..",
+    "....#C.#",
+    "....#w..",
+    ".w...C.w",
+    "...w...C",
+    "..w...w."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231172452,
+   "mechanic": null
+  },
+  {
+   "id": "daily_097",
+   "world": 0,
+   "index": 97,
+   "name": "Fiery Steps",
+   "grid": [
+    "~~##~~~",
+    "..T.O#.",
+    ".....#.",
+    "#.....w",
+    ".S....C",
+    "TT.....",
+    "..Cvw..",
+    "..#....",
+    "w1...#1"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      8
+     ],
+     "b": [
+      6,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231172553,
+   "mechanic": null
+  },
+  {
+   "id": "daily_098",
+   "world": 0,
+   "index": 98,
+   "name": "Twilight Whirl",
+   "grid": [
+    "~###~~",
+    "..e.w.",
+    "#...cS",
+    ".C....",
+    "....T.",
+    "^.T...",
+    "..#e#.",
+    "CT..C."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       2
+      ],
+      [
+       3,
+       2
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      6
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      2,
+      1
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231172654,
+   "mechanic": null
+  },
+  {
+   "id": "daily_099",
+   "world": 0,
+   "index": 99,
+   "name": "Dream Drift",
+   "grid": [
+    "~~~~~~#",
+    "##.e...",
+    "CT....#",
+    "..w.wT#",
+    ".......",
+    "C......",
+    "T.T....",
+    "S...##w",
+    "S...#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231172755,
+   "mechanic": null
+  },
+  {
+   "id": "daily_100",
+   "world": 0,
+   "index": 100,
+   "name": "Firefly Current",
+   "grid": [
+    "#~~#~#~~",
+    "#S...T#.",
+    "TC.#...#",
+    "....#..S",
+    "v..vo...",
+    "..##S...",
+    "...#....",
+    "#...o.<."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231172856,
+   "mechanic": null
+  },
+  {
+   "id": "daily_101",
+   "world": 0,
+   "index": 101,
+   "name": "Lagoon Shelf",
+   "grid": [
+    "~~~~~~~#",
+    "..w.....",
+    "....C##.",
+    ".S.S..CS",
+    "..T#.#S.",
+    ".#..#.C.",
+    "...T....",
+    "...SCT..",
+    "w...Sw.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231172957,
+   "mechanic": null
+  },
+  {
+   "id": "daily_102",
+   "world": 0,
+   "index": 102,
+   "name": "Ruby Terrace",
+   "grid": [
+    "#~#~~~#",
+    "..#S.#C",
+    ".......",
+    "..C...#",
+    ".wT#..C",
+    "T.w..T.",
+    "..ww##.",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231173058,
+   "mechanic": null
+  },
+  {
+   "id": "daily_103",
+   "world": 0,
+   "index": 103,
+   "name": "Silver Path",
+   "grid": [
+    "#~~#~#",
+    "~..#..",
+    "~Cw...",
+    "....#.",
+    ".....#",
+    "T^#C..",
+    "S..1..",
+    "...#eT",
+    "..1.v.",
+    "....#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      7
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      6
+     ],
+     "b": [
+      2,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       1,
+       7
+      ],
+      [
+       1,
+       8
+      ],
+      [
+       1,
+       9
+      ],
+      [
+       0,
+       9
+      ],
+      [
+       0,
+       8
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    }
+   ],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231173159,
+   "mechanic": null
+  },
+  {
+   "id": "daily_104",
+   "world": 0,
+   "index": 104,
+   "name": "Comet Hollow",
+   "grid": [
+    "#~~###",
+    ".w..w.",
+    ".S....",
+    "...T..",
+    ".#w.#.",
+    ".T..e.",
+    "TC.#..",
+    ".w....",
+    "#.wO.T"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231173260,
+   "mechanic": null
+  },
+  {
+   "id": "daily_105",
+   "world": 0,
+   "index": 105,
+   "name": "Midnight Lullaby",
+   "grid": [
+    "#####~~",
+    "#.....#",
+    ".ow....",
+    "#.....v",
+    "T##.#..",
+    "...w.T^",
+    ".C.....",
+    "...#T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231173361,
+   "mechanic": null
+  },
+  {
+   "id": "daily_106",
+   "world": 0,
+   "index": 106,
+   "name": "Velvet Pool",
+   "grid": [
+    "#~##~##",
+    "^...T.w",
+    ".#...#.",
+    "#vT..C.",
+    "^.#....",
+    "<#..C..",
+    "O.....O",
+    ".......",
+    ".#ow..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231173462,
+   "mechanic": null
+  },
+  {
+   "id": "daily_107",
+   "world": 0,
+   "index": 107,
+   "name": "Scuttle Dance",
+   "grid": [
+    "#~~~~~~",
+    "T......",
+    ".w....#",
+    "...T..C",
+    "S.wCw.#",
+    "w......",
+    "..Cw.#C",
+    ".....#.",
+    ".T#T..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231173563,
+   "mechanic": null
+  },
+  {
+   "id": "daily_108",
+   "world": 0,
+   "index": 108,
+   "name": "Misty Swirl",
+   "grid": [
+    "#~~~~~#~",
+    ".S....T.",
+    "w....#.T",
+    ".w#..w.#",
+    "..#.....",
+    "..S....S",
+    ".Tw#....",
+    "...T...#",
+    ".wCSC..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231173664,
+   "mechanic": null
+  },
+  {
+   "id": "daily_109",
+   "world": 0,
+   "index": 109,
+   "name": "Gentle Trail",
+   "grid": [
+    "~~~~~~#",
+    "C..we2T",
+    "..#..1.",
+    ".S..#C.",
+    "O2..T..",
+    "..1...w",
+    ".......",
+    "..c..v."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       7
+      ],
+      [
+       2,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      5,
+      2
+     ],
+     "b": [
+      2,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      5,
+      1
+     ],
+     "b": [
+      1,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231173765,
+   "mechanic": null
+  },
+  {
+   "id": "daily_110",
+   "world": 0,
+   "index": 110,
+   "name": "Rumbling Crater",
+   "grid": [
+    "~~#~#~~#",
+    "~#c..O..",
+    "#....e.#",
+    "..O..S..",
+    "T.#.T...",
+    ".C..O...",
+    "...v.c#T",
+    ".#......"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       5,
+       6
+      ],
+      [
+       5,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      2
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231173866,
+   "mechanic": null
+  },
+  {
+   "id": "daily_111",
+   "world": 0,
+   "index": 111,
+   "name": "Azure Lagoon",
+   "grid": [
+    "~~#~~~#",
+    "~..#...",
+    ".###S#T",
+    "...#...",
+    "..#...#",
+    "S..w.#.",
+    "o.#....",
+    "#......",
+    "TT....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231173967,
+   "mechanic": null
+  },
+  {
+   "id": "daily_112",
+   "world": 0,
+   "index": 112,
+   "name": "Bright Breeze",
+   "grid": [
+    "~#~~##~",
+    "To....~",
+    ".o....~",
+    "#..#...",
+    "##.<...",
+    "..OS...",
+    "..#<.SS",
+    "T.S..C.",
+    ".CO....",
+    ".Tw...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231174068,
+   "mechanic": null
+  },
+  {
+   "id": "daily_113",
+   "world": 0,
+   "index": 113,
+   "name": "Obsidian Hollow",
+   "grid": [
+    "~~~#~~#",
+    ".w.#Tw.",
+    "wS.....",
+    ".T##...",
+    "..C...T",
+    "......S",
+    "......w",
+    "....S#.",
+    "#w....C",
+    ".Cww..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231174169,
+   "mechanic": null
+  },
+  {
+   "id": "daily_114",
+   "world": 0,
+   "index": 114,
+   "name": "Turquoise Ridge",
+   "grid": [
+    "~~#~~~#",
+    "#T..T.#",
+    "#......",
+    "...C...",
+    "w.#w...",
+    ".TCw#w.",
+    "#..#T..",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231174270,
+   "mechanic": null
+  },
+  {
+   "id": "daily_115",
+   "world": 0,
+   "index": 115,
+   "name": "Noon Terrace",
+   "grid": [
+    "~#~#~#~",
+    "T^.....",
+    "#.....#",
+    "1..T..2",
+    ".S.#C..",
+    ".C...>.",
+    ".1...S.",
+    ".#.....",
+    "e.#.2.T"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      3
+     ],
+     "b": [
+      1,
+      6
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      6,
+      3
+     ],
+     "b": [
+      4,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231174371,
+   "mechanic": null
+  },
+  {
+   "id": "daily_116",
+   "world": 0,
+   "index": 116,
+   "name": "Quiet Glow",
+   "grid": [
+    "~#~~~#",
+    "Ow..o~",
+    "Te...~",
+    "C.....",
+    "...C.c",
+    "v.T...",
+    "Cv.^..",
+    "T..#.C",
+    "..eS..",
+    "..T..S"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       4
+      ],
+      [
+       5,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      8
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      1,
+      2
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231174472,
+   "mechanic": null
+  },
+  {
+   "id": "daily_117",
+   "world": 0,
+   "index": 117,
+   "name": "Sparkle Garden",
+   "grid": [
+    "~~~~~~",
+    "~#.w..",
+    "w#....",
+    ".....c",
+    "#.e.C.",
+    "...T..",
+    "..T...",
+    "T.....",
+    "..#C.C"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       3
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231174573,
+   "mechanic": null
+  },
+  {
+   "id": "daily_118",
+   "world": 0,
+   "index": 118,
+   "name": "Tawny Corner",
+   "grid": [
+    "~~~~~~#",
+    ".#...T.",
+    "^...#..",
+    "#..o..T",
+    "..TC..#",
+    "w.^..ST",
+    "O....C.",
+    ".^.C#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231174674,
+   "mechanic": null
+  },
+  {
+   "id": "daily_119",
+   "world": 0,
+   "index": 119,
+   "name": "Lantern Hollow",
+   "grid": [
+    "~#~~~~~~",
+    "C#.#.S..",
+    "S.w...S#",
+    ".S...S..",
+    "....T.TC",
+    "#.......",
+    "wT......",
+    "..C#.#w.",
+    ".#...w.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231174775,
+   "mechanic": null
+  },
+  {
+   "id": "daily_120",
+   "world": 0,
+   "index": 120,
+   "name": "Shimmer Bank",
+   "grid": [
+    "~#~~~#~",
+    "..w#.SS",
+    "w......",
+    "...w...",
+    "#.T....",
+    ".T..w..",
+    "...#wS.",
+    "w..S...",
+    "#......",
+    "#C.#.#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231174876,
+   "mechanic": null
+  },
+  {
+   "id": "daily_121",
+   "world": 0,
+   "index": 121,
+   "name": "Clatter Maze",
+   "grid": [
+    "~#~#~~#",
+    "#2.#Cw#",
+    "..1....",
+    "#..e..1",
+    "#w.wT..",
+    "..w.2..",
+    "#T.....",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      3
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      6,
+      3
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      4,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231174977,
+   "mechanic": null
+  },
+  {
+   "id": "daily_122",
+   "world": 0,
+   "index": 122,
+   "name": "Noon Arch",
+   "grid": [
+    "##~~~##",
+    "...e...",
+    "....T..",
+    "..#....",
+    "T.S.eS.",
+    ".#O#.#.",
+    "...#..#",
+    "..#vS.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      1
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      4,
+      4
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231175078,
+   "mechanic": null
+  },
+  {
+   "id": "daily_123",
+   "world": 0,
+   "index": 123,
+   "name": "Tawny Shuffle",
+   "grid": [
+    "~~#~~#~#",
+    ".w....S.",
+    "..T.#O..",
+    ".o......",
+    "....#..#",
+    ".cC..CwT",
+    "C#T.....",
+    "T....#..",
+    "#......."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       5
+      ],
+      [
+       0,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231175179,
+   "mechanic": null
+  },
+  {
+   "id": "daily_124",
+   "world": 0,
+   "index": 124,
+   "name": "Obsidian Terrace",
+   "grid": [
+    "###~~~~",
+    "S...T<<",
+    ".......",
+    "..T....",
+    ".<.....",
+    "..T....",
+    "S#..oC.",
+    "...O...",
+    "......S",
+    "#T.#..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231175280,
+   "mechanic": null
+  },
+  {
+   "id": "daily_125",
+   "world": 0,
+   "index": 125,
+   "name": "Twilight Current",
+   "grid": [
+    "#~#~~~#",
+    "~TwC...",
+    "S.S...C",
+    ".w.....",
+    ".#..#.#",
+    "wS.#.C.",
+    "..#T.C.",
+    ".......",
+    "..T#..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231175381,
+   "mechanic": null
+  },
+  {
+   "id": "daily_126",
+   "world": 0,
+   "index": 126,
+   "name": "Sideways Burrow",
+   "grid": [
+    "~###~#",
+    "C.....",
+    "....wC",
+    "SS....",
+    "..w..#",
+    "C.C..C",
+    "CT....",
+    "T.#..T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231175482,
+   "mechanic": null
+  },
+  {
+   "id": "daily_127",
+   "world": 0,
+   "index": 127,
+   "name": "Seafoam Cove",
+   "grid": [
+    "~#~~~#",
+    "T.T.T#",
+    "......",
+    "S1..e2",
+    ".w2C..",
+    "#.v.#.",
+    "...>..",
+    "......",
+    "C1.#.#"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      3
+     ],
+     "b": [
+      1,
+      8
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      5,
+      3
+     ],
+     "b": [
+      2,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231175583,
+   "mechanic": null
+  },
+  {
+   "id": "daily_128",
+   "world": 0,
+   "index": 128,
+   "name": "Scuttle Alley",
+   "grid": [
+    "~##~##",
+    "e...C.",
+    ".TTw..",
+    "e.S...",
+    ".C#..#",
+    "T.#..S",
+    "....w.",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      3
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      0,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231175684,
+   "mechanic": null
+  },
+  {
+   "id": "daily_129",
+   "world": 0,
+   "index": 129,
+   "name": "Hazy Shallows",
+   "grid": [
+    "#~~~~~~~",
+    "......S~",
+    "...w.T..",
+    "......w<",
+    "....CS..",
+    "#...S##.",
+    "##..#T..",
+    "......#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231175785,
+   "mechanic": null
+  },
+  {
+   "id": "daily_130",
+   "world": 0,
+   "index": 130,
+   "name": "Azure Cove",
+   "grid": [
+    "~#~~##~",
+    "O...#.C",
+    "...#w.C",
+    ".......",
+    ".....#.",
+    "O.S..C.",
+    ".oT>#v.",
+    ".#^.T..",
+    "C.T...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231175886,
+   "mechanic": null
+  },
+  {
+   "id": "daily_131",
+   "world": 0,
+   "index": 131,
+   "name": "Russet Alley",
+   "grid": [
+    "##~~~~",
+    "#...T~",
+    ".....~",
+    "..Sw..",
+    "S..Tw.",
+    "w..#..",
+    ".#wS..",
+    "....S.",
+    "ww..TS",
+    ".S#..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231175987,
+   "mechanic": null
+  },
+  {
+   "id": "daily_132",
+   "world": 0,
+   "index": 132,
+   "name": "Peach Drift",
+   "grid": [
+    "##~~~#",
+    "..##.C",
+    "...CwC",
+    "w.S...",
+    ".w....",
+    ".....S",
+    ".....#",
+    "T.....",
+    "ww....",
+    "www..T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231176088,
+   "mechanic": null
+  },
+  {
+   "id": "daily_133",
+   "world": 0,
+   "index": 133,
+   "name": "Cinder Crater",
+   "grid": [
+    "~~~#~###",
+    ".O.21.T.",
+    ".S##w...",
+    "wT2.ew..",
+    "......C.",
+    ".1....#.",
+    "TO....#C",
+    "..T...C."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 6
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      1,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      1
+     ],
+     "b": [
+      2,
+      3
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       7,
+       2
+      ],
+      [
+       7,
+       3
+      ],
+      [
+       6,
+       3
+      ],
+      [
+       6,
+       2
+      ],
+      [
+       6,
+       1
+      ],
+      [
+       7,
+       1
+      ]
+     ]
+    }
+   ],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231176189,
+   "mechanic": null
+  },
+  {
+   "id": "daily_134",
+   "world": 0,
+   "index": 134,
+   "name": "Reef Garden",
+   "grid": [
+    "~#~#~~",
+    "..TS..",
+    ".....T",
+    ".#.o#e",
+    ".....^",
+    "w..#..",
+    "...T.C",
+    "#..#O.",
+    "..wv.e"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      3
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      5,
+      8
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231176290,
+   "mechanic": null
+  },
+  {
+   "id": "daily_135",
+   "world": 0,
+   "index": 135,
+   "name": "Basalt Shelf",
+   "grid": [
+    "~~~~~~~#",
+    "C.#SC..^",
+    ".^.TT.##",
+    "........",
+    "..C...C.",
+    "O.......",
+    ".S......",
+    "#.v...T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231176391,
+   "mechanic": null
+  },
+  {
+   "id": "daily_136",
+   "world": 0,
+   "index": 136,
+   "name": "Glowing Run",
+   "grid": [
+    "~~#~~#~~",
+    ".T.S....",
+    "...#.T.v",
+    ".....^.S",
+    "#.....o.",
+    ".S#.v.##",
+    "........",
+    "C....T..",
+    "....Tw.<",
+    ".w#.wC>."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231176492,
+   "mechanic": null
+  },
+  {
+   "id": "daily_137",
+   "world": 0,
+   "index": 137,
+   "name": "Briny Shuffle",
+   "grid": [
+    "~##~~~#",
+    "...w..#",
+    "C......",
+    "w...w#.",
+    "C.C..T.",
+    "....#..",
+    "C.#..#.",
+    "TS.C..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231176593,
+   "mechanic": null
+  },
+  {
+   "id": "daily_138",
+   "world": 0,
+   "index": 138,
+   "name": "Seafoam Lagoon",
+   "grid": [
+    "~#~~#~##",
+    "~S..ww..",
+    "S...C.ww",
+    "..w.....",
+    "T..CT...",
+    "......TS",
+    "S.CS..w.",
+    ".w.T..#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231176694,
+   "mechanic": null
+  },
+  {
+   "id": "daily_139",
+   "world": 0,
+   "index": 139,
+   "name": "Reef Spiral",
+   "grid": [
+    "#~~#~##",
+    "#..#e#.",
+    "...1...",
+    ".1.#..O",
+    "...#.#.",
+    "..OST..",
+    "T..#...",
+    "....S.#",
+    "....^#T",
+    "...S..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      1,
+      3
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231176795,
+   "mechanic": null
+  },
+  {
+   "id": "daily_140",
+   "world": 0,
+   "index": 140,
+   "name": "Seafoam Puddles",
+   "grid": [
+    "~~~###~#",
+    "..>#....",
+    "##C....S",
+    "....w...",
+    ".#.C>...",
+    "#.C#...#",
+    ".#e.T...",
+    ".S......",
+    ".......O",
+    "..v.T..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      6
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231176896,
+   "mechanic": null
+  },
+  {
+   "id": "daily_141",
+   "world": 0,
+   "index": 141,
+   "name": "Turquoise Puddles",
+   "grid": [
+    "~#~~##",
+    "....S.",
+    "....Tv",
+    ".C..#.",
+    "c.....",
+    ".T..#c",
+    ".S.eSw",
+    "#....#"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       5
+      ],
+      [
+       5,
+       4
+      ],
+      [
+       5,
+       3
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231176997,
+   "mechanic": null
+  },
+  {
+   "id": "daily_142",
+   "world": 0,
+   "index": 142,
+   "name": "Basalt Ridge",
+   "grid": [
+    "#~~#~~",
+    "..<o..",
+    ".C#...",
+    ".To>..",
+    "#.Tv..",
+    "....<.",
+    "#T..O.",
+    "O.#.#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231177098,
+   "mechanic": null
+  },
+  {
+   "id": "daily_143",
+   "world": 0,
+   "index": 143,
+   "name": "Dawn Footprints",
+   "grid": [
+    "~#~~###",
+    "...C...",
+    ".S..#.#",
+    "...#.TC",
+    "..#...#",
+    "...S..C",
+    "....wT#",
+    "C..w..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231177199,
+   "mechanic": null
+  },
+  {
+   "id": "daily_144",
+   "world": 0,
+   "index": 144,
+   "name": "Pincer Market",
+   "grid": [
+    "#~###~",
+    "~wC.#.",
+    "#.....",
+    "#.....",
+    "..w..C",
+    "....TS",
+    "S#....",
+    "....TC",
+    "C.....",
+    "..CT#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231177300,
+   "mechanic": null
+  },
+  {
+   "id": "daily_145",
+   "world": 0,
+   "index": 145,
+   "name": "Dawn Trail",
+   "grid": [
+    "####~~##",
+    "~^##....",
+    "~.2.....",
+    "T..>..T>",
+    "S.S.1..#",
+    ".......C",
+    ".T...1.C",
+    "2...S##.",
+    ".T..Ce.#"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      8
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      4
+     ],
+     "b": [
+      5,
+      6
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      0,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231177401,
+   "mechanic": null
+  },
+  {
+   "id": "daily_146",
+   "world": 0,
+   "index": 146,
+   "name": "Tawny Shelf",
+   "grid": [
+    "~~~~~~##",
+    "#...#S..",
+    ".w.T.#T.",
+    ".c...e..",
+    "e.....oT",
+    "O...#..C",
+    ".##.S...",
+    "......S.",
+    ".vS.S..."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      4
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      5,
+      3
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231177502,
+   "mechanic": null
+  },
+  {
+   "id": "daily_147",
+   "world": 0,
+   "index": 147,
+   "name": "Midnight Swirl",
+   "grid": [
+    "~~#~~~",
+    "~T....",
+    "~#.C.S",
+    "<#..S.",
+    "...O..",
+    "#CeT..",
+    "..c...",
+    "T#eo.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      7
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      2,
+      5
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231177603,
+   "mechanic": null
+  },
+  {
+   "id": "daily_148",
+   "world": 0,
+   "index": 148,
+   "name": "Warm Dunes",
+   "grid": [
+    "~###~~~#",
+    "...T...T",
+    "...>S...",
+    "...o..O#",
+    "SO.>....",
+    "#.^OTT#.",
+    "........",
+    "...S...<"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231177704,
+   "mechanic": null
+  },
+  {
+   "id": "daily_149",
+   "world": 0,
+   "index": 149,
+   "name": "Hazy Drift",
+   "grid": [
+    "~~~#~~~~",
+    ".##..S..",
+    ".....TC.",
+    "..C...S.",
+    "..w.....",
+    "S...w...",
+    "C......C",
+    "....#..w",
+    "Tw..C...",
+    "..S#...w"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231177805,
+   "mechanic": null
+  },
+  {
+   "id": "daily_150",
+   "world": 0,
+   "index": 150,
+   "name": "Dusk Cliffs",
+   "grid": [
+    "#~##~~~#",
+    "....C..~",
+    "...#www~",
+    "....w.TC",
+    "T..w.C..",
+    ".....S.#",
+    "w....T..",
+    "C.#...C#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231177906,
+   "mechanic": null
+  },
+  {
+   "id": "daily_151",
+   "world": 0,
+   "index": 151,
+   "name": "Rockpool Maze",
+   "grid": [
+    "~~~##~",
+    "....CT",
+    ".....1",
+    "..v.e.",
+    "...#T.",
+    ".....#",
+    "...#1T",
+    "v.Cw.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      5,
+      2
+     ],
+     "b": [
+      4,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231178007,
+   "mechanic": null
+  },
+  {
+   "id": "daily_152",
+   "world": 0,
+   "index": 152,
+   "name": "Obsidian Run",
+   "grid": [
+    "~#~~~##",
+    "~..w#..",
+    "~....T.",
+    "......#",
+    "#......",
+    ".Te#T..",
+    "C.C....",
+    "S#v...S",
+    "....e#.",
+    "#w#T#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      8
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      2,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231178108,
+   "mechanic": null
+  },
+  {
+   "id": "daily_153",
+   "world": 0,
+   "index": 153,
+   "name": "Misty Tide",
+   "grid": [
+    "###~~##",
+    "..TS..~",
+    ".S..#.~",
+    "...>#.w",
+    ".....TT",
+    "#......",
+    ".e..T.o",
+    ".....e."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      6
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      5,
+      7
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231178209,
+   "mechanic": null
+  },
+  {
+   "id": "daily_154",
+   "world": 0,
+   "index": 154,
+   "name": "Amber Footprints",
+   "grid": [
+    "~~#~~##",
+    "~T.^...",
+    "O......",
+    "^C.#...",
+    "v...#.O",
+    ".o...T.",
+    "..S...>",
+    ".#.O>#.",
+    "<S...T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231178310,
+   "mechanic": null
+  },
+  {
+   "id": "daily_155",
+   "world": 0,
+   "index": 155,
+   "name": "Honey Sands",
+   "grid": [
+    "~##~#~",
+    ".....w",
+    ".w.#.#",
+    "#.T..T",
+    "w##..S",
+    "..w..#",
+    "...#.w",
+    "w.....",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231178411,
+   "mechanic": null
+  },
+  {
+   "id": "daily_156",
+   "world": 0,
+   "index": 156,
+   "name": "Bright Ripple",
+   "grid": [
+    "###~##~~",
+    "~.wS.C..",
+    ".C.T#ww.",
+    "C..C....",
+    ".C.S...w",
+    "..C...w.",
+    ".....T.w",
+    "..wS..#.",
+    ".....C.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231178512,
+   "mechanic": null
+  },
+  {
+   "id": "daily_157",
+   "world": 0,
+   "index": 157,
+   "name": "Twilight Beacon",
+   "grid": [
+    "~~#~~~~~",
+    "~..S...1",
+    "#.C.T...",
+    ".....#..",
+    ".#...w..",
+    "T.......",
+    "....#C1.",
+    "T..C....",
+    "T#...CSO"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      7,
+      1
+     ],
+     "b": [
+      6,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       5,
+       3
+      ],
+      [
+       6,
+       3
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       6,
+       5
+      ],
+      [
+       5,
+       5
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       4
+      ],
+      [
+       4,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231178613,
+   "mechanic": null
+  },
+  {
+   "id": "daily_158",
+   "world": 0,
+   "index": 158,
+   "name": "Gentle Breeze",
+   "grid": [
+    "~###~#",
+    "..T.#.",
+    "#.....",
+    "ww..w.",
+    "...>CC",
+    "S...S.",
+    ".....v",
+    "...T.#",
+    "...c.w",
+    "C....."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       8
+      ],
+      [
+       4,
+       8
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231178714,
+   "mechanic": null
+  },
+  {
+   "id": "daily_159",
+   "world": 0,
+   "index": 159,
+   "name": "Clatter Patrol",
+   "grid": [
+    "#~~~~~#~",
+    "S^.C...~",
+    ".wT....~",
+    ".e....c.",
+    ".....S..",
+    "#..CS...",
+    ".wS.....",
+    ".#.#.#wC",
+    "...OT.c."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       6,
+       8
+      ],
+      [
+       6,
+       7
+      ],
+      [
+       6,
+       6
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       6,
+       3
+      ],
+      [
+       6,
+       2
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      3
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231178815,
+   "mechanic": null
+  },
+  {
+   "id": "daily_160",
+   "world": 0,
+   "index": 160,
+   "name": "Twilight Swirl",
+   "grid": [
+    "###~~~~~",
+    "...O.#..",
+    "..#.v##w",
+    ".o.##.o.",
+    "..<.....",
+    "...ST.#O",
+    ".O..#w..",
+    "...T..TC",
+    "...^.T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231178916,
+   "mechanic": null
+  },
+  {
+   "id": "daily_161",
+   "world": 0,
+   "index": 161,
+   "name": "Turquoise Boardwalk",
+   "grid": [
+    "##~~~##",
+    "..##C..",
+    "..wC.S.",
+    ".....w#",
+    "....C..",
+    ".......",
+    "..T..S.",
+    "..T..#.",
+    "..C..T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231179017,
+   "mechanic": null
+  },
+  {
+   "id": "daily_162",
+   "world": 0,
+   "index": 162,
+   "name": "Copper Shuffle",
+   "grid": [
+    "#~~~#~~~",
+    "...w##C.",
+    "C.S...##",
+    "...T....",
+    "..C..#.w",
+    "....##..",
+    "....S#.w",
+    "..T.w...",
+    "#C....w.",
+    "...#...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231179118,
+   "mechanic": null
+  },
+  {
+   "id": "daily_163",
+   "world": 0,
+   "index": 163,
+   "name": "Fiery Vents",
+   "grid": [
+    "~~~~#~",
+    "~1..Tw",
+    "S..w..",
+    "C#^#..",
+    "T.2..T",
+    "..S..1",
+    "C.....",
+    "2.CT..",
+    "e#...."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      8
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      5,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      4
+     ],
+     "b": [
+      0,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231179219,
+   "mechanic": null
+  },
+  {
+   "id": "daily_164",
+   "world": 0,
+   "index": 164,
+   "name": "Peach Footprints",
+   "grid": [
+    "~~###~~",
+    "......S",
+    ".>.....",
+    "#.##.To",
+    "#..c...",
+    "T....S.",
+    "..w.#S.",
+    "#e.#...",
+    ".#...#."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      7
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231179320,
+   "mechanic": null
+  },
+  {
+   "id": "daily_165",
+   "world": 0,
+   "index": 165,
+   "name": "Crystal Spiral",
+   "grid": [
+    "~#~##~##",
+    "~.....#.",
+    "~w.C....",
+    "CT....##",
+    "........",
+    "..#TO...",
+    "..#v..#.",
+    ".#.c..Se",
+    "S.C..S.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       7
+      ],
+      [
+       3,
+       8
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      7,
+      7
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231179421,
+   "mechanic": null
+  },
+  {
+   "id": "daily_166",
+   "world": 0,
+   "index": 166,
+   "name": "Scuttle Corner",
+   "grid": [
+    "##~#~~#",
+    ".So....",
+    ".......",
+    ".#.....",
+    "#....#.",
+    "OS#T#>.",
+    "......#",
+    "C.T..S#",
+    "^.##..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231179522,
+   "mechanic": null
+  },
+  {
+   "id": "daily_167",
+   "world": 0,
+   "index": 167,
+   "name": "Firefly Hollow",
+   "grid": [
+    "##~#~~",
+    "#S...T",
+    "S...#w",
+    "...S#.",
+    "....w.",
+    "S....S",
+    "..#.ST",
+    "..#...",
+    "....w.",
+    ".C...#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231179623,
+   "mechanic": null
+  },
+  {
+   "id": "daily_168",
+   "world": 0,
+   "index": 168,
+   "name": "Lagoon Splash",
+   "grid": [
+    "~####~#~",
+    "S...T#..",
+    "w.......",
+    "#.....S.",
+    "#Tw.T.#.",
+    ".......#",
+    "...S.w..",
+    "C.#...C.",
+    "w.w#..Sw"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231179724,
+   "mechanic": null
+  },
+  {
+   "id": "daily_169",
+   "world": 0,
+   "index": 169,
+   "name": "Snappy Patrol",
+   "grid": [
+    "#~~#~##",
+    ".#....~",
+    ".1..S.C",
+    ".#.....",
+    "TTw...#",
+    "..1....",
+    "...S..#",
+    "#..S..#",
+    "..#...C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      2,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231179825,
+   "mechanic": null
+  },
+  {
+   "id": "daily_170",
+   "world": 0,
+   "index": 170,
+   "name": "Glowing Flats",
+   "grid": [
+    "~#~###~~",
+    "~SC^..#.",
+    "~..TC...",
+    "..e..wCS",
+    "..T...#.",
+    "...w..T.",
+    "#w..C...",
+    "..#.....",
+    "...C..v."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231179926,
+   "mechanic": null
+  },
+  {
+   "id": "daily_171",
+   "world": 0,
+   "index": 171,
+   "name": "Sideways Alley",
+   "grid": [
+    "~~~~~#~~",
+    "##...S..",
+    "...C#...",
+    "....T...",
+    "w.C..w.#",
+    "...#.T..",
+    ".e^.#.w.",
+    "O.ST..v.",
+    ".....e..",
+    "....>..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      8
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      1,
+      6
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231180027,
+   "mechanic": null
+  },
+  {
+   "id": "daily_172",
+   "world": 0,
+   "index": 172,
+   "name": "Gentle Drift",
+   "grid": [
+    "##~#~~~~",
+    ".....#..",
+    "##.#.oC.",
+    "..#.Oo.<",
+    "..C....T",
+    "v.....C.",
+    ".#.#....",
+    ".......O",
+    "....T#C."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231180128,
+   "mechanic": null
+  },
+  {
+   "id": "daily_173",
+   "world": 0,
+   "index": 173,
+   "name": "Charcoal Terrace",
+   "grid": [
+    "~~#~~~",
+    "w.wwS.",
+    ".T....",
+    "#...S.",
+    "......",
+    "#wCw.#",
+    "w..C..",
+    "Tw....",
+    "....w#",
+    "...TT."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231180229,
+   "mechanic": null
+  },
+  {
+   "id": "daily_174",
+   "world": 0,
+   "index": 174,
+   "name": "Fiery Rim",
+   "grid": [
+    "~~~~~~#",
+    ".......",
+    ".Cw.w..",
+    "w..wS..",
+    ".....S.",
+    ".T#.C.#",
+    "#...#ww",
+    ".T..T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231180330,
+   "mechanic": null
+  },
+  {
+   "id": "daily_175",
+   "world": 0,
+   "index": 175,
+   "name": "Honey Crossing",
+   "grid": [
+    "##~~#~#",
+    "~.>....",
+    ".....S.",
+    "..##.#.",
+    ".#.1.C.",
+    "..#T.OT",
+    ".#..T..",
+    ".#1...e"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      6,
+      7
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      4
+     ],
+     "b": [
+      2,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       5,
+       7
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       5,
+       6
+      ]
+     ]
+    }
+   ],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231180431,
+   "mechanic": null
+  },
+  {
+   "id": "daily_176",
+   "world": 0,
+   "index": 176,
+   "name": "Misty Wave",
+   "grid": [
+    "~~~##~~~",
+    "..T....~",
+    ".S.#...~",
+    "..#..w..",
+    "....#.S.",
+    ".T..T...",
+    "..#....#",
+    "C#.#.T#.",
+    "........"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231180532,
+   "mechanic": null
+  },
+  {
+   "id": "daily_177",
+   "world": 0,
+   "index": 177,
+   "name": "Cinder Terrace",
+   "grid": [
+    "###~~#~#",
+    "w#..T..~",
+    ".#.eOw.~",
+    "........",
+    "#w#.....",
+    "..#.....",
+    "..o>...T",
+    ".#.c###."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       7
+      ],
+      [
+       2,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231180633,
+   "mechanic": null
+  },
+  {
+   "id": "daily_178",
+   "world": 0,
+   "index": 178,
+   "name": "Gentle Shore",
+   "grid": [
+    "#~~~~#",
+    "......",
+    "..#^.#",
+    "...T.v",
+    "T..<o>",
+    ".CC#^.",
+    "..Sv..",
+    "...O..",
+    ".S....",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231180734,
+   "mechanic": null
+  },
+  {
+   "id": "daily_179",
+   "world": 0,
+   "index": 179,
+   "name": "Noon Puddles",
+   "grid": [
+    "#~~##~#",
+    "~..#.#.",
+    ".C....#",
+    "..##...",
+    "wCw...#",
+    "wC.....",
+    "....C..",
+    "...T.Sw",
+    "..S.T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231180835,
+   "mechanic": null
+  },
+  {
+   "id": "daily_180",
+   "world": 0,
+   "index": 180,
+   "name": "Hazy Ripple",
+   "grid": [
+    "~#~~#~~",
+    "...S..~",
+    ".....C.",
+    "......w",
+    "T......",
+    "#w..CC.",
+    "...www.",
+    ".#.#.#.",
+    "T.C..TC",
+    "..CCT.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231180936,
+   "mechanic": null
+  },
+  {
+   "id": "daily_181",
+   "world": 0,
+   "index": 181,
+   "name": "Amber Corner",
+   "grid": [
+    "###~#~~~",
+    ".......1",
+    ".#S.....",
+    "#T2..#..",
+    ".Tw1...#",
+    ".....##.",
+    "C....w..",
+    "C.#..#2."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      7,
+      1
+     ],
+     "b": [
+      3,
+      4
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      3
+     ],
+     "b": [
+      6,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231181037,
+   "mechanic": null
+  },
+  {
+   "id": "daily_182",
+   "world": 0,
+   "index": 182,
+   "name": "Warm Nest",
+   "grid": [
+    "~~#~#~~",
+    "#..o..c",
+    "#..S...",
+    "...<...",
+    ".#....c",
+    "T.ST#..",
+    "eO....T",
+    ".e.>..S",
+    "....w.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       6,
+       4
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       6,
+       1
+      ],
+      [
+       5,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      6
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      1,
+      7
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231181138,
+   "mechanic": null
+  },
+  {
+   "id": "daily_183",
+   "world": 0,
+   "index": 183,
+   "name": "Velvet Eddy",
+   "grid": [
+    "~~~#~#~#",
+    ".eo.....",
+    "#.....T.",
+    "........",
+    "......#.",
+    "Ow....#.",
+    ".O.#....",
+    ".##.#OT#",
+    "w#.SC...",
+    "#...#..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231181239,
+   "mechanic": null
+  },
+  {
+   "id": "daily_184",
+   "world": 0,
+   "index": 184,
+   "name": "Rumbling Flats",
+   "grid": [
+    "~~###~",
+    "..#T..",
+    "..<..#",
+    ".....C",
+    "SoTCT.",
+    "#ST#..",
+    "..oS..",
+    ".#...O"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231181340,
+   "mechanic": null
+  },
+  {
+   "id": "daily_185",
+   "world": 0,
+   "index": 185,
+   "name": "Scarlet Terrace",
+   "grid": [
+    "~###~#",
+    "..#w..",
+    "C.....",
+    "w....T",
+    ".w..CT",
+    "C#..#.",
+    "#C..S.",
+    "..C...",
+    "....#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231181441,
+   "mechanic": null
+  },
+  {
+   "id": "daily_186",
+   "world": 0,
+   "index": 186,
+   "name": "Morning Dunes",
+   "grid": [
+    "~~#~~##",
+    "#C.#...",
+    ".......",
+    "S..#S.#",
+    "Tww...C",
+    "S....C.",
+    ".......",
+    "......T",
+    "..w#.wC"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231181542,
+   "mechanic": null
+  },
+  {
+   "id": "daily_187",
+   "world": 0,
+   "index": 187,
+   "name": "Honey Shallows",
+   "grid": [
+    "~#~#~##",
+    "......~",
+    "wC#S..w",
+    "...2...",
+    "#...1.w",
+    "eT.w..S",
+    "T..T..#",
+    "#12w...",
+    "..w....",
+    ".#^...."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      4
+     ],
+     "b": [
+      1,
+      7
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      3
+     ],
+     "b": [
+      2,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       0,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231181643,
+   "mechanic": null
+  },
+  {
+   "id": "daily_188",
+   "world": 0,
+   "index": 188,
+   "name": "Silver Swirl",
+   "grid": [
+    "~~~~~~",
+    ".S<..~",
+    "#....T",
+    "..#.S.",
+    "#.....",
+    "ec...e",
+    "...#<.",
+    "#..S..",
+    ".CT.O#",
+    "c..wT."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       5
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       7
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       0,
+       9
+      ],
+      [
+       1,
+       9
+      ],
+      [
+       2,
+       9
+      ],
+      [
+       3,
+       9
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      5
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      0,
+      5
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231181744,
+   "mechanic": null
+  },
+  {
+   "id": "daily_189",
+   "world": 0,
+   "index": 189,
+   "name": "Sparkle Flats",
+   "grid": [
+    "~~###~~",
+    "..#.o..",
+    "wTSv..#",
+    "##.e...",
+    "..w.T.T",
+    "....w..",
+    "..#.C..",
+    "w....#.",
+    ".....#T"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      3
+     ],
+     "timer": 6
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231181845,
+   "mechanic": null
+  },
+  {
+   "id": "daily_190",
+   "world": 0,
+   "index": 190,
+   "name": "Ruby Shelf",
+   "grid": [
+    "#~~#~~",
+    "..S...",
+    "^O....",
+    ".....o",
+    "..T...",
+    "#.w.#.",
+    ".O<...",
+    "#T.SS.",
+    "......",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231181946,
+   "mechanic": null
+  },
+  {
+   "id": "daily_191",
+   "world": 0,
+   "index": 191,
+   "name": "Twilight Hollow",
+   "grid": [
+    "~~##~~~",
+    "#...w..",
+    "...w..S",
+    "..TSw..",
+    "..w...#",
+    "..#....",
+    "..#ww..",
+    "w..T..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231182047,
+   "mechanic": null
+  },
+  {
+   "id": "daily_192",
+   "world": 0,
+   "index": 192,
+   "name": "Honey Path",
+   "grid": [
+    "~~~~#~",
+    "#.#..w",
+    "..T...",
+    ".w...S",
+    "..T...",
+    "....S.",
+    ".w..SS",
+    "w....S",
+    "..C.S."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231182148,
+   "mechanic": null
+  },
+  {
+   "id": "daily_193",
+   "world": 0,
+   "index": 193,
+   "name": "Basalt Hollow",
+   "grid": [
+    "~~~#~~",
+    "^#T...",
+    "...1..",
+    "...#2T",
+    "...e#.",
+    ".##.T#",
+    "vS..12",
+    ".TC..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      4,
+      6
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      4,
+      3
+     ],
+     "b": [
+      5,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231182249,
+   "mechanic": null
+  },
+  {
+   "id": "daily_194",
+   "world": 0,
+   "index": 194,
+   "name": "Crystal Shelf",
+   "grid": [
+    "#~~~~##",
+    "S.....T",
+    ".#O....",
+    "O.T#...",
+    "....#..",
+    "o..>.w>",
+    "....S#.",
+    "S......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231182350,
+   "mechanic": null
+  },
+  {
+   "id": "daily_195",
+   "world": 0,
+   "index": 195,
+   "name": "Tawny Dance",
+   "grid": [
+    "#~~~~~~",
+    "~#S.#..",
+    "~..w.#.",
+    "^.#....",
+    "..#....",
+    ".....SS",
+    ".#...e.",
+    "#.O..w.",
+    ".....OT",
+    ".....<T"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231182451,
+   "mechanic": null
+  },
+  {
+   "id": "daily_196",
+   "world": 0,
+   "index": 196,
+   "name": "Charcoal Pools",
+   "grid": [
+    "##~~##",
+    "..#C..",
+    "S.....",
+    "#...oT",
+    "...T.#",
+    "##CS..",
+    "..#...",
+    "wC.O..",
+    "o#..S.",
+    "...T.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231182553,
+   "mechanic": null
+  },
+  {
+   "id": "daily_197",
+   "world": 0,
+   "index": 197,
+   "name": "Dream Hollow",
+   "grid": [
+    "~~~##~",
+    "#....#",
+    "S.....",
+    ".....S",
+    "#T.T..",
+    "...##.",
+    ".wC..C",
+    "...C..",
+    "S..#.C",
+    "..C.T#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231182653,
+   "mechanic": null
+  },
+  {
+   "id": "daily_198",
+   "world": 0,
+   "index": 198,
+   "name": "Rumbling Vents",
+   "grid": [
+    "#~#~~~~~",
+    "~..#T...",
+    "~w...C..",
+    "...ww#w.",
+    "T.C...#.",
+    "T#.C#...",
+    "....ST.C",
+    "...w.S..",
+    "..#w...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231182754,
+   "mechanic": null
+  },
+  {
+   "id": "daily_199",
+   "world": 0,
+   "index": 199,
+   "name": "Hush Glade",
+   "grid": [
+    "~#~~~##",
+    "......~",
+    "1...>..",
+    "#....e.",
+    ".wcC...",
+    "^..SS^.",
+    ".<...1T",
+    "....wTC"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       2
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      2
+     ],
+     "b": [
+      5,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       5,
+       3
+      ],
+      [
+       6,
+       3
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231182855,
+   "mechanic": null
+  },
+  {
+   "id": "daily_200",
+   "world": 0,
+   "index": 200,
+   "name": "Rosy Breeze",
+   "grid": [
+    "##~~~~~",
+    "..#T.>.",
+    "..o....",
+    ".#....^",
+    "#..#w..",
+    "T.C...#",
+    ".TO...w",
+    "#......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231182956,
+   "mechanic": null
+  },
+  {
+   "id": "daily_201",
+   "world": 0,
+   "index": 201,
+   "name": "Rosy Ripple",
+   "grid": [
+    "~~~##~",
+    "#.#.C~",
+    ".S..w.",
+    "#T.S..",
+    "..T...",
+    ".oO.w.",
+    "......",
+    "<.TS..",
+    "...S.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231183057,
+   "mechanic": null
+  },
+  {
+   "id": "daily_202",
+   "world": 0,
+   "index": 202,
+   "name": "Salty Ridge",
+   "grid": [
+    "~~~~####",
+    "~S...o.T",
+    ".O##.v.>",
+    "##S..T..",
+    "T..w....",
+    "....C.#^",
+    ".CC.....",
+    "##...^.<",
+    "........",
+    "O......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231183158,
+   "mechanic": null
+  },
+  {
+   "id": "daily_203",
+   "world": 0,
+   "index": 203,
+   "name": "Sooty Vents",
+   "grid": [
+    "~#~~~~",
+    ".....#",
+    "C..#w.",
+    "S.#...",
+    "....C.",
+    "wS....",
+    "wT...S",
+    "T.TTw."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231183259,
+   "mechanic": null
+  },
+  {
+   "id": "daily_204",
+   "world": 0,
+   "index": 204,
+   "name": "Salty Fan",
+   "grid": [
+    "~~~~#~~",
+    ".w...#C",
+    ".......",
+    ".......",
+    "S..#.w.",
+    "...TC..",
+    ".......",
+    ".....##",
+    ".......",
+    ".ST##.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231183360,
+   "mechanic": null
+  },
+  {
+   "id": "daily_205",
+   "world": 0,
+   "index": 205,
+   "name": "Obsidian Pools",
+   "grid": [
+    "#~~~~~~#",
+    "..C^2#.O",
+    ".##T..2.",
+    "......#.",
+    ".S<.....",
+    "........",
+    ".....ST.",
+    "......<.",
+    "1#....#1",
+    "......#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      8
+     ],
+     "b": [
+      7,
+      8
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      6,
+      2
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       6,
+       5
+      ],
+      [
+       5,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231183461,
+   "mechanic": null
+  },
+  {
+   "id": "daily_206",
+   "world": 0,
+   "index": 206,
+   "name": "Velvet Beacon",
+   "grid": [
+    "#~#~~~~~",
+    "oc.....~",
+    "#.....O.",
+    "....#...",
+    "O....C..",
+    "T.#c.T..",
+    "T.#.wC#T",
+    "...S..C."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       5
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231183562,
+   "mechanic": null
+  },
+  {
+   "id": "daily_207",
+   "world": 0,
+   "index": 207,
+   "name": "Noon Fan",
+   "grid": [
+    "~#####~",
+    "...<..~",
+    "#......",
+    "...S...",
+    "cST.S..",
+    "......#",
+    ".w.C...",
+    ".w....T",
+    "O.T....",
+    "....o.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       5
+      ],
+      [
+       0,
+       6
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231183663,
+   "mechanic": null
+  },
+  {
+   "id": "daily_208",
+   "world": 0,
+   "index": 208,
+   "name": "Tawny Patrol",
+   "grid": [
+    "#~##~~##",
+    "C.#o...~",
+    ".....#..",
+    ".#..w.O.",
+    "T...ST>#",
+    "S..<.So.",
+    "...#.#TT",
+    "..#...#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231183764,
+   "mechanic": null
+  },
+  {
+   "id": "daily_209",
+   "world": 0,
+   "index": 209,
+   "name": "Kelp Walk",
+   "grid": [
+    "#~###~",
+    "#..S.#",
+    ".#....",
+    ".w#...",
+    "C...#.",
+    ".T...w",
+    "w#..T.",
+    "..S..w",
+    ".....#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231183865,
+   "mechanic": null
+  },
+  {
+   "id": "daily_210",
+   "world": 0,
+   "index": 210,
+   "name": "Soft Dunes",
+   "grid": [
+    "#####~~",
+    "#C....~",
+    "wT.S.C~",
+    "S#....w",
+    "..##..w",
+    "....#w.",
+    "..T..#w",
+    ".C....T",
+    "...T...",
+    "##....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231183966,
+   "mechanic": null
+  },
+  {
+   "id": "daily_211",
+   "world": 0,
+   "index": 211,
+   "name": "Lagoon Boardwalk",
+   "grid": [
+    "~~~##~#",
+    "...T...",
+    ".......",
+    "1.#....",
+    ".w.....",
+    ".#.....",
+    ".T.C...",
+    ".T.....",
+    "1......",
+    "..T.#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      3
+     ],
+     "b": [
+      0,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231184067,
+   "mechanic": null
+  },
+  {
+   "id": "daily_212",
+   "world": 0,
+   "index": 212,
+   "name": "Pincer Crevice",
+   "grid": [
+    "~~~~~##",
+    "e#CC.w~",
+    ".....#.",
+    "S...T#.",
+    "#....#.",
+    ".....#.",
+    ".......",
+    "...#e.#",
+    "T#...#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      7
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      0,
+      1
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231184168,
+   "mechanic": null
+  },
+  {
+   "id": "daily_213",
+   "world": 0,
+   "index": 213,
+   "name": "Scuttle Shelf",
+   "grid": [
+    "~~~#~~#",
+    "T.o#.v.",
+    "...#...",
+    ">#S.e^.",
+    "...T..T",
+    "S....v.",
+    "#....#.",
+    "...S..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231184269,
+   "mechanic": null
+  },
+  {
+   "id": "daily_214",
+   "world": 0,
+   "index": 214,
+   "name": "Charcoal Vents",
+   "grid": [
+    "~#~~~##~",
+    ".#S.v.#.",
+    ".#......",
+    "........",
+    ".SOT.#..",
+    "T....###",
+    "....#O.T",
+    ".S..<...",
+    "..ow...#",
+    "C.....#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231184370,
+   "mechanic": null
+  },
+  {
+   "id": "daily_215",
+   "world": 0,
+   "index": 215,
+   "name": "Mossy Hideout",
+   "grid": [
+    "~##~###~",
+    ".T.#....",
+    "..w.ww.#",
+    ".T###..w",
+    ".......w",
+    "Sw.....#",
+    "C..wwC..",
+    "...w.TT.",
+    ".......#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231184471,
+   "mechanic": null
+  },
+  {
+   "id": "daily_216",
+   "world": 0,
+   "index": 216,
+   "name": "Glowing Crater",
+   "grid": [
+    "#~#~##",
+    "~.w.S.",
+    "~.#...",
+    ".....#",
+    "S##w..",
+    "SC..T.",
+    ".#..#.",
+    ".C.w..",
+    "T..S..",
+    ".CT..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231184572,
+   "mechanic": null
+  },
+  {
+   "id": "daily_217",
+   "world": 0,
+   "index": 217,
+   "name": "Fiery Flats",
+   "grid": [
+    "~~~#~#",
+    ">S..2.",
+    "###...",
+    "..#.1.",
+    "......",
+    "......",
+    "wT#...",
+    "T.w..w",
+    ".12#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      3
+     ],
+     "b": [
+      1,
+      8
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      2,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       3,
+       8
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4,
+       7
+      ],
+      [
+       4,
+       8
+      ]
+     ]
+    }
+   ],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231184673,
+   "mechanic": null
+  },
+  {
+   "id": "daily_218",
+   "world": 0,
+   "index": 218,
+   "name": "Midnight Current",
+   "grid": [
+    "~#####~~",
+    "....C...",
+    "......<.",
+    ".......T",
+    ">...o...",
+    ".##.....",
+    "T.T....#",
+    "#...CCS#",
+    "#..>#C#.",
+    ".w...#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231184774,
+   "mechanic": null
+  },
+  {
+   "id": "daily_219",
+   "world": 0,
+   "index": 219,
+   "name": "Coral Fan",
+   "grid": [
+    "~#~#~#~~",
+    ".CTC.##~",
+    ".....S.T",
+    "........",
+    "...O.##T",
+    "..^STeS.",
+    ".....e..",
+    "w..#....",
+    ".#...C..",
+    ".#..C.O."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      5,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231184875,
+   "mechanic": null
+  },
+  {
+   "id": "daily_220",
+   "world": 0,
+   "index": 220,
+   "name": "Scuttle Market",
+   "grid": [
+    "###~~#~#",
+    "..o.....",
+    "Cv...T..",
+    ".w#..#..",
+    ".#....o#",
+    ".v.TSwO.",
+    "..vS...#",
+    "..O#...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231184976,
+   "mechanic": null
+  },
+  {
+   "id": "daily_221",
+   "world": 0,
+   "index": 221,
+   "name": "Breezy Spiral",
+   "grid": [
+    "##~~~~",
+    "T.#.C.",
+    ".#...S",
+    "w.T..#",
+    "C.....",
+    "w.....",
+    "..C..S",
+    "...#.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231185077,
+   "mechanic": null
+  },
+  {
+   "id": "daily_222",
+   "world": 0,
+   "index": 222,
+   "name": "Firefly Ripple",
+   "grid": [
+    "~~~~~#~~",
+    ".S.w...~",
+    "#..C...~",
+    "....C.S#",
+    ".....w..",
+    "C...#.wT",
+    "T.##w..w",
+    "....w..C",
+    "w#.wT...",
+    ".....Tw."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231185178,
+   "mechanic": null
+  },
+  {
+   "id": "daily_223",
+   "world": 0,
+   "index": 223,
+   "name": "Kelp Alley",
+   "grid": [
+    "##~~#~",
+    "#...e.",
+    "..1.T^",
+    "....Tv",
+    ".....w",
+    "C#.#..",
+    ".<wT..",
+    ".w1..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      2,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231185279,
+   "mechanic": null
+  },
+  {
+   "id": "daily_224",
+   "world": 0,
+   "index": 224,
+   "name": "Lagoon Fan",
+   "grid": [
+    "####~~~~",
+    ".##.S...",
+    ".#....C.",
+    ".e.v...o",
+    ".T##C...",
+    ".....#..",
+    "T...##..",
+    "..O..#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      3
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231185381,
+   "mechanic": null
+  },
+  {
+   "id": "daily_225",
+   "world": 0,
+   "index": 225,
+   "name": "Golden Crossing",
+   "grid": [
+    "##~#~~#~",
+    ".....TT.",
+    "..#.....",
+    "....#S..",
+    "..#T..T.",
+    "#.......",
+    ".S.w...#",
+    ".....##.",
+    ".c..#^..",
+    ".#.#..S#"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       8
+      ],
+      [
+       0,
+       8
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231185481,
+   "mechanic": null
+  },
+  {
+   "id": "daily_226",
+   "world": 0,
+   "index": 226,
+   "name": "Snappy Ledge",
+   "grid": [
+    "~#~~~#~~",
+    "#.....#.",
+    ".#v^^...",
+    "To#.....",
+    ".##o....",
+    ".<..#...",
+    ".#...O..",
+    "T.......",
+    "........"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231185582,
+   "mechanic": null
+  },
+  {
+   "id": "daily_227",
+   "world": 0,
+   "index": 227,
+   "name": "Amber Nest",
+   "grid": [
+    "~~~~##~",
+    "....wS.",
+    "..S.w.C",
+    ".....w.",
+    "...C...",
+    "#CT...T",
+    "#.STw..",
+    "...w.T#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231185683,
+   "mechanic": null
+  },
+  {
+   "id": "daily_228",
+   "world": 0,
+   "index": 228,
+   "name": "Scuttle Crossing",
+   "grid": [
+    "#~~#~~#",
+    ".......",
+    "......w",
+    "...T#.#",
+    "SS#....",
+    "S.C....",
+    "#..w#.C",
+    "CT..C..",
+    "#.....#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231185784,
+   "mechanic": null
+  },
+  {
+   "id": "daily_229",
+   "world": 0,
+   "index": 229,
+   "name": "Firefly Pool",
+   "grid": [
+    "~~~#~#",
+    "...TT.",
+    "1.T...",
+    ".S.ST.",
+    "#.....",
+    "w#....",
+    "eC..w.",
+    "...1w."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      2
+     ],
+     "b": [
+      3,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       7
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       6
+      ]
+     ]
+    }
+   ],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231185885,
+   "mechanic": null
+  },
+  {
+   "id": "daily_230",
+   "world": 0,
+   "index": 230,
+   "name": "Peach Trail",
+   "grid": [
+    "~~~#~~~",
+    "c.....#",
+    ".#T.w.T",
+    "#......",
+    ".w..e>w",
+    ".#.#.v.",
+    ".......",
+    "TT#...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231185986,
+   "mechanic": null
+  },
+  {
+   "id": "daily_231",
+   "world": 0,
+   "index": 231,
+   "name": "Pincer Burrow",
+   "grid": [
+    "~~#~~##",
+    "#.....#",
+    ".#.....",
+    "..T.#.#",
+    "^T.#.c.",
+    "..T..T.",
+    ".#...e.",
+    "O#<..w."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       4
+      ],
+      [
+       5,
+       3
+      ],
+      [
+       5,
+       2
+      ],
+      [
+       5,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231186087,
+   "mechanic": null
+  },
+  {
+   "id": "daily_232",
+   "world": 0,
+   "index": 232,
+   "name": "Lantern Channel",
+   "grid": [
+    "~##~##~",
+    ".#vOTT.",
+    "..#....",
+    "..#....",
+    ".OS...#",
+    "S.S.S..",
+    "o.O....",
+    "O.#...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231186188,
+   "mechanic": null
+  },
+  {
+   "id": "daily_233",
+   "world": 0,
+   "index": 233,
+   "name": "Morning Path",
+   "grid": [
+    "#~~~~~",
+    "....TC",
+    ".w.###",
+    "....#.",
+    "Sw.T..",
+    "w.#...",
+    "..w..#",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231186289,
+   "mechanic": null
+  },
+  {
+   "id": "daily_234",
+   "world": 0,
+   "index": 234,
+   "name": "Pearl Splash",
+   "grid": [
+    "##~#~#~~",
+    "~.#..#..",
+    "~S.C.T..",
+    "..wS#..#",
+    "..#....T",
+    "...#w.S.",
+    "....#...",
+    "..#.w..C",
+    "S.#..w..",
+    "...#...w"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231186390,
+   "mechanic": null
+  },
+  {
+   "id": "daily_235",
+   "world": 0,
+   "index": 235,
+   "name": "Hush Tide",
+   "grid": [
+    "~~#~#~#~",
+    "S.1...1.",
+    ".C#e....",
+    "..T##...",
+    ".#.w..#2",
+    ".C.S....",
+    "..#.....",
+    ".....#..",
+    ".#Tc.2..",
+    "....#..#"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       8
+      ],
+      [
+       3,
+       9
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      2
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      1
+     ],
+     "b": [
+      6,
+      1
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      7,
+      4
+     ],
+     "b": [
+      5,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231186491,
+   "mechanic": null
+  },
+  {
+   "id": "daily_236",
+   "world": 0,
+   "index": 236,
+   "name": "Pearl Bank",
+   "grid": [
+    "~#~~#~~",
+    "#...S..",
+    "T..#.S.",
+    ".T#.TwO",
+    "C......",
+    "...#...",
+    ".T.....",
+    "....<.v",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231186592,
+   "mechanic": null
+  },
+  {
+   "id": "daily_237",
+   "world": 0,
+   "index": 237,
+   "name": "Dusky Market",
+   "grid": [
+    "##~~#~~~",
+    "#....#O.",
+    ".CT..O.w",
+    "...#....",
+    "......T.",
+    "^..#T...",
+    ".S.....w",
+    "#.STS..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231186693,
+   "mechanic": null
+  },
+  {
+   "id": "daily_238",
+   "world": 0,
+   "index": 238,
+   "name": "Snappy Dance",
+   "grid": [
+    "#~~##~",
+    "S.....",
+    "...ov.",
+    ".O.S..",
+    ".C..#.",
+    ".T.w.#",
+    ".T.wT.",
+    "..#T..",
+    "oS.#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231186794,
+   "mechanic": null
+  },
+  {
+   "id": "daily_239",
+   "world": 0,
+   "index": 239,
+   "name": "Lantern Beacon",
+   "grid": [
+    "~##~#~~",
+    ".......",
+    "#..T...",
+    "#..##.#",
+    "ST..w.#",
+    "..T.wC.",
+    "#.#Tw..",
+    "......S",
+    "..C...#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231186895,
+   "mechanic": null
+  },
+  {
+   "id": "daily_240",
+   "world": 0,
+   "index": 240,
+   "name": "Reef Flats",
+   "grid": [
+    "~#~~#~#~",
+    "TC...T#~",
+    ".....SC~",
+    "..w..CC#",
+    ".T.w...C",
+    ".....Cww",
+    "........",
+    "#...wCT."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231186996,
+   "mechanic": null
+  },
+  {
+   "id": "daily_241",
+   "world": 0,
+   "index": 241,
+   "name": "Pincer Shuffle",
+   "grid": [
+    "~#~~~###",
+    "2.##.T..",
+    ".1.#.S.T",
+    ".#....v.",
+    ".#..w#S.",
+    "..T..2..",
+    "....<...",
+    "w....^1."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      6,
+      7
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      0,
+      1
+     ],
+     "b": [
+      5,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       3
+      ],
+      [
+       4,
+       4
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       3
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       3,
+       2
+      ],
+      [
+       4,
+       2
+      ]
+     ]
+    }
+   ],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231187097,
+   "mechanic": null
+  },
+  {
+   "id": "daily_242",
+   "world": 0,
+   "index": 242,
+   "name": "Scarlet Flats",
+   "grid": [
+    "##~##~",
+    "#...#w",
+    ".O.S..",
+    ".S..o.",
+    ".....C",
+    "T...T.",
+    "..^..#",
+    ".#...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231187198,
+   "mechanic": null
+  },
+  {
+   "id": "daily_243",
+   "world": 0,
+   "index": 243,
+   "name": "Glassy Bank",
+   "grid": [
+    "####~#~",
+    ".#....e",
+    ".T....o",
+    ".w.w..v",
+    "S##.T#.",
+    "S..ww..",
+    ".T...S.",
+    "..T.S..",
+    ".......",
+    "S...S#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      6,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231187299,
+   "mechanic": null
+  },
+  {
+   "id": "daily_244",
+   "world": 0,
+   "index": 244,
+   "name": "Silver Eddy",
+   "grid": [
+    "~~#~##",
+    ".ow...",
+    "#.S.>.",
+    ".#v..#",
+    ".T..o.",
+    ".v...S",
+    "..T.wT",
+    ".S...C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231187400,
+   "mechanic": null
+  },
+  {
+   "id": "daily_245",
+   "world": 0,
+   "index": 245,
+   "name": "Salty Spiral",
+   "grid": [
+    "######~",
+    ".S..#.~",
+    "..SS.CC",
+    "...#...",
+    ".S.....",
+    "C..S.CS",
+    "S......",
+    "w.T..CT",
+    "....S.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231187501,
+   "mechanic": null
+  },
+  {
+   "id": "daily_246",
+   "world": 0,
+   "index": 246,
+   "name": "Dream Channel",
+   "grid": [
+    "~~~~###",
+    "...T.#~",
+    "....#T~",
+    ".w#....",
+    "w..#.SS",
+    ".......",
+    "....#..",
+    "..#....",
+    "#.TwC..",
+    "..##..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231187602,
+   "mechanic": null
+  },
+  {
+   "id": "daily_247",
+   "world": 0,
+   "index": 247,
+   "name": "Amber Drift",
+   "grid": [
+    "##~~#~",
+    "~#..1#",
+    "~...#T",
+    ".2..T<",
+    "....<.",
+    "1.2...",
+    ".w....",
+    "TC##.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      0,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      1,
+      3
+     ],
+     "b": [
+      2,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       5
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ],
+      [
+       5,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231187703,
+   "mechanic": null
+  },
+  {
+   "id": "daily_248",
+   "world": 0,
+   "index": 248,
+   "name": "Amber Ledge",
+   "grid": [
+    "~~~~~~",
+    ".T.T##",
+    "#.T...",
+    "S.c.oc",
+    "T.....",
+    ".#....",
+    "..#..e",
+    ".S....",
+    "S....."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       3
+      ],
+      [
+       3,
+       3
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       5,
+       3
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231187804,
+   "mechanic": null
+  },
+  {
+   "id": "daily_249",
+   "world": 0,
+   "index": 249,
+   "name": "Molten Spire",
+   "grid": [
+    "#~#~##~~",
+    "O....#..",
+    "...C.v#.",
+    "w.#Tcc..",
+    "...e....",
+    "oS....#.",
+    ".....S#.",
+    "...S.S.w",
+    ".T.vC.T.",
+    "..we...T"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       3
+      ],
+      [
+       4,
+       2
+      ],
+      [
+       4,
+       1
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       5,
+       3
+      ],
+      [
+       6,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      9
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      3,
+      4
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231187905,
+   "mechanic": null
+  },
+  {
+   "id": "daily_250",
+   "world": 0,
+   "index": 250,
+   "name": "Morning Glow",
+   "grid": [
+    "~~~~#~#~",
+    "ow.T>...",
+    "......w.",
+    "..T.CT.w",
+    "....#o.w",
+    "..S....#",
+    "..CO<...",
+    "v.S..S..",
+    "..#.T#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231188006,
+   "mechanic": null
+  },
+  {
+   "id": "daily_251",
+   "world": 0,
+   "index": 251,
+   "name": "Honey Dunes",
+   "grid": [
+    "~###~#",
+    "#...w.",
+    "#w....",
+    ".T....",
+    "..wwC.",
+    "....TT",
+    "w.#T.C",
+    "w..#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231188107,
+   "mechanic": null
+  },
+  {
+   "id": "daily_252",
+   "world": 0,
+   "index": 252,
+   "name": "Warm Footprints",
+   "grid": [
+    "~#~~##~~",
+    "#CT.C.S.",
+    "Cw...#.#",
+    "S..#wCw.",
+    "...CS...",
+    "....#TT.",
+    "..#.#..#",
+    "w.......",
+    "........",
+    "...#...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231188208,
+   "mechanic": null
+  },
+  {
+   "id": "daily_253",
+   "world": 0,
+   "index": 253,
+   "name": "Copper Maze",
+   "grid": [
+    "~~#~~~",
+    "1...C.",
+    ".2....",
+    "##w#..",
+    "#T....",
+    "2...T.",
+    "e.TC1T",
+    "..wS.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      6
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      1
+     ],
+     "b": [
+      4,
+      6
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      0,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231188309,
+   "mechanic": null
+  },
+  {
+   "id": "daily_254",
+   "world": 0,
+   "index": 254,
+   "name": "Amber Shuffle",
+   "grid": [
+    "~~~~##~",
+    ".......",
+    "..c#.#.",
+    "....w..",
+    ".c.....",
+    "#..#.#.",
+    "^.T....",
+    "...T...",
+    ".S...TS"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       2
+      ],
+      [
+       1,
+       2
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       4
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231188411,
+   "mechanic": null
+  },
+  {
+   "id": "daily_255",
+   "world": 0,
+   "index": 255,
+   "name": "Amber Ripple",
+   "grid": [
+    "~~##~#~#",
+    "T.....w.",
+    "#o##T..>",
+    "........",
+    "#T.Tc...",
+    "..w..S.C",
+    "........",
+    ".#S...C#",
+    "......#S",
+    "#.....O."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231188511,
+   "mechanic": null
+  },
+  {
+   "id": "daily_256",
+   "world": 0,
+   "index": 256,
+   "name": "Moon Hollow",
+   "grid": [
+    "#####~~",
+    "~..OC#.",
+    "...S<..",
+    ".C#..O#",
+    ".S...o>",
+    ".......",
+    ".......",
+    ".w.O.w.",
+    "S.#.TT.",
+    ".#....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231188612,
+   "mechanic": null
+  },
+  {
+   "id": "daily_257",
+   "world": 0,
+   "index": 257,
+   "name": "Basalt Bay",
+   "grid": [
+    "#~#~#~",
+    "#....#",
+    "..SS.T",
+    "T.....",
+    "w.##.C",
+    ".S.#.S",
+    ".T.w..",
+    "....T.",
+    "......",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231188713,
+   "mechanic": null
+  },
+  {
+   "id": "daily_258",
+   "world": 0,
+   "index": 258,
+   "name": "Russet Market",
+   "grid": [
+    "####~~#",
+    ".w.C...",
+    "..w....",
+    "T......",
+    "#..w...",
+    "....S..",
+    "....SSw",
+    ".C.T..C",
+    "C.Cw...",
+    "#S.wS.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231188814,
+   "mechanic": null
+  },
+  {
+   "id": "daily_259",
+   "world": 0,
+   "index": 259,
+   "name": "Gentle Sands",
+   "grid": [
+    "~#~~####",
+    "~...#...",
+    "~>..#.#T",
+    "T..T....",
+    "#......#",
+    "..1.w.1.",
+    "T#..e.#w",
+    "..C.w.C.",
+    "#...#..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      5
+     ],
+     "b": [
+      6,
+      5
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231188915,
+   "mechanic": null
+  },
+  {
+   "id": "daily_260",
+   "world": 0,
+   "index": 260,
+   "name": "Quiet Steps",
+   "grid": [
+    "~~#~~~",
+    ".....T",
+    "..Cw..",
+    "..#...",
+    "....#w",
+    "..#.##",
+    "wc..S.",
+    "..T.#.",
+    ".T.#.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231189016,
+   "mechanic": null
+  },
+  {
+   "id": "daily_261",
+   "world": 0,
+   "index": 261,
+   "name": "Comet Current",
+   "grid": [
+    "~~~~~~#",
+    ".T..v.~",
+    ".S..Cwo",
+    "C...TC.",
+    ".....wS",
+    ".#v....",
+    "...#T.#",
+    "...##v.",
+    ".......",
+    "w......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231189117,
+   "mechanic": null
+  },
+  {
+   "id": "daily_262",
+   "world": 0,
+   "index": 262,
+   "name": "Ember Flats",
+   "grid": [
+    "~##~#~~~",
+    ".>ST.#.~",
+    "O.v..T..",
+    ".So..O.C",
+    ".T.....w",
+    "..o#T...",
+    ".w#SS..#",
+    "......S."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231189218,
+   "mechanic": null
+  },
+  {
+   "id": "daily_263",
+   "world": 0,
+   "index": 263,
+   "name": "Morning Steps",
+   "grid": [
+    "##~~###",
+    "....TS.",
+    ".T...S.",
+    ".C.....",
+    "..C....",
+    "w.w..#.",
+    "w.CTC.C",
+    ".C.#...",
+    "#..w..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231189319,
+   "mechanic": null
+  },
+  {
+   "id": "daily_264",
+   "world": 0,
+   "index": 264,
+   "name": "Glowing Spire",
+   "grid": [
+    "~~~~#~",
+    "..C...",
+    "...Sw.",
+    "....wC",
+    "..C..w",
+    "..STw.",
+    "......",
+    "#...Cw",
+    "T.....",
+    ".CT..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231189420,
+   "mechanic": null
+  },
+  {
+   "id": "daily_265",
+   "world": 0,
+   "index": 265,
+   "name": "Rumbling Steps",
+   "grid": [
+    "~##~~~~#",
+    "S.C>....",
+    "..w.....",
+    "......T.",
+    ".C.#>.1.",
+    ".#.#.Twe",
+    ".....C..",
+    "..#T...#",
+    ".>.1#...",
+    ".....O.w"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      7,
+      5
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      6,
+      4
+     ],
+     "b": [
+      3,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       6
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       5,
+       5
+      ],
+      [
+       5,
+       6
+      ]
+     ]
+    }
+   ],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231189521,
+   "mechanic": null
+  },
+  {
+   "id": "daily_266",
+   "world": 0,
+   "index": 266,
+   "name": "Shimmer Arch",
+   "grid": [
+    "~#~##~",
+    "......",
+    "......",
+    ".CC...",
+    "c#.T..",
+    ".w....",
+    "..#^#T",
+    "...ST#",
+    ".CCC.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       3
+      ],
+      [
+       0,
+       2
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231189622,
+   "mechanic": null
+  },
+  {
+   "id": "daily_267",
+   "world": 0,
+   "index": 267,
+   "name": "Bright Trail",
+   "grid": [
+    "#~~~~~~",
+    "#......",
+    "#......",
+    ".....#.",
+    ".#.T...",
+    "S..o>T#",
+    ".#...#.",
+    ".TT.c..",
+    "...C..."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       7
+      ],
+      [
+       5,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231189723,
+   "mechanic": null
+  },
+  {
+   "id": "daily_268",
+   "world": 0,
+   "index": 268,
+   "name": "Seafoam Shoal",
+   "grid": [
+    "#~~#####",
+    "#..T.Cw#",
+    "o....#..",
+    "...S.>..",
+    ".......T",
+    ".wTCO...",
+    "......<.",
+    "........"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231189824,
+   "mechanic": null
+  },
+  {
+   "id": "daily_269",
+   "world": 0,
+   "index": 269,
+   "name": "Silver Drift",
+   "grid": [
+    "#~##~~#~",
+    "..w...#.",
+    "w.....wC",
+    "...Cww.C",
+    ".S.T.T#.",
+    "S.C..w..",
+    "w..w....",
+    "#.w.....",
+    "T..w.T..",
+    "..S.w..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231189925,
+   "mechanic": null
+  },
+  {
+   "id": "daily_270",
+   "world": 0,
+   "index": 270,
+   "name": "Turquoise Garden",
+   "grid": [
+    "~~##~~~",
+    "w..w...",
+    ".#.....",
+    ".TT...T",
+    "C.....C",
+    ".w#.wS#",
+    ".....wT",
+    "..SC..S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231190026,
+   "mechanic": null
+  },
+  {
+   "id": "daily_271",
+   "world": 0,
+   "index": 271,
+   "name": "Barnacle Crevice",
+   "grid": [
+    "~##~~~",
+    ".....C",
+    ".1S..#",
+    "...#..",
+    "#.#...",
+    "ST.##.",
+    ".#...1",
+    "T.w...",
+    "#.....",
+    "....T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      5,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231190127,
+   "mechanic": null
+  },
+  {
+   "id": "daily_272",
+   "world": 0,
+   "index": 272,
+   "name": "Noon Ridge",
+   "grid": [
+    "~~~~#~~~",
+    "T.Sw...~",
+    "#...w..~",
+    "TO.SS..c",
+    "..e.#...",
+    "<..eT.<.",
+    "..SS.S..",
+    ".S......"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       7,
+       3
+      ],
+      [
+       7,
+       4
+      ],
+      [
+       7,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      5
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231190228,
+   "mechanic": null
+  },
+  {
+   "id": "daily_273",
+   "world": 0,
+   "index": 273,
+   "name": "Amber Trail",
+   "grid": [
+    "##~~~#~#",
+    "...C#S..",
+    "...#..#.",
+    "...#.#..",
+    ".C...T..",
+    "..SSSS>.",
+    "..T..O..",
+    ".>......",
+    "......#.",
+    "..#.#.T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231190329,
+   "mechanic": null
+  },
+  {
+   "id": "daily_274",
+   "world": 0,
+   "index": 274,
+   "name": "Copper Walk",
+   "grid": [
+    "~~~~~~#",
+    "T#...T.",
+    ".#..#..",
+    "v.#..>#",
+    ".#..T.S",
+    ".<...#.",
+    "..oC#..",
+    "...wT.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231190430,
+   "mechanic": null
+  },
+  {
+   "id": "daily_275",
+   "world": 0,
+   "index": 275,
+   "name": "Copper Corner",
+   "grid": [
+    "#~##~##",
+    ".T..C.~",
+    "#S.##..",
+    "w...w..",
+    ".C.w...",
+    ".T...#T",
+    "......#",
+    "w..#w.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231190531,
+   "mechanic": null
+  },
+  {
+   "id": "daily_276",
+   "world": 0,
+   "index": 276,
+   "name": "Coral Spiral",
+   "grid": [
+    "~~~###~",
+    "w..CC.#",
+    "STw.C..",
+    ".T...T.",
+    ".C.#C..",
+    ".....C.",
+    "...#...",
+    "...#...",
+    "..CwS.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231190632,
+   "mechanic": null
+  },
+  {
+   "id": "daily_277",
+   "world": 0,
+   "index": 277,
+   "name": "Noon Cove",
+   "grid": [
+    "~#~~~~#",
+    "#1.S...",
+    "##..#..",
+    "....#.S",
+    ".1.....",
+    "^.#...T",
+    ".C.....",
+    "..T..C."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      1,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ],
+      [
+       5,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231190733,
+   "mechanic": null
+  },
+  {
+   "id": "daily_278",
+   "world": 0,
+   "index": 278,
+   "name": "Mossy Corner",
+   "grid": [
+    "~~##~~~",
+    ".w.T...",
+    "##v.#..",
+    ".w....#",
+    "S#..#..",
+    ".T.....",
+    "......w",
+    "#C..#.T",
+    ".....T.",
+    "v...#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231190834,
+   "mechanic": null
+  },
+  {
+   "id": "daily_279",
+   "world": 0,
+   "index": 279,
+   "name": "Breezy Bank",
+   "grid": [
+    "~~~##~##",
+    "eO.....~",
+    "S.##...~",
+    "#v.T..S#",
+    "..<..e..",
+    "S#.w..T.",
+    "O.....#.",
+    "......C.",
+    "......#.",
+    "..#....#"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      1
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      5,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231190935,
+   "mechanic": null
+  },
+  {
+   "id": "daily_280",
+   "world": 0,
+   "index": 280,
+   "name": "Dream Pool",
+   "grid": [
+    "~~~~~~~~",
+    ".....O.#",
+    "..w....T",
+    ".#.....#",
+    "SvT...oS",
+    "<T#.O..S",
+    "..#.T.oC",
+    "..#...v.",
+    ".....#..",
+    "...O...#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231191036,
+   "mechanic": null
+  },
+  {
+   "id": "daily_281",
+   "world": 0,
+   "index": 281,
+   "name": "Crystal Shoal",
+   "grid": [
+    "~~##~#~",
+    "#C..Cw.",
+    "....S.w",
+    "..T.T.w",
+    "#....S.",
+    ".#...#w",
+    "....C..",
+    ".w....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231191137,
+   "mechanic": null
+  },
+  {
+   "id": "daily_282",
+   "world": 0,
+   "index": 282,
+   "name": "Hush Swirl",
+   "grid": [
+    "~~~~~~",
+    "..S..~",
+    "w.#..~",
+    "..#.#.",
+    ".w#...",
+    "...#..",
+    "#....#",
+    "....TS",
+    "Tw...w"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231191238,
+   "mechanic": null
+  },
+  {
+   "id": "daily_283",
+   "world": 0,
+   "index": 283,
+   "name": "Firefly Channel",
+   "grid": [
+    "~~~#~##~",
+    ".1..O.#.",
+    "...T.1..",
+    ".w..T.C#",
+    "..2.....",
+    "...w....",
+    ".#T#S...",
+    "SC.2..#.",
+    "...T..SS",
+    ".......S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      5,
+      2
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      4
+     ],
+     "b": [
+      3,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231191339,
+   "mechanic": null
+  },
+  {
+   "id": "daily_284",
+   "world": 0,
+   "index": 284,
+   "name": "Pearl Puddles",
+   "grid": [
+    "~###~~~",
+    "...cT..",
+    "o#.#.SO",
+    "..TTT.e",
+    ".e...#.",
+    "S#.#S..",
+    ".#.....",
+    ".#...S."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       3,
+       1
+      ],
+      [
+       2,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      4
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      6,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231191440,
+   "mechanic": null
+  },
+  {
+   "id": "daily_285",
+   "world": 0,
+   "index": 285,
+   "name": "Star Eddy",
+   "grid": [
+    "#~##~~~",
+    "..TS<..",
+    "#..#w..",
+    "....w..",
+    "....c..",
+    "...T...",
+    ".w..S..",
+    "..wS...",
+    ".w..T#w",
+    "..S..S."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       5,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231191541,
+   "mechanic": null
+  },
+  {
+   "id": "daily_286",
+   "world": 0,
+   "index": 286,
+   "name": "Clatter Shuffle",
+   "grid": [
+    "#####~~#",
+    "..wTO..#",
+    "...O...S",
+    ".#<S...#",
+    "#T^....o",
+    "......CO",
+    ".S.T....",
+    "o#.O.T.S",
+    "^......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231191642,
+   "mechanic": null
+  },
+  {
+   "id": "daily_287",
+   "world": 0,
+   "index": 287,
+   "name": "Sparkle Fan",
+   "grid": [
+    "~~#~~##",
+    "w..wSC.",
+    ".S..#..",
+    "..w....",
+    "..w....",
+    "C#.C...",
+    ".....#T",
+    ".T...#.",
+    ".w..C.S",
+    "w.T.C.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231191743,
+   "mechanic": null
+  },
+  {
+   "id": "daily_288",
+   "world": 0,
+   "index": 288,
+   "name": "Early Glow",
+   "grid": [
+    "#~~~~#~#",
+    "S...C..C",
+    ".....C#.",
+    ".......#",
+    "T..S#...",
+    "...TS...",
+    "..#.w.#w",
+    "..SC...#",
+    "C.C..C.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231191844,
+   "mechanic": null
+  },
+  {
+   "id": "daily_289",
+   "world": 0,
+   "index": 289,
+   "name": "Snappy Corner",
+   "grid": [
+    "~~#~##~#",
+    "......O.",
+    "....#.1.",
+    "..TT..#.",
+    "..^.c#.#",
+    ".CS....#",
+    "T....e#.",
+    "1O...>..",
+    ".....C.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       4,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      6,
+      2
+     ],
+     "b": [
+      0,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       3,
+       6
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       3,
+       4
+      ],
+      [
+       3,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231191945,
+   "mechanic": null
+  },
+  {
+   "id": "daily_290",
+   "world": 0,
+   "index": 290,
+   "name": "Sideways Crossing",
+   "grid": [
+    "#~##~#~#",
+    "......S~",
+    "...wOc.~",
+    "#OwS....",
+    "...w....",
+    "...#..#T",
+    "S#...T.T",
+    ".T..S...",
+    "S..S..#."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       2
+      ],
+      [
+       5,
+       1
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231192046,
+   "mechanic": null
+  },
+  {
+   "id": "daily_291",
+   "world": 0,
+   "index": 291,
+   "name": "Early Trail",
+   "grid": [
+    "~~#~~~~",
+    ".......",
+    "T....##",
+    "....#.w",
+    "Oee....",
+    "..#...<",
+    "#c#S<..",
+    "S.#....",
+    "..T.^..",
+    ".c...o."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       1,
+       6
+      ],
+      [
+       1,
+       7
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       9
+      ],
+      [
+       1,
+       8
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      4
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      2,
+      4
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231192147,
+   "mechanic": null
+  },
+  {
+   "id": "daily_292",
+   "world": 0,
+   "index": 292,
+   "name": "Quiet Breeze",
+   "grid": [
+    "~~~~###",
+    "#.#^...",
+    "....SC.",
+    ".OC...T",
+    "o...TO.",
+    ".O.>T..",
+    ".....<.",
+    ".C..S.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231192248,
+   "mechanic": null
+  },
+  {
+   "id": "daily_293",
+   "world": 0,
+   "index": 293,
+   "name": "Twilight Pool",
+   "grid": [
+    "#~~#~~",
+    ".w.#.w",
+    "T.....",
+    ".....#",
+    "CS#...",
+    "..S...",
+    "..CC#.",
+    "#CT...",
+    "TT.#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231192349,
+   "mechanic": null
+  },
+  {
+   "id": "daily_294",
+   "world": 0,
+   "index": 294,
+   "name": "Velvet Swirl",
+   "grid": [
+    "~~#~###~",
+    "...C.T..",
+    "....TS.C",
+    "........",
+    "..##w.##",
+    "w#..w...",
+    "S...S...",
+    "..w#....",
+    ".CTw..wC",
+    ".T..#..S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231192450,
+   "mechanic": null
+  },
+  {
+   "id": "daily_295",
+   "world": 0,
+   "index": 295,
+   "name": "Basalt Terrace",
+   "grid": [
+    "~~~~###",
+    "..#v.1.",
+    "..C.#..",
+    "....#..",
+    ".e#2T.T",
+    ".....>1",
+    "...T.O#",
+    "2.<.#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      4
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      5,
+      1
+     ],
+     "b": [
+      6,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      4
+     ],
+     "b": [
+      0,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231192551,
+   "mechanic": null
+  },
+  {
+   "id": "daily_296",
+   "world": 0,
+   "index": 296,
+   "name": "Velvet Wave",
+   "grid": [
+    "~#~~~~",
+    "S...S~",
+    "...#..",
+    "...eT.",
+    "ST..T.",
+    "..TS^#",
+    "w.#...",
+    "O....C",
+    "c.....",
+    ".c.C.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       8
+      ],
+      [
+       1,
+       8
+      ],
+      [
+       2,
+       8
+      ],
+      [
+       3,
+       8
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       9
+      ],
+      [
+       0,
+       9
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      3
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231192652,
+   "mechanic": null
+  },
+  {
+   "id": "daily_297",
+   "world": 0,
+   "index": 297,
+   "name": "Sideways Walk",
+   "grid": [
+    "#~##~~",
+    "...#..",
+    "...#.T",
+    ".#.e.e",
+    "....T.",
+    "....S#",
+    "...T#.",
+    "oT..#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      3
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      3,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231192753,
+   "mechanic": null
+  },
+  {
+   "id": "daily_298",
+   "world": 0,
+   "index": 298,
+   "name": "Ember Steps",
+   "grid": [
+    "~~~#~~~",
+    "...#OT~",
+    ".S..OO~",
+    "...<T.<",
+    "o.T...S",
+    ".#.v...",
+    "SC.#...",
+    "....T.^",
+    ".C....v"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231192854,
+   "mechanic": null
+  },
+  {
+   "id": "daily_299",
+   "world": 0,
+   "index": 299,
+   "name": "Sparkle Spiral",
+   "grid": [
+    "~~~~~##",
+    "~w...S.",
+    "~..#.w.",
+    "....wC.",
+    "S#...S.",
+    "S.#....",
+    ".......",
+    ".wT...w",
+    "...S.w.",
+    "#.C.T.C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231192955,
+   "mechanic": null
+  },
+  {
+   "id": "daily_300",
+   "world": 0,
+   "index": 300,
+   "name": "Basalt Pools",
+   "grid": [
+    "##~~~##",
+    "C..C...",
+    "..##...",
+    "...w...",
+    "......T",
+    "..CTw.w",
+    ".##....",
+    ".CwT...",
+    "...#wS#",
+    ".#C..T."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231193056,
+   "mechanic": null
+  },
+  {
+   "id": "daily_301",
+   "world": 0,
+   "index": 301,
+   "name": "Tawny Ledge",
+   "grid": [
+    "##~~~#",
+    "2^T.S.",
+    ".1..TS",
+    "S..#.T",
+    "..#...",
+    "#....#",
+    "1.....",
+    "#.#...",
+    "C2...."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      0,
+      6
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      0,
+      1
+     ],
+     "b": [
+      1,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       3,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       5
+      ]
+     ]
+    }
+   ],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231193157,
+   "mechanic": null
+  },
+  {
+   "id": "daily_302",
+   "world": 0,
+   "index": 302,
+   "name": "Tawny Walk",
+   "grid": [
+    "~#~~~~~",
+    ".vS.#..",
+    ".#TC...",
+    "......#",
+    ".w....T",
+    "..c.S.^",
+    ".w.....",
+    ".T.^.o."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       5
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231193258,
+   "mechanic": null
+  },
+  {
+   "id": "daily_303",
+   "world": 0,
+   "index": 303,
+   "name": "Ash Bay",
+   "grid": [
+    "##~~##~",
+    ">......",
+    ".......",
+    "..e...w",
+    "#...vT.",
+    "..O.#CT",
+    ".o...S.",
+    "O.S....",
+    "#e..Sv."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      3
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      1,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231193359,
+   "mechanic": null
+  },
+  {
+   "id": "daily_304",
+   "world": 0,
+   "index": 304,
+   "name": "Obsidian Bay",
+   "grid": [
+    "~~~~~~",
+    "...T..",
+    ".w....",
+    ".<S.#T",
+    ".S...#",
+    "..w#..",
+    "..S.T.",
+    "w##..#",
+    "...o#.",
+    ".....C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231193460,
+   "mechanic": null
+  },
+  {
+   "id": "daily_305",
+   "world": 0,
+   "index": 305,
+   "name": "Glow Current",
+   "grid": [
+    "#~~~~~",
+    "...wT#",
+    ".#w..w",
+    "C....S",
+    ".C....",
+    "...T..",
+    "S..#..",
+    ".....T",
+    ".T...S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231193561,
+   "mechanic": null
+  },
+  {
+   "id": "daily_306",
+   "world": 0,
+   "index": 306,
+   "name": "Silver Channel",
+   "grid": [
+    "~#~###~~",
+    "w..w....",
+    "C..#.T.S",
+    "#w.....C",
+    "..w...#.",
+    "..#.S...",
+    ".S...T.#",
+    ".#..T...",
+    ".wC#..#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231193662,
+   "mechanic": null
+  },
+  {
+   "id": "daily_307",
+   "world": 0,
+   "index": 307,
+   "name": "Ruby Run",
+   "grid": [
+    "##~~~#",
+    ".w...T",
+    "..1S2.",
+    "S..##.",
+    "..#..S",
+    "..C..1",
+    "T...2.",
+    "#.....",
+    "...T.#",
+    ".<.#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      2,
+      2
+     ],
+     "b": [
+      5,
+      5
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      4,
+      2
+     ],
+     "b": [
+      4,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       1,
+       7
+      ],
+      [
+       1,
+       6
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       2,
+       7
+      ],
+      [
+       2,
+       8
+      ],
+      [
+       1,
+       8
+      ]
+     ]
+    }
+   ],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231193763,
+   "mechanic": null
+  },
+  {
+   "id": "daily_308",
+   "world": 0,
+   "index": 308,
+   "name": "Briny Alley",
+   "grid": [
+    "~#~#~#~",
+    ".#...T.",
+    "#S....#",
+    ".C....T",
+    "......e",
+    "..CC...",
+    "SC#.#e.",
+    ".T.>...",
+    "C....^."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      6,
+      4
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      5,
+      6
+     ],
+     "timer": 7
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231193864,
+   "mechanic": null
+  },
+  {
+   "id": "daily_309",
+   "world": 0,
+   "index": 309,
+   "name": "Azure Fan",
+   "grid": [
+    "~~#~#~~",
+    ".....#S",
+    "TCo....",
+    ".S..C..",
+    ".......",
+    "......w",
+    "ev.TO.#",
+    "#C....>"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      6
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231193965,
+   "mechanic": null
+  },
+  {
+   "id": "daily_310",
+   "world": 0,
+   "index": 310,
+   "name": "Molten Pools",
+   "grid": [
+    "~#~~~~~~",
+    "OO......",
+    "....o..S",
+    ".....#o.",
+    "..#^..C.",
+    "..#.S...",
+    "ww.T..O.",
+    ".#S....#",
+    "T..#...w",
+    "..w...#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231194066,
+   "mechanic": null
+  },
+  {
+   "id": "daily_311",
+   "world": 0,
+   "index": 311,
+   "name": "Fiery Crater",
+   "grid": [
+    "~####~",
+    "C#C.S~",
+    "....CT",
+    "......",
+    "......",
+    "...##.",
+    "#w..##",
+    "#T....",
+    "...CS."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231194167,
+   "mechanic": null
+  },
+  {
+   "id": "daily_312",
+   "world": 0,
+   "index": 312,
+   "name": "Star Lullaby",
+   "grid": [
+    "~##~###~",
+    "..C.w..C",
+    ".SwT.T#.",
+    ".......#",
+    "...SC...",
+    "..w.T..T",
+    "...Cww.#",
+    "...#...C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231194268,
+   "mechanic": null
+  },
+  {
+   "id": "daily_313",
+   "world": 0,
+   "index": 313,
+   "name": "Early Ripple",
+   "grid": [
+    "#~~##~~#",
+    ".w.^...1",
+    ".......2",
+    "Tw#.....",
+    "##....#.",
+    ".....#.#",
+    "S.2..T..",
+    "..<Sw...",
+    "....#.1C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      7,
+      1
+     ],
+     "b": [
+      6,
+      8
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      7,
+      2
+     ],
+     "b": [
+      2,
+      6
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231194369,
+   "mechanic": null
+  },
+  {
+   "id": "daily_314",
+   "world": 0,
+   "index": 314,
+   "name": "Salty Boardwalk",
+   "grid": [
+    "~~~~~#~~",
+    "...SC#T.",
+    ".#w.....",
+    "<...T.^#",
+    "#......C",
+    ".......T",
+    ".##.T.#.",
+    "....#...",
+    "....e..."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231194470,
+   "mechanic": null
+  },
+  {
+   "id": "daily_315",
+   "world": 0,
+   "index": 315,
+   "name": "Soft Breeze",
+   "grid": [
+    "~##~##~#",
+    ".<O.....",
+    "..w.T...",
+    "O.......",
+    "........",
+    "O.w.w...",
+    ".C.#S...",
+    "##....#.",
+    "T....##C",
+    ".C...#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231194571,
+   "mechanic": null
+  },
+  {
+   "id": "daily_316",
+   "world": 0,
+   "index": 316,
+   "name": "Glassy Splash",
+   "grid": [
+    "~##~~~~~",
+    ".ow...#.",
+    ".......#",
+    "#.S....T",
+    ".....#..",
+    "##.....#",
+    "......#.",
+    ".....^T.",
+    "#....o..",
+    "#.#...#^"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231194672,
+   "mechanic": null
+  },
+  {
+   "id": "daily_317",
+   "world": 0,
+   "index": 317,
+   "name": "Wishing Eddy",
+   "grid": [
+    "~#~#~~~",
+    "S#.....",
+    "...T.w.",
+    ".......",
+    ".#w#...",
+    ".STT...",
+    ".....w.",
+    ".TC...w",
+    "...w...",
+    "......."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231194773,
+   "mechanic": null
+  },
+  {
+   "id": "daily_318",
+   "world": 0,
+   "index": 318,
+   "name": "Sunlit Ridge",
+   "grid": [
+    "#~~##~",
+    "..TC.~",
+    "wT...~",
+    "##TS..",
+    ".C..C.",
+    "..C...",
+    "..#w..",
+    "T.w..#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231194874,
+   "mechanic": null
+  },
+  {
+   "id": "daily_319",
+   "world": 0,
+   "index": 319,
+   "name": "Coral Shelf",
+   "grid": [
+    "~#~##~",
+    "..##C~",
+    "..T.#.",
+    ".1C#.S",
+    ".TC...",
+    ".T..#.",
+    "....#.",
+    "...1.e",
+    "T...#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      7
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      3
+     ],
+     "b": [
+      3,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       0,
+       3
+      ],
+      [
+       0,
+       2
+      ],
+      [
+       0,
+       1
+      ],
+      [
+       1,
+       1
+      ],
+      [
+       1,
+       2
+      ],
+      [
+       1,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231194975,
+   "mechanic": null
+  },
+  {
+   "id": "daily_320",
+   "world": 0,
+   "index": 320,
+   "name": "Peach Path",
+   "grid": [
+    "~~~~#~~~",
+    "...#..#.",
+    "...C..w.",
+    "......v.",
+    ".c..#.TS",
+    "...#wS#T",
+    ".....c..",
+    "e...Ce..",
+    "C.....w.",
+    "....C..."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       6
+      ],
+      [
+       6,
+       6
+      ]
+     ]
+    },
+    {
+     "path": [
+      [
+       1,
+       4
+      ],
+      [
+       0,
+       4
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      0,
+      7
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      5,
+      7
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231195076,
+   "mechanic": null
+  },
+  {
+   "id": "daily_321",
+   "world": 0,
+   "index": 321,
+   "name": "Indigo Drift",
+   "grid": [
+    "#~###~",
+    "#..e.w",
+    "TT.^..",
+    ".....#",
+    ".#..T.",
+    "...O..",
+    "......",
+    "...SwT",
+    ".w.#<S"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      1
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231195177,
+   "mechanic": null
+  },
+  {
+   "id": "daily_322",
+   "world": 0,
+   "index": 322,
+   "name": "Seafoam Fan",
+   "grid": [
+    "~#~~~~##",
+    "...#..o.",
+    "#.#..C..",
+    "<....w>.",
+    "O.T.C...",
+    "..T.##..",
+    "....T..O",
+    ".>o...wv"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231195278,
+   "mechanic": null
+  },
+  {
+   "id": "daily_323",
+   "world": 0,
+   "index": 323,
+   "name": "Quiet Drift",
+   "grid": [
+    "##~#~~~",
+    "~.w.#T.",
+    "~.S...S",
+    "T..#C..",
+    "......#",
+    "w#..#..",
+    "...wTwT",
+    "..S.#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231195379,
+   "mechanic": null
+  },
+  {
+   "id": "daily_324",
+   "world": 0,
+   "index": 324,
+   "name": "Warm Breeze",
+   "grid": [
+    "~~~###",
+    "wC...~",
+    "....T#",
+    "......",
+    "...#..",
+    "..##..",
+    "C..S.w",
+    "..T...",
+    ".w....",
+    ".TS..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231195480,
+   "mechanic": null
+  },
+  {
+   "id": "daily_325",
+   "world": 0,
+   "index": 325,
+   "name": "Rockpool Corner",
+   "grid": [
+    "##~~##",
+    "#1e..~",
+    "w..T.~",
+    "#Tw..S",
+    ".1w...",
+    ".TO#..",
+    "..C...",
+    "#....."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      1
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      1
+     ],
+     "b": [
+      1,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231195581,
+   "mechanic": null
+  },
+  {
+   "id": "daily_326",
+   "world": 0,
+   "index": 326,
+   "name": "Peach Dunes",
+   "grid": [
+    "~#~~~~#~",
+    ".e#..#..",
+    "..#...#.",
+    "........",
+    "..S.....",
+    "....#.C.",
+    ".T.....c",
+    ".o.#....",
+    ".....#..",
+    ".#e.#T.."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       7,
+       6
+      ],
+      [
+       7,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      2,
+      9
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231195682,
+   "mechanic": null
+  },
+  {
+   "id": "daily_327",
+   "world": 0,
+   "index": 327,
+   "name": "Rumbling Pools",
+   "grid": [
+    "####~~",
+    "~...e.",
+    "~#..#.",
+    "Cw#.##",
+    ".T.#..",
+    "..#.T.",
+    "c..T..",
+    "..<..."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       6
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231195783,
+   "mechanic": null
+  },
+  {
+   "id": "daily_328",
+   "world": 0,
+   "index": 328,
+   "name": "Moon Lullaby",
+   "grid": [
+    "~#~~~#",
+    "O....T",
+    "....T.",
+    "..T..S",
+    "......",
+    "#.To..",
+    "...OS#",
+    "w...#^"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231195884,
+   "mechanic": null
+  },
+  {
+   "id": "daily_329",
+   "world": 0,
+   "index": 329,
+   "name": "Charcoal Bay",
+   "grid": [
+    "~~#####",
+    "..S....",
+    "..ST..T",
+    "...#C..",
+    ".S...ww",
+    "CS..T.w",
+    "..T#...",
+    "..C.##C",
+    "....CC.",
+    ".....#."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231195985,
+   "mechanic": null
+  },
+  {
+   "id": "daily_330",
+   "world": 0,
+   "index": 330,
+   "name": "Sideways Parade",
+   "grid": [
+    "#~#~##~",
+    "......~",
+    ".wTC..~",
+    ".......",
+    "CS#....",
+    "..Sww.w",
+    "CT..S.S",
+    "...##.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231196086,
+   "mechanic": null
+  },
+  {
+   "id": "daily_331",
+   "world": 0,
+   "index": 331,
+   "name": "Noon Shoal",
+   "grid": [
+    "~~~~~###",
+    ".##...1C",
+    "...#..v.",
+    "T.#.eT..",
+    "..2.....",
+    ".S...O.#",
+    ".S...##<",
+    "v.......",
+    ".2....C.",
+    "...w1.#."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      6,
+      1
+     ],
+     "b": [
+      4,
+      9
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      2,
+      4
+     ],
+     "b": [
+      1,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       4,
+       4
+      ],
+      [
+       4,
+       5
+      ],
+      [
+       4,
+       6
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       3,
+       5
+      ],
+      [
+       3,
+       4
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231196187,
+   "mechanic": null
+  },
+  {
+   "id": "daily_332",
+   "world": 0,
+   "index": 332,
+   "name": "Amber Path",
+   "grid": [
+    "#~~#~~",
+    "~e..e.",
+    "~.Sw..",
+    ".....w",
+    "<....O",
+    ".w..#C",
+    "..wT..",
+    ".T.#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 4
+    },
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231196288,
+   "mechanic": null
+  },
+  {
+   "id": "daily_333",
+   "world": 0,
+   "index": 333,
+   "name": "Lagoon Garden",
+   "grid": [
+    "~#~~~~~~",
+    ".#.SeTT.",
+    "..#.T..#",
+    "..wS..#.",
+    "...T.#S.",
+    "..e.#.#.",
+    "...#.O..",
+    "ow......"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      1
+     ],
+     "timer": 5
+    },
+    {
+     "cell": [
+      2,
+      5
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231196389,
+   "mechanic": null
+  },
+  {
+   "id": "daily_334",
+   "world": 0,
+   "index": 334,
+   "name": "Russet Walk",
+   "grid": [
+    "~~~~~~#",
+    "~..O...",
+    "~<T..#.",
+    "o.#....",
+    "#...Co.",
+    ".^.S.S.",
+    ".O.T<..",
+    "^O...v."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231196490,
+   "mechanic": null
+  },
+  {
+   "id": "daily_335",
+   "world": 0,
+   "index": 335,
+   "name": "Dusk Crater",
+   "grid": [
+    "##~~~~~#",
+    "w.#.w...",
+    "...##...",
+    "T..#..w.",
+    ".....w..",
+    ".TT..w..",
+    ".#...#.C",
+    "S.C..C.w",
+    ".C.T.#.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231196591,
+   "mechanic": null
+  },
+  {
+   "id": "daily_336",
+   "world": 0,
+   "index": 336,
+   "name": "Peach Ripple",
+   "grid": [
+    "#~~~~~#",
+    "Sw....~",
+    "C.##..~",
+    ".#..#w#",
+    "C.....w",
+    ".......",
+    "wT..T#.",
+    "S.#....",
+    ".w....."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231196692,
+   "mechanic": null
+  },
+  {
+   "id": "daily_337",
+   "world": 0,
+   "index": 337,
+   "name": "Seafoam Flats",
+   "grid": [
+    "~~~~#~#~",
+    "wT#.T..C",
+    ".1..C...",
+    "...#..O#",
+    "..1..e..",
+    "#..TO...",
+    "...CC...",
+    "w......#"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      5,
+      4
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      2
+     ],
+     "b": [
+      2,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       7,
+       2
+      ],
+      [
+       7,
+       3
+      ],
+      [
+       7,
+       4
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       6,
+       3
+      ],
+      [
+       6,
+       2
+      ]
+     ]
+    }
+   ],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231196793,
+   "mechanic": null
+  },
+  {
+   "id": "daily_338",
+   "world": 0,
+   "index": 338,
+   "name": "Glassy Flats",
+   "grid": [
+    "~~#~~~#~",
+    "w.#....#",
+    "..ST...>",
+    "...SS..T",
+    "....^C..",
+    "....^T..",
+    ".S......",
+    ".O...#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231196895,
+   "mechanic": null
+  },
+  {
+   "id": "daily_339",
+   "world": 0,
+   "index": 339,
+   "name": "Sleepy Bend",
+   "grid": [
+    "~~#~##",
+    "...T..",
+    "#..Te.",
+    ".....#",
+    "...#.#",
+    "..#..#",
+    "#..#..",
+    "..S...",
+    "wo..#>"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231196995,
+   "mechanic": null
+  },
+  {
+   "id": "daily_340",
+   "world": 0,
+   "index": 340,
+   "name": "Wishing Wave",
+   "grid": [
+    "###~~###",
+    "#^......",
+    "..w.C.S.",
+    "........",
+    "T...vSw<",
+    "O.....o.",
+    "O.SvT..C",
+    ".#..C...",
+    ".w......",
+    "#.o>.S.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231197096,
+   "mechanic": null
+  },
+  {
+   "id": "daily_341",
+   "world": 0,
+   "index": 341,
+   "name": "Azure Shoal",
+   "grid": [
+    "~#~~#~~~",
+    "~.....#S",
+    "~.......",
+    "w#.T....",
+    ".T.C.C.w",
+    "..#.#...",
+    "w..w.##T",
+    ".S...C.#",
+    "...w.S.T",
+    "w....w.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231197197,
+   "mechanic": null
+  },
+  {
+   "id": "daily_342",
+   "world": 0,
+   "index": 342,
+   "name": "Glow Drift",
+   "grid": [
+    "~##~##",
+    "~.C...",
+    ".#..#.",
+    "....T.",
+    ".C#SS.",
+    "#w..T.",
+    ".S.T.S",
+    "..#..T"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231197298,
+   "mechanic": null
+  },
+  {
+   "id": "daily_343",
+   "world": 0,
+   "index": 343,
+   "name": "Sparkle Cove",
+   "grid": [
+    "~#~#~##",
+    "....C..",
+    "Ce#21..",
+    "...OO..",
+    "#......",
+    ".......",
+    "..T#.##",
+    "2C..#..",
+    ".C.#..1",
+    "..##TT."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      4,
+      2
+     ],
+     "b": [
+      6,
+      8
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      3,
+      2
+     ],
+     "b": [
+      0,
+      7
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       0,
+       5
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       3
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2,
+       3
+      ]
+     ]
+    }
+   ],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231197399,
+   "mechanic": null
+  },
+  {
+   "id": "daily_344",
+   "world": 0,
+   "index": 344,
+   "name": "Pincer Shelf",
+   "grid": [
+    "#~#~~~~",
+    "#O.....",
+    ".we..S^",
+    "#.w..>.",
+    ".o...T.",
+    ".^.<TTS",
+    ".T.....",
+    "...v.C.",
+    "S..C...",
+    "#......"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      2
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231197500,
+   "mechanic": null
+  },
+  {
+   "id": "daily_345",
+   "world": 0,
+   "index": 345,
+   "name": "Sparkle Boardwalk",
+   "grid": [
+    "##~~~##~",
+    "..T...#.",
+    "......CT",
+    "v.C.e...",
+    "..oT.##.",
+    "we.S....",
+    "wT...#.S",
+    "......##",
+    "...C.#.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      4,
+      3
+     ],
+     "timer": 2
+    },
+    {
+     "cell": [
+      1,
+      5
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231197601,
+   "mechanic": null
+  },
+  {
+   "id": "daily_346",
+   "world": 0,
+   "index": 346,
+   "name": "Molten Hollow",
+   "grid": [
+    "~~~###~",
+    ".T..CT.",
+    "...#..w",
+    "....^<.",
+    "..#<...",
+    "v..C...",
+    "....##.",
+    ".To.w..",
+    "..T....",
+    ".>.<..w"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231197702,
+   "mechanic": null
+  },
+  {
+   "id": "daily_347",
+   "world": 0,
+   "index": 347,
+   "name": "Star Whirl",
+   "grid": [
+    "#~#~##",
+    "..TTS.",
+    ".#....",
+    "..w#..",
+    ".#CS.S",
+    "..C.#S",
+    "....Tw",
+    "..#C.w",
+    "..C...",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231197803,
+   "mechanic": null
+  },
+  {
+   "id": "daily_348",
+   "world": 0,
+   "index": 348,
+   "name": "Pincer Corner",
+   "grid": [
+    "~#~#~#",
+    "....C.",
+    "......",
+    "..C...",
+    "#.....",
+    ".w.w#S",
+    ".T.ww.",
+    "w#..T#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231197904,
+   "mechanic": null
+  },
+  {
+   "id": "daily_349",
+   "world": 0,
+   "index": 349,
+   "name": "Pearl Garden",
+   "grid": [
+    "#~#~~##",
+    "....#..",
+    "2....>#",
+    ".1...S1",
+    ".#.T...",
+    "....#.w",
+    "......#",
+    ".O..w.C",
+    "......2",
+    "wT#.#.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      1,
+      3
+     ],
+     "b": [
+      6,
+      3
+     ]
+    },
+    {
+     "pair": 2,
+     "a": [
+      0,
+      2
+     ],
+     "b": [
+      6,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [
+    {
+     "path": [
+      [
+       5,
+       6
+      ],
+      [
+       6,
+       6
+      ],
+      [
+       6,
+       7
+      ],
+      [
+       5,
+       7
+      ]
+     ]
+    }
+   ],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231198005,
+   "mechanic": null
+  },
+  {
+   "id": "daily_350",
+   "world": 0,
+   "index": 350,
+   "name": "Dawn Shore",
+   "grid": [
+    "~~#~##~",
+    "..C..#o",
+    ".T.w.v.",
+    "S......",
+    "vS##...",
+    "w...T.e",
+    "..T....",
+    "#......",
+    "..w.w.O",
+    ".OTv..e"
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      6,
+      9
+     ],
+     "timer": 6
+    },
+    {
+     "cell": [
+      6,
+      5
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231198106,
+   "mechanic": null
+  },
+  {
+   "id": "daily_351",
+   "world": 0,
+   "index": 351,
+   "name": "Soft Glow",
+   "grid": [
+    "#~~~#~~#",
+    ".T.<....",
+    ".....cww",
+    "#wCo..#.",
+    "......#.",
+    ".....#..",
+    ".#.w.T..",
+    ".....#.T",
+    ".Sv...#."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       5,
+       2
+      ],
+      [
+       5,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231198207,
+   "mechanic": null
+  },
+  {
+   "id": "daily_352",
+   "world": 0,
+   "index": 352,
+   "name": "Amber Patrol",
+   "grid": [
+    "~#~~~~",
+    ".....w",
+    ".....#",
+    "..T..#",
+    "#^..oT",
+    "..TwT.",
+    "..#...",
+    "O....#",
+    "..O<..",
+    "O.#S.#"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231198308,
+   "mechanic": null
+  },
+  {
+   "id": "daily_353",
+   "world": 0,
+   "index": 353,
+   "name": "Lagoon Terrace",
+   "grid": [
+    "#~~#~~~",
+    "~.....T",
+    "~....#T",
+    "....##.",
+    "T.S.#..",
+    ".#..T##",
+    "..C.w..",
+    ".w.....",
+    "..#..S#",
+    "#.ww#.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231198409,
+   "mechanic": null
+  },
+  {
+   "id": "daily_354",
+   "world": 0,
+   "index": 354,
+   "name": "Sunlit Garden",
+   "grid": [
+    "~~#~#~~",
+    "Sw.....",
+    "..#Cw..",
+    "...S..C",
+    "..##.##",
+    ".T.T...",
+    ".....T.",
+    ".C..T..",
+    "S....C.",
+    "S.wwC.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231198510,
+   "mechanic": null
+  },
+  {
+   "id": "daily_355",
+   "world": 0,
+   "index": 355,
+   "name": "Ember Hollow",
+   "grid": [
+    "~#~~##",
+    ".....T",
+    ".O..#.",
+    "#w>1w.",
+    "...T#.",
+    "......",
+    "..C#..",
+    "......",
+    "#...1S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      3,
+      3
+     ],
+     "b": [
+      4,
+      8
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231198611,
+   "mechanic": null
+  },
+  {
+   "id": "daily_356",
+   "world": 0,
+   "index": 356,
+   "name": "Tawny Crossing",
+   "grid": [
+    "#~~~~~~~",
+    "T.#.....",
+    "..eO....",
+    "...>#.#.",
+    "..O.T#..",
+    "c#O.....",
+    "..OwS..#",
+    "..O..^..",
+    "...<...."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       5
+      ],
+      [
+       0,
+       4
+      ],
+      [
+       0,
+       3
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      2
+     ],
+     "timer": 4
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231198712,
+   "mechanic": null
+  },
+  {
+   "id": "daily_357",
+   "world": 0,
+   "index": 357,
+   "name": "Sunlit Flats",
+   "grid": [
+    "#~~#~~",
+    ".e..O#",
+    ".S^.O.",
+    ".##S..",
+    "...oC.",
+    "#.....",
+    "...T..",
+    "....#.",
+    "..T<.."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      1
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231198813,
+   "mechanic": null
+  },
+  {
+   "id": "daily_358",
+   "world": 0,
+   "index": 358,
+   "name": "Snappy Crossing",
+   "grid": [
+    "~~~~~~##",
+    "..<.>.>O",
+    "....<...",
+    "^#O...T.",
+    ".TTOO...",
+    "..T.....",
+    "..S.#...",
+    "..S>...O",
+    "...#o.C^"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231198914,
+   "mechanic": null
+  },
+  {
+   "id": "daily_359",
+   "world": 0,
+   "index": 359,
+   "name": "Misty Lullaby",
+   "grid": [
+    "~#~~~#",
+    "......",
+    ".w....",
+    "#T.Tw.",
+    ".#.w..",
+    "...##S",
+    "C.w.T#",
+    ".w#T..",
+    ".....C"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231199015,
+   "mechanic": null
+  },
+  {
+   "id": "daily_360",
+   "world": 0,
+   "index": 360,
+   "name": "Ruby Vents",
+   "grid": [
+    "~##~~##",
+    "....Cw.",
+    "..#C.w.",
+    "......T",
+    "wS.....",
+    ".C#.T..",
+    "#.Tw..w",
+    "......w",
+    "CS.....",
+    ".S....S"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 5,
+   "gullMoves": 8,
+   "tip": null,
+   "seed": 24231199116,
+   "mechanic": null
+  },
+  {
+   "id": "daily_361",
+   "world": 0,
+   "index": 361,
+   "name": "Glassy Lagoon",
+   "grid": [
+    "#~#~~#",
+    "..##..",
+    "1....#",
+    ".##C..",
+    "S...1.",
+    "......",
+    "T....T",
+    "S.....",
+    "C.e^S."
+   ],
+   "crabs": [],
+   "eggs": [
+    {
+     "cell": [
+      2,
+      8
+     ],
+     "timer": 2
+    }
+   ],
+   "pools": [
+    {
+     "pair": 1,
+     "a": [
+      0,
+      2
+     ],
+     "b": [
+      4,
+      4
+     ]
+    }
+   ],
+   "gullShadows": [],
+   "par": 6,
+   "gullMoves": 9,
+   "tip": null,
+   "seed": 24231199217,
+   "mechanic": null
+  },
+  {
+   "id": "daily_362",
+   "world": 0,
+   "index": 362,
+   "name": "Clatter Crevice",
+   "grid": [
+    "~#~~##",
+    "..#..w",
+    "T..w..",
+    ".e..#.",
+    "T.c<..",
+    "...#.#",
+    "...^..",
+    "...e.<"
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       2,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       2,
+       6
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      3,
+      7
+     ],
+     "timer": 3
+    },
+    {
+     "cell": [
+      1,
+      3
+     ],
+     "timer": 5
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 7,
+   "gullMoves": 10,
+   "tip": null,
+   "seed": 24231199318,
+   "mechanic": null
+  },
+  {
+   "id": "daily_363",
+   "world": 0,
+   "index": 363,
+   "name": "Shimmer Garden",
+   "grid": [
+    "~~~~~~",
+    "~w...S",
+    "#e....",
+    ".#...#",
+    "#..w#.",
+    ".#T...",
+    ".vw.#.",
+    "...#..",
+    ".T..#.",
+    "c....."
+   ],
+   "crabs": [
+    {
+     "path": [
+      [
+       0,
+       9
+      ],
+      [
+       0,
+       8
+      ],
+      [
+       0,
+       7
+      ]
+     ]
+    }
+   ],
+   "eggs": [
+    {
+     "cell": [
+      1,
+      2
+     ],
+     "timer": 3
+    }
+   ],
+   "pools": [],
+   "gullShadows": [],
+   "par": 9,
+   "gullMoves": 12,
+   "tip": null,
+   "seed": 24231199419,
+   "mechanic": null
+  },
+  {
+   "id": "daily_364",
+   "world": 0,
+   "index": 364,
+   "name": "Crystal Fan",
+   "grid": [
+    "~~~#~~",
+    "v.w.##",
+    "o#....",
+    "w.....",
+    "C..So.",
+    "......",
+    "...#TS",
+    "....O>",
+    "T..O.."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 10,
+   "gullMoves": 13,
+   "tip": null,
+   "seed": 24231199520,
+   "mechanic": null
+  },
+  {
+   "id": "daily_365",
+   "world": 0,
+   "index": 365,
+   "name": "Comet Ripple",
+   "grid": [
+    "~~#~~~~#",
+    "........",
+    "C...w.T.",
+    "...S.w.C",
+    "..w.....",
+    "..#.w..#",
+    "..C..T..",
+    ".S.wC...",
+    "....#...",
+    "TT#.S..."
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231199621,
+   "mechanic": null
+  },
+  {
+   "id": "daily_366",
+   "world": 0,
+   "index": 366,
+   "name": "Glow Path",
+   "grid": [
+    "~#~~~#",
+    "....w.",
+    ".CT#S.",
+    "C.#.T.",
+    ".#....",
+    ".....C",
+    "......",
+    "......",
+    "......"
+   ],
+   "crabs": [],
+   "eggs": [],
+   "pools": [],
+   "gullShadows": [],
+   "par": 4,
+   "gullMoves": 7,
+   "tip": null,
+   "seed": 24231199722,
+   "mechanic": null
+  }
+ ]
+}

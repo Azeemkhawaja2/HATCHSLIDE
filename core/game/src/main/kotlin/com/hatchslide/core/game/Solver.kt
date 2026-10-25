@@ -123,6 +123,74 @@ internal class StateCodec(private val board: Board) {
     }
 }
 
+/**
+ * Admissible lower bound on the moves a hatchling on each cell still needs.
+ *
+ * Relaxed movement: one move carries a piece along any path a slide could take (through currents and
+ * tide pools, stopped only by rocks, shells and the board edge) and lets it stop on any cell of that
+ * path. A real slide always ends on such a cell, so the relaxed distance never overestimates.
+ */
+internal object RelaxedDistance {
+    const val UNREACHABLE = 1 shl 20
+
+    fun compute(board: Board): IntArray {
+        val cells = board.cellCount
+        val stops = Array(cells) { IntArray(0) }
+        val reachesOcean = BooleanArray(cells)
+        val seen = IntArray(cells * 4)
+        var stamp = 0
+        val buffer = IntArray(cells * 4 + 4)
+        for (c in 0 until cells) {
+            val tile = board.tile(c)
+            if (tile == TileType.ROCK || tile == TileType.SHELL || tile == TileType.OCEAN) continue
+            var count = 0
+            for (start in Direction.entries) {
+                stamp++
+                var pos = c
+                var dir = start
+                while (true) {
+                    val next = board.step(pos, dir)
+                    if (next < 0) break
+                    val t = board.tile(next)
+                    if (t == TileType.ROCK || t == TileType.SHELL) break
+                    if (t == TileType.OCEAN) {
+                        reachesOcean[c] = true
+                        break
+                    }
+                    pos = if (t == TileType.TIDE_POOL) board.poolTwinOf(next) else next
+                    buffer[count++] = pos
+                    board.tile(pos).currentDirection?.let { dir = it }
+                    val key = pos * 4 + dir.ordinal
+                    if (seen[key] == stamp) break
+                    seen[key] = stamp
+                }
+            }
+            stops[c] = buffer.copyOf(count)
+        }
+        // Reverse BFS from cells that reach the ocean in one move.
+        val reverse = Array(cells) { mutableListOf<Int>() }
+        for (c in 0 until cells) for (to in stops[c]) reverse[to] += c
+        val distance = IntArray(cells) { UNREACHABLE }
+        val queue = ArrayDeque<Int>()
+        for (c in 0 until cells) {
+            if (reachesOcean[c]) {
+                distance[c] = 1
+                queue += c
+            }
+        }
+        while (queue.isNotEmpty()) {
+            val c = queue.removeFirst()
+            for (from in reverse[c]) {
+                if (distance[from] == UNREACHABLE) {
+                    distance[from] = distance[c] + 1
+                    queue += from
+                }
+            }
+        }
+        return distance
+    }
+}
+
 /** Open-addressing hash set of fixed-width LongArray keys. Index order is insertion (BFS) order. */
 internal class KeyStore(private val words: Int, expected: Int = 1 shl 12) {
     var keys = LongArray(words * expected)
@@ -232,6 +300,26 @@ class Solver(private val level: Level) {
     private val current = SimState.forBoard(board)
     private val next = SimState.forBoard(board)
     private val key = LongArray(words)
+    private val relaxed = RelaxedDistance.compute(board)
+
+    /** Admissible lower bound on the remaining moves (largest hatchling distance, eggs included). */
+    private fun lowerBound(s: SimState): Int {
+        var bound = 0
+        for (i in 0 until s.count) {
+            if (s.kind[i] == SimState.HATCHLING) {
+                val d = relaxed[s.cell[i]]
+                if (d > bound) bound = d
+            }
+        }
+        for (e in board.eggCells.indices) {
+            val t = s.eggTimer[e]
+            if (t > 0) {
+                val d = t + relaxed[board.eggCells[e]]
+                if (d > bound) bound = d
+            }
+        }
+        return bound
+    }
 
     private class Nodes(capacity: Int) {
         var parent = IntArray(capacity)
@@ -320,7 +408,8 @@ class Solver(private val level: Level) {
                     }
 
                     Status.PLAYING -> {
-                        if (!exhaustive && bestDepth >= 0) {
+                        if (!exhaustive && (bestDepth >= 0 || lowerBound(next) > limit - depth - 1)) {
+                            // Cannot win in the moves left (or the optimal layer is already known).
                             child = -1
                         } else {
                             codec.encode(next, key)
@@ -415,4 +504,23 @@ object Hints {
             is SolveResult.Unsolvable -> Hint.Unsolvable
             is SolveResult.TooLarge -> Hint.Unknown
         }
+}
+
+/** Raw engine throughput for tooling benchmarks: nanoseconds per counted move over random play. */
+object EngineBenchmark {
+    fun nanosPerMove(level: Level, moves: Int, seed: Long = 1): Pair<Double, Double> {
+        val engine = Engine(level.board)
+        val start = SimState.forBoard(level.board).also { it.load(GameState.initial(level)) }
+        val s = SimState.forBoard(level.board)
+        val random = kotlin.random.Random(seed)
+        s.copyFrom(start)
+        var ticks = 0L
+        val t0 = System.nanoTime()
+        for (m in 0 until moves) {
+            val status = engine.step(s, random.nextInt(4), Int.MAX_VALUE)
+            if (status != Status.PLAYING && status != -1) s.copyFrom(start)
+        }
+        val elapsed = System.nanoTime() - t0
+        return elapsed.toDouble() / moves to ticks.toDouble()
+    }
 }

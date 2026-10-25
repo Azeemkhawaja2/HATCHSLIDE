@@ -133,6 +133,22 @@ internal class Engine(private val board: Board) {
     private val direction = IntArray(capacity)
     private val destination = IntArray(capacity)
     private val enteredPool = IntArray(capacity)
+    private val claimant = IntArray(cells)
+    private val claimStamp = IntArray(cells)
+    private var claimTick = 0
+    private val stack = IntArray(capacity + 1)
+
+    /** forwardOf[swipe * cells + cell]: progress of a cell along the swipe; larger is further forward. */
+    private val forwardOf = IntArray(4 * cells).also { table ->
+        for (c in 0 until cells) {
+            val x = c % width
+            val y = c / width
+            table[UP * cells + c] = -y
+            table[DOWN * cells + c] = y
+            table[LEFT * cells + c] = -x
+            table[3 * cells + c] = x
+        }
+    }
     private val seen = IntArray(capacity * cells * 4)
     private var stamp = 0
     private val tickCap = cells * 4
@@ -149,14 +165,6 @@ internal class Engine(private val board: Board) {
         if (seen[slot] == stamp) return true
         seen[slot] = stamp
         return false
-    }
-
-    /** Projection of a cell on the swipe direction: larger is further forward. */
-    private fun forwardness(c: Int, swipe: Int): Int = when (swipe) {
-        UP -> -(c / width)
-        DOWN -> c / width
-        LEFT -> -(c % width)
-        else -> c % width
     }
 
     private fun halt(s: SimState, i: Int, cause: StopCause, tick: Int, rec: Recorder?) {
@@ -246,40 +254,53 @@ internal class Engine(private val board: Board) {
                 }
             }
 
-            // 2. Fixed point: conflicts, followers behind stopped pieces, and head-on swaps.
-            do {
-                var again = false
-                for (i in 0 until n) {
-                    if (!moving[i]) continue
-                    val target = destination[i]
-                    var outranked = false
-                    for (j in 0 until n) {
-                        if (j == i || !moving[j] || destination[j] != target) continue
-                        val fj = forwardness(s.cell[j], swipe)
-                        val fi = forwardness(s.cell[i], swipe)
-                        if (fj > fi || (fj == fi && s.cell[j] < s.cell[i])) {
-                            outranked = true
-                            break
-                        }
-                    }
-                    if (outranked) {
+            // 2. Settle who may move. Conflicts first: each claimed cell keeps its most forward claimant
+            //    (ties: lower cell index). A loser would stop anyway if the winner later stopped, since the
+            //    cell would then hold a stopped piece, so one pass is exact.
+            if (++claimTick == Int.MAX_VALUE) {
+                claimStamp.fill(0)
+                claimTick = 1
+            }
+            val forwardBase = swipe * cells
+            for (i in 0 until n) {
+                if (!moving[i]) continue
+                val target = destination[i]
+                if (claimStamp[target] != claimTick) {
+                    claimStamp[target] = claimTick
+                    claimant[target] = i
+                } else {
+                    val j = claimant[target]
+                    val fi = forwardOf[forwardBase + s.cell[i]]
+                    val fj = forwardOf[forwardBase + s.cell[j]]
+                    if (fi > fj || (fi == fj && s.cell[i] < s.cell[j])) {
+                        halt(s, j, StopCause.CONFLICT, tick, rec)
+                        claimant[target] = i
+                    } else {
                         halt(s, i, StopCause.CONFLICT, tick, rec)
-                        again = true
-                        continue
-                    }
-                    val o = occupant[target]
-                    if (o >= 0 && o != i) {
-                        if (!moving[o]) {
-                            halt(s, i, StopCause.PIECE, tick, rec)
-                            again = true
-                        } else if (destination[o] == s.cell[i]) {
-                            halt(s, i, StopCause.PIECE, tick, rec)
-                            halt(s, o, StopCause.PIECE, tick, rec)
-                            again = true
-                        }
                     }
                 }
-            } while (again)
+            }
+            //    Head-on swaps: two pieces that would trade cells both stop.
+            for (i in 0 until n) {
+                if (!moving[i]) continue
+                val o = occupant[destination[i]]
+                if (o >= 0 && o != i && moving[o] && destination[o] == s.cell[i]) {
+                    halt(s, i, StopCause.PIECE, tick, rec)
+                    halt(s, o, StopCause.PIECE, tick, rec)
+                }
+            }
+            //    Followers: a piece whose target holds a stopped piece stops; propagate back along lines.
+            var top = 0
+            for (i in 0 until n) if (alive[i] && !moving[i]) stack[top++] = s.cell[i]
+            while (top > 0) {
+                val c = stack[--top]
+                if (claimStamp[c] != claimTick) continue
+                val j = claimant[c]
+                if (moving[j] && destination[j] == c) {
+                    halt(s, j, StopCause.PIECE, tick, rec)
+                    stack[top++] = s.cell[j]
+                }
+            }
 
             // 3. Everyone still moving moves at once.
             var movedThisTick = false
