@@ -44,6 +44,8 @@ class MoveTimeline(
     private val board: Board,
     val tickSeconds: Float = 0.085f,
     val anticipation: Float = 0.06f,
+    /** Height a saved hatchling dives to (the sea surface, below the tiles). */
+    val diveDepth: Float = -0.5f,
 ) {
     val slideStart: Float = anticipation
     val slideEnd: Float = anticipation + result.ticks * tickSeconds
@@ -190,12 +192,11 @@ class MoveTimeline(
             val d = ((time - arrive) / diveDuration).coerceAtLeast(0f)
             if (time >= arrive) {
                 if (saved != null) {
-                    out.lift = -0.5f * smoothstep(d)
+                    out.lift = diveDepth * smoothstep(d)
                     out.heading = swipeHeading
                     val push = 0.6f * smoothstep(d)
                     out.x += result.direction.dx * push
                     out.y += result.direction.dy * push
-                    out.scale = 1f - 0.3f * smoothstep(d)
                 } else {
                     out.lift = -0.6f * smoothstep(d)
                 }

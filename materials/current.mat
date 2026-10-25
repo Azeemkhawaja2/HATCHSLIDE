@@ -1,0 +1,31 @@
+// Current channel: a glassy turquoise strip with chevron stripes flowing toward the model's -Z,
+// so the push direction reads even without colour.
+material {
+    name : current,
+    shadingModel : lit,
+    blending : transparent,
+    requires : [ uv0 ],
+    parameters : [
+        { type : float3, name : color },
+        { type : float3, name : stripe },
+        { type : float, name : time },
+        { type : float, name : speed }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        float2 uv = getUV0();
+        float across = abs(uv.x - 0.5);
+        // v grows toward +Z; flow runs toward -Z, so the pattern moves toward smaller v.
+        float phase = fract(uv.y * 3.0 - across * 1.6 + materialParams.time * materialParams.speed);
+        float chevron = smoothstep(0.0, 0.08, phase) * smoothstep(0.42, 0.3, phase);
+        float edge = smoothstep(0.5, 0.42, across);
+        float3 color = mix(materialParams.color, materialParams.stripe, chevron * edge);
+        float alpha = mix(0.55, 0.9, chevron * edge);
+        material.baseColor = float4(color * alpha, alpha);
+        material.roughness = 0.12;
+        material.metallic = 0.0;
+    }
+}

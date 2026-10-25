@@ -86,6 +86,22 @@ class Context:
         for t in targets:
             self.outputs.append(Output(t, referenced_by, category))
 
+    def is_fresh(self, key: str, inputs_digest: str, targets: Iterable[Path]) -> bool:
+        return not self.force and self.stamps.get(key) == inputs_digest and all(t.exists() for t in targets)
+
+    def record(self, key: str, inputs_digest: str, targets: Iterable[Path], referenced_by: str, category: str, built: bool) -> None:
+        """Registers outputs built outside [produce] (for example in a process pool)."""
+        targets = list(targets)
+        missing = [t for t in targets if not t.exists()]
+        if missing:
+            raise RuntimeError(f"{key}: missing outputs {missing}")
+        if built:
+            self.stamps[key] = inputs_digest
+            self.save()
+            print(f"  built   {key}")
+        for t in targets:
+            self.outputs.append(Output(t, referenced_by, category))
+
     def write_manifest(self) -> None:
         entries = sorted((o.manifest_entry() for o in self.outputs), key=lambda e: e["path"])
         total = sum(e["bytes"] for e in entries)

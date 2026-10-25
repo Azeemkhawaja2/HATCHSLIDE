@@ -1,0 +1,112 @@
+// Sand and cliff rock for board tiles, the island chunk and sand parts of models.
+// Sand is projected from above, rock is triplanar on steep faces; a board mask adds wet sand and
+// footprints, and anything below the waterline picks up animated caustics and a water tint.
+material {
+    name : terrain,
+    shadingModel : lit,
+    requires : [ color ],
+    parameters : [
+        { type : sampler2d, name : sandAlbedo },
+        { type : sampler2d, name : sandNormal },
+        { type : sampler2d, name : sandOrm },
+        { type : sampler2d, name : rockAlbedo },
+        { type : sampler2d, name : rockNormal },
+        { type : sampler2d, name : rockOrm },
+        { type : sampler2d, name : caustics },
+        { type : sampler2d, name : mask },
+        // xy: world xz of the mask origin, zw: 1 / mask size in world units.
+        { type : float4, name : maskTransform },
+        // 0 for models (no board mask), 1 for the board.
+        { type : float, name : maskAmount },
+        // 0 keeps everything sand (models), 1 turns steep faces into rock (cliffs).
+        { type : float, name : slopeRock },
+        { type : float3, name : sandTint },
+        { type : float3, name : wetTint },
+        { type : float3, name : waterTint },
+        { type : float, name : sandTiling },
+        { type : float, name : rockTiling },
+        { type : float, name : waterLevel },
+        { type : float, name : time }
+    ],
+    variables : [ objectPosition ]
+}
+
+vertex {
+    void materialVertex(inout MaterialVertexInputs material) {
+        material.objectPosition = float4(getPosition().xyz, 0.0);
+    }
+}
+
+fragment {
+    float3 unpackNormal(float4 t) {
+        return t.xyz * 2.0 - 1.0;
+    }
+
+    void material(inout MaterialInputs material) {
+        float3 p = variable_objectPosition.xyz;
+        float3 n = normalize(getWorldGeometricNormalVector());
+
+        // Sand: top projection (u = x, v = z; image up is world -z).
+        float2 sandUv = p.xz * materialParams.sandTiling;
+        float3 sandTex = unpackNormal(texture(materialParams_sandNormal, sandUv));
+        float3 sandN = normalize(float3(sandTex.x + n.x, abs(sandTex.z) * n.y, -sandTex.y + n.z));
+        float3 sandColor = texture(materialParams_sandAlbedo, sandUv).rgb * materialParams.sandTint;
+        float3 sandOrm = texture(materialParams_sandOrm, sandUv).rgb;
+
+        // Rock: triplanar with whiteout normal blending.
+        float3 w = pow(abs(n), float3(4.0));
+        w /= (w.x + w.y + w.z);
+        float2 uvX = float2(p.z, -p.y) * materialParams.rockTiling;
+        float2 uvY = p.xz * materialParams.rockTiling;
+        float2 uvZ = float2(p.x, -p.y) * materialParams.rockTiling;
+        float3 tX = unpackNormal(texture(materialParams_rockNormal, uvX));
+        float3 tY = unpackNormal(texture(materialParams_rockNormal, uvY));
+        float3 tZ = unpackNormal(texture(materialParams_rockNormal, uvZ));
+        float3 rockN = normalize(
+            float3(abs(tX.z) * n.x, tX.y + n.y, tX.x + n.z) * w.x +
+            float3(tY.x + n.x, abs(tY.z) * n.y, -tY.y + n.z) * w.y +
+            float3(tZ.x + n.x, tZ.y + n.y, abs(tZ.z) * n.z) * w.z);
+        float3 rockColor =
+            texture(materialParams_rockAlbedo, uvX).rgb * w.x +
+            texture(materialParams_rockAlbedo, uvY).rgb * w.y +
+            texture(materialParams_rockAlbedo, uvZ).rgb * w.z;
+        float3 rockOrm =
+            texture(materialParams_rockOrm, uvX).rgb * w.x +
+            texture(materialParams_rockOrm, uvY).rgb * w.y +
+            texture(materialParams_rockOrm, uvZ).rgb * w.z;
+
+        float rockAmount = materialParams.slopeRock * smoothstep(0.72, 0.45, n.y);
+        float3 worldN = normalize(mix(sandN, rockN, rockAmount));
+        float3 color = mix(sandColor, rockColor, rockAmount);
+        float3 orm = mix(sandOrm, rockOrm, rockAmount);
+
+        // Board mask: r = wetness, g = footprints.
+        float2 maskUv = (p.xz - materialParams.maskTransform.xy) * materialParams.maskTransform.zw;
+        float4 board = texture(materialParams_mask, maskUv) * materialParams.maskAmount;
+        float wet = board.r * (1.0 - rockAmount);
+        float prints = board.g * (1.0 - rockAmount);
+        color = mix(color, color * materialParams.wetTint, wet);
+        color *= 1.0 - 0.35 * prints;
+        worldN = normalize(mix(worldN, n, wet * 0.6));
+
+        // Under the waterline: tint and caustics fading with depth.
+        float depth = materialParams.waterLevel - p.y;
+        if (depth > 0.0) {
+            float fade = clamp(depth * 3.0, 0.0, 1.0);
+            float2 cUv = p.xz * 0.6;
+            float c1 = texture(materialParams_caustics, cUv + float2(0.031, 0.017) * materialParams.time).r;
+            float c2 = texture(materialParams_caustics, cUv * 1.27 - float2(0.023, 0.029) * materialParams.time).r;
+            float caustic = min(c1, c2);
+            color = mix(color, color * materialParams.waterTint, fade);
+            color += caustic * 0.35 * (1.0 - fade * 0.6) * materialParams.waterTint;
+            wet = 1.0;
+        }
+
+        material.normal = worldN * getWorldTangentFrame();
+        prepareMaterial(material);
+        material.baseColor = float4(color, 1.0);
+        material.roughness = mix(orm.g, 0.22, wet);
+        material.metallic = 0.0;
+        material.ambientOcclusion = orm.r * getColor().r;
+    }
+}

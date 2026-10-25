@@ -1,0 +1,9 @@
+# Python packages for tools/assetgen (build time only; nothing here ships in the app).
+numpy==2.5.3
+scipy==1.18.1
+pillow==12.3.0
+trimesh==5.2.0
+pygltflib==1.16.5
+soundfile==0.14.0
+astc-encoder-py==0.1.12
+etcpak==0.9.15

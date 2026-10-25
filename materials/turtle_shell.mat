@@ -1,0 +1,28 @@
+// Hatchling carapace: the species scute albedo with the shared hero detail normal and ORM, under a
+// thin clear coat so the shell reads as wet and polished.
+material {
+    name : turtle_shell,
+    shadingModel : lit,
+    requires : [ uv0, color ],
+    parameters : [
+        { type : sampler2d, name : albedo },
+        { type : sampler2d, name : detailNormal },
+        { type : sampler2d, name : detailOrm },
+        { type : float, name : clearCoat }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        float2 uv = getUV0();
+        material.normal = texture(materialParams_detailNormal, uv).xyz * 2.0 - 1.0;
+        prepareMaterial(material);
+        float3 orm = texture(materialParams_detailOrm, uv).rgb;
+        material.baseColor = float4(texture(materialParams_albedo, uv).rgb, 1.0);
+        material.roughness = orm.g;
+        material.metallic = 0.0;
+        material.ambientOcclusion = orm.r * getColor().r;
+        material.clearCoat = materialParams.clearCoat;
+        material.clearCoatRoughness = 0.18;
+    }
+}

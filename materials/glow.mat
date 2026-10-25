@@ -1,0 +1,16 @@
+// Emissive unlit colour for lantern light, eye glints and lava; values above 1 feed the bloom.
+material {
+    name : glow,
+    shadingModel : unlit,
+    parameters : [
+        { type : float3, name : color },
+        { type : float, name : intensity }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        material.baseColor = float4(materialParams.color * materialParams.intensity, 1.0);
+    }
+}

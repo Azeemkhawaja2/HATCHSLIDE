@@ -13,6 +13,19 @@ Requirements: JDK 17+, Android SDK Platform 37 and Build-Tools 37 (`ANDROID_HOME
 ./gradlew bundleRelease    # app bundle (signed if keystore.properties exists)
 ```
 
+## Assets
+
+Every model, texture, sky and font is generated at build time and git-ignored. Install the Python tools once, then build:
+
+```bash
+pip install -r tools/assetgen/requirements.txt
+python tools/assetgen/build_all.py            # all stages; unchanged outputs are skipped
+python tools/assetgen/build_all.py --only models
+python tools/assetgen/build_all.py --force    # rebuild everything (textures take a few minutes)
+```
+
+Gradle runs the same script (`generateAssets`) before merging assets. Filament's `matc` and `cmgen` are downloaded from Maven Central for the pinned Filament version by `tools/filament/fetch_tools.py`. `assets_manifest.json` lists every output with its size and the code that loads it.
+
 ## Levels
 
 Levels live in `app/src/main/assets/levels/` (`world_1.json` to `world_5.json`, `daily.json`) and are committed so builds are reproducible. Regenerate them with:

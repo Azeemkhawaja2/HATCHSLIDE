@@ -1,0 +1,58 @@
+// Rocks, cliffs and basalt: triplanar mapping in object space, so any rock shape and scale gets an
+// undistorted surface without UVs, with whiteout-blended normals and vertex-colour AO.
+material {
+    name : rock,
+    shadingModel : lit,
+    requires : [ color ],
+    parameters : [
+        { type : sampler2d, name : albedo },
+        { type : sampler2d, name : normalMap },
+        { type : sampler2d, name : orm },
+        { type : float3, name : tint },
+        { type : float, name : tiling }
+    ],
+    variables : [ objectPosition ]
+}
+
+vertex {
+    void materialVertex(inout MaterialVertexInputs material) {
+        material.objectPosition = float4(getPosition().xyz, 0.0);
+    }
+}
+
+fragment {
+    float3 unpackNormal(float4 t) {
+        return t.xyz * 2.0 - 1.0;
+    }
+
+    void material(inout MaterialInputs material) {
+        float3 p = variable_objectPosition.xyz * materialParams.tiling;
+        float3 n = normalize(getWorldGeometricNormalVector());
+        float3 w = pow(abs(n), float3(4.0));
+        w /= (w.x + w.y + w.z);
+        float2 uvX = float2(p.z, -p.y);
+        float2 uvY = p.xz;
+        float2 uvZ = float2(p.x, -p.y);
+        float3 tX = unpackNormal(texture(materialParams_normalMap, uvX));
+        float3 tY = unpackNormal(texture(materialParams_normalMap, uvY));
+        float3 tZ = unpackNormal(texture(materialParams_normalMap, uvZ));
+        float3 worldN = normalize(
+            float3(abs(tX.z) * n.x, tX.y + n.y, tX.x + n.z) * w.x +
+            float3(tY.x + n.x, abs(tY.z) * n.y, -tY.y + n.z) * w.y +
+            float3(tZ.x + n.x, tZ.y + n.y, abs(tZ.z) * n.z) * w.z);
+        float3 color =
+            texture(materialParams_albedo, uvX).rgb * w.x +
+            texture(materialParams_albedo, uvY).rgb * w.y +
+            texture(materialParams_albedo, uvZ).rgb * w.z;
+        float3 orm =
+            texture(materialParams_orm, uvX).rgb * w.x +
+            texture(materialParams_orm, uvY).rgb * w.y +
+            texture(materialParams_orm, uvZ).rgb * w.z;
+        material.normal = worldN * getWorldTangentFrame();
+        prepareMaterial(material);
+        material.baseColor = float4(color * materialParams.tint, 1.0);
+        material.roughness = orm.g;
+        material.metallic = 0.0;
+        material.ambientOcclusion = orm.r * getColor().r;
+    }
+}

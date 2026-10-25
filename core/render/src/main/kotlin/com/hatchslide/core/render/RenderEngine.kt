@@ -17,6 +17,8 @@ import com.google.android.filament.android.DisplayHelper
 import com.google.android.filament.android.UiHelper
 import com.google.android.filament.gltfio.Gltfio
 import com.google.android.filament.utils.Utils
+import com.hatchslide.core.render.assets.ModelLibrary
+import com.hatchslide.core.render.assets.TextureStore
 
 /** Loads Filament's native libraries once per process. */
 object FilamentRuntime {
@@ -78,6 +80,9 @@ class RenderEngine(context: Context) {
     val camera: Camera
     val materials: MaterialLibrary
     val meshes: MeshFactory
+    val textures: TextureStore
+    val models: ModelLibrary
+    val surfaces: Surfaces
     val environment: Environment
     val assets get() = appContext.assets
 
@@ -130,7 +135,11 @@ class RenderEngine(context: Context) {
         }
         materials = MaterialLibrary(appContext.assets, engine)
         meshes = MeshFactory(engine)
+        textures = TextureStore(appContext.assets, engine)
+        models = ModelLibrary(appContext.assets, engine)
+        surfaces = Surfaces(this, textures)
         environment = Environment(this)
+        setQuality(QualityTier.MEDIUM)
         camera.setExposure(16f, 1f / 125f, 100f)
         uiHelper.renderCallback = SurfaceCallback()
     }
@@ -194,6 +203,13 @@ class RenderEngine(context: Context) {
         choreographer.removeFrameCallback(frameCallback)
     }
 
+    /** Applies a quality tier: post-processing, shadows, frame cap and texture limits for later loads. */
+    fun setQuality(tier: QualityTier) {
+        environment.applyQuality(view, tier)
+        textures.setLimits(tier.maxTexture, tier.heroTexture)
+        tierFrameCap = tier.frameCap
+    }
+
     private fun applyFrameRate() {
         val chain = swapChain ?: return
         val fps = frameRateMode.fps
@@ -222,6 +238,7 @@ class RenderEngine(context: Context) {
             lastFrameNanos = frameTimeNanos
             lastRenderNanos = frameTimeNanos
             val start = System.nanoTime()
+            surfaces.update(dt)
             stage?.update(this@RenderEngine, dt)
             val chain = swapChain ?: return
             if (!uiHelper.isReadyToRender) return
@@ -242,9 +259,11 @@ class RenderEngine(context: Context) {
         stage = null
         stages.forEach { it.destroy(this) }
         detachSurface()
+        models.destroy()
         environment.destroy()
         meshes.destroy()
         materials.destroy()
+        textures.destroy()
         engine.destroyCameraComponent(cameraEntity)
         EntityManager.get().destroy(cameraEntity)
         engine.destroyView(view)

@@ -59,5 +59,30 @@ object Transforms {
         return out
     }
 
+    /** Translation * rotationY(yaw) * rotationX(pitch) * scale(sx, sy, sz): a leaning, squashable body. */
+    fun trsLean(out: FloatArray, tx: Float, ty: Float, tz: Float, yaw: Float, pitch: Float, sx: Float, sy: Float, sz: Float): FloatArray {
+        val cy = cos(yaw)
+        val sy0 = sin(yaw)
+        val cp = cos(pitch)
+        val sp = sin(pitch)
+        out[0] = cy * sx
+        out[1] = 0f
+        out[2] = -sy0 * sx
+        out[3] = 0f
+        out[4] = sy0 * sp * sy
+        out[5] = cp * sy
+        out[6] = cy * sp * sy
+        out[7] = 0f
+        out[8] = sy0 * cp * sz
+        out[9] = -sp * sz
+        out[10] = cy * cp * sz
+        out[11] = 0f
+        out[12] = tx
+        out[13] = ty
+        out[14] = tz
+        out[15] = 1f
+        return out
+    }
+
     fun identity(out: FloatArray): FloatArray = trs(out, 0f, 0f, 0f, 0f, 1f, 1f, 1f)
 }

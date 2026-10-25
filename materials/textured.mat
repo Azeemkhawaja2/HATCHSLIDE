@@ -1,0 +1,32 @@
+// Textured PBR for models: atlas-mapped props and shells, eggs, the crab, the gull and turtle skin.
+// Ambient occlusion combines the ORM texture with the AO baked into vertex colour.
+material {
+    name : textured,
+    shadingModel : lit,
+    requires : [ uv0, color ],
+    parameters : [
+        { type : sampler2d, name : albedo },
+        { type : sampler2d, name : normalMap },
+        { type : sampler2d, name : orm },
+        // Multiplies the albedo (species skin tints); white leaves it unchanged.
+        { type : float3, name : tint },
+        { type : float, name : normalStrength },
+        // Scales the UVs (1 for atlases; >1 tiles detail textures such as turtle skin).
+        { type : float, name : uvScale }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        float2 uv = getUV0() * materialParams.uvScale;
+        float3 n = texture(materialParams_normalMap, uv).xyz * 2.0 - 1.0;
+        n.xy *= materialParams.normalStrength;
+        material.normal = normalize(n);
+        prepareMaterial(material);
+        float3 orm = texture(materialParams_orm, uv).rgb;
+        material.baseColor = float4(texture(materialParams_albedo, uv).rgb * materialParams.tint, 1.0);
+        material.roughness = orm.g;
+        material.metallic = orm.b;
+        material.ambientOcclusion = orm.r * getColor().r;
+    }
+}

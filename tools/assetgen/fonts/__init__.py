@@ -23,11 +23,13 @@ FILES = [
     ("nunito/OFL.txt", paths.LICENSE_TEXTS / "OFL-Nunito.txt", "580df76c95a1ec5ab878ceb25bb3d85c6a076804e9c970c8c6972aea775fdf65"),
 ]
 
+THEME = "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Theme.kt"
+LICENSES = "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Licenses.kt"
 REFERENCED_BY = {
-    "fredoka.ttf": "core/designsystem/.../Type.kt (R.font.fredoka)",
-    "nunito.ttf": "core/designsystem/.../Type.kt (R.font.nunito)",
-    "OFL-Fredoka.txt": "feature/menu/.../CreditsScreen.kt",
-    "OFL-Nunito.txt": "feature/menu/.../CreditsScreen.kt",
+    "fredoka.ttf": THEME,
+    "nunito.ttf": THEME,
+    "OFL-Fredoka.txt": LICENSES,
+    "OFL-Nunito.txt": LICENSES,
 }
 
 

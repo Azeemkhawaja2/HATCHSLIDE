@@ -7,55 +7,78 @@ import com.google.android.filament.Skybox
 import com.google.android.filament.Texture
 import com.google.android.filament.View
 import com.google.android.filament.utils.KTX1Loader
+import com.hatchslide.core.render.assets.AssetCatalog
+import kotlin.math.asin
+import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.sin
+import kotlin.math.sqrt
 
-/** Look of one environment (spec section 6): sky, sun, ambient light, fog and palette tints. */
-data class WorldTheme(
+/** Look of one environment (spec section 6): sky, sun, surfaces, water and fog. Colours are sRGB. */
+class WorldTheme(
     val id: Int,
     val name: String,
-    /** Asset base name for the cmgen output: `skies/<sky>_ibl.ktx` and `skies/<sky>_skybox.ktx`. */
+    /** Sky asset name: `skies/<sky>_ibl.ktx` and the `sky_<sky>` skybox texture. */
     val sky: String,
-    val sunDirection: FloatArray,
+    /** Direction toward the sun or moon disc painted into the sky (tools/assetgen/skies). */
+    skySun: FloatArray,
+    /** Lowest key-light elevation in degrees, so long dawn and dusk shadows never hide a cell. */
+    minSunElevation: Float,
     val sunColor: FloatArray,
     val sunLux: Float,
     val iblIntensity: Float,
-    val zenith: FloatArray,
-    val horizon: FloatArray,
     val fog: FloatArray,
     val fogDensity: Float,
-    val sand: FloatArray,
-    val wetSand: FloatArray,
+    /** Sand albedo texture (AssetCatalog.Textures.SAND_LOOKS) and its detail set (fine or coarse). */
+    val sandLook: String,
+    val sandDetail: String,
+    /** Cliff texture set: rock or basalt. */
+    val cliff: String,
+    val wetTint: FloatArray,
     val shallowWater: FloatArray,
     val deepWater: FloatArray,
-    val nightGlow: Boolean = false,
+    /** Bioluminescent foam strength (0 by day). */
+    val glow: Float,
+    val glowColor: FloatArray,
     val ash: Boolean = false,
 ) {
+    /** Light travel direction of the sun: the sky's sun azimuth, raised to [minSunElevation]. */
+    val sunDirection: FloatArray = run {
+        val len = sqrt(skySun[0] * skySun[0] + skySun[1] * skySun[1] + skySun[2] * skySun[2])
+        val azimuth = atan2(skySun[0], skySun[2])
+        val elevation = max(asin(skySun[1] / len), Math.toRadians(minSunElevation.toDouble()).toFloat())
+        floatArrayOf(-cos(elevation) * sin(azimuth), -sin(elevation), -cos(elevation) * cos(azimuth))
+    }
+
     companion object {
         private fun rgb(hex: Int) = floatArrayOf(((hex shr 16) and 255) / 255f, ((hex shr 8) and 255) / 255f, (hex and 255) / 255f)
 
+        private val NO_GLOW = rgb(0x000000)
+
         val TITLE = WorldTheme(
-            0, "Sunrise", "title", floatArrayOf(-0.35f, -0.45f, -0.82f), rgb(0xFFD2A8), 70_000f, 26_000f,
-            rgb(0x8EC5E8), rgb(0xFFC9A0), rgb(0xF6D3B8), 0.012f, rgb(0xF2D4A2), rgb(0xC9A777), rgb(0x52D1C8), rgb(0x1B5F8C),
+            0, "Sunrise", "title", floatArrayOf(-0.45f, 0.16f, -0.88f), 28f, rgb(0xFFD2A8), 70_000f, 26_000f,
+            rgb(0xF6D3B8), 0.012f, "sand_golden", "sand_fine", "rock", rgb(0xB59A80), rgb(0x52D1C8), rgb(0x1B5F8C), 0f, NO_GLOW,
         )
         val SUNRISE_COVE = WorldTheme(
-            1, "Sunrise Cove", "world1", floatArrayOf(-0.4f, -0.5f, -0.77f), rgb(0xFFD6AE), 80_000f, 28_000f,
-            rgb(0x9CCBEA), rgb(0xFFCBA4), rgb(0xF7D6BC), 0.010f, rgb(0xF3D3A0), rgb(0xC7A271), rgb(0x55D3C9), rgb(0x1C6290),
+            1, "Sunrise Cove", "world1", floatArrayOf(-0.7f, 0.32f, -0.64f), 38f, rgb(0xFFD6AE), 80_000f, 28_000f,
+            rgb(0xF7D6BC), 0.010f, "sand_golden", "sand_fine", "rock", rgb(0xB0957A), rgb(0x55D3C9), rgb(0x1C6290), 0f, NO_GLOW,
         )
         val CORAL_COAST = WorldTheme(
-            2, "Coral Coast", "world2", floatArrayOf(-0.15f, -0.92f, -0.36f), rgb(0xFFF6E8), 110_000f, 32_000f,
-            rgb(0x5FB3EE), rgb(0xC9EBFF), rgb(0xD8EEF9), 0.007f, rgb(0xFBF1E1), rgb(0xD9CAB2), rgb(0x48E0D3), rgb(0x1774B5),
+            2, "Coral Coast", "world2", floatArrayOf(0.2f, 0.92f, 0.33f), 38f, rgb(0xFFF6E8), 110_000f, 32_000f,
+            rgb(0xD8EEF9), 0.007f, "sand_coral", "sand_fine", "rock", rgb(0xB8AC9C), rgb(0x48E0D3), rgb(0x1774B5), 0f, NO_GLOW,
         )
         val MOONLIT_BAY = WorldTheme(
-            3, "Moonlit Bay", "world3", floatArrayOf(0.25f, -0.6f, -0.76f), rgb(0xB9CCFF), 9_000f, 9_000f,
-            rgb(0x0B1636), rgb(0x2B3F74), rgb(0x1A2850), 0.014f, rgb(0xB6B9C9), rgb(0x8A8FA6), rgb(0x2A8C9E), rgb(0x0A2346),
-            nightGlow = true,
+            3, "Moonlit Bay", "world3", floatArrayOf(0.35f, 0.55f, -0.76f), 38f, rgb(0xB9CCFF), 9_000f, 9_000f,
+            rgb(0x1A2850), 0.014f, "sand_silver", "sand_fine", "rock", rgb(0x8A8FA6), rgb(0x2A8C9E), rgb(0x0A2346), 1f, rgb(0x5CF2D6),
         )
         val CRAB_REEF = WorldTheme(
-            4, "Crab Reef", "world4", floatArrayOf(0.55f, -0.35f, -0.76f), rgb(0xFFC48A), 75_000f, 24_000f,
-            rgb(0x7DA9D6), rgb(0xF6B987), rgb(0xE9C2A0), 0.011f, rgb(0xE8C38E), rgb(0xB89466), rgb(0x46BDB4), rgb(0x174F78),
+            4, "Crab Reef", "world4", floatArrayOf(0.72f, 0.3f, -0.62f), 38f, rgb(0xFFC48A), 75_000f, 24_000f,
+            rgb(0xE9C2A0), 0.011f, "sand_amber", "sand_coarse", "rock", rgb(0xA8875E), rgb(0x46BDB4), rgb(0x174F78), 0f, NO_GLOW,
         )
         val VOLCANIC_ISLE = WorldTheme(
-            5, "Volcanic Isle", "world5", floatArrayOf(0.6f, -0.22f, -0.77f), rgb(0xFF8A4C), 55_000f, 18_000f,
-            rgb(0x3A2D4F), rgb(0xF47B45), rgb(0xB3685A), 0.018f, rgb(0x4A4448), rgb(0x2F2B30), rgb(0x3A9C98), rgb(0x123A55),
+            5, "Volcanic Isle", "world5", floatArrayOf(0.6f, 0.12f, -0.79f), 38f, rgb(0xFF8A4C), 55_000f, 18_000f,
+            rgb(0xB3685A), 0.018f, "sand_volcanic", "sand_coarse", "basalt", rgb(0x4A4448), rgb(0x3A9C98), rgb(0x123A55), 0f, NO_GLOW,
             ash = true,
         )
 
@@ -73,9 +96,8 @@ data class WorldTheme(
 }
 
 /**
- * Sun, image-based lighting and sky for the current [WorldTheme]. Uses the cmgen-built KTX IBL and
- * skybox from the HD asset pack when present; otherwise a gradient-derived spherical-harmonics
- * ambient and a flat sky colour so the scene still reads correctly.
+ * Sun, image-based lighting and sky for the current [WorldTheme], from the cmgen-built IBL in
+ * `skies/` and the compressed skybox cubemap in the texture pack.
  */
 class Environment(private val host: RenderEngine) {
     private val engine = host.engine
@@ -84,15 +106,14 @@ class Environment(private val host: RenderEngine) {
     private var skybox: Skybox? = null
     private var iblTexture: Texture? = null
     private var skyTexture: Texture? = null
-    var theme: WorldTheme = WorldTheme.TITLE
+    var theme: WorldTheme? = null
         private set
     var shadowMapSize = 2048
         private set
 
     init {
-        buildSun(theme, shadowMapSize)
+        buildSun(WorldTheme.TITLE, shadowMapSize)
         host.scene.addEntity(sun)
-        apply(WorldTheme.TITLE)
     }
 
     private fun buildSun(theme: WorldTheme, mapSize: Int) {
@@ -121,10 +142,11 @@ class Environment(private val host: RenderEngine) {
         if (size == shadowMapSize) return
         shadowMapSize = size
         engine.lightManager.destroy(sun)
-        buildSun(theme, size)
+        buildSun(theme ?: WorldTheme.TITLE, size)
     }
 
     fun apply(next: WorldTheme) {
+        if (theme === next) return
         theme = next
         val lm = engine.lightManager
         val light = lm.getInstance(sun)
@@ -132,16 +154,15 @@ class Environment(private val host: RenderEngine) {
         lm.setIntensity(light, next.sunLux)
         lm.setDirection(light, next.sunDirection[0], next.sunDirection[1], next.sunDirection[2])
         releaseSky()
-        val loaded = loadKtx(next)
-        if (!loaded) {
-            indirectLight = IndirectLight.Builder()
-                .irradiance(3, gradientHarmonics(next))
-                .intensity(next.iblIntensity)
-                .build(engine)
-            skybox = Skybox.Builder().color(next.horizon[0], next.horizon[1], next.horizon[2], 1f).build(engine)
-        }
+        val ibl = KTX1Loader.createIndirectLight(engine, host.assets.readDirect(AssetCatalog.Skies.ibl(next.sky)), KTX1Loader.Options())
+        indirectLight = ibl.indirectLight?.also { it.intensity = next.iblIntensity }
+        iblTexture = ibl.cubemap
+        val (box, cubemap) = host.textures.skybox(next.sky)
+        skybox = box
+        skyTexture = cubemap
         host.scene.indirectLight = indirectLight
         host.scene.skybox = skybox
+        host.surfaces.applyTheme(next)
         host.view.fogOptions = host.view.fogOptions.apply {
             enabled = true
             distance = 18f
@@ -149,42 +170,9 @@ class Environment(private val host: RenderEngine) {
             height = 0f
             heightFalloff = 0.6f
             color = floatArrayOf(next.fog[0], next.fog[1], next.fog[2])
-            fogColorFromIbl = loaded
+            fogColorFromIbl = true
             maximumOpacity = 0.85f
         }
-    }
-
-    private fun loadKtx(theme: WorldTheme): Boolean {
-        val iblPath = "skies/${theme.sky}_ibl.ktx"
-        val skyPath = "skies/${theme.sky}_skybox.ktx"
-        val assets = host.assets
-        val available = try {
-            assets.open(iblPath).close()
-            assets.open(skyPath).close()
-            true
-        } catch (_: java.io.IOException) {
-            false
-        }
-        if (!available) return false
-        val ibl = KTX1Loader.createIndirectLight(engine, assets.readDirect(iblPath), KTX1Loader.Options())
-        indirectLight = ibl.indirectLight?.also { it.intensity = theme.iblIntensity }
-        iblTexture = ibl.cubemap
-        val sky = KTX1Loader.createSkybox(engine, assets.readDirect(skyPath), KTX1Loader.Options())
-        skybox = sky.skybox
-        skyTexture = sky.cubemap
-        return true
-    }
-
-    /** Three-band SH approximating a sky gradient: bright from above, warm toward the horizon. */
-    private fun gradientHarmonics(theme: WorldTheme): FloatArray {
-        val sh = FloatArray(27)
-        val avg = FloatArray(3) { (theme.zenith[it] + theme.horizon[it]) * 0.5f }
-        for (c in 0 until 3) {
-            sh[c] = avg[c] * 0.9f
-            // L1,-1 (the y, up, term): sky above brighter than the ground below.
-            sh[3 + c] = (theme.zenith[c] - theme.sand[c] * 0.4f) * 0.35f
-        }
-        return sh
     }
 
     private fun releaseSky() {
@@ -242,8 +230,8 @@ class Environment(private val host: RenderEngine) {
 }
 
 /** Quality tiers (spec section 6). */
-enum class QualityTier(val renderScale: Float, val shadowMapSize: Int, val maxTexture: Int, val frameCap: Float) {
-    LOW(0.7f, 1024, 1024, 30f),
-    MEDIUM(0.85f, 2048, 2048, 60f),
-    HIGH(1.0f, 2048, 4096, 0f),
+enum class QualityTier(val renderScale: Float, val shadowMapSize: Int, val maxTexture: Int, val heroTexture: Int, val frameCap: Float) {
+    LOW(0.7f, 1024, 1024, 1024, 30f),
+    MEDIUM(0.85f, 2048, 2048, 2048, 60f),
+    HIGH(1.0f, 2048, 2048, 4096, 0f),
 }

@@ -1,0 +1,115 @@
+// The ocean (and tide-pool surfaces): four Gerstner waves in the vertex stage, two scrolling normal
+// maps, shallow-to-deep colour from a shoreline distance texture, a lapping foam band, and an
+// emissive bioluminescent glow for the night world. Specular stays on through transparency, so the
+// sky reflection and sun glints come from Filament's Fresnel-weighted IBL and sun lighting.
+material {
+    name : water,
+    shadingModel : lit,
+    blending : transparent,
+    parameters : [
+        { type : sampler2d, name : normalA },
+        { type : sampler2d, name : normalB },
+        { type : sampler2d, name : foam },
+        // r = distance from the shore, 0 at the waterline to 1 at three cells out.
+        { type : sampler2d, name : shore },
+        { type : float4, name : shoreTransform },
+        { type : float3, name : shallow },
+        { type : float3, name : deep },
+        { type : float, name : time },
+        // Wave height scale: 1 for the ocean, 0 for tide pools and reduced motion.
+        { type : float, name : waveAmp },
+        { type : float, name : foamAmount },
+        // Bioluminescence: colour and strength of the glowing foam.
+        { type : float3, name : glowColor },
+        { type : float, name : glow },
+        // xy: world xz of a splash flare, z: strength, w: radius.
+        { type : float4, name : flare },
+        // Constant distance from shore used when foamAmount is 0 (tide pools).
+        { type : float, name : poolDepth }
+    ],
+    variables : [ objectPosition ]
+}
+
+vertex {
+    // Four summed Gerstner waves: direction xy, wavelength z, amplitude w.
+    float3 gerstner(float2 xz, float t, float4 wave) {
+        float k = 6.2831853 / wave.z;
+        float c = sqrt(9.8 / k);
+        float2 d = normalize(wave.xy);
+        float f = k * (dot(d, xz) - c * t);
+        float a = wave.w;
+        return float3(d.x * a * cos(f) * 0.6, a * sin(f), d.y * a * cos(f) * 0.6);
+    }
+
+    void materialVertex(inout MaterialVertexInputs material) {
+        float3 p = getPosition().xyz;
+        material.objectPosition = float4(p, 0.0);
+        float t = materialParams.time;
+        float3 offset =
+            gerstner(p.xz, t, float4(1.0, 0.35, 7.0, 0.035)) +
+            gerstner(p.xz, t, float4(-0.4, 1.0, 4.3, 0.022)) +
+            gerstner(p.xz, t, float4(0.7, -0.6, 2.6, 0.012)) +
+            gerstner(p.xz, t, float4(-0.9, -0.2, 1.7, 0.007));
+        material.worldPosition.xyz += offset * materialParams.waveAmp;
+    }
+}
+
+fragment {
+    float3 gerstnerNormal(float2 xz, float t, float4 wave) {
+        float k = 6.2831853 / wave.z;
+        float c = sqrt(9.8 / k);
+        float2 d = normalize(wave.xy);
+        float f = k * (dot(d, xz) - c * t);
+        float slope = wave.w * k * cos(f);
+        return float3(-d.x * slope, 0.0, -d.y * slope);
+    }
+
+    void material(inout MaterialInputs material) {
+        float3 p = variable_objectPosition.xyz;
+        float t = materialParams.time;
+        float amp = materialParams.waveAmp;
+
+        float3 tilt = (
+            gerstnerNormal(p.xz, t, float4(1.0, 0.35, 7.0, 0.035)) +
+            gerstnerNormal(p.xz, t, float4(-0.4, 1.0, 4.3, 0.022)) +
+            gerstnerNormal(p.xz, t, float4(0.7, -0.6, 2.6, 0.012)) +
+            gerstnerNormal(p.xz, t, float4(-0.9, -0.2, 1.7, 0.007))) * amp;
+
+        float2 uvA = p.xz * 0.23 + float2(0.021, 0.013) * t;
+        float2 uvB = p.xz * 0.41 - float2(0.017, -0.027) * t;
+        float3 nA = texture(materialParams_normalA, uvA).xyz * 2.0 - 1.0;
+        float3 nB = texture(materialParams_normalB, uvB).xyz * 2.0 - 1.0;
+        float2 detail = (nA.xy + nB.xy) * 0.5;
+        float3 worldN = normalize(float3(tilt.x + detail.x * 0.35, 1.0, tilt.z - detail.y * 0.35));
+
+        float2 shoreUv = (p.xz - materialParams.shoreTransform.xy) * materialParams.shoreTransform.zw;
+        float shoreDistance = mix(materialParams.poolDepth, texture(materialParams_shore, shoreUv).r,
+                clamp(materialParams.foamAmount, 0.0, 1.0));
+
+        // Foam band lapping in and out, broken up by the foam texture.
+        float lap = 0.06 + 0.035 * sin(t * 1.3 + p.x * 0.7 + p.z * 0.4);
+        float band = smoothstep(lap + 0.08, lap - 0.02, shoreDistance);
+        float foamTex = texture(materialParams_foam, p.xz * 0.5 + float2(0.0, 0.03) * t).r;
+        float foam = clamp(band * (0.45 + foamTex) * materialParams.foamAmount, 0.0, 1.0);
+
+        float depthMix = smoothstep(0.0, 1.0, shoreDistance);
+        float3 water = mix(materialParams.shallow, materialParams.deep, depthMix);
+        float3 color = mix(water, float3(0.95, 0.97, 0.98), foam);
+        float alpha = mix(0.55, 0.94, depthMix);
+        alpha = mix(alpha, 1.0, foam);
+
+        material.normal = worldN * getWorldTangentFrame();
+        prepareMaterial(material);
+        material.baseColor = float4(color * alpha, alpha);
+        material.roughness = mix(0.06, 0.55, foam);
+        material.metallic = 0.0;
+
+        float pulse = 0.65 + 0.35 * sin(t * 2.1 + p.x * 1.7 - p.z * 1.3);
+        float2 toFlare = p.xz - materialParams.flare.xy;
+        float flare = materialParams.flare.z * exp(-dot(toFlare, toFlare) / max(materialParams.flare.w * materialParams.flare.w, 1e-4));
+        // The sea glows in its foam; tide pools (no foam) glow evenly with a slow pulse.
+        float sea = clamp(materialParams.foamAmount, 0.0, 1.0);
+        float glow = materialParams.glow * mix(0.4 + 0.2 * pulse, foam * pulse + 0.15 * foamTex, sea) + flare;
+        material.emissive = float4(materialParams.glowColor * glow, 0.0);
+    }
+}

@@ -1,0 +1,24 @@
+// Unlit transparent sprite from the effects atlas, laid flat on the sand: gull shadows and
+// footprints. [rect] selects the atlas cell (uv offset xy, uv scale zw).
+material {
+    name : sprite,
+    shadingModel : unlit,
+    blending : transparent,
+    depthWrite : false,
+    requires : [ uv0 ],
+    parameters : [
+        { type : sampler2d, name : sprite },
+        { type : float4, name : rect },
+        { type : float4, name : color }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        float2 uv = materialParams.rect.xy + getUV0() * materialParams.rect.zw;
+        float4 texel = texture(materialParams_sprite, uv);
+        float alpha = texel.a * materialParams.color.a;
+        material.baseColor = float4(texel.rgb * materialParams.color.rgb * alpha, alpha);
+    }
+}

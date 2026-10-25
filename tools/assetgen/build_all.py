@@ -22,6 +22,9 @@ from tools.assetgen.common.build import Context  # noqa: E402
 # (stage name, module path). Each module exposes build(ctx: Context).
 STAGES: list[tuple[str, str]] = [
     ("fonts", "tools.assetgen.fonts"),
+    ("textures", "tools.assetgen.textures"),
+    ("skies", "tools.assetgen.skies"),
+    ("models", "tools.assetgen.models"),
 ]
 
 

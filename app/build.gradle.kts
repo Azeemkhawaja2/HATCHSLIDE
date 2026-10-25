@@ -77,6 +77,10 @@ android {
             // Generated base-module assets (models, effects, ambience); written by :generateAssets.
             assets.srcDir("src/main/assets-gen")
         }
+        getByName("debug") {
+            // Debug APKs install without Play asset delivery, so they carry the HD pack themselves.
+            assets.srcDir(rootProject.file("hd_assets/src/main/assets"))
+        }
     }
 }
 

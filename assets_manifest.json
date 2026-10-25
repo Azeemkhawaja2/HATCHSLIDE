@@ -1,33 +1,1080 @@
 {
- "totalBytes": 444889,
+ "totalBytes": 209801381,
  "bytesByCategory": {
   "fonts": 436116,
-  "licenses": 8773
+  "licenses": 8773,
+  "models": 4124936,
+  "skies": 32627744,
+  "textures": 172603812
  },
  "files": [
   {
    "path": "app/src/main/assets-gen/licenses/OFL-Fredoka.txt",
    "bytes": 4388,
    "category": "licenses",
-   "referencedBy": "feature/menu/.../CreditsScreen.kt"
+   "referencedBy": "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Licenses.kt"
   },
   {
    "path": "app/src/main/assets-gen/licenses/OFL-Nunito.txt",
    "bytes": 4385,
    "category": "licenses",
-   "referencedBy": "feature/menu/.../CreditsScreen.kt"
+   "referencedBy": "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Licenses.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/bucket.glb",
+   "bytes": 13492,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/bucket_lod1.glb",
+   "bytes": 8300,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/cliff_0.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/cliff_0_lod1.glb",
+   "bytes": 8500,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/cliff_1.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/cliff_1_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coconut.glb",
+   "bytes": 27484,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coconut_lod1.glb",
+   "bytes": 6956,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_brain.glb",
+   "bytes": 31092,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_brain_lod1.glb",
+   "bytes": 6964,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_branch.glb",
+   "bytes": 21588,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_branch_lod1.glb",
+   "bytes": 7904,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_fan.glb",
+   "bytes": 67388,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/coral_fan_lod1.glb",
+   "bytes": 12944,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/crab.glb",
+   "bytes": 67432,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/crab_lod1.glb",
+   "bytes": 39024,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/current.glb",
+   "bytes": 20104,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/current_lod1.glb",
+   "bytes": 12040,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/driftwood_0.glb",
+   "bytes": 11564,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/driftwood_0_lod1.glb",
+   "bytes": 6280,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/driftwood_1.glb",
+   "bytes": 10228,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/driftwood_1_lod1.glb",
+   "bytes": 4940,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/egg.glb",
+   "bytes": 63356,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/egg_lod1.glb",
+   "bytes": 17364,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/hatchling.glb",
+   "bytes": 256840,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/hatchling_lod1.glb",
+   "bytes": 74460,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_1.glb",
+   "bytes": 266304,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_1_lod1.glb",
+   "bytes": 89832,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_2.glb",
+   "bytes": 262012,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_2_lod1.glb",
+   "bytes": 88256,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_3.glb",
+   "bytes": 271012,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_3_lod1.glb",
+   "bytes": 90352,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_4.glb",
+   "bytes": 278372,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_4_lod1.glb",
+   "bytes": 91892,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_5.glb",
+   "bytes": 139004,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/island_5_lod1.glb",
+   "bytes": 27072,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/lantern.glb",
+   "bytes": 17700,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/lantern_lod1.glb",
+   "bytes": 14496,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/nest.glb",
+   "bytes": 50248,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/nest_lod1.glb",
+   "bytes": 17120,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/palm_0.glb",
+   "bytes": 79096,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/palm_0_lod1.glb",
+   "bytes": 33752,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/palm_1.glb",
+   "bytes": 79096,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/palm_1_lod1.glb",
+   "bytes": 33756,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/pebbles.glb",
+   "bytes": 37672,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/pebbles_lod1.glb",
+   "bytes": 21640,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/pit.glb",
+   "bytes": 30624,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/pit_lod1.glb",
+   "bytes": 14388,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_0.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_0_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_1.glb",
+   "bytes": 53940,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_1_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_2.glb",
+   "bytes": 53940,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_2_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_3.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_3_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_4.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_4_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_5.glb",
+   "bytes": 53936,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/rock_5_lod1.glb",
+   "bytes": 8504,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/sandcastle.glb",
+   "bytes": 63888,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/sandcastle_lod1.glb",
+   "bytes": 32484,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/seagull.glb",
+   "bytes": 65000,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/seagull_lod1.glb",
+   "bytes": 30632,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_conch.glb",
+   "bytes": 192360,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_conch_lod1.glb",
+   "bytes": 31332,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_cowrie.glb",
+   "bytes": 31068,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_cowrie_lod1.glb",
+   "bytes": 6940,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_cracked.glb",
+   "bytes": 31100,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_cracked_lod1.glb",
+   "bytes": 6972,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_scallop.glb",
+   "bytes": 116852,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/shell_scallop_lod1.glb",
+   "bytes": 19184,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/starfish.glb",
+   "bytes": 43284,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/starfish_lod1.glb",
+   "bytes": 8620,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/tide_pool.glb",
+   "bytes": 49468,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/tide_pool_lod1.glb",
+   "bytes": 26136,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/umbrella_coral.glb",
+   "bytes": 15768,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/umbrella_coral_lod1.glb",
+   "bytes": 8560,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/umbrella_teal.glb",
+   "bytes": 15764,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/models/umbrella_teal_lod1.glb",
+   "bytes": 8560,
+   "category": "models",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
   {
    "path": "core/designsystem/src/main/res/font/fredoka.ttf",
    "bytes": 159184,
    "category": "fonts",
-   "referencedBy": "core/designsystem/.../Type.kt (R.font.fredoka)"
+   "referencedBy": "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Theme.kt"
   },
   {
    "path": "core/designsystem/src/main/res/font/nunito.ttf",
    "bytes": 276932,
    "category": "fonts",
-   "referencedBy": "core/designsystem/.../Type.kt (R.font.nunito)"
+   "referencedBy": "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Theme.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/title_ibl.ktx",
+   "bytes": 2095480,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/world1_ibl.ktx",
+   "bytes": 2095480,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/world2_ibl.ktx",
+   "bytes": 2095476,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/world3_ibl.ktx",
+   "bytes": 2095516,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/world4_ibl.ktx",
+   "bytes": 2095476,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/skies/world5_ibl.ktx",
+   "bytes": 2095484,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/basalt_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/basalt_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/basalt_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/caustics_albedo.ktx",
+   "bytes": 349676,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/foam_albedo.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/fx_albedo.ktx",
+   "bytes": 1398236,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/props_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/props_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/props_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/rock_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/rock_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/rock_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_amber_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_coarse_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_coarse_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_coral_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_fine_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_fine_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_golden_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_silver_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sand_volcanic_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/shells_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/shells_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/shells_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_title.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_world1.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_world2.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_world3.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_world4.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/sky_world5.ktx",
+   "bytes": 1572932,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_detail_normal.ktx",
+   "bytes": 9961652,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_detail_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_flatback_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_green_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_hawksbill_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_kemps_ridley_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_leatherback_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_loggerhead_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_olive_ridley_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_skin_albedo.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_skin_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/turtle_skin_orm.ktx",
+   "bytes": 1398256,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/water_a_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_astc/water_b_normal.ktx",
+   "bytes": 2497824,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/basalt_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/basalt_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/basalt_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/caustics_albedo.ktx",
+   "bytes": 174880,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/foam_albedo.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/fx_albedo.ktx",
+   "bytes": 1398236,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/props_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/props_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/props_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/rock_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/rock_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/rock_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_amber_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_coarse_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_coarse_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_coral_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_fine_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_fine_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_golden_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_silver_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sand_volcanic_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/shells_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/shells_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/shells_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_title.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_world1.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_world2.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_world3.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_world4.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/sky_world5.ktx",
+   "bytes": 1769540,
+   "category": "skies",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_detail_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_detail_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_flatback_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_green_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_hawksbill_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_kemps_ridley_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_leatherback_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_loggerhead_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_olive_ridley_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_skin_albedo.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_skin_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/turtle_skin_orm.ktx",
+   "bytes": 699172,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/water_a_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/textures#tcf_etc2/water_b_normal.ktx",
+   "bytes": 2796328,
+   "category": "textures",
+   "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   }
  ]
 }
