@@ -12,7 +12,7 @@ OVERRIDES = ASSETS_SRC / "audio" / "override"
 
 BASE_ASSETS = ROOT / "app" / "src" / "main" / "assets-gen"
 PACK_ASSETS = ROOT / "hd_assets" / "src" / "main" / "assets"
-FONT_RES = ROOT / "app" / "src" / "main" / "res" / "font"
+FONT_RES = ROOT / "core" / "designsystem" / "src" / "main" / "res" / "font"
 MANIFEST = ROOT / "assets_manifest.json"
 
 TEXTURES_ASTC = PACK_ASSETS / "textures#tcf_astc"
@@ -22,3 +22,4 @@ MUSIC = PACK_ASSETS / "music"
 MODELS = BASE_ASSETS / "models"
 SFX = BASE_ASSETS / "sfx"
 AMBIENCE = BASE_ASSETS / "ambience"
+LICENSE_TEXTS = BASE_ASSETS / "licenses"

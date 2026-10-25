@@ -59,3 +59,26 @@ Gate result: `:core:game:test` green: one fixture per cell type entering from al
 - **Names**: theme word lists per world ("Moon Current" style), unique per world and across the Daily Tide.
 
 Gate result: `LevelValidationTest` green: 150 world levels and 366 dailies load, solve within their gull counter, store the solver's par, stay under the hint budget, and every intro/showcase level uses its mechanic on the optimal path.
+
+## M3 Render foundation
+
+- **Threading.** The Filament engine is created and used on the main thread. `Choreographer` drives frames; Filament's own driver thread does the GPU work. Asset bytes load on IO dispatchers and are uploaded on the main thread.
+- **One surface, many stages.** A single `SurfaceView` (via `UiHelper`) sits behind the whole Compose tree. Screens switch `Stage`s (board, title beach, archipelago, journal model) in one shared `Scene`, so navigating never recreates the GL surface. The Activity declares every config change, so rotation, folding and resizing only resize the viewport.
+- **Frame pacing.** Frame caps come from the Settings frame-rate mode (Battery 30 / Standard 60 / Smooth = display max, also passed to `SwapChain.setFrameRate`) and the quality tier. Stages that report nothing animating drop to 30 fps. Rendering stops in `onPause`.
+- **Camera framing.** `CameraRig` binary-searches the closest distance at which the board, pieces included, fits the free viewport between HUD bars (or side columns) with an 8% margin. It then centres the board with `Camera.setShift` (NDC), so no part of the board hides under the HUD. Unit-tested for portrait phones and landscape tablets.
+- **Animation.** `MoveTimeline` turns a `MoveResult` into poses: 60 ms head-turn anticipation, 85 ms per cell, ease-in on the first and ease-out on the last moving tick, a squash to 85% on stop, dives for saves, shrink-and-grow teleports, then a 0.3 s hazard phase (crab steps, shadow glide, egg wobble and hatch). The board dispatches events at the time they appear on screen, for audio, haptics and particles.
+- **Zero per-frame allocation.** The board's update loop uses index loops, preallocated matrices and pose objects, and per-visual visibility flags (no boxed entity sets).
+- **Input.** `SwipeDetector` fires during `ACTION_MOVE` after 24 dp within 35 degrees of an axis, once per gesture, and ignores gestures that start inside `WindowInsets.systemGestures`. `GameController` applies a swipe at once and buffers at most one more while the board animates. Arrow keys, WASD and the D-pad map to swipes; gamepad X/Y/L1 map to undo/restart/hint.
+- **Frosted panels.** `RenderEffect` cannot sample a `SurfaceView`, so in-screen panels blur their own soft colour layer with `RenderEffect` on API 31+ (plain translucency below). Full-screen overlays (pause, results, tips) are dialog windows that use window blur-behind on API 31+ when the device enables cross-window blur, so the 3D scene really is frosted behind them.
+- **Primitives.** Until the asset pipeline lands (M4), the board uses procedural meshes uploaded with `SurfaceOrientation` tangent frames.
+
+Gate result: `./gradlew check` green; render unit tests (framing, dolly, timelines) and game input tests (swipe thresholds and angles, gesture insets, input buffer, undo, process-death JSON round trip) pass. The debug APK packages the matc-compiled materials. On-device rendering could not be exercised in this container (no emulator), so it is listed under Device verification.
+
+## Device verification (to run on hardware or an emulator with GPU)
+
+These gates need a device and are wired but not yet executed:
+
+- Rendering smoke test (title and one level, no GL errors, screenshots).
+- Instrumented UI and lifecycle tests (navigation, rotation/fold/resize mid-animation, process death).
+- Macrobenchmark startup and frame timing, monkey run, PSS during world 5.
+- Hint latency on a mid-range phone (target under 200 ms; JVM worst case 56 ms).

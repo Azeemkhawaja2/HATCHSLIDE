@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="game_level_title">World %1$d · Level %2$d</string>
+    <string name="game_daily_title">Daily Tide · %1$s</string>
+    <string name="game_moves_par">Moves %1$d · Par %2$d</string>
+    <plurals name="game_moves_left">
+        <item quantity="one">%d move left before the seagull</item>
+        <item quantity="other">%d moves left before the seagull</item>
+    </plurals>
+    <string name="game_saved_tally">%1$d of %2$d hatchlings saved</string>
+    <string name="game_pause">Pause</string>
+    <string name="game_undo">Undo</string>
+    <string name="game_restart">Restart</string>
+    <string name="game_hint">Hint</string>
+    <string name="game_hint_thinking">Thinking…</string>
+    <string name="game_hint_unsolvable">This tide can’t be finished in the moves left. Try Undo.</string>
+    <string name="game_hint_arrow">Hint: swipe %1$s</string>
+    <string name="game_board">Beach board. Swipe to slide every hatchling.</string>
+    <string name="direction_up">up</string>
+    <string name="direction_down">down</string>
+    <string name="direction_left">left</string>
+    <string name="direction_right">right</string>
+    <string name="arrow_up">Swipe up</string>
+    <string name="arrow_down">Swipe down</string>
+    <string name="arrow_left">Swipe left</string>
+    <string name="arrow_right">Swipe right</string>
+
+    <!-- TalkBack move announcements: "Swiped left. 2 saved. 3 moves left." -->
+    <string name="announce_swiped">Swiped %1$s.</string>
+    <plurals name="announce_saved">
+        <item quantity="one">%d saved.</item>
+        <item quantity="other">%d saved.</item>
+    </plurals>
+    <plurals name="announce_moves_left">
+        <item quantity="one">%d move left.</item>
+        <item quantity="other">%d moves left.</item>
+    </plurals>
+    <string name="announce_nothing_moved">Nothing moved.</string>
+
+    <string name="pause_title">Paused</string>
+    <string name="pause_resume">Resume</string>
+    <string name="pause_restart">Restart</string>
+    <string name="pause_levels">Level select</string>
+    <string name="pause_settings">Settings</string>
+    <string name="pause_home">Home</string>
+
+    <string name="complete_title">All safe in the surf!</string>
+    <string name="complete_moves">Moves %1$d / Par %2$d</string>
+    <string name="complete_next">Next</string>
+    <string name="complete_replay">Replay</string>
+    <string name="complete_levels">Levels</string>
+    <plurals name="complete_stars">
+        <item quantity="one">%d star</item>
+        <item quantity="other">%d stars</item>
+    </plurals>
+
+    <string name="failed_title_moves">The seagull swooped in!</string>
+    <string name="failed_title_pit">A hatchling tumbled into a sand pit</string>
+    <string name="failed_title_shadow">Caught in the gull’s shadow</string>
+    <string name="failed_body">Everyone tucked into their shells. Nobody was hurt.</string>
+    <string name="failed_undo">Undo last move</string>
+    <string name="failed_retry">Retry</string>
+    <string name="failed_levels">Levels</string>
+
+    <string name="tip_got_it">Got it</string>
+    <string name="tip_swipe">Swipe anywhere to slide your hatchling. Reach the waves to save it!</string>
+    <string name="tip_all_move">Every swipe moves every hatchling at once. They all slide until they bump into something.</string>
+    <string name="tip_blocking">Hatchlings stop when they bump into each other. Use one to stop the other!</string>
+    <string name="tip_rock">Rocks are stoppers. Slide into a rock to stop right where you need to be.</string>
+    <string name="tip_shell">Shells stop hatchlings just like rocks do.</string>
+    <string name="tip_gull">Watch the seagull counter. Save everyone before it reaches zero!</string>
+    <string name="tip_wet_sand">Wet sand is sticky: a hatchling that slides onto it stops right there.</string>
+    <string name="tip_cracked_shell">Cracked shells stop you once, then break into sand.</string>
+    <string name="tip_current">Currents push hatchlings the way the arrow points, and they keep sliding.</string>
+    <string name="tip_coconut">Coconuts slide too! They make great moving stoppers.</string>
+    <string name="tip_pit">Keep hatchlings out of sand pits. Roll a coconut in to fill one up.</string>
+    <string name="tip_crab">Crabs scuttle back and forth after every move. They block the way.</string>
+    <string name="tip_late_egg">Some eggs hatch later. The new hatchling has to reach the sea too.</string>
+    <string name="tip_tide_pool">Slide into a tide pool to pop out of its twin, still moving the same way.</string>
+    <string name="tip_gull_shadow">The gull’s shadow glides after each move. Don’t finish a move underneath it!</string>
+</resources>

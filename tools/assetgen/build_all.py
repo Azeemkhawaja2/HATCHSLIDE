@@ -20,7 +20,9 @@ from tools.assetgen.common import paths  # noqa: E402
 from tools.assetgen.common.build import Context  # noqa: E402
 
 # (stage name, module path). Each module exposes build(ctx: Context).
-STAGES: list[tuple[str, str]] = []
+STAGES: list[tuple[str, str]] = [
+    ("fonts", "tools.assetgen.fonts"),
+]
 
 
 def main() -> int:

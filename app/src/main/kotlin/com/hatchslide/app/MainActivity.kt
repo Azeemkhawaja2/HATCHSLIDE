@@ -4,22 +4,37 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.hatchslide.core.render.SceneDirector
 
+/**
+ * The single activity. It handles configuration changes itself (rotation, folding, resizing), so
+ * the Filament surface is resized instead of recreated.
+ */
 class MainActivity : ComponentActivity() {
+    private lateinit var director: SceneDirector
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(getString(R.string.app_name))
-            }
-        }
+        director = SceneDirector(this)
+        val container = (application as HatchslideApp).container
+        setContent { HatchslideRoot(container, director) }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        director.resume()
+    }
+
+    override fun onPause() {
+        director.pause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        director.destroy()
+        super.onDestroy()
     }
 }

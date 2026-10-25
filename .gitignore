@@ -17,7 +17,7 @@ keystore.properties
 # Generated assets (rebuilt deterministically by tools/assetgen/build_all.py)
 hd_assets/src/main/assets/
 app/src/main/assets-gen/
-app/src/main/res/font/
+core/designsystem/src/main/res/font/
 assets_src/cache/
 assets_src/intermediate/
 

@@ -8,6 +8,7 @@ against the SHA-256 that Maven Central publishes next to it.
 Usage: python tools/filament/fetch_tools.py [--print-dir]
 Environment:
   FILAMENT_TOOLS_DIR    use executables from this directory instead of downloading
+                        (default cache: ~/.cache/hatchslide/filament-tools/<version>)
   MAVEN_CENTRAL_MIRROR  base URL of a Maven Central mirror (default https://repo1.maven.org/maven2)
 """
 from __future__ import annotations
@@ -64,7 +65,8 @@ def tools_dir() -> Path:
     if override:
         return Path(override)
     version = filament_version()
-    target = ROOT / "build" / "filament-tools" / version
+    cache = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache"))
+    target = cache / "hatchslide" / "filament-tools" / version
     base = os.environ.get("MAVEN_CENTRAL_MIRROR", "https://repo1.maven.org/maven2").rstrip("/")
     suffix = ".exe"
     for tool in TOOLS:

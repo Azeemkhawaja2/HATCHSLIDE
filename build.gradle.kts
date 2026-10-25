@@ -17,3 +17,11 @@ tasks.register<Exec>("generateAssets") {
     workingDir = rootDir
     commandLine(providers.environmentVariable("PYTHON").getOrElse("python3"), "tools/assetgen/build_all.py")
 }
+
+// Fonts are needed before resources compile, so they have their own task.
+tasks.register<Exec>("generateFonts") {
+    group = "build"
+    description = "Downloads the bundled OFL fonts (pinned commit, checked SHA-256)."
+    workingDir = rootDir
+    commandLine(providers.environmentVariable("PYTHON").getOrElse("python3"), "tools/assetgen/build_all.py", "--only", "fonts")
+}

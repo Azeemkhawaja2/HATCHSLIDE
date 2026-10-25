@@ -1,0 +1,19 @@
+// Unlit, transparent flat colour for decals: gull shadows, the hint arrow and tile markers.
+material {
+    name : decal,
+    shadingModel : unlit,
+    blending : transparent,
+    doubleSided : true,
+    depthWrite : false,
+    parameters : [
+        { type : float4, name : color }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        material.baseColor = materialParams.color;
+        material.baseColor.rgb *= material.baseColor.a;
+    }
+}

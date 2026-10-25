@@ -1,5 +1,33 @@
 {
- "totalBytes": 0,
- "bytesByCategory": {},
- "files": []
+ "totalBytes": 444889,
+ "bytesByCategory": {
+  "fonts": 436116,
+  "licenses": 8773
+ },
+ "files": [
+  {
+   "path": "app/src/main/assets-gen/licenses/OFL-Fredoka.txt",
+   "bytes": 4388,
+   "category": "licenses",
+   "referencedBy": "feature/menu/.../CreditsScreen.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/licenses/OFL-Nunito.txt",
+   "bytes": 4385,
+   "category": "licenses",
+   "referencedBy": "feature/menu/.../CreditsScreen.kt"
+  },
+  {
+   "path": "core/designsystem/src/main/res/font/fredoka.ttf",
+   "bytes": 159184,
+   "category": "fonts",
+   "referencedBy": "core/designsystem/.../Type.kt (R.font.fredoka)"
+  },
+  {
+   "path": "core/designsystem/src/main/res/font/nunito.ttf",
+   "bytes": 276932,
+   "category": "fonts",
+   "referencedBy": "core/designsystem/.../Type.kt (R.font.nunito)"
+  }
+ ]
 }

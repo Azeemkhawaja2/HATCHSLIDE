@@ -10,3 +10,5 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
 }
+
+tasks.named("preBuild") { dependsOn(":generateFonts") }

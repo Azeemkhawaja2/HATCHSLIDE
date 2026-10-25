@@ -1,0 +1,19 @@
+// Plain PBR surface with a solid colour. Used for simple props and debug-free fallbacks.
+material {
+    name : lit_color,
+    shadingModel : lit,
+    parameters : [
+        { type : float4, name : baseColor },
+        { type : float, name : roughness },
+        { type : float, name : metallic }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        material.baseColor = materialParams.baseColor;
+        material.roughness = materialParams.roughness;
+        material.metallic = materialParams.metallic;
+    }
+}
