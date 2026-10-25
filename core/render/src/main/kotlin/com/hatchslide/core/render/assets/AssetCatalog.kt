@@ -51,6 +51,11 @@ object AssetCatalog {
         const val SAND_COARSE = "sand_coarse"
         const val ROCK = "rock"
         const val BASALT = "basalt"
+
+        /** One cliff and boulder rock per world (granite, limestone, slate, sandstone, basalt). */
+        const val LIMESTONE = "limestone"
+        const val SLATE = "slate"
+        const val SANDSTONE = "sandstone"
         const val SHELLS = "shells"
         const val TURTLE_DETAIL = "turtle_detail"
         const val TURTLE_SKIN = "turtle_skin"
@@ -71,6 +76,9 @@ object AssetCatalog {
                     SAND_COARSE to listOf("normal", "orm"),
                     ROCK to listOf("albedo", "normal", "orm"),
                     BASALT to listOf("albedo", "normal", "orm"),
+                    LIMESTONE to listOf("albedo", "normal", "orm"),
+                    SLATE to listOf("albedo", "normal", "orm"),
+                    SANDSTONE to listOf("albedo", "normal", "orm"),
                     SHELLS to listOf("albedo", "normal", "orm"),
                 ) +
                 SPECIES.map { turtle(it) to listOf("albedo") } +

@@ -26,7 +26,7 @@ def title() -> Song:
     """Warm and welcoming: marimba, soft steel drum, nylon-guitar plucks, shaker (D major, 96 BPM)."""
     key = Key(62, "major")
     rng = np.random.default_rng(101)
-    song = Song("title", tempo=96, bars=64, seed=101, room=0.72)
+    song = Song("title", tempo=96, bars=0, seed=101, room=0.72)
     marimba = song.part("marimba", pan=-0.15, gain=0.9, send=0.22)
     steel = song.part("steel_drum", pan=0.3, gain=0.55, send=0.3)
     nylon = song.part("nylon", pan=0.25, gain=0.5, send=0.2)
@@ -38,7 +38,7 @@ def title() -> Song:
     a = [0, 4, 5, 3] * 4
     b = [3, 4, 2, 5, 1, 4, 0, 0, 3, 4, 2, 5, 1, 3, 4, 4]
     outro = [3, 4, 5, 3, 1, 4, 3, 4]
-    form = [(intro, None, False), (a, "marimba", True), (b, "steel", True), (a, "both", True), (outro, "marimba", False)]
+    form = [(intro, None, False), (a, "marimba", True), (b, "steel", True), (a, "both", True), (b, "both", True), (outro, "marimba", False)]
     bar = 0
     for chords, lead, groove in form:
         add_chords(nylon, key, chords, bar, 0.55, octave=-1, pattern="arp")
@@ -54,6 +54,7 @@ def title() -> Song:
                     harmony = [(t, length, d - 2) for t, length, d in notes] if lead == "both" else notes
                     add_melody(steel, key, harmony, bar + start, 0.7)
         bar += len(chords)
+    song.bars = bar
     return song
 
 
@@ -61,7 +62,7 @@ def sunrise_cove() -> Song:
     """Light and curious with a slow build; kalimba lead (G major, 88 BPM)."""
     key = Key(67, "major")
     rng = np.random.default_rng(202)
-    song = Song("world1", tempo=88, bars=60, seed=202, room=0.8)
+    song = Song("world1", tempo=88, bars=0, seed=202, room=0.8)
     kalimba = song.part("kalimba", pan=0.1, gain=0.95, send=0.3)
     counter = song.part("marimba", pan=-0.35, gain=0.55, send=0.25)
     pad = song.part("pad", gain=0.45, send=0.45, humanise=0.0)
@@ -77,6 +78,7 @@ def sunrise_cove() -> Song:
         ([0, 3, 5, 4, 0, 3, 1, 4], 4),
         ([5, 3, 0, 4, 5, 3, 1, 4], 4),
         ([0, 3, 5, 4, 0, 3, 1, 4], 3),
+        ([5, 3, 0, 4, 5, 3, 1, 4], 2),
         ([3, 0, 3, 4, 3, 0, 1, 4], 1),
     ]
     bar = 0
@@ -93,6 +95,7 @@ def sunrise_cove() -> Song:
         if level >= 4:
             add_groove(conga, len(chords), bar, [(0, 0.7), (1.5, 0.5), (2.5, 0.55), (3, 0.6)], pitch=196.0)
         bar += len(chords)
+    song.bars = bar
     return song
 
 
@@ -100,7 +103,7 @@ def coral_coast() -> Song:
     """Bright and bouncy: ukulele-like plucks and hand percussion (A major, 112 BPM)."""
     key = Key(69, "major")
     rng = np.random.default_rng(303)
-    song = Song("world2", tempo=112, bars=76, seed=303, room=0.65)
+    song = Song("world2", tempo=112, bars=0, seed=303, room=0.65)
     lead = song.part("ukulele", pan=-0.1, gain=0.85, send=0.18)
     strum = song.part("ukulele", pan=0.35, gain=0.45, send=0.15, humanise=0.004)
     marimba = song.part("marimba", pan=-0.4, gain=0.5, send=0.2)
@@ -112,7 +115,10 @@ def coral_coast() -> Song:
     a = [0, 3, 4, 3] * 2
     b = [5, 3, 0, 4, 5, 3, 1, 4]
     intro = [0, 3, 4, 4]
-    form = [(intro, False), (a, True), (a, True), (b, True), (a, True), (b, True), (a, True), (a, True), (b, True), (intro, False)]
+    form = [
+        (intro, False), (a, True), (a, True), (b, True), (a, True), (b, True),
+        (a, True), (b, True), (a, True), (a, True), (b, True), (intro, False),
+    ]
     bar = 0
     for chords, lead_on in form:
         add_chords(strum, key, chords, bar, 0.5, octave=-1, pattern="offbeat")
@@ -125,6 +131,7 @@ def coral_coast() -> Song:
                 add_melody(lead, key, notes, bar + start, 0.8)
                 add_melody(marimba, key, [(t, length, d + 2) for t, length, d in notes if t % 2 == 0], bar + start, 0.5)
         bar += len(chords)
+    song.bars = bar
     return song
 
 
@@ -132,7 +139,7 @@ def moonlit_bay() -> Song:
     """Calm night ambient: glassy marimba, soft pads, gentle chimes (E flat lydian, 66 BPM)."""
     key = Key(63, "lydian")
     rng = np.random.default_rng(404)
-    song = Song("world3", tempo=66, bars=44, seed=404, room=0.92, damp=0.25)
+    song = Song("world3", tempo=66, bars=0, seed=404, room=0.92, damp=0.25)
     glass = song.part("glass_marimba", pan=0.15, gain=0.8, send=0.45)
     pad = song.part("pad", gain=0.6, send=0.55, humanise=0.0)
     chimes = song.part("chime", pan=-0.4, gain=0.35, send=0.6)
@@ -140,7 +147,7 @@ def moonlit_bay() -> Song:
 
     a = [0, 1, 0, 4]
     b = [5, 1, 3, 4]
-    form = [a, a, b, a, b, a, b, a, a, b, a]
+    form = [a, a, b, a, b, a, b, a, b, a, a, b, a]
     bar = 0
     for i, chords in enumerate(form):
         add_chords(pad, key, chords, bar, 0.42, octave=-1, pattern="block", seventh=True)
@@ -152,6 +159,7 @@ def moonlit_bay() -> Song:
             if rng.random() < 0.55:
                 chimes.add((bar + k) * 4 + float(rng.choice([1.5, 2.5, 3.0])), 2, key.note(int(rng.choice([4, 6, 7, 9])), 1), 0.4)
         bar += len(chords)
+    song.bars = bar
     return song
 
 
@@ -159,7 +167,7 @@ def crab_reef() -> Song:
     """Playful: staccato woodblocks and bass marimba, with a light swing (D dorian, 104 BPM)."""
     key = Key(62, "dorian")
     rng = np.random.default_rng(505)
-    song = Song("world4", tempo=104, bars=72, seed=505, swing=0.22, room=0.6)
+    song = Song("world4", tempo=104, bars=0, seed=505, swing=0.22, room=0.6)
     melody = song.part("marimba", pan=0.2, gain=0.8, send=0.15, humanise=0.004)
     blocks = song.part("woodblock", pan=-0.3, gain=0.6, send=0.12, humanise=0.003)
     bass = song.part("bass_marimba", gain=0.85, send=0.08)
@@ -169,7 +177,7 @@ def crab_reef() -> Song:
     a = [0, 3, 0, 4, 0, 3, 6, 4]
     b = [2, 3, 0, 5, 2, 3, 4, 4]
     intro = [0, 3, 0, 4]
-    form = [intro, a, a, b, a, b, a, a, b, intro]
+    form = [intro, a, a, b, a, b, a, b, a, a, b, intro]
     bar = 0
     for i, chords in enumerate(form):
         add_bass(bass, key, chords, bar, 0.75, pattern="walk", octave=-1)
@@ -182,6 +190,7 @@ def crab_reef() -> Song:
             for start, notes in _phrases(key, rng, chords, "staccato", 8):
                 add_melody(melody, key, notes, bar + start, 0.8)
         bar += len(chords)
+    song.bars = bar
     return song
 
 
@@ -190,7 +199,7 @@ def volcanic_isle() -> Song:
     key = Key(62, "dorian")
     lift = Key(65, "major")
     rng = np.random.default_rng(606)
-    song = Song("world5", tempo=92, bars=64, seed=606, room=0.82, damp=0.45)
+    song = Song("world5", tempo=92, bars=0, seed=606, room=0.82, damp=0.45)
     melody = song.part("marimba", pan=0.15, gain=0.8, send=0.2)
     brass = song.part("brass", pan=-0.2, gain=0.5, send=0.35, humanise=0.0)
     bass = song.part("bass", gain=0.85, send=0.05)
@@ -200,7 +209,10 @@ def volcanic_isle() -> Song:
     a = [0, 6, 3, 4] * 2
     b = [0, 4, 5, 3, 0, 4, 1, 4]
     intro = [0, 6, 3, 4]
-    form = [(intro, key, False), (a, key, True), (a, key, True), (b, lift, True), (a, key, True), (b, lift, True), (a, key, True), (intro, key, False)]
+    form = [
+        (intro, key, False), (a, key, True), (a, key, True), (b, lift, True), (a, key, True),
+        (b, lift, True), (a, key, True), (b, lift, True), (a, key, True), (intro, key, False),
+    ]
     bar = 0
     for chords, k, lead in form:
         add_chords(brass, k, chords, bar, 0.5, octave=-1, pattern="half")
@@ -211,6 +223,7 @@ def volcanic_isle() -> Song:
             for start, notes in _phrases(k, rng, chords, "gentle", 7):
                 add_melody(melody, k, notes, bar + start, 0.8)
         bar += len(chords)
+    song.bars = bar
     return song
 
 

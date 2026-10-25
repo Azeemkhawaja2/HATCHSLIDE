@@ -137,6 +137,9 @@ class RenderEngine(context: Context) {
             applyFrameRate()
         }
 
+    /** Scales scene time: 0 holds every animation and particle where it is (store captures). */
+    var timeScale = 1f
+
     /** Extra frame cap from the quality tier (Low renders at 30 fps). */
     var tierFrameCap = 0f
 
@@ -296,7 +299,7 @@ class RenderEngine(context: Context) {
                 // Allow 25% early so a 30 fps cap lands on every other 60 Hz vsync.
                 if (frameTimeNanos - lastRenderNanos < interval * 3 / 4) return
             }
-            val dt = if (lastFrameNanos == 0L) 1f / 60f else ((frameTimeNanos - lastFrameNanos) / 1e9f).coerceIn(0f, 0.1f)
+            val dt = timeScale * if (lastFrameNanos == 0L) 1f / 60f else ((frameTimeNanos - lastFrameNanos) / 1e9f).coerceIn(0f, 0.1f)
             lastFrameNanos = frameTimeNanos
             lastRenderNanos = frameTimeNanos
             val start = System.nanoTime()

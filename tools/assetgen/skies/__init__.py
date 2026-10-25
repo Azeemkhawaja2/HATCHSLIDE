@@ -30,7 +30,8 @@ def hex_color(value: int) -> np.ndarray:
     return srgb_to_linear(srgb_hex(value))
 
 PANORAMA = (4096, 2048)
-FACE = 768
+# Skybox face size: the sky fills the title, menu, map and journal views, so it is kept sharp.
+FACE = 1536
 SKYBOX = Encoding("color", (6, 6), mips=False)
 INTERMEDIATE = paths.ASSETS_SRC / "intermediate" / "skies"
 REF = "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"

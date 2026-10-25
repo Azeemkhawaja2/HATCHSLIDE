@@ -1,0 +1,14 @@
+{
+  "supportedAbis": [
+    "x86_64"
+  ],
+  "supportedLocales": [
+    "en-US"
+  ],
+  "screenDensity": 160,
+  "sdkVersion": 35,
+  "glExtensions": [],
+  "deviceFeatures": [
+    "reqGlEsVersion=0x30000"
+  ]
+}

@@ -32,7 +32,50 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 report.set(layout.buildDirectory.file("reports/gates/${variant.name}-manifest.txt"))
             }
             tasks.named("check") { dependsOn(gate) }
+            registerReleaseGates(variant.name, variant.artifacts.get(SingleArtifact.BUNDLE), components)
         }
+    }
+
+    /** Size report and 16 KB alignment gates on the release bundle (spec sections 8 and 10). */
+    private fun Project.registerReleaseGates(
+        variantName: String,
+        bundle: org.gradle.api.provider.Provider<org.gradle.api.file.RegularFile>,
+        components: ApplicationAndroidComponentsExtension,
+    ) {
+        val bundletool = configurations.maybeCreate("bundletool").apply {
+            isCanBeConsumed = false
+            isCanBeResolved = true
+        }
+        dependencies.add("bundletool", libs.findLibrary("bundletool").get())
+        val android = extensions.getByType(ApplicationExtension::class.java)
+        val buildTools = components.sdkComponents.sdkDirectory.map { it.dir("build-tools/${android.buildToolsVersion}") }
+        val apkSet = tasks.register<ApkSetTask>("build${variantName.replaceFirstChar { it.uppercase() }}ApkSet") {
+            description = "Builds every split APK of the $variantName bundle with bundletool."
+            this.bundle.set(bundle)
+            this.bundletool.from(bundletool)
+            aapt2.set(buildTools.map { it.file("aapt2") })
+            apks.set(layout.buildDirectory.file("outputs/apkset/$variantName.apks"))
+        }
+        val size = tasks.register<SizeReportTask>("sizeReport") {
+            group = "verification"
+            description = "Measures the per-device Play download with bundletool and writes SIZE_REPORT.md."
+            apks.set(apkSet.flatMap { it.apks })
+            this.bundletool.from(bundletool)
+            deviceSpecs.from(rootProject.fileTree("tools/verify/devices") { include("*.json") })
+            assetManifest.set(rootProject.layout.projectDirectory.file("assets_manifest.json"))
+            minMegabytes.set(100)
+            maxMegabytes.set(190)
+            report.set(rootProject.layout.projectDirectory.file("SIZE_REPORT.md"))
+        }
+        val align = tasks.register<Verify16KbAlignmentTask>("verify16KbAlignment") {
+            group = "verification"
+            description = "Checks 16 KB ELF and zip alignment of every 64-bit native library."
+            this.bundle.set(bundle)
+            apks.set(apkSet.flatMap { it.apks })
+            zipalign.set(buildTools.map { dir -> dir.file("zipalign").takeIf { it.asFile.exists() } })
+            report.set(layout.buildDirectory.file("reports/gates/$variantName-16kb.txt"))
+        }
+        tasks.named("check") { dependsOn(size, align) }
     }
 }
 

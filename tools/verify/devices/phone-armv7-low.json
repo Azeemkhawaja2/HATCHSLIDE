@@ -1,0 +1,14 @@
+{
+  "supportedAbis": [
+    "armeabi-v7a"
+  ],
+  "supportedLocales": [
+    "en-US"
+  ],
+  "screenDensity": 240,
+  "sdkVersion": 26,
+  "glExtensions": [],
+  "deviceFeatures": [
+    "reqGlEsVersion=0x30000"
+  ]
+}

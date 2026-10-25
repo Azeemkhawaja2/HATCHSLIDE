@@ -39,11 +39,15 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
         }
 
     private fun rockSurface(base: String, tiling: Float) = materials.instance("rock").apply {
-        tex("albedo", textures.get("${base}_albedo"))
-        tex("normalMap", textures.get("${base}_normal"))
-        tex("orm", textures.get("${base}_orm"))
+        rockTextures(this, base)
         setParameter("tint", 1f, 1f, 1f)
         setParameter("tiling", tiling)
+    }
+
+    private fun rockTextures(mi: MaterialInstance, base: String) {
+        mi.tex("albedo", textures.get("${base}_albedo"))
+        mi.tex("normalMap", textures.get("${base}_normal"))
+        mi.tex("orm", textures.get("${base}_orm"))
     }
 
     private fun terrainSurface(board: Boolean) = materials.instance("terrain").apply {
@@ -124,7 +128,10 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
     private val pools = arrayOfNulls<MaterialInstance>(POOL_COLORS.size)
     val props: MaterialInstance by lazy { textured(Textures.PROPS) }
     val shells: MaterialInstance by lazy { textured(Textures.SHELLS) }
-    val rock: MaterialInstance by lazy { rockSurface(Textures.ROCK, 1.6f) }
+    private val worldRockLazy = lazy { rockSurface(theme.cliff, 1.6f) }
+
+    /** Board rocks, cliffs and boulders in the current world's rock; retextured when the world changes. */
+    val worldRock: MaterialInstance by worldRockLazy
     val basalt: MaterialInstance by lazy { rockSurface(Textures.BASALT, 1.6f) }
     val eye: MaterialInstance by lazy { materials.litColor(0.03f, 0.025f, 0.03f, roughness = 0.12f) }
     val glint: MaterialInstance by lazy { glowSurface(WHITE, 3f) }
@@ -190,7 +197,7 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
         "turtle_skin" -> turtleSkin(0)
         "turtle_eye" -> eye
         "eye_glint" -> glint
-        "rock" -> if (theme.cliff == Textures.BASALT && model.startsWith("cliff")) basalt else rock
+        "rock" -> worldRock
         "basalt" -> basalt
         "shells" -> shells
         "props" -> props
@@ -222,6 +229,7 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
         if (terrainLazy.isInitialized()) themeTerrain(terrain)
         if (sandLazy.isInitialized()) themeTerrain(sand)
         if (waterLazy.isInitialized()) themeWater(water)
+        if (worldRockLazy.isInitialized()) rockTextures(worldRock, next.cliff)
     }
 
     /** Scenery mask textures; the owning stage calls [clearBoardTextures] before releasing them. */

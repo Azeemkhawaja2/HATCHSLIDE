@@ -17,9 +17,10 @@ import com.hatchslide.core.render.SceneDirector
  * the Filament surface is resized instead of recreated. The splash stays until saves are read.
  */
 class MainActivity : ComponentActivity() {
-    private lateinit var director: SceneDirector
+    /** Visible to the instrumented tests, which check rendering and audio across the lifecycle. */
+    internal lateinit var director: SceneDirector
     private lateinit var container: AppContainer
-    private lateinit var audio: AudioEngine
+    internal lateinit var audio: AudioEngine
     private lateinit var quality: QualityController
     private lateinit var performance: PerformanceController
     private var foregroundSince = 0L

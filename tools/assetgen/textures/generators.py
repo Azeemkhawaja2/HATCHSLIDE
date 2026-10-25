@@ -91,17 +91,30 @@ def sand_detail(size: int, seed: int, coarse: bool) -> dict:
 # ---------------------------------------------------------------- rock
 
 
-def rock(size: int, seed: int, basalt: bool) -> dict:
+ROCK_KINDS = ("granite", "basalt", "limestone", "slate", "sandstone")
+
+
+def rock(size: int, seed: int, kind: str) -> dict:
+    """Cliff and boulder rock, one look per world (spec section 8: five world sets).
+
+    granite: warm grey with quartz specks and lichen (Sunrise Cove, the title beach); basalt: black
+    and vesicular with rust (Volcanic Isle); limestone: pale, porous coral rock with fossil-shell
+    flecks (Coral Coast); slate: blue-grey, finely cleaved, with mica glints (Moonlit Bay);
+    sandstone: red ochre in wavy cross-bedded layers (Crab Reef).
+    """
+    assert kind in ROCK_KINDS, kind
     x, y = _grid(size)
     f1, f2, ids = worley(size, 34, seed)
     plates = smoothstep(0.0, 0.02, f2 - f1)
     small1, small2, _ = worley(size, 260, seed + 3)
     chips = smoothstep(0.0, 0.01, small2 - small1)
     big = remap(fbm(size, seed + 5, base=2, octaves=7))
-    strata = 0.5 + 0.5 * np.sin((y * 7.0 + 0.18 * fbm(size, seed + 7, base=2, octaves=3)) * 2 * np.pi)
-    height = 0.45 * big + 0.25 * plates + 0.12 * chips + (0.0 if basalt else 0.12 * strata)
-    tone = remap(0.6 * big + 0.25 * strata * (0 if basalt else 1) + 0.15 * chips)
-    if basalt:
+    warp = 0.18 * fbm(size, seed + 7, base=2, octaves=3)
+    strata = 0.5 + 0.5 * np.sin((y * 7.0 + warp) * 2 * np.pi)
+    rough = 0.82 + 0.1 * remap(band_noise(size, 40, 200, seed + 19))
+    if kind == "basalt":
+        height = 0.45 * big + 0.25 * plates + 0.12 * chips
+        tone = remap(0.6 * big + 0.15 * chips)
         albedo = palette_ramp(tone, [(0.0, 0x262326), (0.5, 0x3C383C), (1.0, 0x5E585C)])
         ves1, _, vid = worley(size, 5200, seed + 9)
         vrad = np.random.default_rng(seed + 10).uniform(0.001, 0.0035, vid.max() + 1)
@@ -110,7 +123,50 @@ def rock(size: int, seed: int, basalt: bool) -> dict:
         albedo *= (1 - 0.6 * holes)[..., None]
         rust = smoothstep(0.6, 1.4, fbm(size, seed + 13, base=4, octaves=4))
         albedo = albedo * (1 - 0.35 * rust[..., None]) + hex_color(0x7A3B26)[None, None, :] * (0.35 * rust[..., None])
+    elif kind == "limestone":
+        # Soft, rounded blocks riddled with small solution pits and the odd fossil shell.
+        height = 0.5 * big + 0.15 * plates + 0.08 * chips + 0.06 * strata
+        tone = remap(0.55 * big + 0.15 * strata + 0.1 * chips + 0.2 * remap(band_noise(size, 6, 40, seed + 21)))
+        albedo = palette_ramp(tone, [(0.0, 0x9C917C), (0.35, 0xC4B9A1), (0.7, 0xE2D8C2), (1.0, 0xF3ECDC)])
+        pit1, _, pid = worley(size, 2600, seed + 23)
+        prad = np.random.default_rng(seed + 24).uniform(0.0015, 0.006, pid.max() + 1)
+        pits = smoothstep(1.0, 0.55, pit1 / prad[pid])
+        height -= pits * 0.25
+        albedo *= (1 - 0.35 * pits)[..., None]
+        fos1, _, fid = worley(size, 90, seed + 25)
+        keep = np.random.default_rng(seed + 26).random(fid.max() + 1) < 0.35
+        ring = np.abs(np.sin(fos1 * size * 0.9)) * smoothstep(0.012, 0.004, fos1) * keep[fid]
+        albedo = albedo * (1 - 0.25 * ring[..., None]) + ring[..., None] * 0.25 * hex_color(0xFFF7E8)[None, None, :]
+        height += 0.05 * ring
+        algae = smoothstep(1.2, 1.8, fbm(size, seed + 27, base=5, octaves=4)) * smoothstep(0.5, 0.2, big)
+        albedo = albedo * (1 - 0.3 * algae[..., None]) + algae[..., None] * 0.3 * hex_color(0x7FA88A)[None, None, :]
+    elif kind == "slate":
+        # Thin cleavage planes, sharp breaks and flecks of mica that catch the moonlight.
+        cleave = 0.5 + 0.5 * np.sin((y * 23.0 + 0.6 * warp + 0.04 * np.sin(x * 2 * np.pi * 3)) * 2 * np.pi)
+        steps = np.floor(cleave * 4.0) / 4.0
+        height = 0.35 * big + 0.3 * plates + 0.2 * steps + 0.08 * chips
+        tone = remap(0.5 * big + 0.3 * steps + 0.2 * remap(band_noise(size, 4, 30, seed + 31)))
+        albedo = palette_ramp(tone, [(0.0, 0x262A31), (0.4, 0x3A414B), (0.75, 0x55606D), (1.0, 0x76808C)])
+        mica = (band_noise(size, size / 6, size / 2, seed + 33) > 2.6).astype(np.float32)
+        albedo = albedo * (1 - 0.4 * mica[..., None]) + mica[..., None] * 0.4 * hex_color(0xC9D3DE)[None, None, :]
+        rough = rough - 0.35 * mica
+        stain = smoothstep(0.9, 1.5, fbm(size, seed + 35, base=3, octaves=4))
+        albedo = albedo * (1 - 0.25 * stain[..., None]) + stain[..., None] * 0.25 * hex_color(0x5C4E45)[None, None, :]
+    elif kind == "sandstone":
+        # Wavy cross-bedding, rounded weathering and darker iron bands.
+        bed = 0.5 + 0.5 * np.sin((y * 11.0 + 0.9 * warp + 0.08 * np.sin(x * 2 * np.pi * 2)) * 2 * np.pi)
+        # Whole periods in x and y so the texture still tiles.
+        cross = 0.5 + 0.5 * np.sin((y * 19.0 + x * 7.0 + warp) * 2 * np.pi)
+        height = 0.5 * big + 0.12 * plates + 0.15 * bed + 0.06 * cross
+        tone = remap(0.45 * big + 0.35 * bed + 0.1 * cross + 0.1 * chips)
+        albedo = palette_ramp(tone, [(0.0, 0x6E3820), (0.3, 0x9A5634), (0.65, 0xC07E55), (1.0, 0xDDA982)])
+        iron = smoothstep(0.82, 0.95, bed) * smoothstep(0.4, 0.8, remap(fbm(size, seed + 41, base=3, octaves=3)))
+        albedo = albedo * (1 - 0.35 * iron[..., None]) + iron[..., None] * 0.35 * hex_color(0x4E2414)[None, None, :]
+        dust = smoothstep(0.55, 0.9, big)
+        albedo = albedo * (1 - 0.2 * dust[..., None]) + dust[..., None] * 0.2 * hex_color(0xE8C9A6)[None, None, :]
     else:
+        height = 0.45 * big + 0.25 * plates + 0.12 * chips + 0.12 * strata
+        tone = remap(0.6 * big + 0.25 * strata + 0.15 * chips)
         albedo = palette_ramp(tone, [(0.0, 0x6E6156), (0.35, 0x8F7F70), (0.7, 0xB3A08B), (1.0, 0xCFBEA6)])
         speck = (band_noise(size, size / 5, size / 2, seed + 15) > 2.2).astype(np.float32)
         albedo = albedo * (1 - 0.3 * speck[..., None]) + 0.3 * speck[..., None] * hex_color(0xEDE5D8)[None, None, :]
@@ -118,8 +174,8 @@ def rock(size: int, seed: int, basalt: bool) -> dict:
         albedo = albedo * (1 - 0.5 * lichen[..., None]) + lichen[..., None] * 0.5 * hex_color(0x9AA35E)[None, None, :]
     ao = cavity_ao(height, 5.0, 3.0) * (0.55 + 0.45 * plates)
     albedo *= (0.6 + 0.4 * ao)[..., None]
-    rough = 0.82 + 0.1 * remap(band_noise(size, 40, 200, seed + 19))
-    return {"albedo": np.clip(albedo, 0, 1), "normal": normal_from_height(height, 4.0), "orm": _orm(ao, rough)}
+    strength = {"slate": 5.0, "limestone": 3.4, "sandstone": 3.6}.get(kind, 4.0)
+    return {"albedo": np.clip(albedo, 0, 1), "normal": normal_from_height(height, strength), "orm": _orm(ao, np.clip(rough, 0.3, 1.0))}
 
 
 # ---------------------------------------------------------------- shells (2x2 atlas)

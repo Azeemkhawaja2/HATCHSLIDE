@@ -50,6 +50,8 @@ class Song:
 
     @property
     def length_seconds(self) -> float:
+        # Looping tracks set bars from their finished form, so the loop never ends in silence.
+        assert self.bars > 0, f"{self.name}: bars not set"
         return self.bars * 4 * self.beat_seconds
 
     def part(self, instrument: str, **kwargs) -> Part:

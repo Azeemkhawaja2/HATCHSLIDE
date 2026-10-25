@@ -177,6 +177,7 @@ fun HatchslideRoot(
                 val transitions = remember(settings.reducedMotion) { ScreenTransitions(settings.reducedMotion) }
                 NavHost(
                     nav,
+                    modifier = Modifier.graphicsLayer { alpha = if (CaptureHooks.uiHidden.value) 0f else 1f },
                     startDestination = TitleRoute,
                     enterTransition = transitions.enter,
                     exitTransition = transitions.exit,

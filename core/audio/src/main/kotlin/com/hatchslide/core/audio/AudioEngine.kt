@@ -110,6 +110,9 @@ class AudioEngine(context: Context) {
 
     private fun audible(): Boolean = foreground && !focusLost && !released
 
+    /** False while the app is in the background or has lost audio focus (diagnostics and tests). */
+    val isAudible: Boolean get() = audible()
+
     /**
      * Plays an effect panned by [pan] (-1 left to 1 right, from the board position); [rate] shifts
      * pitch (0.5..2). Returns the stream id, or 0 if it could not play.

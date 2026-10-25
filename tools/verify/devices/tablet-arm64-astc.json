@@ -1,0 +1,16 @@
+{
+  "supportedAbis": [
+    "arm64-v8a"
+  ],
+  "supportedLocales": [
+    "en-US"
+  ],
+  "screenDensity": 320,
+  "sdkVersion": 37,
+  "glExtensions": [
+    "GL_KHR_texture_compression_astc_ldr"
+  ],
+  "deviceFeatures": [
+    "reqGlEsVersion=0x30002"
+  ]
+}

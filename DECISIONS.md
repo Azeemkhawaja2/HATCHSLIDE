@@ -184,13 +184,55 @@ Gate result: `./gradlew check assembleDebug` green with no lint warnings. New un
 
 Gate result: `./gradlew check assembleDebug` and the benchmark module's build are green with no lint warnings. New unit tests cover zero per-frame allocation and the thermal stepper. Benchmark numbers (startup, frame timing on the Medium and Low tiers, PSS during world 5, world switch time) need a device or emulator and are listed under Device verification.
 
+## M9 Release
+
+- **Release gates in `./gradlew check`.**
+  - `sizeReport` builds the full APK set from the release bundle with bundletool. It passes the SDK's aapt2, because the Maven artifact does not embed one. It then measures `get-size total` for five device profiles (`tools/verify/devices/`) and writes `SIZE_REPORT.md`. It fails outside 100 to 190 MB, where 1 MB = 10^6 bytes, as Play reports sizes. The profiles declare their OpenGL ES version, so bundletool picks the right texture format.
+  - `verify16KbAlignment` reads every arm64-v8a and x86_64 library in the bundle and requires 16 KB `PT_LOAD` alignment. It also requires every such library in every generated APK to be stored uncompressed at a 16 KB offset, checked with its own zip reader and with the SDK's `zipalign -c -P 16`. The NDK's `llvm-readelf` is not installed here, so the ELF check is done directly.
+- **Reaching the size floor with real content.** The first measurement was 75 MB on ETC2 devices and 97 MB on ASTC devices: Play deflates the textures and float IBL far more than the raw budget assumed. Padding is not allowed, so content was raised where the game was below the spec's own budget:
+  - Skyboxes went from 768 to 1536 pixels per face. They fill the title, menu, map and Journal views, and were well below the screen's pixel density. Low still loads them, since they have no mips; the sky is only ever magnified.
+  - Three new cliff and boulder rock sets (coral limestone, moonlit slate, crab-reef sandstone) complete "5 world sets" next to granite and basalt. Board rocks, cliffs and boulders now take the world's rock through one retextured material instance, so no shader samplers were added.
+  - Music grew to 3:05 to 3:23 per track, inside the spec's 2:30 to 3:30, with one or two more sections each. Ambience loops grew from 30 to 40 s to 90 to 120 s, with seeded irregular wave, gust, chirp and boom timing.
+
+  Result: being re-measured with the new assets; SIZE_REPORT.md still shows the first measurement until the gate reruns.
+- **Silent loop tails fixed.** Measuring the music found that three tracks declared more bars than their form filled. The title, Coral Coast and Volcanic Isle loops ended in 9 to 21 s of near silence (-41 to -54 dBFS). Each song's length now comes from its finished form, and the sequencer refuses a loop whose length was never set.
+- **Signing.** `bundleRelease` signs with the upload key from `keystore.properties` or the `HATCHSLIDE_UPLOAD_*` environment variables. This was checked with a throwaway key kept outside the repository (`jarsigner -verify` on the bundle). The real key is created by `tools/release/create_upload_key.sh`, and both its files are git-ignored. Play App Signing holds the app signing key.
+- **Instrumented tests** (`app/src/androidTest`, UiAutomator over the real game):
+  - every menu screen and back;
+  - solving level 1 with the solver's path to the complete screen;
+  - losing level 1 to the gentle fail screen;
+  - settings that survive a restart;
+  - rotation in the middle of a slide, keeping the board and undo;
+  - a saved run resuming after the app closes;
+  - rendering and audio stopping in the background and resuming;
+  - a rendering smoke test whose screenshots must show a real scene.
+
+  Compose's idling is not used, because the 3D view renders continuously and the map polls island positions every frame. The tests reset progress through the app's repository. `tools/verify/monkey.sh` runs the 10,000-event monkey and fails on any crash or ANR.
+- **Store folder.** `store/` has:
+  - the listing text (name 30 characters, short description 65, full description 1,633);
+  - `privacy_policy.md` and `.html`, the same text as in the app;
+  - `console_answers.md` (data safety: no data collected or shared; IARC answers; target audience 13+ recommended, Families-ready);
+  - `release_notes.md` and a `test_notes.md` plan and log for the 12-tester, 14-day closed test.
+
+  `icon_512.png` is rendered from the launcher icon's own vector layers, converted to SVG and drawn by Chromium, centred slightly wider than the safe zone. Recommending 13+ follows spec section 10: it keeps review simplest, and the game also meets the Families policy if the developer includes younger players.
+- **Screenshots and feature graphic need a device.** They must come from the real game, and this environment has no emulator. PhotoMode is the debug-only `StoreCaptureTest`, which runs only with `-e store <set>`:
+  - it sizes the display with `wm size` and `wm density`;
+  - it unlocks worlds 1 to 4 and opens real scenes through the UI;
+  - it holds them still with the engine's `timeScale` (particles included) and saves screenshots;
+  - for the feature graphic, it hides the UI.
+
+  `tools/store/capture.sh` runs it for the phone, 7-inch, 10-inch and feature sets. `tools/store/compose_store_art.py` adds short captions to the 8 phone shots and the logo to the 1024x500 feature graphic. The only trace in release builds is an inert flag that nothing sets, plus the engine's `timeScale`.
+
+Gate result: pending the full `./gradlew clean check bundleRelease` run.
+
 ## Device verification (to run on hardware or an emulator with GPU)
 
-These gates need a device and are wired but not yet executed:
+These gates need a device and are wired but not yet executed (`./gradlew :app:connectedDebugAndroidTest`, `tools/verify/monkey.sh`, the `baselineprofile` benchmarks and `tools/store/capture.sh`):
 
 - Rendering smoke test (title and one level, no GL errors, screenshots), including water, the terrain mask and model material rebinding.
 - Instrumented UI and lifecycle tests (navigation through all 14 screens, rotation/fold/resize mid-animation, process death, resuming a saved run).
 - Macrobenchmark startup and frame timing (record the numbers here; generate and commit the baseline profile), monkey run, PSS during world 5, world-switch times from the `HatchslidePerf` log, the ADPF session being accepted, thermal stepping under sustained load, and gamepad sticks, hats and buttons on a real controller.
 - Hint latency on a mid-range phone (target under 200 ms; JVM worst case 56 ms).
+- Store art: run `tools/store/capture.sh` and review the screenshots and feature graphic before upload.
 - Polish: particle and footprint look per world (premultiplied output, night tint, ash), colour grades, the stage curtain, colour-blind symbols over tide pools, menus at 200% text scale, and the auto tier's choice and drop on a Low, a Medium and a High reference phone.
 - Audio: background and foreground pause and resume, ducking for a notification and a call, the 1.5 s crossfade between worlds, loop points, effect latency and panning, and haptics on a phone with and without API 30 constants.

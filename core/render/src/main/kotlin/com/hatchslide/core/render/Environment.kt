@@ -57,7 +57,7 @@ class WorldTheme(
     /** Sand albedo texture (AssetCatalog.Textures.SAND_LOOKS) and its detail set (fine or coarse). */
     val sandLook: String,
     val sandDetail: String,
-    /** Cliff texture set: rock or basalt. */
+    /** Cliff and boulder texture set: rock (granite), limestone, slate, sandstone or basalt. */
     val cliff: String,
     val wetTint: FloatArray,
     val shallowWater: FloatArray,
@@ -111,13 +111,13 @@ class WorldTheme(
         )
         val CORAL_COAST = WorldTheme(
             2, "Coral Coast", "world2", floatArrayOf(0.2f, 0.92f, 0.33f), 38f, rgb(0xFFF6E8), 110_000f, 32_000f,
-            rgb(0xD8EEF9), 0.007f, "sand_coral", "sand_fine", "rock", rgb(0xB8AC9C), rgb(0x48E0D3), rgb(0x1774B5), 0f, NO_GLOW,
+            rgb(0xD8EEF9), 0.007f, "sand_coral", "sand_fine", "limestone", rgb(0xB8AC9C), rgb(0x48E0D3), rgb(0x1774B5), 0f, NO_GLOW,
             dust = floatArrayOf(1f, 0.9f, 0.88f),
             grade = ColorGrade(temperature = 0.02f, contrast = 1.06f, vibrance = 1.15f, highlights = floatArrayOf(1f, 1.01f, 1.02f, 0f)),
         )
         val MOONLIT_BAY = WorldTheme(
             3, "Moonlit Bay", "world3", floatArrayOf(0.35f, 0.55f, -0.76f), 38f, rgb(0xB9CCFF), 9_000f, 9_000f,
-            rgb(0x1A2850), 0.014f, "sand_silver", "sand_fine", "rock", rgb(0x8A8FA6), rgb(0x2A8C9E), rgb(0x0A2346), 1f, rgb(0x5CF2D6),
+            rgb(0x1A2850), 0.014f, "sand_silver", "sand_fine", "slate", rgb(0x8A8FA6), rgb(0x2A8C9E), rgb(0x0A2346), 1f, rgb(0x5CF2D6),
             fxLight = 0.3f,
             dust = floatArrayOf(0.85f, 0.9f, 1f),
             grade = ColorGrade(
@@ -130,7 +130,7 @@ class WorldTheme(
         )
         val CRAB_REEF = WorldTheme(
             4, "Crab Reef", "world4", floatArrayOf(0.72f, 0.3f, -0.62f), 38f, rgb(0xFFC48A), 75_000f, 24_000f,
-            rgb(0xE9C2A0), 0.011f, "sand_amber", "sand_coarse", "rock", rgb(0xA8875E), rgb(0x46BDB4), rgb(0x174F78), 0f, NO_GLOW,
+            rgb(0xE9C2A0), 0.011f, "sand_amber", "sand_coarse", "sandstone", rgb(0xA8875E), rgb(0x46BDB4), rgb(0x174F78), 0f, NO_GLOW,
             fxLight = 0.9f,
             dust = floatArrayOf(1f, 0.86f, 0.7f),
             grade = ColorGrade(temperature = 0.12f, contrast = 1.04f, vibrance = 1.08f, highlights = floatArrayOf(1.04f, 1f, 0.94f, 0f)),

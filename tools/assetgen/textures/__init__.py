@@ -40,8 +40,11 @@ for i, look in enumerate(g.SAND_LOOKS):
 SPECS += [
     TextureSpec("sand_fine", 2048, "sand_detail", {"coarse": False}, {"normal": NORMAL, "orm": ORM}, 120),
     TextureSpec("sand_coarse", 2048, "sand_detail", {"coarse": True}, {"normal": NORMAL, "orm": ORM}, 121),
-    TextureSpec("rock", 2048, "rock", {"basalt": False}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 130),
-    TextureSpec("basalt", 2048, "rock", {"basalt": True}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 131),
+    TextureSpec("rock", 2048, "rock", {"kind": "granite"}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 130),
+    TextureSpec("basalt", 2048, "rock", {"kind": "basalt"}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 131),
+    TextureSpec("limestone", 2048, "rock", {"kind": "limestone"}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 132),
+    TextureSpec("slate", 2048, "rock", {"kind": "slate"}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 133),
+    TextureSpec("sandstone", 2048, "rock", {"kind": "sandstone"}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 134),
     TextureSpec("shells", 2048, "shell_atlas", {}, {"albedo": COLOR, "normal": NORMAL, "orm": ORM}, 140),
 ]
 for i, species in enumerate(g.SPECIES):

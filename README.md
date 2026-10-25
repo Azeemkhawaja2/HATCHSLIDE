@@ -50,3 +50,25 @@ The `baselineprofile` module holds the Macrobenchmark journeys (title, menu, map
 ```
 
 Debug builds log load and input timings under the `HatchslidePerf` tag (`adb logcat -s HatchslidePerf`).
+
+## Release
+
+```bash
+tools/release/create_upload_key.sh        # once: upload key and keystore.properties (both git-ignored)
+./gradlew clean check bundleRelease       # every gate, then the signed app bundle
+```
+
+`./gradlew check` includes the release gates: the merged-manifest check (zero permissions, SDK levels, `appCategory`), the network and TODO scans, the asset manifest test, the size report and the 16 KB alignment check. The upload key can also come from the `HATCHSLIDE_UPLOAD_STORE_FILE`, `HATCHSLIDE_UPLOAD_STORE_PASSWORD`, `HATCHSLIDE_UPLOAD_KEY_ALIAS` and `HATCHSLIDE_UPLOAD_KEY_PASSWORD` environment variables.
+
+- `./gradlew :app:sizeReport` measures the Play download per device with bundletool and writes [SIZE_REPORT.md](SIZE_REPORT.md); it fails outside 100 to 190 MB. Device profiles live in `tools/verify/devices/`.
+- `./gradlew :app:verify16KbAlignment` checks every 64-bit native library for 16 KB ELF and zip alignment.
+
+With an emulator or device connected:
+
+```bash
+./gradlew :app:connectedDebugAndroidTest     # navigation, lifecycle and rendering smoke tests
+tools/verify/monkey.sh                       # 10,000 random events, no crash or ANR allowed
+tools/store/capture.sh                       # store screenshots and feature graphic from the real game
+```
+
+The Play listing text, privacy policy, console answers, release and test notes are in [store/](store/).
