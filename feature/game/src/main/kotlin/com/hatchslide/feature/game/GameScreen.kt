@@ -300,6 +300,7 @@ fun GameScreen(
             unlockCards,
             onStarShown = {
                 feedback?.onStar(it)
+                if (it == 3) director.board.confetti()
                 onStarShown(it)
             },
             onCardShown = { feedback?.onUnlockCard(it) },

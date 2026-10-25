@@ -84,7 +84,11 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private var hint: Visual? = null
     private var hintDirection: Direction? = null
 
+    /** Colour-blind symbols on tide pools and wet sand, shown only while [colorBlind] is on. */
+    private val symbols = ArrayList<Visual>()
+
     private val scenery = Scenery(host)
+    private val effects = BoardEffects(host.particles.pool)
 
     private var timeline: MoveTimeline? = null
     private var timelineTime = 0f
@@ -139,6 +143,13 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     override val isAnimating: Boolean get() = true
 
+    /** Colour-blind tiles (spec section 5): symbols on tide-pool pairs and wet sand. */
+    var colorBlind: Boolean = false
+        set(value) {
+            field = value
+            for (i in 0 until symbols.size) if (value) show(symbols[i]) else hide(symbols[i])
+        }
+
     /** Quality tier for model detail (Low uses LOD1 everywhere); applies from the next level load. */
     var tier: QualityTier
         get() = art.tier
@@ -164,6 +175,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         lastY = FloatArray(slots)
         host.environment.apply(theme)
         buildScenery(level)
+        effects.begin(theme, level.board, tileHeights, slots)
         buildStatic(level, state)
         displayed = state
         sync(state)
@@ -205,6 +217,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     /** Jumps to [state] without animation (undo, restart, process-death restore). */
     fun snap(state: GameState) {
         finishIntro()
+        effects.resetTracks()
         timeline = null
         onFinished = null
         pending = null
@@ -240,6 +253,9 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         val cell = lastSaveCell
         if (cell < 0) camera.follow(0f, worldZ(0f)) else camera.follow(worldX((cell % width).toFloat()), worldZ((cell / width).toFloat()))
     }
+
+    /** Shell confetti over the board when the third star lands. */
+    fun confetti() = effects.confetti()
 
     // ----- Stage -----
 
@@ -297,6 +313,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         updateHazardIdle()
         updateAlarm(dt)
         updateHint()
+        effects.update()
         camera.update(dt)
         applyCamera(host.camera)
     }
@@ -427,7 +444,13 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
                     pitFillByCell[cell] = track(filled)
                 }
 
-                TileType.TIDE_POOL -> show(track(art.tidePool(board.poolNumberOf(cell))).also { place(it, cell, y) })
+                TileType.TIDE_POOL -> {
+                    val pair = board.poolNumberOf(cell)
+                    show(track(art.tidePool(pair)).also { place(it, cell, y) })
+                    addSymbol(TileSymbol.forPool(pair), cell, 0f, 0f, y + 0.03f, 0.2f)
+                }
+
+                TileType.WET_SAND -> addSymbol(TileSymbol.DROPLET, cell, 0.3f, 0.3f, y + 0.015f, 0.1f)
 
                 else -> Unit
             }
@@ -442,6 +465,16 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             gulls += track(art.seagull()).also { show(it) }
         }
         for (piece in state.pieces) pieceVisual(piece.id, piece.kind)
+    }
+
+    private fun addSymbol(shape: TileSymbol, cell: Int, dx: Float, dz: Float, y: Float, size: Float) {
+        val visual = track(art.symbol(shape))
+        tm.setTransform(
+            tm.getInstance(visual.root),
+            Transforms.trs(scratch, worldX((cell % width).toFloat()) + dx, y, worldZ((cell / width).toFloat()) + dz, 0f, size, 1f, size),
+        )
+        symbols += visual
+        if (colorBlind) show(visual)
     }
 
     private fun currentYaw(tile: TileType): Float = when (tile) {
@@ -538,6 +571,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             val visual = pieces.getOrNull(id) ?: continue
             tl.pose(id, time, pose)
             if (!pose.visible) {
+                effects.piece(id, 0f, 0f, 0f, 0f, sliding = false, hatchling = false)
                 if (pieceIsHatchling[id] && lastSaved(tl, id)) startSwimmer(id, visual) else hide(visual)
                 continue
             }
@@ -548,6 +582,9 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             lean[id] += (targetLean - lean[id]) * (1f - exp(-12f * dt))
             val lift = pose.lift + if (pose.moving) 0.02f * sin(pose.paddle * 2f * PI.toFloat()) else 0f
             placePiece(id, visual, pose.x, pose.y, lift, pose.scale, pose.squash)
+            // Trails and footprints only while sliding on the surface (not diving or teleporting).
+            val sliding = pose.moving && pose.lift > -0.05f && pose.scale > 0.9f
+            effects.piece(id, pose.x, pose.y, worldX(pose.x), worldZ(pose.y), sliding, pieceIsHatchling[id])
             visual.hatchling?.animate(dt, pose.paddle, if (pose.moving) 1f else 0f, headYaw, clock, reducedMotion)
         }
         if (time < tl.hazardStart) return
@@ -690,7 +727,30 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             is MoveEvent.CrabWaited -> event.cell
             is MoveEvent.GullShadowMoved -> event.to
         }
-        listener?.onEvent(event, worldX((cell % width).toFloat()), worldZ((cell / width).toFloat()))
+        val x = worldX((cell % width).toFloat())
+        val z = worldZ((cell / width).toFloat())
+        when (event) {
+            // Pieces blocked from the first tick also report a stop; only real slides raise dust.
+            is MoveEvent.Stopped -> if (timeline?.moved(event.pieceId) == true) effects.stop(x, z, cell)
+
+            is MoveEvent.Redirected -> effects.stop(x, z, cell)
+
+            is MoveEvent.Saved -> effects.save(x, z)
+
+            is MoveEvent.CoconutSank -> effects.sink(x, z)
+
+            is MoveEvent.FellInPit, is MoveEvent.PitFilled -> effects.pit(x, z, cell)
+
+            is MoveEvent.ShellCracked -> effects.bits(x, z, cell, egg = false)
+
+            is MoveEvent.Hatched -> effects.bits(x, z, cell, egg = true)
+
+            is MoveEvent.Teleported ->
+                effects.teleport(worldX((event.fromCell % width).toFloat()), worldZ((event.fromCell / width).toFloat()), x, z)
+
+            else -> Unit
+        }
+        listener?.onEvent(event, x, z)
     }
 
     private fun completeTimeline() {
@@ -707,6 +767,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             if (pieceIsHatchling[id] && lastSaved(tl, id)) startSwimmer(id, visual)
         }
         timeline = null
+        effects.resetTracks()
         val state = pending
         pending = null
         if (state != null) {
@@ -929,6 +990,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
                     introCracked[i] = true
                     cueListener?.onCue(BoardCue.EGG_CRACK, worldX(cx), 0f)
                     cueListener?.onCue(BoardCue.HATCH, worldX(cx), 0f)
+                    effects.bits(worldX(cx), worldZ(cy), cell, egg = true)
                 }
                 egg.egg?.animate(t / 0.45f)
                 val sink = smoothstep((t - 0.5f) / 0.35f)
@@ -1020,6 +1082,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     private fun clear() {
         finishIntro()
+        effects.end()
         timeline = null
         onFinished = null
         for (s in swimmers) {
@@ -1036,6 +1099,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         visuals.retainAll { it === hint }
         scenery.release()
         shellByCell.clear()
+        symbols.clear()
         pitByCell.clear()
         pitFillByCell.clear()
         pieces = arrayOfNulls(0)

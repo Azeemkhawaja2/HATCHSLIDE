@@ -19,6 +19,7 @@ import com.google.android.filament.gltfio.Gltfio
 import com.google.android.filament.utils.Utils
 import com.hatchslide.core.render.assets.ModelLibrary
 import com.hatchslide.core.render.assets.TextureStore
+import com.hatchslide.core.render.fx.ParticleSystem
 import com.hatchslide.core.render.math.Vec3
 
 /** Points a camera from [eye] at [target] with world-up Y. */
@@ -70,6 +71,15 @@ interface Stage {
     fun destroy(host: RenderEngine)
 }
 
+/** Told about every presented frame, for the auto quality tier and (M8) performance hints. */
+interface FrameObserver {
+    /** [intervalNanos] since the previous presented frame (0 for the first after a resume); [workNanos] of CPU work. */
+    fun onFrame(intervalNanos: Long, workNanos: Long)
+
+    /** The drawn stage changed; loading hitches follow. */
+    fun onStageChanged() {}
+}
+
 /** Frame-rate setting (spec section 5): Battery 30, Standard 60, Smooth = display maximum. */
 enum class FrameRateMode(val fps: Float) {
     BATTERY(30f),
@@ -98,6 +108,7 @@ class RenderEngine(context: Context) {
     val models: ModelLibrary
     val surfaces: Surfaces
     val environment: Environment
+    val particles: ParticleSystem
     val assets get() = appContext.assets
 
     private val uiHelper = UiHelper(UiHelper.ContextErrorPolicy.DONT_CHECK)
@@ -108,6 +119,7 @@ class RenderEngine(context: Context) {
     private var running = false
     private var lastFrameNanos = 0L
     private var lastRenderNanos = 0L
+    private var lastPresentNanos = 0L
     private var destroyed = false
 
     var width = 0
@@ -127,8 +139,11 @@ class RenderEngine(context: Context) {
     /** Extra frame cap from the quality tier (Low renders at 30 fps). */
     var tierFrameCap = 0f
 
-    /** Called after every rendered frame with its duration, for the auto quality tier and ADPF. */
-    var frameObserver: ((frameNanos: Long, workNanos: Long) -> Unit)? = null
+    /** Refresh rate of the display the surface is on. */
+    var displayFps = 60f
+        private set
+
+    var frameObserver: FrameObserver? = null
 
     /** Extra views drawn after the main view, e.g. the Turtle Journal's model card. */
     val overlayViews = mutableListOf<View>()
@@ -153,6 +168,7 @@ class RenderEngine(context: Context) {
         models = ModelLibrary(appContext.assets, engine)
         surfaces = Surfaces(this, textures)
         environment = Environment(this)
+        particles = ParticleSystem(engine, scene, surfaces.particle)
         setQuality(QualityTier.MEDIUM)
         camera.setExposure(16f, 1f / 125f, 100f)
         uiHelper.renderCallback = SurfaceCallback()
@@ -162,7 +178,10 @@ class RenderEngine(context: Context) {
         override fun onNativeWindowChanged(surface: Surface) {
             swapChain?.let { engine.destroySwapChain(it) }
             swapChain = engine.createSwapChain(surface, uiHelper.swapChainFlags)
-            surfaceView?.display?.let { displayHelper.attach(renderer, it) }
+            surfaceView?.display?.let {
+                displayHelper.attach(renderer, it)
+                displayFps = it.refreshRate.takeIf { rate -> rate > 1f } ?: 60f
+            }
             applyFrameRate()
         }
 
@@ -200,8 +219,10 @@ class RenderEngine(context: Context) {
     fun show(next: Stage) {
         if (stage === next) return
         stage?.exit(this)
+        particles.clear()
         stage = next
         next.enter(this)
+        frameObserver?.onStageChanged()
         if (width > 0) next.onResize(this, width, height)
     }
 
@@ -209,6 +230,7 @@ class RenderEngine(context: Context) {
         if (running || destroyed) return
         running = true
         lastFrameNanos = 0L
+        lastPresentNanos = 0L
         choreographer.postFrameCallback(frameCallback)
     }
 
@@ -228,6 +250,13 @@ class RenderEngine(context: Context) {
         val chain = swapChain ?: return
         val fps = frameRateMode.fps
         if (fps > 0f && chain.isFrameRateChangeSupported) chain.setFrameRate(fps)
+    }
+
+    /** Time one frame may take at the current cap (frame-rate setting, tier, idle menus, display). */
+    fun frameBudgetNanos(): Long {
+        val cap = frameCapFps()
+        val fps = if (cap > 0f) minOf(cap, displayFps) else displayFps
+        return (1_000_000_000.0 / fps).toLong()
     }
 
     private fun frameCapFps(): Float {
@@ -254,14 +283,17 @@ class RenderEngine(context: Context) {
             val start = System.nanoTime()
             surfaces.update(dt)
             stage?.update(this@RenderEngine, dt)
+            particles.update(dt, camera)
             val chain = swapChain ?: return
             if (!uiHelper.isReadyToRender) return
             if (renderer.beginFrame(chain, frameTimeNanos)) {
                 renderer.render(view)
                 for (overlay in overlayViews) renderer.render(overlay)
                 renderer.endFrame()
+                val interval = if (lastPresentNanos == 0L) 0L else frameTimeNanos - lastPresentNanos
+                lastPresentNanos = frameTimeNanos
+                frameObserver?.onFrame(interval, System.nanoTime() - start)
             }
-            frameObserver?.invoke(frameTimeNanos, System.nanoTime() - start)
         }
     }
 
@@ -273,6 +305,7 @@ class RenderEngine(context: Context) {
         stage = null
         stages.forEach { it.destroy(this) }
         detachSurface()
+        particles.destroy()
         models.destroy()
         environment.destroy()
         meshes.destroy()

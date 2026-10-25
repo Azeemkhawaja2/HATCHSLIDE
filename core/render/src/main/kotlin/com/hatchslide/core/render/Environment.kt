@@ -1,10 +1,12 @@
 package com.hatchslide.core.render
 
+import com.google.android.filament.ColorGrading
 import com.google.android.filament.EntityManager
 import com.google.android.filament.IndirectLight
 import com.google.android.filament.LightManager
 import com.google.android.filament.Skybox
 import com.google.android.filament.Texture
+import com.google.android.filament.ToneMapper
 import com.google.android.filament.View
 import com.google.android.filament.utils.KTX1Loader
 import com.hatchslide.core.render.assets.AssetCatalog
@@ -15,7 +17,27 @@ import kotlin.math.max
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-/** Look of one environment (spec section 6): sky, sun, surfaces, water and fog. Colours are sRGB. */
+/**
+ * Colour grade applied around ACES-style tone mapping (spec section 6). [temperature] and [tint] are
+ * Filament white balance (-1..1, warm and magenta positive); [shadows] and [highlights] multiply
+ * those tonal ranges (rgb, plus an offset in w); [nightAdaptation] simulates scotopic vision.
+ */
+class ColorGrade(
+    val temperature: Float = 0f,
+    val tint: Float = 0f,
+    val contrast: Float = 1f,
+    val vibrance: Float = 1f,
+    val saturation: Float = 1f,
+    val shadows: FloatArray = NEUTRAL,
+    val highlights: FloatArray = NEUTRAL,
+    val nightAdaptation: Float = 0f,
+) {
+    companion object {
+        val NEUTRAL = floatArrayOf(1f, 1f, 1f, 0f)
+    }
+}
+
+/** Look of one environment (spec section 6): sky, sun, surfaces, water, fog and grade. Colours are sRGB. */
 class WorldTheme(
     val id: Int,
     val name: String,
@@ -42,6 +64,11 @@ class WorldTheme(
     val glow: Float,
     val glowColor: FloatArray,
     val ash: Boolean = false,
+    /** Brightness of unlit particles relative to daylight (night scenes need far less). */
+    val fxLight: Float = 1f,
+    /** Linear tint over the effects atlas's golden sand for dust and trails on this world's sand. */
+    val dust: FloatArray = floatArrayOf(1f, 1f, 1f),
+    val grade: ColorGrade = ColorGrade(),
 ) {
     /** Light travel direction of the sun: the sky's sun azimuth, raised to [minSunElevation]. */
     val sunDirection: FloatArray = run {
@@ -59,27 +86,67 @@ class WorldTheme(
         val TITLE = WorldTheme(
             0, "Sunrise", "title", floatArrayOf(-0.45f, 0.16f, -0.88f), 28f, rgb(0xFFD2A8), 70_000f, 26_000f,
             rgb(0xF6D3B8), 0.012f, "sand_golden", "sand_fine", "rock", rgb(0xB59A80), rgb(0x52D1C8), rgb(0x1B5F8C), 0f, NO_GLOW,
+            fxLight = 0.95f,
+            grade = ColorGrade(
+                temperature = 0.1f,
+                tint = 0.04f,
+                contrast = 1.03f,
+                vibrance = 1.1f,
+                shadows = floatArrayOf(0.98f, 0.97f, 1.04f, 0f),
+            ),
         )
         val SUNRISE_COVE = WorldTheme(
             1, "Sunrise Cove", "world1", floatArrayOf(-0.7f, 0.32f, -0.64f), 38f, rgb(0xFFD6AE), 80_000f, 28_000f,
             rgb(0xF7D6BC), 0.010f, "sand_golden", "sand_fine", "rock", rgb(0xB0957A), rgb(0x55D3C9), rgb(0x1C6290), 0f, NO_GLOW,
+            fxLight = 0.95f,
+            grade = ColorGrade(
+                temperature = 0.08f,
+                tint = 0.03f,
+                contrast = 1.04f,
+                vibrance = 1.12f,
+                shadows = floatArrayOf(0.98f, 0.97f, 1.04f, 0f),
+            ),
         )
         val CORAL_COAST = WorldTheme(
             2, "Coral Coast", "world2", floatArrayOf(0.2f, 0.92f, 0.33f), 38f, rgb(0xFFF6E8), 110_000f, 32_000f,
             rgb(0xD8EEF9), 0.007f, "sand_coral", "sand_fine", "rock", rgb(0xB8AC9C), rgb(0x48E0D3), rgb(0x1774B5), 0f, NO_GLOW,
+            dust = floatArrayOf(1f, 0.9f, 0.88f),
+            grade = ColorGrade(temperature = 0.02f, contrast = 1.06f, vibrance = 1.15f, highlights = floatArrayOf(1f, 1.01f, 1.02f, 0f)),
         )
         val MOONLIT_BAY = WorldTheme(
             3, "Moonlit Bay", "world3", floatArrayOf(0.35f, 0.55f, -0.76f), 38f, rgb(0xB9CCFF), 9_000f, 9_000f,
             rgb(0x1A2850), 0.014f, "sand_silver", "sand_fine", "rock", rgb(0x8A8FA6), rgb(0x2A8C9E), rgb(0x0A2346), 1f, rgb(0x5CF2D6),
+            fxLight = 0.3f,
+            dust = floatArrayOf(0.85f, 0.9f, 1f),
+            grade = ColorGrade(
+                temperature = -0.12f,
+                contrast = 1.05f,
+                saturation = 0.88f,
+                shadows = floatArrayOf(0.94f, 0.98f, 1.1f, 0f),
+                nightAdaptation = 0.35f,
+            ),
         )
         val CRAB_REEF = WorldTheme(
             4, "Crab Reef", "world4", floatArrayOf(0.72f, 0.3f, -0.62f), 38f, rgb(0xFFC48A), 75_000f, 24_000f,
             rgb(0xE9C2A0), 0.011f, "sand_amber", "sand_coarse", "rock", rgb(0xA8875E), rgb(0x46BDB4), rgb(0x174F78), 0f, NO_GLOW,
+            fxLight = 0.9f,
+            dust = floatArrayOf(1f, 0.86f, 0.7f),
+            grade = ColorGrade(temperature = 0.12f, contrast = 1.04f, vibrance = 1.08f, highlights = floatArrayOf(1.04f, 1f, 0.94f, 0f)),
         )
         val VOLCANIC_ISLE = WorldTheme(
             5, "Volcanic Isle", "world5", floatArrayOf(0.6f, 0.12f, -0.79f), 38f, rgb(0xFF8A4C), 55_000f, 18_000f,
             rgb(0xB3685A), 0.018f, "sand_volcanic", "sand_coarse", "basalt", rgb(0x4A4448), rgb(0x3A9C98), rgb(0x123A55), 0f, NO_GLOW,
             ash = true,
+            fxLight = 0.7f,
+            dust = floatArrayOf(0.32f, 0.29f, 0.29f),
+            grade = ColorGrade(
+                temperature = 0.18f,
+                tint = 0.03f,
+                contrast = 1.1f,
+                saturation = 1.05f,
+                shadows = floatArrayOf(1.02f, 0.96f, 0.96f, 0f),
+                highlights = floatArrayOf(1.06f, 0.98f, 0.9f, 0f),
+            ),
         )
 
         fun forWorld(world: Int): WorldTheme = when (world) {
@@ -106,6 +173,7 @@ class Environment(private val host: RenderEngine) {
     private var skybox: Skybox? = null
     private var iblTexture: Texture? = null
     private var skyTexture: Texture? = null
+    private val gradings = HashMap<Int, ColorGrading>()
     var theme: WorldTheme? = null
         private set
     var shadowMapSize = 2048
@@ -163,6 +231,7 @@ class Environment(private val host: RenderEngine) {
         host.scene.indirectLight = indirectLight
         host.scene.skybox = skybox
         host.surfaces.applyTheme(next)
+        host.view.colorGrading = gradings.getOrPut(next.id) { buildGrading(next.grade) }
         host.view.fogOptions = host.view.fogOptions.apply {
             enabled = true
             distance = 18f
@@ -174,6 +243,16 @@ class Environment(private val host: RenderEngine) {
             maximumOpacity = 0.85f
         }
     }
+
+    private fun buildGrading(grade: ColorGrade): ColorGrading = ColorGrading.Builder()
+        .toneMapper(ToneMapper.ACESLegacy())
+        .whiteBalance(grade.temperature, grade.tint)
+        .contrast(grade.contrast)
+        .vibrance(grade.vibrance)
+        .saturation(grade.saturation)
+        .shadowsMidtonesHighlights(grade.shadows, ColorGrade.NEUTRAL, grade.highlights, GRADE_RANGES)
+        .nightAdaptation(grade.nightAdaptation)
+        .build(engine)
 
     private fun releaseSky() {
         host.scene.indirectLight = null
@@ -190,6 +269,9 @@ class Environment(private val host: RenderEngine) {
 
     fun destroy() {
         releaseSky()
+        host.view.colorGrading = null
+        gradings.values.forEach { engine.destroyColorGrading(it) }
+        gradings.clear()
         host.scene.remove(sun)
         engine.lightManager.destroy(sun)
         EntityManager.get().destroy(sun)
@@ -228,6 +310,9 @@ class Environment(private val host: RenderEngine) {
         setShadowMapSize(tier.shadowMapSize)
     }
 }
+
+/** Filament's default tonal ranges: shadows start and end, highlights start and end. */
+private val GRADE_RANGES = floatArrayOf(0f, 0.333f, 0.55f, 1f)
 
 /** Quality tiers (spec section 6). */
 enum class QualityTier(val renderScale: Float, val shadowMapSize: Int, val maxTexture: Int, val heroTexture: Int, val frameCap: Float) {

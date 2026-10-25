@@ -1,0 +1,27 @@
+// Pooled particles and ground decals (spec section 6): unlit quads from the effects atlas with a
+// premultiplied vertex colour. A vertex alpha of 0 makes a quad additive (sparkles, fireflies);
+// black with alpha darkens whatever lies beneath it (footprints).
+material {
+    name : particle,
+    shadingModel : unlit,
+    blending : transparent,
+    depthWrite : false,
+    doubleSided : true,
+    requires : [ uv0, color ],
+    parameters : [
+        { type : sampler2d, name : atlas },
+        // Brightness of additive quads, since vertex colours top out at 1.
+        { type : float, name : glow }
+    ]
+}
+
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+        float4 texel = texture(materialParams_atlas, getUV0());
+        float4 tint = getColor();
+        float additive = 1.0 - step(0.002, tint.a);
+        float3 rgb = texel.rgb * tint.rgb * texel.a * mix(1.0, materialParams.glow, additive);
+        material.baseColor = float4(rgb, texel.a * tint.a);
+    }
+}

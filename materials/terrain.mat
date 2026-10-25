@@ -1,6 +1,6 @@
 // Sand and cliff rock for board tiles, the island chunk and sand parts of models.
-// Sand is projected from above, rock is triplanar on steep faces; a board mask adds wet sand and
-// footprints, and anything below the waterline picks up animated caustics and a water tint.
+// Sand is projected from above, rock is triplanar on steep faces; a board mask adds wet sand, and
+// anything below the waterline picks up animated caustics and a water tint. (Footprints are decals.)
 material {
     name : terrain,
     shadingModel : lit,
@@ -80,13 +80,11 @@ fragment {
         float3 color = mix(sandColor, rockColor, rockAmount);
         float3 orm = mix(sandOrm, rockOrm, rockAmount);
 
-        // Board mask: r = wetness, g = footprints.
+        // Board mask: r = wetness.
         float2 maskUv = (p.xz - materialParams.maskTransform.xy) * materialParams.maskTransform.zw;
         float4 board = texture(materialParams_mask, maskUv) * materialParams.maskAmount;
         float wet = board.r * (1.0 - rockAmount);
-        float prints = board.g * (1.0 - rockAmount);
         color = mix(color, color * materialParams.wetTint, wet);
-        color *= 1.0 - 0.35 * prints;
         worldN = normalize(mix(worldN, n, wet * 0.6));
 
         // Under the waterline: tint and caustics fading with depth.

@@ -154,6 +154,18 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
     /** Dots of the sea path on the world map. */
     val pathDot: MaterialInstance by lazy { sprite("glow", floatArrayOf(1f, 1f, 1f), 0.85f) }
 
+    /** Pooled particles and footprints (materials/particle.mat); additive quads glow 2.5 times brighter. */
+    val particle: MaterialInstance by lazy {
+        materials.instance("particle").apply {
+            setParameter("atlas", textures.get("${Textures.FX}_albedo"), textures.clamp)
+            setParameter("glow", 2.5f)
+        }
+    }
+
+    /** Colour-blind tile symbols: a light shape over a dark outline. */
+    val symbolFill: MaterialInstance by lazy { materials.decal(0.98f, 0.97f, 0.92f, 0.95f) }
+    val symbolEdge: MaterialInstance by lazy { materials.decal(0.04f, 0.07f, 0.14f, 0.85f) }
+
     /** The ghost hint arrow. */
     val hint: MaterialInstance by lazy { materials.decal(1f, 1f, 1f, 0.55f) }
 

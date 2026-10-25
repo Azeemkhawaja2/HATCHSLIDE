@@ -12,6 +12,21 @@ import com.hatchslide.core.render.assets.ModelInstance
 import com.hatchslide.core.render.assets.ModelLibrary
 import com.hatchslide.core.render.math.Transforms
 
+/** Shapes that mark tiles in colour-blind mode (spec section 5): one per tide-pool pair, and wet sand. */
+enum class TileSymbol {
+    CIRCLE,
+    TRIANGLE,
+    SQUARE,
+    DIAMOND,
+    DROPLET,
+    ;
+
+    companion object {
+        /** The shape for tide-pool pair [pair] (1 to 4). */
+        fun forPool(pair: Int): TileSymbol = entries[(pair - 1).coerceIn(0, 3)]
+    }
+}
+
 /**
  * A renderable group placed by the board: a root transform, the renderables to add to the scene,
  * the model instance it came from (returned to its pool on release) or, for decals, entities it owns,
@@ -133,6 +148,30 @@ open class BoardArt(protected val host: RenderEngine) {
 
     open fun hintArrow(): Visual = decal(meshes.cached("hint_arrow") { arrow(1.6f, 1.0f) }, surfaces.hint, 0.5f)
 
+    /**
+     * Colour-blind symbol lying flat with unit radius (scale it with the root transform): a light shape
+     * over a dark outline, drawn after the water so it reads over tide pools.
+     */
+    open fun symbol(shape: TileSymbol): Visual {
+        val root = meshes.group()
+        val edge = meshes.renderable(
+            meshes.cached("symbol_edge_$shape") { symbolMesh(shape, 1.3f) },
+            surfaces.symbolEdge,
+            castShadows = false,
+            receiveShadows = false,
+            priority = 5,
+        )
+        val fill = meshes.renderable(
+            meshes.cached("symbol_$shape") { symbolMesh(shape, 1f) },
+            surfaces.symbolFill,
+            castShadows = false,
+            receiveShadows = false,
+            priority = 6,
+        )
+        for (e in intArrayOf(edge, fill)) tm.setParent(tm.getInstance(e), tm.getInstance(root))
+        return Visual(root, intArrayOf(edge, fill), ownsEntities = true)
+    }
+
     /** Island decoration by model name; [background] picks LOD1. */
     open fun decor(name: String, background: Boolean): Visual = simple(name, background)
 
@@ -170,6 +209,35 @@ open class BoardArt(protected val host: RenderEngine) {
         val e = b.vertex(-h, 0f, h, 0f, 1f, 0f, 0f, 1f)
         b.quad(a, e, d, c)
         return b.build()
+    }
+
+    /** Convex outline of [shape] at radius [scale] in the xz plane, the top of the shape toward -z. */
+    private fun symbolMesh(shape: TileSymbol, scale: Float): MeshData {
+        val outline = when (shape) {
+            TileSymbol.CIRCLE -> ring(28, 0.85f, 0f)
+
+            TileSymbol.TRIANGLE -> ring(3, 1f, -90f).map { (x, z) -> floatArrayOf(x, z + 0.15f) }
+
+            TileSymbol.SQUARE -> ring(4, 0.95f, 45f)
+
+            TileSymbol.DIAMOND -> ring(4, 1f, -90f)
+
+            // A teardrop: the point at the top, a round bottom.
+            TileSymbol.DROPLET -> listOf(floatArrayOf(0f, -1f)) + (0..12).map { k ->
+                val a = Math.toRadians(-30.0 + k * 20.0)
+                floatArrayOf(0.6f * kotlin.math.cos(a).toFloat(), 0.25f + 0.6f * kotlin.math.sin(a).toFloat())
+            }
+        }
+        val b = MeshBuilder(withUvs = false)
+        val centre = b.vertex(0f, 0f, outline.map { it[1] }.average().toFloat() * scale, 0f, 1f, 0f)
+        val ring = outline.map { (x, z) -> b.vertex(x * scale, 0f, z * scale, 0f, 1f, 0f) }
+        for (i in ring.indices) b.triangle(centre, ring[(i + 1) % ring.size], ring[i])
+        return b.build()
+    }
+
+    private fun ring(points: Int, radius: Float, startDegrees: Float): List<FloatArray> = (0 until points).map { k ->
+        val a = Math.toRadians(startDegrees + k * 360.0 / points)
+        floatArrayOf(radius * kotlin.math.cos(a).toFloat(), radius * kotlin.math.sin(a).toFloat())
     }
 
     /** Flat arrow pointing toward -Z (board-up), lying on y = 0, for the hint. */

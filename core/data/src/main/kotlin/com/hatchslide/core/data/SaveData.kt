@@ -74,4 +74,6 @@ data class Settings(
     val reducedMotion: Boolean = false,
     val arrowPad: Boolean = false,
     val leftHanded: Boolean = false,
+    /** Tier ordinal (Low, Medium, High) the Auto setting stands for; -1 until the first-launch check. */
+    val detectedTier: Int = -1,
 )

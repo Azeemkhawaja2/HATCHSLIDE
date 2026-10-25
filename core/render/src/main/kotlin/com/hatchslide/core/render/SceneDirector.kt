@@ -20,16 +20,26 @@ class SceneDirector(context: Context) {
     val board = BoardStage(engine)
     private val stages = listOf<Stage>(beach, map, board)
 
-    fun show(stage: Stage) = engine.show(stage)
+    /** Called after the drawn stage changes, so the UI can reveal the new one through a curtain. */
+    var onStageChanged: (() -> Unit)? = null
 
-    fun showBoard() = engine.show(board)
+    fun show(stage: Stage) {
+        if (engine.stage === stage) return
+        engine.show(stage)
+        onStageChanged?.invoke()
+    }
 
-    /** Applies quality and motion preferences to every stage. */
-    fun applySettings(tier: QualityTier, frameRate: FrameRateMode, reducedMotion: Boolean) {
+    fun showBoard() = show(board)
+
+    /** Applies quality, motion and colour-blind preferences to every stage. */
+    fun applySettings(tier: QualityTier, frameRate: FrameRateMode, reducedMotion: Boolean, colorBlind: Boolean) {
         engine.setQuality(tier)
         engine.frameRateMode = frameRate
         board.reducedMotion = reducedMotion
         board.tier = tier
+        board.colorBlind = colorBlind
+        // Reduced motion cuts particles by 80% (spec section 5).
+        engine.particles.pool.density = if (reducedMotion) 0.2f else 1f
         beach.reducedMotion = reducedMotion
         map.tier = tier
     }

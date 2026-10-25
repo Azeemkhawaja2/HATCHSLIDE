@@ -10,6 +10,7 @@ import com.hatchslide.core.render.Surfaces
 import com.hatchslide.core.render.WorldTheme
 import com.hatchslide.core.render.assets.AssetCatalog.Models
 import com.hatchslide.core.render.assets.ModelInstance
+import com.hatchslide.core.render.board.BoardEffects
 import com.hatchslide.core.render.board.EggRig
 import com.hatchslide.core.render.board.GullRig
 import com.hatchslide.core.render.board.HatchlingRig
@@ -50,6 +51,8 @@ class BeachStage(private val host: RenderEngine) : Stage {
     private var built = false
     private var entered = false
     private var eggVisible = false
+    private val effects = BoardEffects(host.particles.pool)
+    private var cracked = false
 
     var mode = Mode.TITLE
         private set
@@ -178,6 +181,12 @@ class BeachStage(private val host: RenderEngine) : Stage {
         if (mode == Mode.TITLE) {
             val t = modeTime - TITLE_HATCH
             eggRig?.animate(if (t < 0f) 0f else t / 0.45f)
+            if (t < 0f) {
+                cracked = false
+            } else if (!cracked) {
+                cracked = true
+                effects.shellBits(HERO_X, Surfaces.ISLAND_TOP, HERO_Z, egg = true)
+            }
             val wobble = if (t in -0.4f..0f && !reducedMotion) sin(t * 40f) * 0.1f else 0f
             egg?.let { e ->
                 tm.setTransform(

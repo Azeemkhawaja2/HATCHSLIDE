@@ -29,7 +29,7 @@ class GroundTexture(val width: Int, val height: Int, val pixels: ByteArray, val 
 class IslandGeometry(
     val tiles: MeshData,
     val chunk: MeshData,
-    /** Terrain mask: r = wet sand, g = footprints (written at run time). */
+    /** Terrain mask: r = wet sand near the surf and on wet tiles. */
     val mask: GroundTexture,
     /** Water shoreline distance: r = 0 at the waterline to 1 three cells out. */
     val shore: GroundTexture,

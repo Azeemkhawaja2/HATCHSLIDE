@@ -248,6 +248,9 @@ class MoveTimeline(
 
     fun kindOf(pieceId: Int): PieceKind? = trackById[pieceId]?.kind
 
+    /** True if [pieceId] left its starting cell during this move. */
+    fun moved(pieceId: Int): Boolean = trackById[pieceId]?.moved == true
+
     companion object {
         const val SQUASH_SECONDS = 0.22f
         const val PADDLE_HZ = 2.5f

@@ -1,5 +1,5 @@
-// Unlit transparent sprite from the effects atlas, laid flat on the sand: gull shadows and
-// footprints. [rect] selects the atlas cell (uv offset xy, uv scale zw).
+// Unlit transparent sprite from the effects atlas, laid flat: gull shadows and the map's sea-path
+// dots. [rect] selects the atlas cell (uv offset xy, uv scale zw).
 material {
     name : sprite,
     shadingModel : unlit,

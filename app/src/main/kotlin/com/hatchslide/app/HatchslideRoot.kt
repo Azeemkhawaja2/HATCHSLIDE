@@ -1,17 +1,31 @@
 package com.hatchslide.app
 
 import android.view.SurfaceView
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -19,6 +33,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -30,6 +45,7 @@ import com.hatchslide.core.audio.AudioEngine
 import com.hatchslide.core.data.ProgressRules
 import com.hatchslide.core.designsystem.HatchslideTheme
 import com.hatchslide.core.designsystem.LocalUiSound
+import com.hatchslide.core.designsystem.Palette
 import com.hatchslide.core.designsystem.UiPreferences
 import com.hatchslide.core.designsystem.UiSound
 import com.hatchslide.core.game.Level
@@ -52,15 +68,75 @@ import com.hatchslide.feature.menu.PrivacyScreen
 import com.hatchslide.feature.menu.SettingsScreen
 import com.hatchslide.feature.menu.TitleScreen
 import java.time.LocalDate
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+
+/**
+ * Screen transitions (spec section 14, M7): panels fade and settle from a slight zoom; with reduced
+ * motion they only fade.
+ */
+private class ScreenTransitions(reducedMotion: Boolean) {
+    private val motion = !reducedMotion
+    val enter: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+        if (motion) {
+            fadeIn(
+                tween(260, delayMillis = 60),
+            ) + scaleIn(tween(260, delayMillis = 60), initialScale = 0.96f)
+        } else {
+            fadeIn(tween(160))
+        }
+    }
+    val exit: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = { fadeOut(tween(160)) }
+    val popEnter: AnimatedContentTransitionScope<NavBackStackEntry>.() -> EnterTransition = {
+        if (motion) {
+            fadeIn(
+                tween(260, delayMillis = 60),
+            ) + scaleIn(tween(260, delayMillis = 60), initialScale = 1.04f)
+        } else {
+            fadeIn(tween(160))
+        }
+    }
+    val popExit: AnimatedContentTransitionScope<NavBackStackEntry>.() -> ExitTransition = {
+        if (motion) fadeOut(tween(160)) + scaleOut(tween(200), targetScale = 0.96f) else fadeOut(tween(160))
+    }
+}
+
+/**
+ * Hides the cut when the 3D view switches stage (beach, archipelago, board): the new stage is revealed
+ * from deep ocean blue. It also covers the very first frames until the title stage is up.
+ */
+@Composable
+private fun StageCurtain(director: SceneDirector, reducedMotion: Boolean) {
+    val curtain = remember { Animatable(1f) }
+    val scope = rememberCoroutineScope()
+    val duration = if (reducedMotion) 250 else 450
+    DisposableEffect(director, duration) {
+        director.onStageChanged = {
+            scope.launch {
+                curtain.snapTo(1f)
+                curtain.animateTo(0f, tween(duration, easing = LinearOutSlowInEasing))
+            }
+        }
+        onDispose { director.onStageChanged = null }
+    }
+    // Never stay closed: if no stage change arrives (the stage was already showing), open anyway.
+    LaunchedEffect(Unit) {
+        delay(800)
+        if (curtain.targetValue == 1f) curtain.animateTo(0f, tween(duration))
+    }
+    if (curtain.value > 0f) Box(Modifier.fillMaxSize().graphicsLayer { alpha = curtain.value }.background(Palette.Ocean))
+}
 
 /**
  * The Filament surface sits behind every screen; Compose draws the UI on top (spec section 5,
  * navigation flow). Back pops one screen; on the main menu it leaves the app; in gameplay it pauses.
  */
 @Composable
-fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: AudioEngine, autoTier: QualityTier) {
+fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: AudioEngine, autoTier: StateFlow<QualityTier>) {
     val settings by container.player.settings.collectAsStateWithLifecycle()
     val progress by container.player.progress.collectAsStateWithLifecycle()
+    val auto by autoTier.collectAsStateWithLifecycle()
     val preferences = UiPreferences(
         reducedMotion = settings.reducedMotion,
         highContrast = settings.highContrast,
@@ -68,8 +144,13 @@ fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: Audi
         colorBlindTiles = settings.colorBlindTiles,
         haptics = settings.haptics,
     )
-    LaunchedEffect(settings.quality, settings.frameRate, settings.reducedMotion) {
-        director.applySettings(qualityTier(settings.quality, autoTier), frameRateMode(settings.frameRate), settings.reducedMotion)
+    LaunchedEffect(settings.quality, settings.frameRate, settings.reducedMotion, settings.colorBlindTiles, auto) {
+        director.applySettings(
+            qualityTier(settings.quality, auto),
+            frameRateMode(settings.frameRate),
+            settings.reducedMotion,
+            settings.colorBlindTiles,
+        )
     }
     LaunchedEffect(settings.musicVolume, settings.effectsVolume) { audio.setVolumes(settings.musicVolume, settings.effectsVolume) }
     val uiSound = remember(audio) { { sound: UiSound -> audio.playUi(sound) } }
@@ -80,8 +161,17 @@ fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: Audi
                     factory = { context -> SurfaceView(context).also { director.engine.attach(it) } },
                     modifier = Modifier.fillMaxSize(),
                 )
+                StageCurtain(director, settings.reducedMotion)
                 val nav = rememberNavController()
-                NavHost(nav, startDestination = TitleRoute) {
+                val transitions = remember(settings.reducedMotion) { ScreenTransitions(settings.reducedMotion) }
+                NavHost(
+                    nav,
+                    startDestination = TitleRoute,
+                    enterTransition = transitions.enter,
+                    exitTransition = transitions.exit,
+                    popEnterTransition = transitions.popEnter,
+                    popExitTransition = transitions.popExit,
+                ) {
                     composable<TitleRoute> {
                         TitleScreen(director) { nav.navigate(MenuRoute) { popUpTo<TitleRoute> { inclusive = true } } }
                     }

@@ -123,6 +123,44 @@ Gate result: `./gradlew check assembleDebug` green with no lint warnings; new un
 
 Gate result: `./gradlew check assembleDebug` green with no lint warnings; `AssetManifestTest` covers the audio catalogue both ways (every generated sound is loaded, every loaded sound is generated) and every `Sfx` entry is played by the game. Audio sizes: music 16.4 MB (budget 30), effects and ambience 1.5 MB (budget 8). Listening checks on a device are listed under Device verification.
 
+## M7 Polish
+
+- **One pooled particle draw.** Filament's instancing carries only per-instance transforms, so the particle system writes its quads on the CPU into one renderable. That keeps a single draw call for every particle and decal, and per-particle colour, atlas cell, size and fade. The pool holds 1024 particles as fixed structure-of-arrays state; dead ones are swapped out. Each frame the live quads go into one of three preallocated vertex buffers in turn, so Filament is never reading a buffer being rewritten. The index buffer is static, and nothing is allocated per frame. The quads draw at priority 7, after the water.
+- **One material for every effect.** `particle.mat` takes a premultiplied vertex colour. Alpha 0 makes a quad additive (sparkles, fireflies, at 2.5 times brightness); black with alpha only darkens what is underneath. Footprints use the latter, so they read correctly in every world's lighting. Unlit particles are scaled by a per-world `fxLight` (0.3 at night), and sand dust is tinted to each world's sand.
+- **Effects** (`BoardEffects`):
+  - a sand trail behind sliding pieces, or spray on currents;
+  - a sand puff, wet clumps or spray on every stop; pieces that never moved raise none;
+  - droplets, spray, a ripple ring and sparkles on a save, and a smaller splash when a coconut sinks;
+  - dark dust in pits, shell and egg fragments (including the level intro and the title hatchling), and shimmer at both ends of a tide-pool teleport;
+  - shell confetti when the third star lands;
+  - 22 fireflies drifting and blinking at Moonlit Bay, and 48 flakes of ash drifting down on Volcanic Isle.
+- **Footprints are decals.** They are ground quads from the atlas footprint cell, one every 0.42 cells along a hatchling's slide on dry or wet sand, fading linearly over 4 s. The terrain mask's spare channel (planned in M4) is 8 samples per cell, too coarse for the print shape, so `terrain.mat` no longer reads it.
+- **Reduced motion** emits 20% of every burst and ambient target, rounded randomly so single particles still appear. Footprints stay because they do not move. Camera shake and idle sway stay off, waves stay calm, and screen transitions only fade.
+- **Colour grading.** Each world gets a cached Filament `ColorGrading` with the `ACESLegacy` tone mapper. That is Filament's default operator, so the exposure and light levels tuned so far still hold. On top of it each world has a white balance, contrast, vibrance, saturation and shadow and highlight tints:
+  - Sunrise Cove: peach;
+  - Coral Coast: crisp and vivid;
+  - Moonlit Bay: cool, slightly desaturated, with a little night adaptation;
+  - Crab Reef: warm amber;
+  - Volcanic Isle: an orange, contrasty dusk.
+- **Transitions.** Screens fade and settle from a 4% zoom (fade only with reduced motion). One Filament view cannot cross-fade two scenes without extra render targets, so when the 3D stage changes (beach, archipelago, board) the new stage is revealed from deep ocean blue over 450 ms. The camera moves already in place cover the rest: the title glide, the map flights, the level-start dolly and the win follow.
+- **Auto quality, at first launch.** The game reads `GL_RENDERER` from a throwaway 1x1 EGL pbuffer context and maps it to a tier:
+  - Adreno 730+ and 640 to 699: High;
+  - Adreno 700 to 729, 616 to 639 and 540 to 599: Medium;
+  - Mali-G78, G7xx, Immortalis and Xclipse: High;
+  - Mali-G57 to G77 and G5xx to G6xx: Medium;
+  - older Mali, PowerVR Rogue and other entry GPUs: Low;
+  - anything unknown: Medium.
+
+  Memory caps the result: 3 GB phones and low-RAM devices get Low, 4 GB phones at most Medium. The tier is stored in settings. Android Game Mode shifts it one step on every launch (Performance up, Battery down), and the existing `game_mode_config` declares that the game handles both modes itself.
+- **Auto quality, at run time.** While quality is Auto, each second's presented-frame intervals are reduced to a 95th percentile. Five seconds in a row more than 20% over the frame budget drops one tier, followed by an 8 s cooldown. The budget follows the frame-rate setting, the tier cap, idle menus and the display rate. Stage changes and hitches over half a second are ignored. A drop is saved for later launches, unless the device is thermally throttled (moderate or worse), in which case it lasts for the session only. M8's thermal stepping handles the rest.
+- **Colour-blind tiles** add flat light-on-dark symbols. Tide-pool pairs get a circle, triangle, square and diamond, on top of their cowrie count, and wet sand gets a droplet in the tile corner. Pairs no longer rely on hue, and wet sand no longer relies on tone. The symbols toggle instantly.
+- **Accessibility audit.** Every interactive control is at least 48 dp; the smallest are the 48 dp Journal buttons. TalkBack announces each move (since M5). Text scaling to 200% in menus is on the device checklist.
+
+Gate result: `./gradlew check assembleDebug` green with no lint warnings. New unit tests cover:
+- the particle pool: capacity, lifetimes, group counts, ground-first order, billboard orientation, linear footprint fade, additive encoding and density scaling;
+- the board effects: footprints only for hatchlings on sand, the 4 s fade, the 80% cut, no dust on rock, fireflies and ash only in their worlds and kept topped up, confetti;
+- auto quality: renderer strings, memory caps, Game Mode steps, and the frame monitor (steady play never drops, sustained overrun drops once and then cools down, good seconds reset it, hitches and holds are ignored).
+
 ## Device verification (to run on hardware or an emulator with GPU)
 
 These gates need a device and are wired but not yet executed:
@@ -131,4 +169,5 @@ These gates need a device and are wired but not yet executed:
 - Instrumented UI and lifecycle tests (navigation through all 14 screens, rotation/fold/resize mid-animation, process death, resuming a saved run).
 - Macrobenchmark startup and frame timing, monkey run, PSS during world 5.
 - Hint latency on a mid-range phone (target under 200 ms; JVM worst case 56 ms).
+- Polish: particle and footprint look per world (premultiplied output, night tint, ash), colour grades, the stage curtain, colour-blind symbols over tide pools, menus at 200% text scale, and the auto tier's choice and drop on a Low, a Medium and a High reference phone.
 - Audio: background and foreground pause and resume, ducking for a notification and a call, the 1.5 s crossfade between worlds, loop points, effect latency and panning, and haptics on a phone with and without API 30 constants.
