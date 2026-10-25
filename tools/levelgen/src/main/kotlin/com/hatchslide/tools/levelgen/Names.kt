@@ -4,26 +4,28 @@ import kotlin.random.Random
 
 /** Original, theme-matched level names. Every name is unique within its world (and across dailies). */
 object Names {
+    private fun words(text: String) = text.trim().split(Regex("\\s+"))
+
     private val vocab: Map<Int, Pair<List<String>, List<String>>> = mapOf(
         1 to (
-            listOf("Golden", "Peach", "Dawn", "Morning", "Amber", "Gentle", "Early", "Warm", "Honey", "Rosy", "Bright", "Soft", "Quiet", "Hazy", "Sleepy") to
-                listOf("Steps", "Drift", "Path", "Shore", "Dunes", "Ripple", "Shallows", "Trail", "Glow", "Breeze", "Sands", "Crossing", "Bend", "Footprints", "Nest")
+            words("Golden Peach Dawn Morning Amber Gentle Early Warm Honey Rosy Bright Soft Quiet Hazy Sleepy") to
+                words("Steps Drift Path Shore Dunes Ripple Shallows Trail Glow Breeze Sands Crossing Bend Footprints Nest")
             ),
         2 to (
-            listOf("Coral", "Noon", "Seafoam", "Pearl", "Reef", "Azure", "Sunlit", "Crystal", "Turquoise", "Glassy", "Sparkle", "Breezy", "Salty", "Lagoon", "Shimmer") to
-                listOf("Lagoon", "Shelf", "Garden", "Arch", "Spiral", "Fan", "Ridge", "Shoal", "Cove", "Flats", "Terrace", "Bank", "Puddles", "Splash", "Boardwalk")
+            words("Coral Noon Seafoam Pearl Reef Azure Sunlit Crystal Turquoise Glassy Sparkle Breezy Salty Lagoon Shimmer") to
+                words("Lagoon Shelf Garden Arch Spiral Fan Ridge Shoal Cove Flats Terrace Bank Puddles Splash Boardwalk")
             ),
         3 to (
-            listOf("Moon", "Silver", "Star", "Glow", "Midnight", "Lantern", "Velvet", "Dream", "Firefly", "Hush", "Twilight", "Comet", "Misty", "Indigo", "Wishing") to
-                listOf("Current", "Tide", "Pool", "Path", "Wave", "Drift", "Ripple", "Swirl", "Hollow", "Channel", "Eddy", "Glade", "Lullaby", "Beacon", "Whirl")
+            words("Moon Silver Star Glow Midnight Lantern Velvet Dream Firefly Hush Twilight Comet Misty Indigo Wishing") to
+                words("Current Tide Pool Path Wave Drift Ripple Swirl Hollow Channel Eddy Glade Lullaby Beacon Whirl")
             ),
         4 to (
-            listOf("Sideways", "Copper", "Rockpool", "Barnacle", "Kelp", "Pincer", "Dusky", "Tawny", "Snappy", "Briny", "Clatter", "Scuttle", "Russet", "Amber", "Mossy") to
-                listOf("Walk", "Ledge", "Shuffle", "Maze", "Crossing", "Hideout", "Burrow", "Shelf", "Parade", "Dance", "Corner", "Alley", "Patrol", "Crevice", "Market")
+            words("Sideways Copper Rockpool Barnacle Kelp Pincer Dusky Tawny Snappy Briny Clatter Scuttle Russet Amber Mossy") to
+                words("Walk Ledge Shuffle Maze Crossing Hideout Burrow Shelf Parade Dance Corner Alley Patrol Crevice Market")
             ),
         5 to (
-            listOf("Ember", "Ash", "Obsidian", "Basalt", "Cinder", "Smoky", "Dusk", "Ruby", "Glowing", "Scarlet", "Sooty", "Fiery", "Rumbling", "Charcoal", "Molten") to
-                listOf("Pools", "Ridge", "Vents", "Cliffs", "Crater", "Steps", "Flats", "Bay", "Shelf", "Spire", "Hollow", "Terrace", "Run", "Rim", "Gate")
+            words("Ember Ash Obsidian Basalt Cinder Smoky Dusk Ruby Glowing Scarlet Sooty Fiery Rumbling Charcoal Molten") to
+                words("Pools Ridge Vents Cliffs Crater Steps Flats Bay Shelf Spire Hollow Terrace Run Rim Gate")
             ),
     )
 
