@@ -62,6 +62,7 @@ class ProgressSink(
                     context.getString(R.string.unlock_world_title, context.getString(GameText.worldName(world))),
                     context.getString(R.string.unlock_world_body),
                     HatchIcons.Map,
+                    UnlockCard.Kind.WORLD,
                 ),
             )
         }
@@ -71,6 +72,7 @@ class ProgressSink(
                     context.getString(R.string.unlock_species_title, context.getString(GameText.speciesName(species))),
                     context.getString(R.string.unlock_species_body),
                     HatchIcons.Journal,
+                    UnlockCard.Kind.SPECIES,
                 ),
             )
         }
@@ -81,6 +83,7 @@ class ProgressSink(
                     context.getString(R.string.unlock_achievement_title, context.getString(title)),
                     context.getString(body),
                     HatchIcons.Trophy,
+                    UnlockCard.Kind.ACHIEVEMENT,
                 ),
             )
         }

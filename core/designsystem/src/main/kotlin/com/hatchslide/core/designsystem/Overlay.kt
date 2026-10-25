@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
@@ -23,6 +24,8 @@ import androidx.compose.ui.window.DialogWindowProvider
  */
 @Composable
 fun Overlay(onBack: () -> Unit, content: @Composable BoxScope.() -> Unit) {
+    val sound = LocalUiSound.current
+    LaunchedEffect(Unit) { sound(UiSound.OVERLAY) }
     Dialog(
         onDismissRequest = onBack,
         properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false, dismissOnClickOutside = false),

@@ -1,6 +1,6 @@
 # Licences
 
-HATCHSLIDE's code and its generated art, models, textures, skies, music and sound effects are original work created for this project.
+HATCHSLIDE's code and its generated art, models, textures, skies, music, ambience and sound effects are original work created for this project. Every sound is synthesised by `tools/assetgen/audio/`; no recordings or samples are used, and `assets_src/audio/override/` is empty.
 
 ## Fonts (bundled)
 
@@ -24,7 +24,9 @@ The licence texts ship in the app as `assets/licenses/OFL-Fredoka.txt` and `OFL-
 | Pillow | MIT-CMU (HPND) | Image previews |
 | trimesh | MIT | Model checks |
 | pygltflib | MIT | glTF writing |
-| soundfile | BSD-3-Clause | Audio (M6) |
+| soundfile 0.14.0 | BSD-3-Clause | OGG Vorbis encoding and reading |
+| libsndfile (bundled with soundfile) | LGPL-2.1-or-later | Audio file I/O |
+| libvorbis, libogg (bundled with libsndfile) | BSD-3-Clause | Vorbis encoder |
 
 ## Runtime libraries
 

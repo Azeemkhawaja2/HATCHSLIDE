@@ -1,6 +1,7 @@
 package com.hatchslide.feature.game
 
 import android.os.Build
+import android.os.SystemClock
 import android.view.HapticFeedbackConstants
 import android.view.View
 import androidx.activity.compose.BackHandler
@@ -64,9 +65,10 @@ import com.hatchslide.core.designsystem.RoundButton
 import com.hatchslide.core.game.Direction
 import com.hatchslide.core.game.GameStatus
 import com.hatchslide.core.game.MoveEvent
-import com.hatchslide.core.game.StopCause
 import com.hatchslide.core.render.SceneDirector
 import com.hatchslide.core.render.WorldTheme
+import com.hatchslide.core.render.board.BoardCue
+import com.hatchslide.core.render.board.BoardCueListener
 import com.hatchslide.core.render.board.BoardEventListener
 import com.hatchslide.core.render.camera.FreeViewport
 import kotlinx.coroutines.delay
@@ -99,10 +101,34 @@ interface GameNavigator {
     fun tutorialMove()
 }
 
-/** Extra reactions to board events (audio in the app layer). */
-fun interface GameFeedback {
+/** Reactions to play for the app's audio layer (spec section 7); haptics are handled here. */
+interface GameFeedback {
     fun onBoardEvent(event: MoveEvent, worldX: Float)
+
+    fun onCue(cue: BoardCue, worldX: Float, value: Float) {}
+
+    fun onSwipe() {}
+
+    fun onNoOp() {}
+
+    fun onUndo() {}
+
+    fun onRestart() {}
+
+    fun onHint() {}
+
+    fun onStar(index: Int) {}
+
+    fun onUnlockCard(card: UnlockCard) {}
+
+    fun onEnded(won: Boolean) {}
+
+    /** Called when one move is left: the gull calls. */
+    fun onLastMove() {}
 }
+
+/** Player actions wrapped with their feedback. */
+private class GameActions(val undo: () -> Unit, val restart: () -> Unit, val hint: () -> Unit)
 
 @Composable
 fun GameScreen(
@@ -131,11 +157,35 @@ fun GameScreen(
     BindBoard(viewModel, director, config.theme, config.skin, prefs.reducedMotion)
     ImmersivePlay()
     LaunchedEffect(config.tutorialHand) { viewModel.tutorialActive = config.tutorialHand }
+    val moveHaptics = remember(view) { MoveHaptics(view) }
     LaunchedEffect(feedback, config.haptics) {
         director.board.listener = BoardEventListener { event, worldX, _ ->
-            if (config.haptics) hapticFor(view, event)
+            if (config.haptics) moveHaptics.on(event)
             feedback?.onBoardEvent(event, worldX)
         }
+        director.board.cueListener = BoardCueListener { cue, worldX, value -> feedback?.onCue(cue, worldX, value) }
+    }
+    val actions = remember(viewModel, feedback) {
+        GameActions(
+            undo = {
+                feedback?.onUndo()
+                viewModel.undo()
+            },
+            restart = {
+                feedback?.onRestart()
+                viewModel.restart()
+            },
+            hint = {
+                feedback?.onHint()
+                viewModel.hint()
+            },
+        )
+    }
+    LaunchedEffect(ui.ended, ui.state.status) {
+        if (ui.ended && ui.state.status != GameStatus.PLAYING) feedback?.onEnded(ui.state.status == GameStatus.WON)
+    }
+    LaunchedEffect(ui.movesLeft) {
+        if (ui.movesLeft == 1 && ui.state.status == GameStatus.PLAYING) feedback?.onLastMove()
     }
     BackHandler(enabled = !paused && !ui.ended) { paused = true }
     LaunchedEffect(Unit) { focus.requestFocus() }
@@ -165,10 +215,14 @@ fun GameScreen(
     val swipe: (Direction) -> Unit = { direction ->
         if (!paused && !tipOpen && ui.state.status == GameStatus.PLAYING) {
             if (config.haptics) view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
+            feedback?.onSwipe()
             val before = viewModel.ui.value.state.movesUsed
             viewModel.swipe(direction)
             val after = viewModel.ui.value
-            if (config.haptics && after.lastMove?.noOp == true) rejectHaptic(view)
+            if (after.lastMove?.noOp == true) {
+                if (config.haptics) rejectHaptic(view)
+                feedback?.onNoOp()
+            }
             if (config.tutorialHand && after.state.movesUsed > before) navigator.tutorialMove()
         }
     }
@@ -179,12 +233,12 @@ fun GameScreen(
             .onSizeChanged { rootSize = it }
             .focusRequester(focus)
             .focusable()
-            .boardKeys(swipe, viewModel::undo, viewModel::restart, viewModel::hint)
+            .boardKeys(swipe, actions.undo, actions.restart, actions.hint)
             .boardSwipes(swipe)
             .semantics { contentDescription = boardDescription },
     ) {
         Announcer(ui)
-        val hud = hudContent(ui, viewModel, onPause = { paused = true })
+        val hud = hudContent(ui, actions, onPause = { paused = true })
         if (sideColumns) {
             Row(Modifier.fillMaxSize().safeDrawingPadding().padding(12.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                 val (first, second) = if (config.leftHanded) hud.controls to hud.status else hud.status to hud.controls
@@ -233,7 +287,7 @@ fun GameScreen(
             onResume = { paused = false },
             onRestart = {
                 paused = false
-                viewModel.restart()
+                actions.restart()
             },
             onLevels = navigator::levels,
             onSettings = navigator::settings,
@@ -241,9 +295,18 @@ fun GameScreen(
         )
     }
     if (ui.ended && ui.state.status == GameStatus.WON) {
-        CompleteOverlay(ui, unlockCards, onStarShown, onNext = {
-            navigator.next()
-        }, onReplay = viewModel::restart, onLevels = navigator::levels)
+        CompleteOverlay(
+            ui,
+            unlockCards,
+            onStarShown = {
+                feedback?.onStar(it)
+                onStarShown(it)
+            },
+            onCardShown = { feedback?.onUnlockCard(it) },
+            onNext = { navigator.next() },
+            onReplay = actions.restart,
+            onLevels = navigator::levels,
+        )
     } else if (ui.ended && ui.state.status.isLost) {
         // Let the gull swoop and land (spec section 2) before the panel covers the board.
         var showFailed by remember(ui.state.movesUsed) { mutableStateOf(prefs.reducedMotion) }
@@ -252,7 +315,7 @@ fun GameScreen(
             showFailed = true
         }
         if (showFailed) {
-            FailedOverlay(ui.state.status, ui.canUndo, onUndo = viewModel::undo, onRetry = viewModel::restart, onLevels = navigator::levels)
+            FailedOverlay(ui.state.status, ui.canUndo, onUndo = actions.undo, onRetry = actions.restart, onLevels = navigator::levels)
         }
     }
 }
@@ -267,7 +330,7 @@ private class Hud(
 )
 
 @Composable
-private fun hudContent(ui: GameUiState, viewModel: GameViewModel, onPause: () -> Unit): Hud {
+private fun hudContent(ui: GameUiState, actions: GameActions, onPause: () -> Unit): Hud {
     val title = if (ui.level.world == 0) {
         stringResource(R.string.game_daily_title, ui.level.name)
     } else {
@@ -300,14 +363,14 @@ private fun hudContent(ui: GameUiState, viewModel: GameViewModel, onPause: () ->
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             ChunkyButton(
                 stringResource(R.string.game_undo),
-                viewModel::undo,
+                actions.undo,
                 icon = HatchIcons.Undo,
                 tone = ButtonTone.Secondary,
                 enabled = ui.canUndo,
                 highlighted = ui.hint == HintUi.Unsolvable,
             )
-            RoundButton(HatchIcons.Restart, stringResource(R.string.game_restart), viewModel::restart, tone = ButtonTone.Quiet)
-            ChunkyButton(stringResource(R.string.game_hint), viewModel::hint, icon = HatchIcons.Hint, tone = ButtonTone.Accent)
+            RoundButton(HatchIcons.Restart, stringResource(R.string.game_restart), actions.restart, tone = ButtonTone.Quiet)
+            ChunkyButton(stringResource(R.string.game_hint), actions.hint, icon = HatchIcons.Hint, tone = ButtonTone.Accent)
         }
     }
     return Hud(
@@ -341,15 +404,15 @@ private fun hudContent(ui: GameUiState, viewModel: GameViewModel, onPause: () ->
                 moves()
                 ChunkyButton(
                     stringResource(R.string.game_undo),
-                    viewModel::undo,
+                    actions.undo,
                     icon = HatchIcons.Undo,
                     tone = ButtonTone.Secondary,
                     enabled = ui.canUndo,
                     highlighted =
                         ui.hint == HintUi.Unsolvable,
                 )
-                RoundButton(HatchIcons.Restart, stringResource(R.string.game_restart), viewModel::restart)
-                ChunkyButton(stringResource(R.string.game_hint), viewModel::hint, icon = HatchIcons.Hint, tone = ButtonTone.Accent)
+                RoundButton(HatchIcons.Restart, stringResource(R.string.game_restart), actions.restart)
+                ChunkyButton(stringResource(R.string.game_hint), actions.hint, icon = HatchIcons.Hint, tone = ButtonTone.Accent)
             }
         },
     )
@@ -414,23 +477,33 @@ private fun ArrowPad(onSwipe: (Direction) -> Unit, modifier: Modifier) {
 
 private fun Modifier.rotated(degrees: Float): Modifier = graphicsLayer { rotationZ = degrees }
 
-/** Haptics without the VIBRATE permission (spec section 7): View.performHapticFeedback only. */
-internal fun hapticFor(view: View, event: MoveEvent) {
-    val api30 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-    val constant = when (event) {
-        is MoveEvent.Saved -> if (api30) HapticFeedbackConstants.CONFIRM else HapticFeedbackConstants.KEYBOARD_TAP
+/**
+ * Haptics without the VIBRATE permission (spec section 7): View.performHapticFeedback only. Every
+ * stop gives GESTURE_END, but pieces stopping within [MERGE_MS] of each other share one pulse.
+ */
+internal class MoveHaptics(private val view: View) {
+    private var lastStop = 0L
 
-        is MoveEvent.Stopped -> if (event.cause == StopCause.EDGE || event.cause == StopCause.PIECE || event.cause == StopCause.CONFLICT) {
-            return
-        } else if (api30) {
-            HapticFeedbackConstants.GESTURE_END
-        } else {
-            HapticFeedbackConstants.CLOCK_TICK
+    fun on(event: MoveEvent) {
+        val api30 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+        val constant = when (event) {
+            is MoveEvent.Saved -> if (api30) HapticFeedbackConstants.CONFIRM else HapticFeedbackConstants.KEYBOARD_TAP
+
+            is MoveEvent.Stopped -> {
+                val now = SystemClock.uptimeMillis()
+                if (now - lastStop < MERGE_MS) return
+                lastStop = now
+                if (api30) HapticFeedbackConstants.GESTURE_END else HapticFeedbackConstants.CLOCK_TICK
+            }
+
+            else -> return
         }
-
-        else -> return
+        view.performHapticFeedback(constant)
     }
-    view.performHapticFeedback(constant)
+
+    private companion object {
+        const val MERGE_MS = 60L
+    }
 }
 
 /** No-op swipe: REJECT haptic. */

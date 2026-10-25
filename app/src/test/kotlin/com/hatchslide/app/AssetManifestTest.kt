@@ -1,5 +1,6 @@
 package com.hatchslide.app
 
+import com.hatchslide.core.audio.AudioCatalog
 import com.hatchslide.core.designsystem.Licenses
 import com.hatchslide.core.render.assets.AssetCatalog
 import java.io.File
@@ -54,7 +55,7 @@ class AssetManifestTest {
 
     @Test
     fun everyGeneratedFileIsReferenced() {
-        val catalog = AssetCatalog.referencedPaths()
+        val catalog = AssetCatalog.referencedPaths() + AudioCatalog.referencedPaths()
         val licences = Licenses.FONTS.map { it.asset }.toSet()
         for (e in entries) {
             when (e.category) {
@@ -74,7 +75,7 @@ class AssetManifestTest {
     @Test
     fun everyCatalogAssetWasGenerated() {
         val generated = entries.mapNotNull { assetPath(it.path) }.toSet()
-        for (path in AssetCatalog.referencedPaths() + Licenses.FONTS.map { it.asset }) {
+        for (path in AssetCatalog.referencedPaths() + AudioCatalog.referencedPaths() + Licenses.FONTS.map { it.asset }) {
             assertTrue("$path is loaded but not generated", path in generated)
         }
         // Each texture exists in both compression formats, so texture targeting covers every device.

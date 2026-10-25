@@ -1,13 +1,40 @@
 {
- "totalBytes": 209801381,
+ "totalBytes": 227696453,
  "bytesByCategory": {
+  "ambience": 1232926,
   "fonts": 436116,
   "licenses": 8773,
   "models": 4124936,
+  "music": 16388498,
+  "sfx": 273648,
   "skies": 32627744,
   "textures": 172603812
  },
  "files": [
+  {
+   "path": "app/src/main/assets-gen/ambience/insects.ogg",
+   "bytes": 355675,
+   "category": "ambience",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/ambience/rumble.ogg",
+   "bytes": 142524,
+   "category": "ambience",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/ambience/surf.ogg",
+   "bytes": 485333,
+   "category": "ambience",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/ambience/wind.ogg",
+   "bytes": 249394,
+   "category": "ambience",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
   {
    "path": "app/src/main/assets-gen/licenses/OFL-Fredoka.txt",
    "bytes": 4388,
@@ -501,6 +528,240 @@
    "referencedBy": "core/render/src/main/kotlin/com/hatchslide/core/render/assets/AssetCatalog.kt"
   },
   {
+   "path": "app/src/main/assets-gen/music/fail.ogg",
+   "bytes": 27458,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/music/victory.ogg",
+   "bytes": 41503,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/achievement.ogg",
+   "bytes": 13266,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/bump.ogg",
+   "bytes": 4406,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/coconut_plop.ogg",
+   "bytes": 7757,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/coconut_roll.ogg",
+   "bytes": 5430,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/crab_click.ogg",
+   "bytes": 4157,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/current.ogg",
+   "bytes": 9039,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/egg_crack.ogg",
+   "bytes": 5725,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/egg_wobble.ogg",
+   "bytes": 6729,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/gull_call.ogg",
+   "bytes": 7278,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/gull_squawk.ogg",
+   "bytes": 5208,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/gull_swoop.ogg",
+   "bytes": 10708,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/hatch_chirp.ogg",
+   "bytes": 4285,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/hint_sparkle.ogg",
+   "bytes": 6669,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/overlay_open.ogg",
+   "bytes": 6967,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/page_swipe.ogg",
+   "bytes": 6885,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/pit_fall.ogg",
+   "bytes": 8981,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/pit_fill.ogg",
+   "bytes": 7154,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/pool_shimmer.ogg",
+   "bytes": 12111,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/restart.ogg",
+   "bytes": 8504,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/save_chime.ogg",
+   "bytes": 8269,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/save_splash.ogg",
+   "bytes": 10273,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/shell_clack.ogg",
+   "bytes": 4104,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/shell_crack.ogg",
+   "bytes": 7020,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/slide_loop.ogg",
+   "bytes": 8577,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/star_1.ogg",
+   "bytes": 9137,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/star_2.ogg",
+   "bytes": 11203,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/star_3.ogg",
+   "bytes": 13009,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/stop.ogg",
+   "bytes": 5425,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/swim_paddle.ogg",
+   "bytes": 7354,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/swipe.ogg",
+   "bytes": 7446,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/teleport_pop.ogg",
+   "bytes": 4231,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/tuck.ogg",
+   "bytes": 4368,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/ui_tap.ogg",
+   "bytes": 3994,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/ui_toggle.ogg",
+   "bytes": 4318,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/undo.ogg",
+   "bytes": 7402,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/unlock_fanfare.ogg",
+   "bytes": 9948,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "app/src/main/assets-gen/sfx/wet_squish.ogg",
+   "bytes": 6311,
+   "category": "sfx",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
    "path": "core/designsystem/src/main/res/font/fredoka.ttf",
    "bytes": 159184,
    "category": "fonts",
@@ -511,6 +772,78 @@
    "bytes": 276932,
    "category": "fonts",
    "referencedBy": "core/designsystem/src/main/kotlin/com/hatchslide/core/designsystem/Theme.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/title.env",
+   "bytes": 640,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/title.ogg",
+   "bytes": 2988922,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world1.env",
+   "bytes": 654,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world1.ogg",
+   "bytes": 2767567,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world2.env",
+   "bytes": 651,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world2.ogg",
+   "bytes": 3342178,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world3.env",
+   "bytes": 640,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world3.ogg",
+   "bytes": 1781089,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world4.env",
+   "bytes": 664,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world4.ogg",
+   "bytes": 2839586,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world5.env",
+   "bytes": 667,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
+  },
+  {
+   "path": "hd_assets/src/main/assets/music/world5.ogg",
+   "bytes": 2596279,
+   "category": "music",
+   "referencedBy": "core/audio/src/main/kotlin/com/hatchslide/core/audio/AudioCatalog.kt"
   },
   {
    "path": "hd_assets/src/main/assets/skies/title_ibl.ktx",

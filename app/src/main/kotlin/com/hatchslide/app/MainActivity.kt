@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.hatchslide.core.audio.AudioEngine
 import com.hatchslide.core.render.QualityTier
 import com.hatchslide.core.render.SceneDirector
 
@@ -16,6 +17,7 @@ import com.hatchslide.core.render.SceneDirector
 class MainActivity : ComponentActivity() {
     private lateinit var director: SceneDirector
     private lateinit var container: AppContainer
+    private lateinit var audio: AudioEngine
     private var foregroundSince = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,12 +26,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         director = SceneDirector(this)
-        setContent { HatchslideRoot(container, director, QualityTier.MEDIUM) }
+        audio = AudioEngine(this)
+        setContent { HatchslideRoot(container, director, audio, QualityTier.MEDIUM) }
     }
 
     override fun onStart() {
         super.onStart()
         foregroundSince = SystemClock.elapsedRealtime()
+        audio.onForeground()
     }
 
     override fun onResume() {
@@ -45,10 +49,12 @@ class MainActivity : ComponentActivity() {
     override fun onStop() {
         // Playtime counts only while the game is on screen.
         container.player.addPlaytime((SystemClock.elapsedRealtime() - foregroundSince) / 1000)
+        audio.onBackground()
         super.onStop()
     }
 
     override fun onDestroy() {
+        audio.release()
         director.destroy()
         super.onDestroy()
     }

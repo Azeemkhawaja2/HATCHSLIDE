@@ -48,10 +48,12 @@ import com.hatchslide.core.designsystem.GameText
 import com.hatchslide.core.designsystem.HatchIcons
 import com.hatchslide.core.designsystem.HudChip
 import com.hatchslide.core.designsystem.LocalHatchColors
+import com.hatchslide.core.designsystem.LocalUiSound
 import com.hatchslide.core.designsystem.Palette
 import com.hatchslide.core.designsystem.R as DesignR
 import com.hatchslide.core.designsystem.RoundButton
 import com.hatchslide.core.designsystem.ScreenScaffold
+import com.hatchslide.core.designsystem.UiSound
 import com.hatchslide.core.render.SceneDirector
 import com.hatchslide.core.render.camera.FreeViewport
 import com.hatchslide.core.render.stages.BeachStage
@@ -105,7 +107,14 @@ fun JournalScreen(director: SceneDirector, progress: Progress, onSelectSkin: (In
                 ) {
                     TurnButtons(director)
                     Spacer(Modifier.size(8.dp))
-                    SpeciesCard(page, progress, onSelectSkin, onPrevious = { page = (page + 6) % 7 }, onNext = { page = (page + 1) % 7 })
+                    val sound = LocalUiSound.current
+                    SpeciesCard(page, progress, onSelectSkin, onPrevious = {
+                        sound(UiSound.PAGE)
+                        page = (page + 6) % 7
+                    }, onNext = {
+                        sound(UiSound.PAGE)
+                        page = (page + 1) % 7
+                    })
                 }
             }
         }

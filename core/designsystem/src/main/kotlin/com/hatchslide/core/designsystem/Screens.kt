@@ -96,12 +96,16 @@ fun SectionTitle(text: String, modifier: Modifier = Modifier) {
 @Composable
 fun ToggleRow(label: String, checked: Boolean, onChange: (Boolean) -> Unit, description: String? = null) {
     val colors = LocalHatchColors.current
+    val sound = LocalUiSound.current
     Row(
         Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
             .clip(RoundedCornerShape(16.dp))
-            .toggleable(checked, role = Role.Switch, onValueChange = onChange)
+            .toggleable(checked, role = Role.Switch) {
+                sound(UiSound.TOGGLE)
+                onChange(it)
+            }
             .padding(horizontal = 8.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -143,6 +147,7 @@ fun SliderRow(label: String, value: Float, onChange: (Float) -> Unit) {
 @Composable
 fun <T> ChoiceRow(label: String, options: List<Pair<T, String>>, selected: T, onSelect: (T) -> Unit) {
     val colors = LocalHatchColors.current
+    val sound = LocalUiSound.current
     Column(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 6.dp)) {
         Text(label, style = MaterialTheme.typography.titleMedium, color = colors.onPanel)
         Spacer(Modifier.size(6.dp))
@@ -154,7 +159,10 @@ fun <T> ChoiceRow(label: String, options: List<Pair<T, String>>, selected: T, on
                         .weight(1f)
                         .heightIn(min = 48.dp)
                         .clip(RoundedCornerShape(14.dp))
-                        .selectable(isSelected, role = Role.RadioButton) { onSelect(value) },
+                        .selectable(isSelected, role = Role.RadioButton) {
+                            sound(UiSound.TOGGLE)
+                            onSelect(value)
+                        },
                     contentAlignment = Alignment.Center,
                 ) {
                     Canvas(Modifier.matchParentSize()) {
@@ -182,6 +190,7 @@ fun <T> ChoiceRow(label: String, options: List<Pair<T, String>>, selected: T, on
  */
 @Composable
 fun ShellButton(number: Int, stars: Int, locked: Boolean, description: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    val sound = LocalUiSound.current
     val face = when {
         locked -> Palette.Sand.copy(alpha = 0.55f)
         stars == 3 -> Palette.Gold
@@ -191,7 +200,10 @@ fun ShellButton(number: Int, stars: Int, locked: Boolean, description: String, o
     Column(
         modifier
             .clip(RoundedCornerShape(18.dp))
-            .clickable(enabled = !locked, role = Role.Button, onClick = onClick)
+            .clickable(enabled = !locked, role = Role.Button) {
+                sound(UiSound.TAP)
+                onClick()
+            }
             .semantics(mergeDescendants = true) { contentDescription = description }
             .padding(4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,

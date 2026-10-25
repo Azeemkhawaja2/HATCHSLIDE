@@ -54,7 +54,9 @@ import com.hatchslide.core.game.GameStatus
 import kotlinx.coroutines.delay
 
 /** A card queued after the stars on the level-complete screen. */
-data class UnlockCard(val title: String, val body: String, val icon: ImageVector)
+data class UnlockCard(val title: String, val body: String, val icon: ImageVector, val kind: Kind) {
+    enum class Kind { WORLD, SPECIES, ACHIEVEMENT }
+}
 
 @Composable
 private fun OverlayPanel(content: @Composable () -> Unit) {
@@ -122,6 +124,7 @@ fun CompleteOverlay(
     ui: GameUiState,
     unlockCards: List<UnlockCard>,
     onStarShown: (Int) -> Unit,
+    onCardShown: (UnlockCard) -> Unit,
     onNext: () -> Unit,
     onReplay: () -> Unit,
     onLevels: () -> Unit,
@@ -154,6 +157,7 @@ fun CompleteOverlay(
             val starsDone = shown >= ui.stars
             if (starsDone && card < unlockCards.size) {
                 val c = unlockCards[card]
+                LaunchedEffect(card) { onCardShown(c) }
                 FrostedPanel(Modifier.fillMaxWidth(), padding = 16.dp) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(c.icon, contentDescription = null, tint = Palette.SunsetDark, modifier = Modifier.size(40.dp))

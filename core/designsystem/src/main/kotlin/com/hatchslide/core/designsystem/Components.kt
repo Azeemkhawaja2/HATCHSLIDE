@@ -100,6 +100,7 @@ fun ChunkyButton(
         label = "press",
     )
     val colors = toneColors(tone)
+    val sound = LocalUiSound.current
     val alpha = if (enabled) 1f else 0.45f
     val lip = 5.dp
     val shape = RoundedCornerShape(22.dp)
@@ -143,7 +144,10 @@ fun ChunkyButton(
                 }
             }
             .clip(shape)
-            .clickable(interactionSource = interaction, indication = null, enabled = enabled, role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = interaction, indication = null, enabled = enabled, role = Role.Button) {
+                sound(UiSound.TAP)
+                onClick()
+            }
             .then(if (contentDescription != null) Modifier.semantics { this.contentDescription = contentDescription } else Modifier)
             .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp + lip),
         contentAlignment = Alignment.Center,
@@ -181,6 +185,7 @@ fun RoundButton(
         label = "press",
     )
     val colors = toneColors(tone)
+    val sound = LocalUiSound.current
     Box(
         modifier = modifier
             .size(size)
@@ -199,7 +204,10 @@ fun RoundButton(
                 if (highlighted) drawCircle(Palette.Gold, radius + 2.dp.toPx(), style = Stroke(3.dp.toPx()))
             }
             .clip(CircleShape)
-            .clickable(interactionSource = interaction, indication = null, enabled = enabled, role = Role.Button, onClick = onClick)
+            .clickable(interactionSource = interaction, indication = null, enabled = enabled, role = Role.Button) {
+                sound(UiSound.TAP)
+                onClick()
+            }
             .semantics { this.contentDescription = contentDescription },
         contentAlignment = Alignment.Center,
     ) {

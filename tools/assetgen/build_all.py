@@ -25,6 +25,7 @@ STAGES: list[tuple[str, str]] = [
     ("textures", "tools.assetgen.textures"),
     ("skies", "tools.assetgen.skies"),
     ("models", "tools.assetgen.models"),
+    ("audio", "tools.assetgen.audio"),
 ]
 
 

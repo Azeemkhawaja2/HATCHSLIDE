@@ -35,6 +35,14 @@ fun interface BoardEventListener {
     fun onEvent(event: MoveEvent, worldX: Float, worldZ: Float)
 }
 
+/** Moments of board animation that have a sound but no game event (intro, slides, the lose sequence). */
+enum class BoardCue { SLIDE_START, SLIDE_END, EGG_CRACK, HATCH, SWIM, GULL_SWOOP, TUCK, GULL_LAND }
+
+/** Receives [BoardCue]s; [value] carries the slide length in ticks for [BoardCue.SLIDE_START]. */
+fun interface BoardCueListener {
+    fun onCue(cue: BoardCue, worldX: Float, value: Float)
+}
+
 /**
  * The gameplay board (spec sections 2 and 6). The board never changes game state: it shows the
  * [GameState] it is given and animates [MoveOutcome]s handed to [play]. When an animation finishes
@@ -117,6 +125,10 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private var entered = false
 
     var listener: BoardEventListener? = null
+    var cueListener: BoardCueListener? = null
+    private var slideEnded = true
+    private var introCracked = BooleanArray(0)
+    private var loseCues = 0
 
     var reducedMotion: Boolean = false
         set(value) {
@@ -185,6 +197,8 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         hardStops = tl.hardStops()
         nextShake = 0
         onFinished = finished
+        slideEnded = false
+        cueListener?.onCue(BoardCue.SLIDE_START, 0f, outcome.result.ticks.toFloat())
         setHint(null)
     }
 
@@ -269,6 +283,10 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             while (nextShake < hardStops.size && hardStops[nextShake].second <= timelineTime) {
                 camera.shake()
                 nextShake++
+            }
+            if (!slideEnded && timelineTime >= tl.slideEnd) {
+                slideEnded = true
+                cueListener?.onCue(BoardCue.SLIDE_END, 0f, 0f)
             }
             if (timelineTime >= tl.duration) completeTimeline()
         } else {
@@ -611,6 +629,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         flareX = worldX(lastX[id])
         flareZ = worldZ(lastY[id])
         flareAge = 0f
+        cueListener?.onCue(BoardCue.SWIM, flareX, 0f)
     }
 
     private fun updateSwimmers(dt: Float) {
@@ -676,6 +695,10 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     private fun completeTimeline() {
         val tl = timeline ?: return
+        if (!slideEnded) {
+            slideEnded = true
+            cueListener?.onCue(BoardCue.SLIDE_END, 0f, 0f)
+        }
         while (nextEvent < schedule.size) dispatch(schedule[nextEvent++].second)
         // Saved hatchlings still mid-dive go straight to swimming.
         for (track in tl.result.tracks) {
@@ -812,12 +835,22 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         }
         val perched = t >= 1.7f
         if (perched) heading = atan2(perch[0], perch[2])
+        if (loseCues == 0 && t >= 0.35f) {
+            loseCues = 1
+            cueListener?.onCue(BoardCue.TUCK, 0f, 0f)
+        }
+        if (loseCues == 1 && perched) {
+            loseCues = 2
+            cueListener?.onCue(BoardCue.GULL_LAND, perch[0], 0f)
+        }
         tm.setTransform(tm.getInstance(gull.root), Transforms.trsEuler(scratch, x, y, z, heading, 0f, 0f, 0.8f))
         gull.gull?.animate(clock, perched)
     }
 
     private fun startLose(gull: Visual, circling: Boolean) {
         loseTime = 0f
+        loseCues = 0
+        cueListener?.onCue(BoardCue.GULL_SWOOP, 0f, 0f)
         tm.getTransform(tm.getInstance(gull.root), scratch)
         if (circling) {
             swoopFrom[0] = scratch[12]
@@ -856,6 +889,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private fun startIntro(state: GameState) {
         val ids = state.pieces.filter { it.kind == PieceKind.HATCHLING }
         introPieces = IntArray(ids.size) { ids[it].id }
+        introCracked = BooleanArray(ids.size)
         for ((i, piece) in ids.withIndex()) {
             val egg = track(art.egg())
             place(egg, piece.cell, tileHeights[piece.cell])
@@ -891,6 +925,11 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
                 )
                 placePiece(id, visual, cx, cy, 0f, 0.001f, 1f)
             } else {
+                if (!introCracked[i]) {
+                    introCracked[i] = true
+                    cueListener?.onCue(BoardCue.EGG_CRACK, worldX(cx), 0f)
+                    cueListener?.onCue(BoardCue.HATCH, worldX(cx), 0f)
+                }
                 egg.egg?.animate(t / 0.45f)
                 val sink = smoothstep((t - 0.5f) / 0.35f)
                 tm.setTransform(

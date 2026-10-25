@@ -19,6 +19,8 @@ TEXTURES_ASTC = PACK_ASSETS / "textures#tcf_astc"
 TEXTURES_ETC2 = PACK_ASSETS / "textures#tcf_etc2"
 SKIES = PACK_ASSETS / "skies"
 MUSIC = PACK_ASSETS / "music"
+# Stingers play through SoundPool, which needs uncompressed base-module assets; they share the music/ path.
+STINGERS = BASE_ASSETS / "music"
 MODELS = BASE_ASSETS / "models"
 SFX = BASE_ASSETS / "sfx"
 AMBIENCE = BASE_ASSETS / "ambience"

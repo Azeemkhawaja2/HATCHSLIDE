@@ -15,16 +15,17 @@ Requirements: JDK 17+, Android SDK Platform 37 and Build-Tools 37 (`ANDROID_HOME
 
 ## Assets
 
-Every model, texture, sky and font is generated at build time and git-ignored. Install the Python tools once, then build:
+Every model, texture, sky, font, music track, ambience loop and sound effect is generated at build time and git-ignored. Install the Python tools once, then build:
 
 ```bash
 pip install -r tools/assetgen/requirements.txt
 python tools/assetgen/build_all.py            # all stages; unchanged outputs are skipped
 python tools/assetgen/build_all.py --only models
+python tools/assetgen/build_all.py --only audio  # music, stingers, ambience, effects (about 2 minutes)
 python tools/assetgen/build_all.py --force    # rebuild everything (textures take a few minutes)
 ```
 
-Gradle runs the same script (`generateAssets`) before merging assets. Filament's `matc` and `cmgen` are downloaded from Maven Central for the pinned Filament version by `tools/filament/fetch_tools.py`. `assets_manifest.json` lists every output with its size and the code that loads it.
+Gradle runs the same script (`generateAssets`) before merging assets. Filament's `matc` and `cmgen` are downloaded from Maven Central for the pinned Filament version by `tools/filament/fetch_tools.py`. `assets_manifest.json` lists every output with its size and the code that loads it. To replace a synthesised sound with a CC0 recording, drop an OGG named like the output (for example `world3.ogg` or `gull_call.ogg`) into `assets_src/audio/override/` and add it to `LICENSES.md`.
 
 ## Levels
 

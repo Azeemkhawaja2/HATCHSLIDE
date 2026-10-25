@@ -50,6 +50,11 @@ data class UiPreferences(
 
 val LocalUiPreferences = staticCompositionLocalOf { UiPreferences() }
 
+/** Interface sounds the components ask for; the app maps them to effects (spec section 7). */
+enum class UiSound { TAP, TOGGLE, PAGE, OVERLAY }
+
+val LocalUiSound = staticCompositionLocalOf<(UiSound) -> Unit> { {} }
+
 @Immutable
 data class HatchColors(
     val panel: Color,
