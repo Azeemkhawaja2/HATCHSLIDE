@@ -66,6 +66,17 @@
     <string name="failed_levels">Levels</string>
 
     <string name="tip_got_it">Got it</string>
+    <string name="loading_title">Heading to the beach…</string>
+    <string-array name="loading_tips">
+        <item>Every swipe moves all of your hatchlings at once.</item>
+        <item>Undo is free, so try an idea and take it back.</item>
+        <item>Match par to earn all three stars.</item>
+        <item>Stuck? A hint shows the best next swipe.</item>
+        <item>Rocks, shells and other hatchlings make the best stoppers.</item>
+        <item>Real hatchlings find the sea by heading for the brightest horizon.</item>
+        <item>Grown sea turtles come back to the beach where they hatched to lay their eggs.</item>
+        <item>Only a few hatchlings in every thousand grow up, so every rescue counts.</item>
+    </string-array>
     <string name="tip_swipe">Swipe anywhere to slide your hatchling. Reach the waves to save it!</string>
     <string name="tip_all_move">Every swipe moves every hatchling at once. They all slide until they bump into something.</string>
     <string name="tip_blocking">Hatchlings stop when they bump into each other. Use one to stop the other!</string>

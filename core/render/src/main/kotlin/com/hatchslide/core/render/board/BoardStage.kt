@@ -10,6 +10,7 @@ import com.hatchslide.core.game.MoveOutcome
 import com.hatchslide.core.game.PieceKind
 import com.hatchslide.core.game.TileType
 import com.hatchslide.core.render.Ocean
+import com.hatchslide.core.render.PerfLog
 import com.hatchslide.core.render.QualityTier
 import com.hatchslide.core.render.RenderEngine
 import com.hatchslide.core.render.Stage
@@ -129,6 +130,9 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
     private var entered = false
 
     var listener: BoardEventListener? = null
+
+    /** When the last swipe arrived (System.nanoTime), for the debug swipe-to-motion log; 0 when logged. */
+    var inputNanos = 0L
     var cueListener: BoardCueListener? = null
     private var slideEnded = true
     private var introCracked = BooleanArray(0)
@@ -159,7 +163,13 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     // ----- Public API -----
 
-    fun load(level: Level, state: GameState, theme: WorldTheme, skin: Int, dolly: Boolean = true) {
+    /** Builds a level's island geometry; pure computation, safe on a background thread before [load]. */
+    fun prepare(level: Level): IslandGeometry = IslandBuilder.build(level.board, level.seed)
+
+    /** Builds [level] with this look; [island] from [prepare] skips rebuilding the geometry here. */
+    fun load(level: Level, state: GameState, theme: WorldTheme, skin: Int, dolly: Boolean = true, island: IslandGeometry? = null) {
+        val started = System.nanoTime()
+        val worldChange = this.theme !== theme
         clear()
         this.level = level
         width = level.board.width
@@ -174,7 +184,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         lastX = FloatArray(slots)
         lastY = FloatArray(slots)
         host.environment.apply(theme)
-        buildScenery(level)
+        buildScenery(level, island ?: prepare(level))
         effects.begin(theme, level.board, tileHeights, slots)
         buildStatic(level, state)
         displayed = state
@@ -184,6 +194,8 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
             camera.startDolly(height * 2.2f + 8f)
             startIntro(state)
         }
+        host.textures.dropPrefetched()
+        PerfLog.since(if (worldChange) "world switch load" else "level load", started)
     }
 
     /** True if [level] is already built with this look, so re-entering can just [snap]. */
@@ -196,6 +208,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         finishIntro()
         completeTimeline()
         if (outcome.result.noOp) {
+            inputNanos = 0L
             bump(outcome.result.direction)
             finished()
             return
@@ -290,6 +303,10 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
         frameDt = dt
         val tl = timeline
         if (tl != null) {
+            if (inputNanos != 0L) {
+                PerfLog.since("swipe to first movement", inputNanos)
+                inputNanos = 0L
+            }
             timelineTime += dt
             animate(tl, timelineTime)
             while (nextEvent < schedule.size && schedule[nextEvent].first <= timelineTime) {
@@ -368,8 +385,7 @@ open class BoardStage(protected val host: RenderEngine, protected val art: Board
 
     // ----- Building -----
 
-    private fun buildScenery(level: Level) {
-        val island = IslandBuilder.build(level.board, level.seed)
+    private fun buildScenery(level: Level, island: IslandGeometry) {
         scenery.build(island)
         if (entered) scenery.attach()
         placeDecor(level, island)

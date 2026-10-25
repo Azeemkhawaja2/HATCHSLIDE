@@ -50,38 +50,52 @@ fun Modifier.boardSwipes(onSwipe: (Direction) -> Unit): Modifier {
     }
 }
 
-/** Keyboard arrows, WASD and the gamepad D-pad map to swipes; U undoes, R restarts, H asks for a hint. */
-fun Modifier.boardKeys(onSwipe: (Direction) -> Unit, onUndo: () -> Unit, onRestart: () -> Unit, onHint: () -> Unit): Modifier =
-    onPreviewKeyEvent { event ->
-        if (event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
-        val direction = when (event.key) {
-            Key.DirectionUp, Key.W -> Direction.UP
-            Key.DirectionDown, Key.S -> Direction.DOWN
-            Key.DirectionLeft, Key.A -> Direction.LEFT
-            Key.DirectionRight, Key.D -> Direction.RIGHT
-            else -> null
-        }
-        when {
-            direction != null -> {
-                onSwipe(direction)
-                true
-            }
-
-            event.key == Key.U || event.key == Key.Backspace || event.key == Key.ButtonX -> {
-                onUndo()
-                true
-            }
-
-            event.key == Key.R || event.key == Key.ButtonY -> {
-                onRestart()
-                true
-            }
-
-            event.key == Key.H || event.key == Key.ButtonL1 -> {
-                onHint()
-                true
-            }
-
-            else -> false
-        }
+/**
+ * Keyboard arrows, WASD and the gamepad D-pad map to swipes; U, Backspace or X undoes, R or Y restarts,
+ * H or L1 asks for a hint, P or Start pauses. Android turns unhandled stick and hat movement into
+ * repeating D-pad keys, so repeats are ignored: one push is one swipe.
+ */
+fun Modifier.boardKeys(
+    onSwipe: (Direction) -> Unit,
+    onUndo: () -> Unit,
+    onRestart: () -> Unit,
+    onHint: () -> Unit,
+    onPause: () -> Unit,
+): Modifier = onPreviewKeyEvent { event ->
+    if (event.type != KeyEventType.KeyDown || event.nativeKeyEvent.repeatCount > 0) return@onPreviewKeyEvent false
+    val direction = when (event.key) {
+        Key.DirectionUp, Key.W -> Direction.UP
+        Key.DirectionDown, Key.S -> Direction.DOWN
+        Key.DirectionLeft, Key.A -> Direction.LEFT
+        Key.DirectionRight, Key.D -> Direction.RIGHT
+        else -> null
     }
+    when {
+        direction != null -> {
+            onSwipe(direction)
+            true
+        }
+
+        event.key == Key.U || event.key == Key.Backspace || event.key == Key.ButtonX -> {
+            onUndo()
+            true
+        }
+
+        event.key == Key.R || event.key == Key.ButtonY -> {
+            onRestart()
+            true
+        }
+
+        event.key == Key.H || event.key == Key.ButtonL1 -> {
+            onHint()
+            true
+        }
+
+        event.key == Key.P || event.key == Key.ButtonStart -> {
+            onPause()
+            true
+        }
+
+        else -> false
+    }
+}

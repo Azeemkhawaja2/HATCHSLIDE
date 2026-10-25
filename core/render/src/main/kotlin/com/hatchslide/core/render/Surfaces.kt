@@ -60,12 +60,8 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
     }
 
     private fun themeTerrain(mi: MaterialInstance) {
-        mi.tex("sandAlbedo", textures.get("${theme.sandLook}_albedo"))
-        mi.tex("sandNormal", textures.get("${theme.sandDetail}_normal"))
-        mi.tex("sandOrm", textures.get("${theme.sandDetail}_orm"))
-        mi.tex("rockAlbedo", textures.get("${theme.cliff}_albedo"))
-        mi.tex("rockNormal", textures.get("${theme.cliff}_normal"))
-        mi.tex("rockOrm", textures.get("${theme.cliff}_orm"))
+        val names = themeTextures(theme)
+        for ((k, parameter) in TERRAIN_PARAMETERS.withIndex()) mi.tex(parameter, textures.get(names[k]))
         mi.srgb("wetTint", theme.wetTint)
         mi.srgb("waterTint", theme.shallowWater)
     }
@@ -269,6 +265,18 @@ class Surfaces(private val host: RenderEngine, private val textures: TextureStor
     }
 
     companion object {
+        private val TERRAIN_PARAMETERS = listOf("sandAlbedo", "sandNormal", "sandOrm", "rockAlbedo", "rockNormal", "rockOrm")
+
+        /** Textures a world's look adds to the terrain, in [TERRAIN_PARAMETERS] order (also prefetched). */
+        fun themeTextures(theme: WorldTheme): List<String> = listOf(
+            "${theme.sandLook}_albedo",
+            "${theme.sandDetail}_normal",
+            "${theme.sandDetail}_orm",
+            "${theme.cliff}_albedo",
+            "${theme.cliff}_normal",
+            "${theme.cliff}_orm",
+        )
+
         /** Height of the sea surface; tiles top out at 0 and the island chunk at [ISLAND_TOP]. */
         const val WATER_LEVEL = -0.75f
         const val ISLAND_TOP = -0.3f

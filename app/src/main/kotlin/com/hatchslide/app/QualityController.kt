@@ -55,11 +55,11 @@ class QualityController(
 
     fun attach(engine: RenderEngine) {
         this.engine = engine
-        engine.frameObserver = this
+        engine.frameObservers += this
     }
 
     fun detach() {
-        engine?.frameObserver = null
+        engine?.frameObservers?.remove(this)
         engine = null
     }
 

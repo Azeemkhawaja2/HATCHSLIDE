@@ -161,13 +161,36 @@ Gate result: `./gradlew check assembleDebug` green with no lint warnings. New un
 - the board effects: footprints only for hatchlings on sand, the 4 s fade, the 80% cut, no dust on rock, fireflies and ash only in their worlds and kept topped up, confetti;
 - auto quality: renderer strings, memory caps, Game Mode steps, and the frame monitor (steady play never drops, sustained overrun drops once and then cools down, good seconds reset it, hitches and holds are ignored).
 
+## M8 Performance and adaptation
+
+- **Nothing allocated per frame.** `FrameAllocationTest` runs the pure-Kotlin parts of the frame thousands of times and checks the thread's allocated bytes: move timelines, piece trails and effects, the particle pool and its quad writer, the camera animator and the frame monitor. It found two allocations, both now fixed. `MoveTimeline.pose` built an `IntRange` per piece per frame and boxed a `Long` teleport key; it now uses per-track primitive arrays. In the render loop, the frame-cap calculation built and filtered a list, and the overlay loop created an iterator. Frame observers take primitive arguments through a plain interface, so they do not box either.
+- **Baseline profile.** `baselineprofile/` drives the real UI with UiAutomator: cold start, the title, the main menu, the map, Sunrise Cove's level select, level 1, swipes in every direction and back home. It holds:
+  - the profile generator (`BaselineProfileRule`, with the startup profile);
+  - `StartupBenchmark` (`StartupTimingMetric`, with and without the profile);
+  - `GameplayBenchmark` (`FrameTimingMetric` while hatchlings slide).
+
+  The app reports fully drawn when the title beach's first 3D frame is presented. Until the profile can be generated on a device, `app/src/main/baseline-prof.txt` seeds one with wildcard rules for the game's own code and Filament's Java bindings; libraries bring their own.
+- **ADPF.** On API 31+ a `PerformanceHintManager` session covers the frame-loop thread and Filament's driver thread, found by its `FEngine::loop` name in `/proc/self/task`. Each frame's CPU work is reported against the current frame budget, which is retargeted when the budget changes.
+- **Thermal stepping.** Thermal headroom (10 s forecast, API 30+) and thermal status are read every 2 s in the foreground, off the main thread. Headroom at 0.85 or above, or a moderate status, steps quality down one tier, at most once every 10 s and two tiers at most. A severe status goes straight to two steps. 30 cool seconds (headroom under 0.6) step back up one tier. This applies to every quality setting, not just Auto, because it is temporary and pre-empts the system's own throttling. The step-down and step-up rules are unit-tested.
+- **World switches.** A new level reads its world's sky, IBL and terrain textures and builds its island geometry on a background thread first, while the previous screen's 3D stage stays visible. Only the GPU uploads then run on the main thread, after which the board appears through the stage curtain. If a load passes 300 ms, an animated tip panel fades in: a waddling hatchling, plus a game tip or a sea turtle fact. Input is ignored until the board is listening, since a command sent during the load would be lost. The level-start dolly now follows the board's rest pose every frame, so it holds when the first layout arrives after the load.
+- **Debug timing.** Debuggable builds log swipe-to-first-movement and world-switch and level load times under `HatchslidePerf` (spec section 11 asks for these two logs). Release builds never format a message.
+- **Input.**
+  - Keyboard: arrows or WASD swipe, U undo, R restart, H hint, P pause, Escape back.
+  - Gamepad: D-pad or stick swipe, X undo, Y restart, L1 hint, Start pause, B back, A select.
+  - Mouse wheels and touchpads pan the world map; mouse drags swipe on the board.
+
+  Android's generic key map already falls back A to D-pad centre and B and Escape to Back when the app does not handle them, and the view system turns unhandled stick and hat motion into D-pad keys. The game relies on both instead of translating input itself; that also avoids AndroidX's restricted `dispatchKeyEvent`. Key repeats from a held stick or key are ignored on the board, so one push is one swipe. Menus are ordinary focusable Compose buttons, so D-pads and keyboards move between them.
+- **Large screens and windows.** The activity handles rotation, folding, resizing and density changes itself, so the Filament surface resizes, the game state stays in its ViewModel, and the board re-frames to the new free space. It is resizeable with no aspect-ratio limit (no letterboxing), and the HUD moves to side columns on wide windows (M5).
+
+Gate result: `./gradlew check assembleDebug` and the benchmark module's build are green with no lint warnings. New unit tests cover zero per-frame allocation and the thermal stepper. Benchmark numbers (startup, frame timing on the Medium and Low tiers, PSS during world 5, world switch time) need a device or emulator and are listed under Device verification.
+
 ## Device verification (to run on hardware or an emulator with GPU)
 
 These gates need a device and are wired but not yet executed:
 
 - Rendering smoke test (title and one level, no GL errors, screenshots), including water, the terrain mask and model material rebinding.
 - Instrumented UI and lifecycle tests (navigation through all 14 screens, rotation/fold/resize mid-animation, process death, resuming a saved run).
-- Macrobenchmark startup and frame timing, monkey run, PSS during world 5.
+- Macrobenchmark startup and frame timing (record the numbers here; generate and commit the baseline profile), monkey run, PSS during world 5, world-switch times from the `HatchslidePerf` log, the ADPF session being accepted, thermal stepping under sustained load, and gamepad sticks, hats and buttons on a real controller.
 - Hint latency on a mid-range phone (target under 200 ms; JVM worst case 56 ms).
 - Polish: particle and footprint look per world (premultiplied output, night tint, ash), colour grades, the stage curtain, colour-blind symbols over tide pools, menus at 200% text scale, and the auto tier's choice and drop on a Low, a Medium and a High reference phone.
 - Audio: background and foreground pause and resume, ducking for a notification and a call, the 1.5 s crossfade between worlds, loop points, effect latency and panning, and haptics on a phone with and without API 30 constants.

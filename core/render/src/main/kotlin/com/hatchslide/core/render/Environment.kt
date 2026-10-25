@@ -10,6 +10,8 @@ import com.google.android.filament.ToneMapper
 import com.google.android.filament.View
 import com.google.android.filament.utils.KTX1Loader
 import com.hatchslide.core.render.assets.AssetCatalog
+import java.nio.ByteBuffer
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.math.asin
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -174,6 +176,7 @@ class Environment(private val host: RenderEngine) {
     private var iblTexture: Texture? = null
     private var skyTexture: Texture? = null
     private val gradings = HashMap<Int, ColorGrading>()
+    private val prefetchedIbl = ConcurrentHashMap<String, ByteBuffer>()
     var theme: WorldTheme? = null
         private set
     var shadowMapSize = 2048
@@ -213,6 +216,14 @@ class Environment(private val host: RenderEngine) {
         buildSun(theme ?: WorldTheme.TITLE, size)
     }
 
+    /** Reads [next]'s image-based lighting ahead; safe from any thread. */
+    fun prefetch(next: WorldTheme) {
+        if (theme?.sky == next.sky) return
+        val path = AssetCatalog.Skies.ibl(next.sky)
+        if (prefetchedIbl.containsKey(path)) return
+        runCatching { host.assets.readDirect(path) }.onSuccess { prefetchedIbl[path] = it }
+    }
+
     fun apply(next: WorldTheme) {
         if (theme === next) return
         theme = next
@@ -222,7 +233,10 @@ class Environment(private val host: RenderEngine) {
         lm.setIntensity(light, next.sunLux)
         lm.setDirection(light, next.sunDirection[0], next.sunDirection[1], next.sunDirection[2])
         releaseSky()
-        val ibl = KTX1Loader.createIndirectLight(engine, host.assets.readDirect(AssetCatalog.Skies.ibl(next.sky)), KTX1Loader.Options())
+        val path = AssetCatalog.Skies.ibl(next.sky)
+        val bytes = prefetchedIbl.remove(path) ?: host.assets.readDirect(path)
+        prefetchedIbl.clear()
+        val ibl = KTX1Loader.createIndirectLight(engine, bytes, KTX1Loader.Options())
         indirectLight = ibl.indirectLight?.also { it.intensity = next.iblIntensity }
         iblTexture = ibl.cubemap
         val (box, cubemap) = host.textures.skybox(next.sky)

@@ -1,6 +1,7 @@
 package com.hatchslide.app
 
 import android.view.SurfaceView
+import androidx.activity.compose.ReportDrawnAfter
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -24,6 +25,7 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
@@ -52,6 +54,7 @@ import com.hatchslide.core.game.Level
 import com.hatchslide.core.render.QualityTier
 import com.hatchslide.core.render.SceneDirector
 import com.hatchslide.core.render.WorldTheme
+import com.hatchslide.core.render.quality.lowered
 import com.hatchslide.feature.game.GameNavigator
 import com.hatchslide.feature.game.GameScreen
 import com.hatchslide.feature.game.GameScreenConfig
@@ -133,10 +136,17 @@ private fun StageCurtain(director: SceneDirector, reducedMotion: Boolean) {
  * navigation flow). Back pops one screen; on the main menu it leaves the app; in gameplay it pauses.
  */
 @Composable
-fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: AudioEngine, autoTier: StateFlow<QualityTier>) {
+fun HatchslideRoot(
+    container: AppContainer,
+    director: SceneDirector,
+    audio: AudioEngine,
+    autoTier: StateFlow<QualityTier>,
+    thermalSteps: StateFlow<Int>,
+) {
     val settings by container.player.settings.collectAsStateWithLifecycle()
     val progress by container.player.progress.collectAsStateWithLifecycle()
     val auto by autoTier.collectAsStateWithLifecycle()
+    val heat by thermalSteps.collectAsStateWithLifecycle()
     val preferences = UiPreferences(
         reducedMotion = settings.reducedMotion,
         highContrast = settings.highContrast,
@@ -144,9 +154,10 @@ fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: Audi
         colorBlindTiles = settings.colorBlindTiles,
         haptics = settings.haptics,
     )
-    LaunchedEffect(settings.quality, settings.frameRate, settings.reducedMotion, settings.colorBlindTiles, auto) {
+    LaunchedEffect(settings.quality, settings.frameRate, settings.reducedMotion, settings.colorBlindTiles, auto, heat) {
         director.applySettings(
-            qualityTier(settings.quality, auto),
+            // Thermal stepping lowers whichever tier is selected, for as long as the device runs hot.
+            qualityTier(settings.quality, auto).lowered(heat),
             frameRateMode(settings.frameRate),
             settings.reducedMotion,
             settings.colorBlindTiles,
@@ -173,6 +184,8 @@ fun HatchslideRoot(container: AppContainer, director: SceneDirector, audio: Audi
                     popExitTransition = transitions.popExit,
                 ) {
                     composable<TitleRoute> {
+                        // Startup is complete once the title beach's first 3D frame is on screen.
+                        ReportDrawnAfter { while (director.engine.presentedFrames == 0L) withFrameNanos { } }
                         TitleScreen(director) { nav.navigate(MenuRoute) { popUpTo<TitleRoute> { inclusive = true } } }
                     }
                     composable<MenuRoute> {

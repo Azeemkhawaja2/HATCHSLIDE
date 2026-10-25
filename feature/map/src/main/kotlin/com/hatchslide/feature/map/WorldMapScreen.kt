@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.pluralStringResource
@@ -91,6 +92,18 @@ fun WorldMapScreen(director: SceneDirector, progress: Progress, focusWorld: Int,
                 detectDragGestures { change, drag ->
                     change.consume()
                     stage.pan(drag.x)
+                }
+            }
+            // Mouse wheels and touchpads pan along the archipelago (desktop windows, Chromebooks).
+            .pointerInput(Unit) {
+                awaitPointerEventScope {
+                    while (true) {
+                        val event = awaitPointerEvent()
+                        if (event.type != PointerEventType.Scroll) continue
+                        val delta = event.changes.firstOrNull()?.scrollDelta ?: continue
+                        stage.pan(-(delta.y + delta.x) * SCROLL_PIXELS)
+                        event.changes.forEach { it.consume() }
+                    }
                 }
             },
     ) {
@@ -163,3 +176,6 @@ private fun IslandBadge(world: Int, progress: Progress, onClick: () -> Unit, mod
         }
     }
 }
+
+/** Map pan per mouse-wheel notch, in drag pixels. */
+private const val SCROLL_PIXELS = 80f

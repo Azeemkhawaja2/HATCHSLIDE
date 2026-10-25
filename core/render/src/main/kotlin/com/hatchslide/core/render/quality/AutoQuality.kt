@@ -143,3 +143,62 @@ class FrameBudgetMonitor(
         const val HITCH_NANOS = 500_000_000L
     }
 }
+
+/** This tier lowered by [steps] (thermal stepping), never below Low. */
+fun QualityTier.lowered(steps: Int): QualityTier = QualityTier.entries[(ordinal - steps).coerceIn(0, ordinal)]
+
+/**
+ * Thermal stepping (spec section 11): steps quality down before the device throttles and back up
+ * once it has cooled. [onSample] takes the thermal headroom forecast (1.0 = throttling starts; NaN
+ * when unavailable) and the current thermal status (PowerManager.THERMAL_STATUS_*, 0 = none) and
+ * returns how many tiers to step down (0 to [MAX_STEPS]).
+ */
+class ThermalStepper {
+    var steps = 0
+        private set
+    private var lastChange = Long.MIN_VALUE / 2
+    private var coolSince = -1L
+
+    fun onSample(headroom: Float, status: Int, nowMillis: Long): Int {
+        if (status >= STATUS_SEVERE) {
+            change(MAX_STEPS, nowMillis)
+            return steps
+        }
+        val hot = status >= STATUS_MODERATE || (!headroom.isNaN() && headroom >= HOT)
+        val cool = status <= STATUS_LIGHT && !headroom.isNaN() && headroom < COOL
+        when {
+            hot -> {
+                coolSince = -1L
+                if (steps < MAX_STEPS && nowMillis - lastChange >= STEP_DOWN_GAP_MS) change(steps + 1, nowMillis)
+            }
+
+            cool && steps > 0 -> {
+                if (coolSince < 0L) coolSince = nowMillis
+                if (nowMillis - coolSince >= RECOVER_MS) {
+                    change(steps - 1, nowMillis)
+                    coolSince = nowMillis
+                }
+            }
+
+            else -> coolSince = -1L
+        }
+        return steps
+    }
+
+    private fun change(to: Int, nowMillis: Long) {
+        if (to == steps) return
+        steps = to
+        lastChange = nowMillis
+    }
+
+    companion object {
+        const val MAX_STEPS = 2
+        private const val HOT = 0.85f
+        private const val COOL = 0.6f
+        private const val STEP_DOWN_GAP_MS = 10_000L
+        private const val RECOVER_MS = 30_000L
+        private const val STATUS_LIGHT = 1
+        private const val STATUS_MODERATE = 2
+        private const val STATUS_SEVERE = 3
+    }
+}

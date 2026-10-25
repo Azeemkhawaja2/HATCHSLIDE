@@ -1,0 +1,7 @@
+# Seed baseline profile (spec section 11): the game's own code and Filament's Java bindings, which run
+# from the first frame. Libraries (Compose, AndroidX, Media3) ship their own profiles. Replace with the
+# generated profile by running ./gradlew :app:generateBaselineProfile on a device or emulator.
+Lcom/hatchslide/**;
+HSPLcom/hatchslide/**;->**(**)**
+Lcom/google/android/filament/**;
+HSPLcom/google/android/filament/**;->**(**)**

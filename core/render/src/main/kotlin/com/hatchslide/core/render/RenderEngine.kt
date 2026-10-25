@@ -17,6 +17,7 @@ import com.google.android.filament.android.DisplayHelper
 import com.google.android.filament.android.UiHelper
 import com.google.android.filament.gltfio.Gltfio
 import com.google.android.filament.utils.Utils
+import com.hatchslide.core.render.assets.AssetCatalog
 import com.hatchslide.core.render.assets.ModelLibrary
 import com.hatchslide.core.render.assets.TextureStore
 import com.hatchslide.core.render.fx.ParticleSystem
@@ -139,11 +140,16 @@ class RenderEngine(context: Context) {
     /** Extra frame cap from the quality tier (Low renders at 30 fps). */
     var tierFrameCap = 0f
 
+    /** Frames presented since the engine started (startup reports fully drawn after the first). */
+    var presentedFrames = 0L
+        private set
+
     /** Refresh rate of the display the surface is on. */
     var displayFps = 60f
         private set
 
-    var frameObserver: FrameObserver? = null
+    /** Told about every presented frame (auto quality, performance hints). */
+    val frameObservers = ArrayList<FrameObserver>()
 
     /** Extra views drawn after the main view, e.g. the Turtle Journal's model card. */
     val overlayViews = mutableListOf<View>()
@@ -222,7 +228,7 @@ class RenderEngine(context: Context) {
         particles.clear()
         stage = next
         next.enter(this)
-        frameObserver?.onStageChanged()
+        for (i in 0 until frameObservers.size) frameObservers[i].onStageChanged()
         if (width > 0) next.onResize(this, width, height)
     }
 
@@ -237,6 +243,15 @@ class RenderEngine(context: Context) {
     fun pause() {
         running = false
         choreographer.removeFrameCallback(frameCallback)
+    }
+
+    /**
+     * Reads a world's sky and terrain textures ahead, off the main thread, so switching to it only
+     * uploads to the GPU (spec section 11: world switch under 800 ms).
+     */
+    fun prefetch(theme: WorldTheme) {
+        environment.prefetch(theme)
+        textures.prefetch(Surfaces.themeTextures(theme) + AssetCatalog.Skies.skybox(theme.sky))
     }
 
     /** Applies a quality tier: post-processing, shadows, frame cap and texture limits for later loads. */
@@ -260,8 +275,12 @@ class RenderEngine(context: Context) {
     }
 
     private fun frameCapFps(): Float {
-        val caps = listOf(frameRateMode.fps, tierFrameCap).filter { it > 0f }
-        val cap = caps.minOrNull() ?: 0f
+        val setting = frameRateMode.fps
+        val cap = when {
+            setting > 0f && tierFrameCap > 0f -> minOf(setting, tierFrameCap)
+            setting > 0f -> setting
+            else -> tierFrameCap
+        }
         // Menus with nothing animating render on demand at 30 fps.
         val idle = stage?.isAnimating == false
         return if (idle) (if (cap > 0f) minOf(cap, 30f) else 30f) else cap
@@ -288,11 +307,13 @@ class RenderEngine(context: Context) {
             if (!uiHelper.isReadyToRender) return
             if (renderer.beginFrame(chain, frameTimeNanos)) {
                 renderer.render(view)
-                for (overlay in overlayViews) renderer.render(overlay)
+                for (i in 0 until overlayViews.size) renderer.render(overlayViews[i])
                 renderer.endFrame()
                 val interval = if (lastPresentNanos == 0L) 0L else frameTimeNanos - lastPresentNanos
                 lastPresentNanos = frameTimeNanos
-                frameObserver?.onFrame(interval, System.nanoTime() - start)
+                presentedFrames++
+                val work = System.nanoTime() - start
+                for (i in 0 until frameObservers.size) frameObservers[i].onFrame(interval, work)
             }
         }
     }

@@ -111,7 +111,14 @@ class GameViewModel(
     /** The state the board should show when it (re)attaches. */
     val boardState: GameState get() = controller.state
 
+    /**
+     * True while the board is built and listening to [commands]. Input before that (during a level
+     * load) is ignored, since the board would miss the command it causes.
+     */
+    var boardReady = false
+
     fun swipe(direction: Direction) {
+        if (!boardReady) return
         val outcome = controller.swipe(direction) ?: return
         play(outcome)
     }
@@ -161,6 +168,7 @@ class GameViewModel(
     }
 
     fun undo() {
+        if (!boardReady) return
         val state = controller.undo() ?: return
         reported = false
         clearHint()
@@ -170,6 +178,7 @@ class GameViewModel(
     }
 
     fun restart() {
+        if (!boardReady) return
         val state = controller.restart()
         reported = false
         clearHint()
@@ -179,7 +188,7 @@ class GameViewModel(
     }
 
     fun hint() {
-        if (controller.state.status != GameStatus.PLAYING || hintJob?.isActive == true) return
+        if (!boardReady || controller.state.status != GameStatus.PLAYING || hintJob?.isActive == true) return
         controller.noteHint()
         progress?.onHint(level)
         val state = controller.state

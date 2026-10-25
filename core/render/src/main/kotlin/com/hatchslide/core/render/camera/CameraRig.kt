@@ -120,6 +120,7 @@ class CameraAnimator {
     private var shakeFrames = 0
     private var shakeStrength = 0f
     private var followStart = -1f
+    private var dollyDistance = 0f
     var reducedMotion = false
 
     fun setRest(pose: CameraPose) {
@@ -133,10 +134,12 @@ class CameraAnimator {
         }
     }
 
-    /** Level start: 1.2 s dolly from a wide shot over the ocean down to the board. */
+    /**
+     * Level start: 1.2 s dolly from a wide shot over the ocean down to the board. The wide shot is
+     * taken relative to the rest pose every frame, so a rest pose that arrives late (first layout) holds.
+     */
     fun startDolly(oceanDistance: Float) {
-        fromEye.set(restEye.x, restEye.y + oceanDistance * 0.6f, restEye.z - oceanDistance * 0.4f)
-        fromTarget.set(0f, 0f, restTarget.z - oceanDistance)
+        dollyDistance = oceanDistance
         dollyStart = time
         followStart = -1f
     }
@@ -158,6 +161,8 @@ class CameraAnimator {
         eye.set(restEye)
         target.set(restTarget)
         if (dollyStart >= 0f) {
+            fromEye.set(restEye.x, restEye.y + dollyDistance * 0.6f, restEye.z - dollyDistance * 0.4f)
+            fromTarget.set(0f, 0f, restTarget.z - dollyDistance)
             val t = ((time - dollyStart) / dollyDuration).coerceIn(0f, 1f)
             val e = easeInOutCubic(t)
             lerp(eye, fromEye, restEye, e)

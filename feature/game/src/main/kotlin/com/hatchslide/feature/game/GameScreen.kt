@@ -154,7 +154,7 @@ fun GameScreen(
     val sizeClass = currentWindowAdaptiveInfoV2().windowSizeClass
     val sideColumns = rootSize.width > rootSize.height && sizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
 
-    BindBoard(viewModel, director, config.theme, config.skin, prefs.reducedMotion)
+    val loading by bindBoard(viewModel, director, config.theme, config.skin, prefs.reducedMotion)
     ImmersivePlay()
     LaunchedEffect(config.tutorialHand) { viewModel.tutorialActive = config.tutorialHand }
     val moveHaptics = remember(view) { MoveHaptics(view) }
@@ -213,7 +213,8 @@ fun GameScreen(
 
     val boardDescription = stringResource(R.string.game_board)
     val swipe: (Direction) -> Unit = { direction ->
-        if (!paused && !tipOpen && ui.state.status == GameStatus.PLAYING) {
+        if (!paused && !tipOpen && !loading && ui.state.status == GameStatus.PLAYING) {
+            director.board.inputNanos = System.nanoTime()
             if (config.haptics) view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK)
             feedback?.onSwipe()
             val before = viewModel.ui.value.state.movesUsed
@@ -233,7 +234,7 @@ fun GameScreen(
             .onSizeChanged { rootSize = it }
             .focusRequester(focus)
             .focusable()
-            .boardKeys(swipe, actions.undo, actions.restart, actions.hint)
+            .boardKeys(swipe, actions.undo, actions.restart, actions.hint, onPause = { if (!ui.ended) paused = true })
             .boardSwipes(swipe)
             .semantics { contentDescription = boardDescription },
     ) {
@@ -275,6 +276,8 @@ fun GameScreen(
         ui.tutorialDirection?.let { TutorialHand(it, Modifier.align(Alignment.Center)) }
         HintBanner(ui.hint, Modifier.align(Alignment.Center).padding(24.dp))
     }
+
+    LoadingTip(loading)
 
     if (tipOpen && config.tip != null) {
         TipOverlay(config.tip) {

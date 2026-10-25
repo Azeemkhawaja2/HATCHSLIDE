@@ -9,6 +9,7 @@ import com.google.android.filament.utils.KTX1Loader
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import java.util.concurrent.ConcurrentHashMap
 
 /**
  * Loads the compressed KTX textures of the HD asset pack through filament-utils' [KTX1Loader].
@@ -21,6 +22,8 @@ import java.nio.ByteOrder
 class TextureStore(private val assets: AssetManager, private val engine: Engine) {
     private val textures = HashMap<String, Texture>()
     private val owned = ArrayList<Texture>()
+    private val prefetched = ConcurrentHashMap<String, ByteArray>()
+    private val loaded: MutableSet<String> = ConcurrentHashMap.newKeySet()
 
     /** Largest level kept for ordinary textures and for hero textures ([AssetCatalog.Textures.HERO]). */
     var maxSize = 2048
@@ -28,7 +31,8 @@ class TextureStore(private val assets: AssetManager, private val engine: Engine)
     var heroMaxSize = 2048
         private set
 
-    val directory: String by lazy { resolveDirectory() }
+    private val directoryLazy = lazy { resolveDirectory() }
+    val directory: String by directoryLazy
 
     /** Samplers shared by every material: trilinear with anisotropy, wrapping for tiling textures. */
     val repeat = TextureSampler(
@@ -71,16 +75,34 @@ class TextureStore(private val assets: AssetManager, private val engine: Engine)
 
     private fun read(name: String): ByteArray = assets.open("$directory/$name.ktx").use { it.readBytes() }
 
+    private fun bytes(name: String): ByteArray = prefetched.remove(name) ?: read(name)
+
+    /**
+     * Reads textures ahead (a level's new look), so the main thread only uploads them. Safe from any
+     * thread once the store has loaded its first texture, which picks the texture folder.
+     */
+    fun prefetch(names: Iterable<String>) {
+        if (!directoryLazy.isInitialized()) return
+        for (name in names) {
+            if (name in loaded || prefetched.containsKey(name)) continue
+            runCatching { read(name) }.onSuccess { prefetched[name] = it }
+        }
+    }
+
+    /** Forgets prefetched textures that were not used (the player left before the level loaded). */
+    fun dropPrefetched() = prefetched.clear()
+
     /** The texture `textures/<name>.ktx`, loaded once and owned by the store. */
     fun get(name: String): Texture = textures.getOrPut(name) {
         val limit = if (name in AssetCatalog.Textures.HERO) heroMaxSize else maxSize
-        val buffer = KtxTrim.trim(read(name), limit)
+        val buffer = KtxTrim.trim(bytes(name), limit)
+        loaded += name
         KTX1Loader.createTexture(engine, buffer, KTX1Loader.Options()).also { owned += it }
     }
 
     /** Builds the compressed skybox cubemap for a sky; the caller owns both returned objects. */
     fun skybox(sky: String): Pair<Skybox, Texture> {
-        val bundle = KTX1Loader.createSkybox(engine, KtxTrim.trim(read(AssetCatalog.Skies.skybox(sky)), maxSize), KTX1Loader.Options())
+        val bundle = KTX1Loader.createSkybox(engine, KtxTrim.trim(bytes(AssetCatalog.Skies.skybox(sky)), maxSize), KTX1Loader.Options())
         return (bundle.skybox ?: error("skybox $sky")) to (bundle.cubemap ?: error("skybox $sky"))
     }
 
@@ -106,6 +128,7 @@ class TextureStore(private val assets: AssetManager, private val engine: Engine)
 
     fun release(texture: Texture) {
         if (owned.remove(texture)) {
+            textures.entries.firstOrNull { it.value === texture }?.let { loaded -= it.key }
             textures.values.remove(texture)
             engine.destroyTexture(texture)
         }
@@ -115,6 +138,8 @@ class TextureStore(private val assets: AssetManager, private val engine: Engine)
         owned.asReversed().forEach { engine.destroyTexture(it) }
         owned.clear()
         textures.clear()
+        loaded.clear()
+        prefetched.clear()
     }
 
     fun destroy() = evictAll()

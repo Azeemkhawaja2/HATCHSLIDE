@@ -39,3 +39,14 @@ Levels live in `app/src/main/assets/levels/` (`world_1.json` to `world_5.json`, 
 ```
 
 `./gradlew check` validates every committed puzzle with the solver.
+
+## Performance
+
+The `baselineprofile` module holds the Macrobenchmark journeys (title, menu, map, a level). With a device or emulator connected:
+
+```bash
+./gradlew :app:generateBaselineProfile                       # regenerate the baseline profile
+./gradlew :baselineprofile:connectedBenchmarkReleaseAndroidTest   # startup and gameplay frame timing
+```
+
+Debug builds log load and input timings under the `HatchslidePerf` tag (`adb logcat -s HatchslidePerf`).

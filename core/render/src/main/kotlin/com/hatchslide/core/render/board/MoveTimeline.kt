@@ -67,9 +67,24 @@ class MoveTimeline(
     private val stopCause = HashMap<Int, StopCause>()
     private val savedTick = HashMap<Int, Int>()
     private val removedTick = HashMap<Int, Int>()
-    private val teleports = HashMap<Long, MoveEvent.Teleported>()
+
+    // Per-track lookups for the per-frame pose, so posing allocates nothing (no ranges, no boxed keys).
+    private val trackOf = IntArray((result.tracks.maxOfOrNull { it.pieceId } ?: -1) + 1) { -1 }
+    private val firstMove = IntArray(result.tracks.size) { -1 }
+    private val lastMove = IntArray(result.tracks.size) { -1 }
+    private val teleportAt = Array(result.tracks.size) { arrayOfNulls<MoveEvent.Teleported>(result.tracks[it].cells.size) }
 
     init {
+        result.tracks.forEachIndexed { i, track ->
+            trackOf[track.pieceId] = i
+            val cells = track.cells
+            for (t in 0 until cells.size - 1) {
+                if (cells[t] != cells[t + 1]) {
+                    if (firstMove[i] < 0) firstMove[i] = t
+                    lastMove[i] = t
+                }
+            }
+        }
         for (event in result.events) {
             when (event) {
                 is MoveEvent.Stopped -> if (event.pieceId !in stopTick) {
@@ -85,54 +100,46 @@ class MoveTimeline(
 
                 is MoveEvent.PitFilled -> removedTick[event.pieceId] = event.tick
 
-                is MoveEvent.Teleported -> teleports[key(event.pieceId, event.tick)] = event
+                is MoveEvent.Teleported -> {
+                    val i = trackOf.getOrElse(event.pieceId) { -1 }
+                    if (i >= 0 && event.tick < teleportAt[i].size) teleportAt[i][event.tick] = event
+                }
 
                 else -> Unit
             }
         }
     }
 
-    private fun key(pieceId: Int, tick: Int) = (pieceId.toLong() shl 32) or tick.toLong()
-
     private fun cx(cell: Int) = (cell % board.width).toFloat()
 
     private fun cy(cell: Int) = (cell / board.width).toFloat()
 
-    /** First and last tick in which the piece actually changes cell, or null if it never moves. */
-    private fun movingRange(cells: List<Int>): IntRange? {
-        var first = -1
-        var last = -1
-        for (t in 0 until cells.size - 1) {
-            if (cells[t] != cells[t + 1]) {
-                if (first < 0) first = t
-                last = t
-            }
-        }
-        return if (first < 0) null else first..last
-    }
-
     /** Fills [out] with the pose of [pieceId] at time [time] (seconds since the swipe). */
     fun pose(pieceId: Int, time: Float, out: PiecePose): PiecePose {
-        val track = trackById[pieceId] ?: run {
+        val index = trackOf.getOrElse(pieceId) { -1 }
+        if (index < 0) {
             out.visible = false
             return out
         }
-        val cells = track.cells
+        val cells = result.tracks[index].cells
         out.visible = true
         out.scale = 1f
         out.lift = 0f
         out.squash = 1f
         out.moving = false
         val swipeHeading = headingOf(result.direction)
-        val range = movingRange(cells)
+        // First and last tick in which the piece changes cell (-1 if it never moves).
+        val first = firstMove[index]
+        val last = lastMove[index]
+        val moves = first >= 0
 
         // Anticipation: turn toward the swipe before moving.
-        val firstMoveTime = range?.let { slideStart + it.first * tickSeconds } ?: slideStart
+        val firstMoveTime = if (moves) slideStart + first * tickSeconds else slideStart
         out.heading = swipeHeading
 
         val t = (time - slideStart) / tickSeconds
         val tick = t.toInt().coerceIn(0, maxOf(0, cells.size - 2))
-        if (range == null || time < firstMoveTime) {
+        if (!moves || time < firstMoveTime) {
             out.x = cx(cells[0])
             out.y = cy(cells[0])
         } else {
@@ -144,14 +151,14 @@ class MoveTimeline(
                 val from = cells[tick]
                 val to = cells[tick + 1]
                 var f = (t - tick).coerceIn(0f, 1f)
-                if (tick == range.first && tick == range.last) {
+                if (tick == first && tick == last) {
                     f = smoothstep(f)
-                } else if (tick == range.first) {
+                } else if (tick == first) {
                     f = f * f * (2f - f) * 0.5f + f * 0.5f
-                } else if (tick == range.last) {
+                } else if (tick == last) {
                     f = 1f - (1f - f) * (1f - f)
                 }
-                val teleport = teleports[key(pieceId, tick)]
+                val teleport = teleportAt[index][tick]
                 if (teleport != null) {
                     // Slide into the entry pool and shrink, then grow out of the twin.
                     if (f < 0.5f) {
@@ -178,7 +185,7 @@ class MoveTimeline(
 
         // Stop squash: 85% height, spring back.
         val stop = stopTick[pieceId]
-        if (stop != null && (range != null || stopCause[pieceId] != StopCause.EDGE)) {
+        if (stop != null && (moves || stopCause[pieceId] != StopCause.EDGE)) {
             val stopTime = slideStart + stop * tickSeconds
             val s = (time - stopTime) / SQUASH_SECONDS
             if (s in 0f..1f) out.squash = 1f - 0.15f * sin(s * Math.PI.toFloat()) * (1f - s * 0.5f)
@@ -216,12 +223,12 @@ class MoveTimeline(
     }
 
     /** True if a piece slid at least three cells and was stopped by a blocker: worth a camera shake. */
-    fun hardStops(): List<Pair<Int, Float>> = result.tracks.mapNotNull { track ->
-        val range = movingRange(track.cells) ?: return@mapNotNull null
+    fun hardStops(): List<Pair<Int, Float>> = result.tracks.mapIndexedNotNull { i, track ->
+        if (firstMove[i] < 0) return@mapIndexedNotNull null
         val cause = stopCause[track.pieceId]
-        val distance = range.last - range.first + 1
+        val distance = lastMove[i] - firstMove[i] + 1
         if (distance >= 3 && (cause == StopCause.BLOCKER || cause == StopCause.CRAB || cause == StopCause.EGG)) {
-            track.pieceId to slideStart + (range.last + 1) * tickSeconds
+            track.pieceId to slideStart + (lastMove[i] + 1) * tickSeconds
         } else {
             null
         }
