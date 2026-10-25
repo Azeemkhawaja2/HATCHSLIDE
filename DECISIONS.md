@@ -195,7 +195,7 @@ Gate result: `./gradlew check assembleDebug` and the benchmark module's build ar
   - Music grew to 3:05 to 3:23 per track, inside the spec's 2:30 to 3:30, with one or two more sections each. Ambience loops grew from 30 to 40 s to 90 to 120 s, with seeded irregular wave, gust, chirp and boom timing.
   - The ETC2 copies keep the full-resolution top level of ORM maps, masks and the hero normal map. M4 dropped it to save download, on the grounds that only GLES 3.0 devices without ASTC use ETC2. With the other changes, ETC2 devices still came out at 91 MB, under the floor. The full levels give those devices the same detail as ASTC ones when they run Medium or High.
 
-  Result: being re-measured with the new assets; SIZE_REPORT.md still shows the first measurement until the gate reruns.
+  Result (SIZE_REPORT.md): 122.0 MB on ASTC phones and tablets; 107.7 to 108.2 MB on ETC2 devices (arm64, armv7 and x86_64). All are inside 100 to 190 MB, and ASTC is close to the spec's 145 MB target.
 - **Silent loop tails fixed.** Measuring the music found that three tracks declared more bars than their form filled. The title, Coral Coast and Volcanic Isle loops ended in 9 to 21 s of near silence (-41 to -54 dBFS). Each song's length now comes from its finished form, and the sequencer refuses a loop whose length was never set.
 - **Signing.** `bundleRelease` signs with the upload key from `keystore.properties` or the `HATCHSLIDE_UPLOAD_*` environment variables. This was checked with a throwaway key kept outside the repository (`jarsigner -verify` on the bundle). The real key is created by `tools/release/create_upload_key.sh`, and both its files are git-ignored. Play App Signing holds the app signing key.
 - **Instrumented tests** (`app/src/androidTest`, UiAutomator over the real game):
@@ -224,7 +224,16 @@ Gate result: `./gradlew check assembleDebug` and the benchmark module's build ar
 
   `tools/store/capture.sh` runs it for the phone, 7-inch, 10-inch and feature sets. `tools/store/compose_store_art.py` adds short captions to the 8 phone shots and the logo to the 1024x500 feature graphic. The only trace in release builds is an inert flag that nothing sets, plus the engine's `timeScale`.
 
-Gate result: pending the full `./gradlew clean check bundleRelease` run.
+Gate result: `./gradlew clean check bundleRelease` is green, signed with a throwaway upload key passed through the environment variables (`jarsigner -verify`: jar verified):
+- 108 unit tests pass, and the solver validates all 516 puzzles;
+- lint and ktlint report no issues in any module;
+- the merged release manifest has targetSdk 37, minSdk 26, `appCategory="game"` and zero permissions;
+- the no-network and no-TODO scans pass;
+- the asset manifest matches the code both ways;
+- the size report passes;
+- all 40 arm64-v8a and x86_64 library entries pass the 16 KB alignment check.
+
+The instrumented tests, benchmarks, monkey run and store capture compile and are ready to run on the device list in spec section 12; see Device verification.
 
 ## Device verification (to run on hardware or an emulator with GPU)
 
