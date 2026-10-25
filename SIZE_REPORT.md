@@ -8,11 +8,11 @@ The gate requires every device to download between 100 and 190 MB
 
 | Device spec | Download |
 | --- | --- |
-| `chromebook-x86_64` | 75.4 MB |
-| `phone-arm64-astc` | 96.8 MB |
-| `phone-arm64-etc2` | 75.2 MB |
-| `phone-armv7-low` | 74.9 MB |
-| `tablet-arm64-astc` | 96.8 MB |
+| `chromebook-x86_64` | 90.8 MB |
+| `phone-arm64-astc` | 122.0 MB |
+| `phone-arm64-etc2` | 90.6 MB |
+| `phone-armv7-low` | 90.3 MB |
+| `tablet-arm64-astc` | 122.0 MB |
 
 ## Generated assets (uncompressed, from `assets_manifest.json`)
 
@@ -20,11 +20,11 @@ Textures are shipped in two compression formats; each device downloads one of th
 
 | Category | Size |
 | --- | --- |
-| ambience | 1.2 MB |
+| ambience | 3.6 MB |
 | fonts | 0.4 MB |
 | licenses | 0.0 MB |
 | models | 4.1 MB |
-| music | 16.4 MB |
+| music | 20.1 MB |
 | sfx | 0.3 MB |
-| skies | 32.6 MB |
-| textures | 172.6 MB |
+| skies | 92.8 MB |
+| textures | 210.7 MB |
